@@ -112,6 +112,7 @@ The application is configured for Replit's autoscale deployment:
 - June 24, 2025: Added two new stats to showcase impact: 8M learners impacted and £500M+ total startup valuation
 - June 24, 2025: Updated funding raised statistic from $50M+ to £37M+ for accuracy and UK currency consistency
 - June 24, 2025: Updated investment rounds from 60+ to 28+ for accurate reporting
+- June 24, 2025: Added animated logo carousel showcasing trusted partner organizations with autoplay functionality
 
 ## User Preferences
 
