@@ -1,0 +1,106 @@
+# EduAccelerator - Startup Application Management System
+
+## Overview
+
+EduAccelerator is a full-stack web application for managing startup applications and interest registrations for an education technology accelerator program. The platform allows potential participants to apply to specific programs across different cities (London, Paris, Toronto, Dubai) and register interest for future cohorts.
+
+## System Architecture
+
+This is a full-stack TypeScript application using a modern React frontend with an Express.js backend, built for deployment on Replit's infrastructure.
+
+### Frontend Architecture
+- **Framework**: React 18 with TypeScript
+- **Routing**: Wouter for client-side routing
+- **UI Components**: Radix UI primitives with shadcn/ui component library
+- **Styling**: Tailwind CSS with CSS variables for theming
+- **State Management**: TanStack Query (React Query) for server state
+- **Form Handling**: React Hook Form with Zod validation
+- **Build Tool**: Vite with custom configuration
+
+### Backend Architecture
+- **Runtime**: Node.js 20 with Express.js
+- **Language**: TypeScript with ES modules
+- **Database**: PostgreSQL with Drizzle ORM
+- **Database Provider**: Neon Database (serverless PostgreSQL)
+- **Session Management**: Connect-pg-simple for PostgreSQL session store
+- **Validation**: Zod schemas shared between frontend and backend
+
+## Key Components
+
+### Database Schema
+Three main entities defined in `shared/schema.ts`:
+- **Applications**: Startup application submissions with company details
+- **Interest Registrations**: Interest expressions for future programs
+- **Users**: Basic user authentication system
+
+### API Endpoints
+- `POST /api/applications` - Submit startup applications
+- `POST /api/interest-registrations` - Register interest for programs
+
+### Frontend Pages and Components
+- **Landing Page**: Multi-section homepage with hero, stats, programs, methodology, startups showcase
+- **Application Forms**: Dual-form interface for applications and interest registration
+- **Responsive Navigation**: Mobile-friendly navigation with smooth scrolling
+
+### Storage Layer
+Implements a storage interface pattern with:
+- Database storage using Drizzle ORM and PostgreSQL
+- Memory storage fallback for development/testing
+- Type-safe operations with full TypeScript support
+
+## Data Flow
+
+1. **User Interaction**: Users interact with React components on the frontend
+2. **Form Submission**: React Hook Form validates data using Zod schemas
+3. **API Communication**: TanStack Query manages HTTP requests to Express backend
+4. **Backend Processing**: Express routes validate requests and interact with storage layer
+5. **Database Operations**: Drizzle ORM handles PostgreSQL operations
+6. **Response Handling**: Success/error states managed through React Query and toast notifications
+
+## External Dependencies
+
+### Core Infrastructure
+- **Replit**: Development and hosting platform
+- **Neon Database**: Serverless PostgreSQL database provider
+- **Vite**: Frontend build tool and development server
+
+### Major Libraries
+- **UI Framework**: React ecosystem with Radix UI primitives
+- **Database**: Drizzle ORM with PostgreSQL dialect
+- **Validation**: Zod for runtime type checking
+- **HTTP Client**: Fetch API with React Query wrapper
+- **Styling**: Tailwind CSS with PostCSS processing
+
+### Development Tools
+- **TypeScript**: Type safety across frontend and backend
+- **ESBuild**: Backend bundling for production
+- **TSX**: TypeScript execution for development
+
+## Deployment Strategy
+
+The application is configured for Replit's autoscale deployment:
+
+### Development Mode
+- Frontend: Vite dev server with HMR
+- Backend: TSX for TypeScript execution
+- Database: Connects to Neon PostgreSQL instance
+- Port: 5000 (mapped to external port 80)
+
+### Production Build
+- Frontend: Vite builds to `dist/public`
+- Backend: ESBuild bundles to `dist/index.js`
+- Static Assets: Served from Express backend
+- Database: Same Neon PostgreSQL connection
+
+### Environment Configuration
+- `NODE_ENV`: Controls development vs production behavior
+- `DATABASE_URL`: PostgreSQL connection string (required)
+- Replit modules: nodejs-20, web, postgresql-16
+
+## Changelog
+
+- June 24, 2025. Initial setup
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
