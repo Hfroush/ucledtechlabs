@@ -1,9 +1,9 @@
 export default function StatsSection() {
   const stats = [
-    { value: "200+", label: "Startups Accelerated" },
-    { value: "4", label: "Global Cities" },
+    { value: "300+", label: "Startups Accelerated" },
+    { value: "12", label: "Cohorts" },
     { value: "$50M+", label: "Funding Raised" },
-    { value: "150+", label: "Expert Mentors" },
+    { value: "60+", label: "Investment Rounds" },
   ];
 
   return (
