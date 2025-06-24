@@ -5,7 +5,7 @@ export default function StatsSection() {
     { value: "8M", label: "Learners Impacted" },
     { value: "£500M+", label: "Total Startup Valuation" },
     { value: "£37M+", label: "Funding Raised" },
-    { value: "60+", label: "Investment Rounds" },
+    { value: "28+", label: "Investment Rounds" },
   ];
 
   return (
