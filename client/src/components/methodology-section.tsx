@@ -76,7 +76,7 @@ export default function MethodologySection() {
               <span className="text-2xl">🌍</span>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-2 text-left">Global Impact</h3>
-                <p>We prepare founders to scale solutions that make sustainable, meaningful contributions to education—locally and internationally.</p>
+                <p className="text-left">We prepare founders to scale solutions that make sustainable, meaningful contributions to education—locally and internationally.</p>
               </div>
             </div>
           </div>
