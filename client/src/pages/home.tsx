@@ -14,8 +14,8 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <StatsSection />
-      <ProgramsSection />
       <MethodologySection />
+      <ProgramsSection />
       <StartupsSection />
       <PartnersSection />
       <ApplicationForms />

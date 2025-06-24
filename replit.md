@@ -103,6 +103,7 @@ The application is configured for Replit's autoscale deployment:
 - June 24, 2025: Added partners section showcasing supporters and collaborators across institutional, corporate, and investment partners
 - June 24, 2025: Updated hero section with custom headline emphasizing EdTech product development and academic methodology focus, replaced hero image with collaborative workshop photo
 - June 24, 2025: Updated methodology section with specific 5-step program content including Vision/Mission/Purpose, Business modeling, Research methods & ethics, Sustainable funding, and Pitching & storytelling
+- June 24, 2025: Moved methodology section above programs section to emphasize academic approach first
 
 ## User Preferences
 
