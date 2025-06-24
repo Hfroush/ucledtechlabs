@@ -4,7 +4,7 @@ export default function StatsSection() {
     { value: "12", label: "Cohorts" },
     { value: "8M", label: "Learners Impacted" },
     { value: "£500M+", label: "Total Startup Valuation" },
-    { value: "$50M+", label: "Funding Raised" },
+    { value: "£37M+", label: "Funding Raised" },
     { value: "60+", label: "Investment Rounds" },
   ];
 
