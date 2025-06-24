@@ -16,7 +16,7 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Are you building an <span className="text-accent">edtech product</span> that could change the way people learn and teach?
+              Are you building an <span className="text-[#e58c00]">edtech product</span> that could change the way people learn and teach?
             </h1>
             <p className="text-xl mb-8 text-blue-100">
               Our mission is to build accelerator programs that collectively help improve the way people learn all over the world, based on true academic methods and iterated through hundreds of entrepreneurs. We will guide you through our powerful and effective methodology to build successful learning and teaching products as well as introduce you to the most suitable and successful mentors.
@@ -24,7 +24,7 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={() => scrollToSection("apply")}
-                className="bg-accent text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-500 transition-colors text-lg h-auto"
+                className="bg-accent px-8 py-4 rounded-lg font-semibold hover:bg-yellow-500 transition-colors text-lg h-auto text-[#ffffff]"
               >
                 Apply to Current Program
               </Button>
