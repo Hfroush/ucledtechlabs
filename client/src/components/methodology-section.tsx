@@ -39,9 +39,9 @@ export default function MethodologySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Proven Methodology</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our 12-week program delivers training and mentorship from world-leading researchers and highly experienced mentors in education technology. All delivered in a mix of live workshops and online training.
-          </p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">We create immersive cohort-based experiences that go beyond traditional accelerators. We foster a collaborative community where entrepreneurs learn from seasoned experts and from each other. Structured around a world-leading methodology developed with the prestigious University College London, we employed a multi-faculty, multidisciplinary approach to our curriculum. 
+
+          Founders use empirical insights to validate assumptions and drive strategic decision-making. Our programmes go beyond conventional accelerators, embracing the fast-paced nature of startups and guiding them toward sustainable, meaningful contributions to education, locally and globally.</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
