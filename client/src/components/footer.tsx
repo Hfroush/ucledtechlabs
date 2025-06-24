@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="grid lg:grid-cols-4 gap-8">
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <span className="text-3xl font-bold text-primary">UCL Edtech Labs</span>
+              <span className="text-3xl font-bold text-[#c57e00]">UCL Edtech Labs</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               Transforming education through innovation. Join our global community of EdTech entrepreneurs making learning accessible, engaging, and effective worldwide.
