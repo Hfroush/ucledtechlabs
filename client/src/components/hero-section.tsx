@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 
+import postits_on_a_table from "@assets/postits on a table.png";
+
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -51,7 +53,7 @@ export default function HeroSection() {
           </div>
           <div className="lg:text-right">
             <img 
-              src="@assets/postits on a table_1750750733710.png" 
+              src={postits_on_a_table} 
               alt="Collaborative workshop with educators and entrepreneurs" 
               className="rounded-xl shadow-2xl w-full max-w-lg ml-auto"
             />
