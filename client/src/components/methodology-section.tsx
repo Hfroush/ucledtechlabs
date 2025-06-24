@@ -1,4 +1,5 @@
 import spotline_on_founder from "@assets/spotline on founder.png";
+import presenting from "@assets/presenting.png";
 export default function MethodologySection() {
   const methodologies = [
     {
@@ -69,7 +70,7 @@ export default function MethodologySection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="lg:order-2">
             <img 
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              src={presenting} 
               alt="Education innovation workshop with diverse participants" 
               className="rounded-xl shadow-lg w-full"
             />
