@@ -105,6 +105,7 @@ The application is configured for Replit's autoscale deployment:
 - June 24, 2025: Updated methodology section with specific 5-step program content including Vision/Mission/Purpose, Business modeling, Research methods & ethics, Sustainable funding, and Pitching & storytelling
 - June 24, 2025: Moved methodology section above programs section to emphasize academic approach first
 - June 24, 2025: Updated stats section with 300+ startups, 12 cohorts, and 60+ investment rounds to better reflect program achievements
+- June 24, 2025: Hidden current application form and button, showing only interest registration for future cohorts
 
 ## User Preferences
 

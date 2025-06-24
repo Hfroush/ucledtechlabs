@@ -26,13 +26,6 @@ export default function HeroSection() {
                 onClick={() => scrollToSection("apply")}
                 className="bg-accent px-8 py-4 rounded-lg font-semibold hover:bg-yellow-500 transition-colors text-lg h-auto text-[#ffffff]"
               >
-                Apply to Current Program
-              </Button>
-              <Button 
-                onClick={() => scrollToSection("apply")}
-                variant="outline"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all text-lg h-auto"
-              >
                 Register Interest
               </Button>
             </div>
