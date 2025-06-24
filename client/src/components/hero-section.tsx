@@ -36,7 +36,7 @@ export default function HeroSection() {
               </div>
               <div className="flex items-center">
                 <span className="w-3 h-3 rounded-full mr-2 bg-[#e59c00]"></span>
-                $1M Member Perks
+                Evidence-Led Method
               </div>
               <div className="flex items-center">
                 <span className="w-3 h-3 rounded-full mr-2 bg-[#e59c00]"></span>
