@@ -108,6 +108,7 @@ The application is configured for Replit's autoscale deployment:
 - June 24, 2025: Hidden current application form and button, showing only interest registration for future cohorts
 - June 24, 2025: Added UCL EdTech Labs logo to navigation header (JPG format for compatibility)
 - June 24, 2025: Updated hero section key point from "$1M Member Perks" to "Evidence-Led Method" to emphasize academic research approach
+- June 24, 2025: Updated methodology section blurb with structured 5-point format featuring emoji icons and clear value propositions
 
 ## User Preferences
 

@@ -39,9 +39,47 @@ export default function MethodologySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Proven Methodology</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">We create immersive cohort-based experiences that go beyond traditional accelerators. We foster a collaborative community where entrepreneurs learn from seasoned experts and from each other. Structured around a world-leading methodology developed with the prestigious University College London, we employed a multi-faculty, multidisciplinary approach to our curriculum. 
-
-          Founders use empirical insights to validate assumptions and drive strategic decision-making. Our programmes go beyond conventional accelerators, embracing the fast-paced nature of startups and guiding them toward sustainable, meaningful contributions to education, locally and globally.</p>
+          <div className="text-lg text-gray-600 max-w-4xl mx-auto space-y-6">
+            <div className="flex items-start gap-4">
+              <span className="text-2xl">🚀</span>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">Beyond Traditional Accelerators</h3>
+                <p>We offer immersive, cohort-based experiences that go deeper than the typical startup programme.</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-4">
+              <span className="text-2xl">🤝</span>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">A Collaborative Community</h3>
+                <p>Founders learn from seasoned experts and from each other—building lasting peer networks.</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-4">
+              <span className="text-2xl">🧠</span>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">World-Leading Methodology</h3>
+                <p>Developed with University College London, our curriculum blends research, entrepreneurship, and real-world application.</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-4">
+              <span className="text-2xl">📊</span>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">Evidence-Driven Decisions</h3>
+                <p>Every startup is guided to validate assumptions using empirical insights and structured research methods.</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-4">
+              <span className="text-2xl">🌍</span>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">Global Impact</h3>
+                <p>We prepare founders to scale solutions that make sustainable, meaningful contributions to education—locally and internationally.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
