@@ -18,13 +18,12 @@ export default function Navigation() {
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center">
             <img 
-              src="@assets/UCL_Standalone_Edtech Labs_1750772002603.png" 
+              src="@assets/UCL_Standalone_Edtech Labs_1750772093665.jpg" 
               alt="UCL EdTech Labs" 
-              className="h-8 w-auto"
+              className="h-10 w-auto"
             />
-            <span className="text-2xl font-bold text-primary">UCL Edtech Labs</span>
           </div>
           
           {/* Desktop Navigation */}
