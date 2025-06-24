@@ -1,3 +1,4 @@
+import spotline_on_founder from "@assets/spotline on founder.png";
 export default function MethodologySection() {
   const methodologies = [
     {
@@ -45,7 +46,7 @@ export default function MethodologySection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div>
             <img 
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              src={spotline_on_founder} 
               alt="Modern learning environment with collaborative workspace" 
               className="rounded-xl shadow-lg w-full"
             />
