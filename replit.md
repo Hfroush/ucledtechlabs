@@ -99,7 +99,8 @@ The application is configured for Replit's autoscale deployment:
 
 ## Changelog
 
-- June 24, 2025. Initial setup
+- June 24, 2025: Initial setup with complete EdTech accelerator website
+- June 24, 2025: Added partners section showcasing supporters and collaborators across institutional, corporate, and investment partners
 
 ## User Preferences
 

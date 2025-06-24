@@ -43,6 +43,12 @@ export default function Navigation() {
               >
                 Startups
               </button>
+              <button 
+                onClick={() => scrollToSection("partners")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Partners
+              </button>
               <Button 
                 onClick={() => scrollToSection("apply")}
                 className="bg-primary text-white hover:bg-blue-700"
@@ -79,6 +85,12 @@ export default function Navigation() {
                     className="text-left text-gray-700 hover:text-primary transition-colors py-2"
                   >
                     Startups
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection("partners")}
+                    className="text-left text-gray-700 hover:text-primary transition-colors py-2"
+                  >
+                    Partners
                   </button>
                   <Button 
                     onClick={() => scrollToSection("apply")}

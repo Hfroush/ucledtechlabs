@@ -61,6 +61,7 @@ export class MemStorage implements IStorage {
     const application: Application = {
       ...insertApplication,
       id,
+      teamSize: insertApplication.teamSize || null,
       createdAt: new Date(),
     };
     this.applications.set(id, application);
@@ -76,6 +77,9 @@ export class MemStorage implements IStorage {
     const registration: InterestRegistration = {
       ...insertRegistration,
       id,
+      currentStatus: insertRegistration.currentStatus || null,
+      areasOfInterest: insertRegistration.areasOfInterest || null,
+      receiveUpdates: insertRegistration.receiveUpdates || null,
       createdAt: new Date(),
     };
     this.interestRegistrations.set(id, registration);
