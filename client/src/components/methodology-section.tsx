@@ -68,7 +68,7 @@ export default function MethodologySection() {
               <span className="text-2xl">📊</span>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-2 text-left">Evidence-Driven Decisions</h3>
-                <p>Every startup is guided to validate assumptions using empirical insights and structured research methods.</p>
+                <p className="text-left">Every startup is guided to validate assumptions using empirical insights and structured research methods.</p>
               </div>
             </div>
             
