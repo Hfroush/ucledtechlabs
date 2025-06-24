@@ -44,7 +44,7 @@ export default function MethodologySection() {
               <span className="text-2xl">🚀</span>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-2 text-left">Beyond Traditional Accelerators</h3>
-                <p>We offer immersive, cohort-based experiences that go deeper than the typical startup programme.</p>
+                <p className="text-left">We offer immersive, cohort-based experiences that go deeper than the typical startup programme.</p>
               </div>
             </div>
             
