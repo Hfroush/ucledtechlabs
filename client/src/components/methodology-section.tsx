@@ -52,7 +52,7 @@ export default function MethodologySection() {
               <span className="text-2xl">🤝</span>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-2 text-left">A Collaborative Community</h3>
-                <p>Founders learn from seasoned experts and from each other—building lasting peer networks.</p>
+                <p className="text-left">Founders learn from seasoned experts and from each other—building lasting peer networks.</p>
               </div>
             </div>
             
@@ -60,7 +60,7 @@ export default function MethodologySection() {
               <span className="text-2xl">🧠</span>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-2 text-left">World-Leading Methodology</h3>
-                <p>Developed with University College London, our curriculum blends research, entrepreneurship, and real-world application.</p>
+                <p className="text-left">Developed with University College London, our curriculum blends research, entrepreneurship, and real-world application.</p>
               </div>
             </div>
             
