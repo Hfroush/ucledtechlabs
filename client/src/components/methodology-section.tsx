@@ -59,7 +59,7 @@ export default function MethodologySection() {
             <div className="flex items-start gap-4">
               <span className="text-2xl">🧠</span>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">World-Leading Methodology</h3>
+                <h3 className="font-semibold text-gray-900 mb-2 text-left">World-Leading Methodology</h3>
                 <p>Developed with University College London, our curriculum blends research, entrepreneurship, and real-world application.</p>
               </div>
             </div>
