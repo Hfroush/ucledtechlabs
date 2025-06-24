@@ -2,32 +2,32 @@ export default function MethodologySection() {
   const methodologies = [
     {
       step: 1,
-      title: "Market Validation & Research",
-      description: "Deep dive into your target market with comprehensive research methodologies and validation frameworks.",
+      title: "Vision, Mission & Purpose",
+      description: "When entering the world of entrepreneurship, we often hear the words Vision, Mission and Purpose. But what do they actually mean, how are they different and why are they important?",
       color: "bg-primary"
     },
     {
       step: 2,
-      title: "Product Development",
-      description: "Build scalable educational solutions using agile methodologies and user-centered design principles.",
+      title: "Business modelling & customer development",
+      description: "Our business modelling approach provides you with the tools to grow a sustainable education technology business by ensuring you have the best product-market fit",
       color: "bg-secondary"
     },
     {
       step: 3,
-      title: "Go-to-Market Strategy",
-      description: "Develop comprehensive launch strategies tailored to the education sector's unique requirements.",
+      title: "Education technology research methods & ethics",
+      description: "You will be given an overview of research methods in the learning sciences, in order to understand the best way to start proving and improving your product",
       color: "bg-accent"
     },
     {
       step: 4,
-      title: "Funding & Investment",
-      description: "Access our network of education-focused investors and learn proven fundraising strategies.",
+      title: "Sustainable Funding",
+      description: "You will hear about the funding journey of experienced edtech entrepreneurs to understand the options for you, while learning the ways a successful startup raises money",
       color: "bg-success"
     },
     {
       step: 5,
-      title: "Scaling & Growth",
-      description: "Implement sustainable growth strategies with ongoing mentorship and community support.",
+      title: "Pitching & Storytelling",
+      description: "You'll learn how to successfully communicate with strong positioning and a clear narrative. Whether pitching for investment, selling to potential clients or presenting at an event.",
       color: "bg-red-500"
     }
   ];
@@ -38,7 +38,7 @@ export default function MethodologySection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Proven Methodology</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our comprehensive approach combines research-backed methodologies with practical implementation to ensure your startup's success.
+            Our 12-week program delivers training and mentorship from world-leading researchers and highly experienced mentors in education technology. All delivered in a mix of live workshops and online training.
           </p>
         </div>
 

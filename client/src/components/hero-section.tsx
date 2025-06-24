@@ -14,11 +14,10 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Transform Education Through <span className="text-accent">Innovation</span>
+              Are you building an <span className="text-accent">edtech product</span> that could change the way people learn and teach?
             </h1>
             <p className="text-xl mb-8 text-blue-100">
-              Join our 12-week accelerator program across London, Paris, Toronto, and Dubai. 
-              100% equity-free with $1M worth of member perks.
+              Our mission is to build accelerator programs that collectively help improve the way people learn all over the world, based on true academic methods and iterated through hundreds of entrepreneurs. We will guide you through our powerful and effective methodology to build successful learning and teaching products as well as introduce you to the most suitable and successful mentors.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
@@ -52,8 +51,8 @@ export default function HeroSection() {
           </div>
           <div className="lg:text-right">
             <img 
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-              alt="Educational technology startup workspace" 
+              src="@assets/postits on a table_1750750733710.png" 
+              alt="Collaborative workshop with educators and entrepreneurs" 
               className="rounded-xl shadow-2xl w-full max-w-lg ml-auto"
             />
           </div>
