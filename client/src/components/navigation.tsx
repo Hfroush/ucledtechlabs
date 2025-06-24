@@ -20,7 +20,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-3">
             <img 
-              src="@assets/UCL_Standalone_Edtech Labs_1750771829351.png" 
+              src="@assets/UCL_Standalone_Edtech Labs_1750772002603.png" 
               alt="UCL EdTech Labs" 
               className="h-8 w-auto"
             />
