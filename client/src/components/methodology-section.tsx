@@ -67,7 +67,7 @@ export default function MethodologySection() {
             <div className="flex items-start gap-4">
               <span className="text-2xl">📊</span>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Evidence-Driven Decisions</h3>
+                <h3 className="font-semibold text-gray-900 mb-2 text-left">Evidence-Driven Decisions</h3>
                 <p>Every startup is guided to validate assumptions using empirical insights and structured research methods.</p>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function MethodologySection() {
             <div className="flex items-start gap-4">
               <span className="text-2xl">🌍</span>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Global Impact</h3>
+                <h3 className="font-semibold text-gray-900 mb-2 text-left">Global Impact</h3>
                 <p>We prepare founders to scale solutions that make sustainable, meaningful contributions to education—locally and internationally.</p>
               </div>
             </div>
