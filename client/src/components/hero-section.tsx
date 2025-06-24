@@ -39,7 +39,7 @@ export default function HeroSection() {
                 $1M Member Perks
               </div>
               <div className="flex items-center">
-                <span className="w-3 h-3 bg-success rounded-full mr-2"></span>
+                <span className="w-3 h-3 rounded-full mr-2 bg-[#e59c00]"></span>
                 Global Network
               </div>
             </div>
