@@ -51,7 +51,7 @@ export default function MethodologySection() {
             <div className="flex items-start gap-4">
               <span className="text-2xl">🤝</span>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">A Collaborative Community</h3>
+                <h3 className="font-semibold text-gray-900 mb-2 text-left">A Collaborative Community</h3>
                 <p>Founders learn from seasoned experts and from each other—building lasting peer networks.</p>
               </div>
             </div>
