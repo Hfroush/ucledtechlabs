@@ -9,6 +9,8 @@ import {
   type InterestRegistration,
   type InsertInterestRegistration
 } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -91,4 +93,48 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DatabaseStorage implements IStorage {
+  async getUser(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async createApplication(application: InsertApplication): Promise<Application> {
+    const [createdApplication] = await db
+      .insert(applications)
+      .values(application)
+      .returning();
+    return createdApplication;
+  }
+
+  async getApplications(): Promise<Application[]> {
+    return await db.select().from(applications);
+  }
+
+  async createInterestRegistration(registration: InsertInterestRegistration): Promise<InterestRegistration> {
+    const [createdRegistration] = await db
+      .insert(interestRegistrations)
+      .values(registration)
+      .returning();
+    return createdRegistration;
+  }
+
+  async getInterestRegistrations(): Promise<InterestRegistration[]> {
+    return await db.select().from(interestRegistrations);
+  }
+}
+
+export const storage = new DatabaseStorage();
