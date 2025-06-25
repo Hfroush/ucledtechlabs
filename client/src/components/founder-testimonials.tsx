@@ -54,10 +54,10 @@ export default function FounderTestimonials() {
     {
       id: "6",
       quote: "The programme taught me how to apply research methods, use the innovation spiral effectively, and structure a compelling value proposition.",
-      name: "James Wilson",
-      title: "Founder",
-      company: "Classroom Analytics",
-      avatar: "/api/placeholder/64/64"
+      name: "Clare Daly",
+      title: "Developer of Potential",
+      company: "Dynamigo",
+      avatar: "/avatars/clare-daly.png"
     },
     {
       id: "7",
