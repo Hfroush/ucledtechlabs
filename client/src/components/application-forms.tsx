@@ -35,6 +35,7 @@ const interestSchema = z.object({
     (value) => validateCity(value),
     "Please select a valid city from the dropdown"
   ),
+  companyWebsite: z.string().url("Please enter a valid website URL").optional().or(z.literal("")),
   currentStatus: z.string().optional(),
   areasOfInterest: z.string().optional(),
   receiveUpdates: z.boolean().default(false),
@@ -69,6 +70,7 @@ export default function ApplicationForms() {
       email: "",
       startupName: "",
       hqLocation: "",
+      companyWebsite: "",
       currentStatus: "",
       areasOfInterest: "",
       receiveUpdates: false,
@@ -246,14 +248,32 @@ export default function ApplicationForms() {
 
                 <FormField
                   control={interestForm.control}
+                  name="companyWebsite"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Company Website</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="url" 
+                          placeholder="https://yourcompany.com" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={interestForm.control}
                   name="areasOfInterest"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>What is the most important challenge your organisation is attempting to solve?</FormLabel>
+                      <FormLabel>What problem are you trying to solve?</FormLabel>
                       <FormControl>
                         <Textarea 
                           rows={3} 
-                          placeholder="Describe the key challenge your organization is working to address in education" 
+                          placeholder="Describe the problem your organization is working to solve" 
                           {...field} 
                         />
                       </FormControl>

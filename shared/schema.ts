@@ -22,6 +22,7 @@ export const interestRegistrations = pgTable("interest_registrations", {
   email: text("email").notNull(),
   startupName: text("startup_name").notNull(),
   hqLocation: text("hq_location").notNull(),
+  companyWebsite: text("company_website"),
   currentStatus: text("current_status"),
   areasOfInterest: text("areas_of_interest"),
   receiveUpdates: boolean("receive_updates").default(false),
