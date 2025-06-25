@@ -35,7 +35,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-5 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <div className="mb-6">
               <span className="text-3xl font-bold text-[#c57e00]">UCL Edtech Labs</span>
@@ -52,36 +52,8 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Programs</h4>
-            <ul className="space-y-2 text-gray-300">
-              {programs.map((program) => (
-                <li key={program.name}>
-                  <button 
-                    onClick={() => scrollToSection(program.href)}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {program.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2 text-gray-300">
-              {resources.map((resource) => (
-                <li key={resource.name}>
-                  <button 
-                    onClick={() => scrollToSection(resource.href)}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {resource.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+          
+          
           <div>
             <h4 className="text-lg font-semibold mb-4">Policies</h4>
             <ul className="space-y-2 text-gray-300">
