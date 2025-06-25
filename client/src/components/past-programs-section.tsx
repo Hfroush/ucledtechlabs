@@ -105,7 +105,7 @@ export default function PastProgramsSection() {
     <section id="past-programs" className="bg-slate-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Recent Program Success</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">Program Snapshot</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Our latest cohorts demonstrate the real-world impact of evidence-led EdTech development, 
             with startups raising significant funding and making measurable educational impact.
