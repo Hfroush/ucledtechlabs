@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Linkedin, Youtube, Instagram } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
   const programs = [
@@ -34,17 +34,11 @@ export default function Footer() {
               Transforming education through innovation. Join our global community of EdTech entrepreneurs making learning accessible, engaging, and effective worldwide.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/company/ucl-edtech-labs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Youtube className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram className="h-6 w-6" />
+              <a href="mailto:info@ucledtechlabs.com" className="text-gray-400 hover:text-white transition-colors">
+                <Mail className="h-6 w-6" />
               </a>
             </div>
           </div>
