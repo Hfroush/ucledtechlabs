@@ -14,44 +14,44 @@ interface Partner {
 export default function LogoCarousel() {
   const partners: Partner[] = [
     {
-      id: "university-college-london",
-      name: "University College London",
+      id: "ucl-edtech-labs",
+      name: "UCL EdTech Labs",
       logoUrl: "/logo.jpg"
     },
     {
-      id: "microsoft",
-      name: "Microsoft",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/512px-Microsoft_logo.svg.png"
+      id: "jisc",
+      name: "Jisc",
+      logoUrl: "https://www.jisc.ac.uk/sites/default/files/jisc-logo.svg"
     },
     {
-      id: "google",
-      name: "Google",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/512px-Google_2015_logo.svg.png"
+      id: "innovate-uk",
+      name: "Innovate UK",
+      logoUrl: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/organisation/logo/1348/innovate-uk-logo.png"
     },
     {
-      id: "amazon-aws",
-      name: "AWS",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/512px-Amazon_Web_Services_Logo.svg.png"
+      id: "british-council",
+      name: "British Council",
+      logoUrl: "https://www.britishcouncil.org/sites/default/files/british-council-logo.svg"
     },
     {
-      id: "university-of-toronto",
-      name: "University of Toronto",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/256px-Utoronto_coa.svg.png"
+      id: "techstars",
+      name: "Techstars",
+      logoUrl: "https://www.techstars.com/content/themes/techstars/dist/images/techstars-logo-black.svg"
     },
     {
-      id: "sorbonne-university",
-      name: "Sorbonne University",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Sorbonne_University_logo.svg/256px-Sorbonne_University_logo.svg.png"
+      id: "edtech-hub",
+      name: "EdTech Hub",
+      logoUrl: "https://edtechhub.org/wp-content/uploads/2020/06/cropped-EdTech-Hub-Logo-2020-Full-Colour-1.png"
     },
     {
-      id: "imperial-college",
-      name: "Imperial College London",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Imperial_College_London_crest.svg/256px-Imperial_College_London_crest.svg.png"
+      id: "reach-capital",
+      name: "Reach Capital",
+      logoUrl: "https://reachcap.com/wp-content/uploads/2021/03/reach-capital-logo.svg"
     },
     {
-      id: "cambridge",
-      name: "University of Cambridge",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/University_of_Cambridge_coat_of_arms_official.svg/256px-University_of_Cambridge_coat_of_arms_official.svg.png"
+      id: "nesta",
+      name: "Nesta",
+      logoUrl: "https://www.nesta.org.uk/app/uploads/2022/09/nesta-logo.svg"
     }
   ];
 
