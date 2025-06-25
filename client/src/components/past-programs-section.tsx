@@ -19,28 +19,24 @@ interface PastProgram {
 export default function PastProgramsSection() {
   const pastPrograms: PastProgram[] = [
     {
-      id: "cohort-12-2024",
-      cohortNumber: 12,
+      id: "cohort-6-london",
+      cohortNumber: 6,
       year: "2024",
       location: "London",
-      startupCount: 15,
-      totalFunding: "£8.2M",
-      demoDay: "November 2024",
-      highlights: [
-        "3 startups acquired",
-        "Average 60% revenue growth",
-        "2 partnerships with major publishers"
-      ],
+      startupCount: 0,
+      totalFunding: "",
+      demoDay: "",
+      highlights: [],
       featuredStartups: [
         {
-          name: "LearnFlow",
-          description: "AI-powered adaptive learning platform for K-12 mathematics",
-          outcome: "Raised £2.1M Series A, deployed in 200+ schools"
+          name: "Atom Learning",
+          description: "$25 million Series A, led by SoftBank Vision Fund 2 — marking it as one of the largest-ever EdTech Series A rounds in the UK, fuelled by its AI‑powered adaptive learning platform for primary students",
+          outcome: "Adopted by 500+ UK schools and 100,000+ pupils — with Atom Prime free for schools and disadvantaged students, and over 90,000 children regularly using the platform"
         },
         {
-          name: "SkillBridge",
-          description: "VR training platform for technical education",
-          outcome: "Acquired by Pearson Education for £15M"
+          name: "Chatterbox",
+          description: "£1.5 million pre‑seed round led by GMG Ventures (alongside All Turtles, Softbank, Guardian Ventures) to scale its refugee-powered language training for corporates like Unilever, PwC, and British Red Cross",
+          outcome: "Social impact mission embedded in business — exclusively hires coaches from refugee or marginalised backgrounds, offering professional teaching roles and improving workplace cultural intelligence at B Corp clients; founded by Mursal Hedayat MBE, Forbes 30‑Under‑30 & Next Billion EdTech Prize winner"
         }
       ]
     },
@@ -142,36 +138,59 @@ export default function PastProgramsSection() {
                   Cohort {program.cohortNumber} - {program.year}
                 </h3>
                 
-                <div className="grid grid-cols-2 gap-4 mt-4">
-                  <div className="text-center p-3 bg-slate-50 rounded-lg">
-                    <div className="text-2xl font-bold text-primary">{program.startupCount}</div>
-                    <div className="text-sm text-gray-600">Startups</div>
+                {program.location === "London" ? (
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    <div className="text-center p-3 bg-white rounded-lg border">
+                      <img
+                        src="/logos/santander-universities.png"
+                        alt="Santander Universities"
+                        className="h-12 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-3 bg-white rounded-lg border">
+                      <img
+                        src="/logos/ucl-institute-education.png"
+                        alt="UCL Institute of Education"
+                        className="h-12 mx-auto object-contain"
+                      />
+                    </div>
                   </div>
-                  <div className="text-center p-3 bg-slate-50 rounded-lg">
-                    <div className="text-2xl font-bold text-success">{program.totalFunding}</div>
-                    <div className="text-sm text-gray-600">Total Raised</div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    <div className="text-center p-3 bg-slate-50 rounded-lg">
+                      <div className="text-2xl font-bold text-primary">{program.startupCount}</div>
+                      <div className="text-sm text-gray-600">Startups</div>
+                    </div>
+                    <div className="text-center p-3 bg-slate-50 rounded-lg">
+                      <div className="text-2xl font-bold text-success">{program.totalFunding}</div>
+                      <div className="text-sm text-gray-600">Total Raised</div>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               <div className="p-6">
-                <h4 className="font-semibold text-gray-900 mb-3">Key Highlights</h4>
-                <ul className="space-y-2 mb-6">
-                  {program.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-gray-600 text-sm">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+                {program.highlights.length > 0 && (
+                  <>
+                    <h4 className="font-semibold text-gray-900 mb-3">Key Highlights</h4>
+                    <ul className="space-y-2 mb-6">
+                      {program.highlights.map((highlight, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="w-2 h-2 rounded-full bg-primary mt-2 mr-3 flex-shrink-0"></span>
+                          <span className="text-gray-600 text-sm">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
 
                 <h4 className="font-semibold text-gray-900 mb-3">Featured Startups</h4>
                 <div className="space-y-4">
                   {program.featuredStartups.map((startup, index) => (
                     <div key={index} className="border-l-4 border-primary pl-4">
-                      <h5 className="font-semibold text-gray-900 text-sm">{startup.name}</h5>
-                      <p className="text-xs text-gray-600 mb-1">{startup.description}</p>
-                      <p className="text-xs text-success font-medium">{startup.outcome}</p>
+                      <h5 className="font-semibold text-gray-900 text-sm mb-2">{startup.name}</h5>
+                      <p className="text-xs text-gray-600 mb-2 leading-relaxed">{startup.description}</p>
+                      <p className="text-xs text-success font-medium leading-relaxed">{startup.outcome}</p>
                     </div>
                   ))}
                 </div>
