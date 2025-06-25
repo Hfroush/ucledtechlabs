@@ -2,7 +2,7 @@ import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import StatsSection from "@/components/stats-section";
 import LogoCarousel from "@/components/logo-carousel";
-import ProgramsSection from "@/components/programs-section";
+
 import MethodologySection from "@/components/methodology-section";
 import PastProgramsSection from "@/components/past-programs-section";
 import StartupsSection from "@/components/startups-section";
@@ -18,7 +18,6 @@ export default function Home() {
       <StatsSection />
       <LogoCarousel />
       <MethodologySection />
-      <ProgramsSection />
       <PastProgramsSection />
       <StartupsSection />
       <PartnersSection />
