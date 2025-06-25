@@ -265,9 +265,7 @@ export default function ApplicationForms() {
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm font-normal">
-                          I'd like to receive updates about EduAccelerator programs, events, and educational resources.
-                        </FormLabel>
+                        <FormLabel className="text-sm font-normal">I'd like to receive updates about UCL Edtech Labs programs, events, and educational resources.</FormLabel>
                       </div>
                     </FormItem>
                   )}
