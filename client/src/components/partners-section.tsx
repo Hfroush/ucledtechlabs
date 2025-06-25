@@ -13,7 +13,7 @@ export default function PartnersSection() {
   const partners: Partner[] = [
     {
       id: "ucl",
-      name: "UCL",
+      name: "University College London",
       type: "institution",
       description: "World's #1 ranked education faculty (QS World University Rankings). Leading global education research and teacher training institution with unparalleled expertise in educational innovation.",
       logoUrl: "/logos/ucl-institute-education.jpg",
