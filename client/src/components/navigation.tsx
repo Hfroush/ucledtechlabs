@@ -30,16 +30,16 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
               <button 
-                onClick={() => scrollToSection("programs")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Programs
-              </button>
-              <button 
                 onClick={() => scrollToSection("methodology")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Methodology
+              </button>
+              <button 
+                onClick={() => scrollToSection("past-programs")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Past Programs
               </button>
               <button 
                 onClick={() => scrollToSection("startups")}
@@ -57,7 +57,7 @@ export default function Navigation() {
                 onClick={() => scrollToSection("apply")}
                 className="bg-primary text-white hover:bg-blue-700"
               >
-                Apply Now
+                Register Interest
               </Button>
             </div>
           </div>
@@ -73,16 +73,16 @@ export default function Navigation() {
               <SheetContent>
                 <div className="flex flex-col space-y-4 mt-8">
                   <button 
-                    onClick={() => scrollToSection("programs")}
-                    className="text-left text-gray-700 hover:text-primary transition-colors py-2"
-                  >
-                    Programs
-                  </button>
-                  <button 
                     onClick={() => scrollToSection("methodology")}
                     className="text-left text-gray-700 hover:text-primary transition-colors py-2"
                   >
                     Methodology
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection("past-programs")}
+                    className="text-left text-gray-700 hover:text-primary transition-colors py-2"
+                  >
+                    Past Programs
                   </button>
                   <button 
                     onClick={() => scrollToSection("startups")}
@@ -100,7 +100,7 @@ export default function Navigation() {
                     onClick={() => scrollToSection("apply")}
                     className="bg-primary text-white hover:bg-blue-700 w-full mt-4"
                   >
-                    Apply Now
+                    Register Interest
                   </Button>
                 </div>
               </SheetContent>
