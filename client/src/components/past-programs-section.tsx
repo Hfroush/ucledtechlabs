@@ -223,29 +223,7 @@ export default function PastProgramsSection() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Program Alumni Network</h3>
-            <div className="grid md:grid-cols-4 gap-8 mt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">300+</div>
-                <div className="text-gray-600">Alumni Founders</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-success mb-2">85%</div>
-                <div className="text-gray-600">Still Operating</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary mb-2">45</div>
-                <div className="text-gray-600">Countries Reached</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">8M+</div>
-                <div className="text-gray-600">Learners Impacted</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
