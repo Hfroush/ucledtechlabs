@@ -105,27 +105,26 @@ export default function MethodologySection() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="lg:order-2">
-            <img 
-              src={presenting} 
-              alt="Education innovation workshop with diverse participants" 
-              className="rounded-xl shadow-lg w-full"
-            />
-          </div>
-          <div className="space-y-8 lg:order-1">
-            {methodologies.slice(3).map((method) => (
-              <div key={method.step} className="flex items-start">
-                <div className={`flex-shrink-0 w-12 h-12 ${method.color} rounded-lg flex items-center justify-center mr-4`}>
-                  <span className="text-white font-bold">{method.step}</span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{method.title}</h3>
-                  <p className="text-gray-600">{method.description}</p>
-                </div>
+        <div className="space-y-8 mb-16">
+          {methodologies.slice(3).map((method) => (
+            <div key={method.step} className="flex items-start max-w-4xl">
+              <div className={`flex-shrink-0 w-12 h-12 ${method.color} rounded-lg flex items-center justify-center mr-4`}>
+                <span className="text-white font-bold">{method.step}</span>
               </div>
-            ))}
-          </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{method.title}</h3>
+                <p className="text-gray-600">{method.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center">
+          <img 
+            src={presenting} 
+            alt="Education innovation workshop with diverse participants" 
+            className="rounded-xl shadow-lg max-w-2xl w-full"
+          />
         </div>
       </div>
     </section>
