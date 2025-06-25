@@ -123,7 +123,8 @@ export default function PartnersSection() {
     <section id="partners" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Partner Selection</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">Some of our Partners
+</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             We collaborate with the world's leading educational institutions, including the #1 ranked education faculty globally, 
             along with innovative organizations driving digital transformation in learning.
