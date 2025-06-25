@@ -46,10 +46,10 @@ export default function FounderTestimonials() {
     {
       id: "5",
       quote: "I learned the value of feedback, and the importance of compiling and using research data to guide decision-making.",
-      name: "Aisha Patel",
-      title: "CEO",
-      company: "Student Success Platform",
-      avatar: "/api/placeholder/64/64"
+      name: "Arthur Vincent",
+      title: "Founder/Director",
+      company: "Planet Citizens",
+      avatar: "/avatars/arthur-vincent.png"
     },
     {
       id: "6",
