@@ -131,7 +131,9 @@ export default function PastProgramsSection() {
                     </Badge>
                     <span className="text-sm text-gray-500">{program.demoDay}</span>
                   </div>
-                  <span className="text-2xl font-bold text-primary">#{program.cohortNumber}</span>
+                  {program.location !== "London" && (
+                    <span className="text-2xl font-bold text-primary">#{program.cohortNumber}</span>
+                  )}
                 </div>
                 
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
