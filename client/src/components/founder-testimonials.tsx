@@ -30,10 +30,10 @@ export default function FounderTestimonials() {
     {
       id: "3",
       quote: "We received HUGE value - we had a full team/board meeting yesterday to see how we can implement changes to our product and marketing strategy using the stakeholder mapping and research questioning",
-      name: "Emma Thompson",
-      title: "Co-Founder",
-      company: "EdTech Solutions",
-      avatar: "/api/placeholder/64/64"
+      name: "Dan Rosenberg",
+      title: "Founder",
+      company: "LinkyThinks",
+      avatar: "/avatars/dan-rosenberg.png"
     },
     {
       id: "4",
