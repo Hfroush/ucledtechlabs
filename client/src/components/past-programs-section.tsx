@@ -63,28 +63,24 @@ export default function PastProgramsSection() {
       ]
     },
     {
-      id: "cohort-10-2024",
-      cohortNumber: 10,
+      id: "cohort-1-toronto",
+      cohortNumber: 1,
       year: "2024",
       location: "Toronto",
-      startupCount: 18,
-      totalFunding: "CAD $9.5M",
-      demoDay: "March 2024",
-      highlights: [
-        "Record-breaking demo day",
-        "4 international partnerships",
-        "Average team size doubled"
-      ],
+      startupCount: 0,
+      totalFunding: "",
+      demoDay: "",
+      highlights: [],
       featuredStartups: [
         {
-          name: "MindfulEd",
-          description: "Mental health and wellbeing platform for students",
-          outcome: "CAD $4.1M Series A, 100K+ active users"
+          name: "KnowledgeHook",
+          description: "$20 million Series A to scale math learning globally — the funding supports expansion of their ClassOS platform, bringing interactive, curriculum-aligned math content to schools worldwide",
+          outcome: "Engaging 300,000+ students with real-time feedback — the gamified ClassOS system delivers interactive lessons, badges and analytics that boost motivation and inform teaching practice in K–10 classrooms"
         },
         {
-          name: "CodeCraft",
-          description: "Gamified programming education for children",
-          outcome: "Licensing deal with Canadian Ministry of Education"
+          name: "4theWords",
+          description: "Gamified writing platform with deep engagement — writers \"kill monsters with words,\" using quests, streaks, and community events to build writing habits and drive daily output",
+          outcome: "Community‑driven with pro‑level storytelling tools — users praise the rich RPG-style mechanics (\"great artwork,\" \"timers make you write now\"), and 4theWords supports both solo and group quests to foster collaboration among writers"
         }
       ]
     }
@@ -127,7 +123,7 @@ export default function PastProgramsSection() {
                     </Badge>
                     <span className="text-sm text-gray-500">{program.demoDay}</span>
                   </div>
-                  {program.location !== "London" && program.location !== "Paris" && (
+                  {program.location !== "London" && program.location !== "Paris" && program.location !== "Toronto" && (
                     <span className="text-2xl font-bold text-primary">#{program.cohortNumber}</span>
                   )}
                 </div>
@@ -135,6 +131,7 @@ export default function PastProgramsSection() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {program.location === "London" ? "6 Cohorts" : 
                    program.location === "Paris" ? "5 Cohorts" : 
+                   program.location === "Toronto" ? "1 Cohort" :
                    `Cohort ${program.cohortNumber}`}
                 </h3>
                 
@@ -170,6 +167,12 @@ export default function PastProgramsSection() {
                         alt="ESSEC Business School"
                         className="h-12 mx-auto object-contain"
                       />
+                    </div>
+                  </div>
+                ) : program.location === "Toronto" ? (
+                  <div className="grid grid-cols-1 gap-4 mt-4">
+                    <div className="text-center p-3 bg-white rounded-lg border">
+                      <div className="text-lg font-semibold text-gray-700">Startup Labs</div>
                     </div>
                   </div>
                 ) : (

@@ -115,6 +115,7 @@ The application is configured for Replit's autoscale deployment:
 - June 24, 2025: Added animated logo carousel showcasing trusted partner organizations with autoplay functionality
 - June 25, 2025: Enhanced logo carousel with authentic sponsor logos and clickable links to partner websites
 - June 25, 2025: Added past programs section showcasing recent cohort achievements, funding raised, and featured startup outcomes
+- June 25, 2025: Updated past programs with authentic data for London (6 cohorts), Paris (5 cohorts), and Toronto (1 cohort) including real startup success stories like Atom Learning, Vittascience, and KnowledgeHook
 
 ## User Preferences
 
