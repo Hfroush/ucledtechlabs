@@ -4,6 +4,7 @@ import StatsSection from "@/components/stats-section";
 import LogoCarousel from "@/components/logo-carousel";
 import ProgramsSection from "@/components/programs-section";
 import MethodologySection from "@/components/methodology-section";
+import PastProgramsSection from "@/components/past-programs-section";
 import StartupsSection from "@/components/startups-section";
 import PartnersSection from "@/components/partners-section";
 import ApplicationForms from "@/components/application-forms";
@@ -18,6 +19,7 @@ export default function Home() {
       <LogoCarousel />
       <MethodologySection />
       <ProgramsSection />
+      <PastProgramsSection />
       <StartupsSection />
       <PartnersSection />
       <ApplicationForms />
