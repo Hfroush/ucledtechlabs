@@ -14,10 +14,10 @@ export default function FounderTestimonials() {
     {
       id: "1",
       quote: "After a few workshops things are beginning to fall into place. We've had a few good team sessions over the last few days and have made progress with stakeholder mapping and logic modelling for product, marketing & sales",
-      name: "Sarah Chen",
-      title: "Co-Founder & CEO",
-      company: "EduTech Startup",
-      avatar: "/api/placeholder/64/64"
+      name: "Andrea De Giorgio",
+      title: "CEO & Co-founder",
+      company: "eWorking",
+      avatar: "/avatars/andrea-de-giorgio.png"
     },
     {
       id: "2",
