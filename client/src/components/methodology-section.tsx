@@ -82,7 +82,7 @@ export default function MethodologySection() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-12">
           <div>
             <img 
               src={spotline_on_founder} 
