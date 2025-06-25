@@ -8,6 +8,7 @@ interface Startup {
   keyMetric: string;
   gradientClass: string;
   logoUrl: string;
+  websiteUrl: string;
 }
 
 export default function StartupsSection() {
@@ -19,7 +20,8 @@ export default function StartupsSection() {
       sector: "EdTech – coding & AI for youth",
       keyMetric: "Over 26,000 students, 1 million training hours, and 10 million lines of code written; raised US $4.5 million",
       gradientClass: "from-blue-500 to-purple-600",
-      logoUrl: "/startup-logos/ischool.png"
+      logoUrl: "/startup-logos/ischool.png",
+      websiteUrl: "https://ischool.ai"
     },
     {
       id: "moi-panda",
@@ -28,7 +30,8 @@ export default function StartupsSection() {
       sector: "Early childhood EdTech – global digital citizenship",
       keyMetric: "100% user satisfaction, 100% friend-making rate, winner of EdTechX Mission Driven Award 2024",
       gradientClass: "from-green-500 to-teal-600",
-      logoUrl: "/startup-logos/moi-panda.png"
+      logoUrl: "/startup-logos/moi-panda.png",
+      websiteUrl: "https://moipanda.com"
     },
     {
       id: "chatterbox",
@@ -37,7 +40,8 @@ export default function StartupsSection() {
       sector: "Language learning & workforce inclusion",
       keyMetric: "Raised £1.5 million pre-seed; clients include Unilever, PwC, and the British Red Cross; recognised with awards from the Next Billion EdTech Prize and Forbes 30 Under 30",
       gradientClass: "from-pink-500 to-rose-600",
-      logoUrl: "/startup-logos/chatterbox.png"
+      logoUrl: "/startup-logos/chatterbox.png",
+      websiteUrl: "https://chatterbox.co"
     },
     {
       id: "graffinity",
@@ -46,7 +50,8 @@ export default function StartupsSection() {
       sector: "AI-powered active learning tools",
       keyMetric: "Won a share of £1 million in UK Government/Department for Education AI competition",
       gradientClass: "from-orange-500 to-red-600",
-      logoUrl: "/startup-logos/graffinity.png"
+      logoUrl: "/startup-logos/graffinity.png",
+      websiteUrl: "https://graffinity.com"
     },
     {
       id: "linkythinks",
@@ -55,7 +60,8 @@ export default function StartupsSection() {
       sector: "Literacy & creative thinking education",
       keyMetric: "Worked with 2,000+ schools and tens of thousands of teachers",
       gradientClass: "from-indigo-500 to-blue-600",
-      logoUrl: "/startup-logos/linkythinks.png"
+      logoUrl: "/startup-logos/linkythinks.png",
+      websiteUrl: "https://linkythinks.com"
     },
     {
       id: "knowledgehook",
@@ -64,7 +70,8 @@ export default function StartupsSection() {
       sector: "EdTech – K–12 mathematics learning",
       keyMetric: "Raised $20 million Series A; supports 300,000+ students and over 100 school boards across Canada, the US, Mexico, and the UK",
       gradientClass: "from-yellow-500 to-orange-600",
-      logoUrl: "/startup-logos/knowledgehook.png"
+      logoUrl: "/startup-logos/knowledgehook.png",
+      websiteUrl: "https://knowledgehook.com"
     }
   ];
 
@@ -122,12 +129,17 @@ export default function StartupsSection() {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-gray-100 text-center">
-                  <button className="text-primary text-sm font-medium hover:text-primary/80 transition-colors inline-flex items-center gap-1">
-                    Learn more
+                  <a 
+                    href={startup.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary text-sm font-medium hover:text-primary/80 transition-colors inline-flex items-center gap-1"
+                  >
+                    Visit website
                     <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
