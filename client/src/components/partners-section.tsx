@@ -16,7 +16,7 @@ export default function PartnersSection() {
       name: "University College London",
       type: "institution",
       description: "World's #1 ranked education faculty (QS World University Rankings). Leading global education research and teacher training institution with unparalleled expertise in educational innovation.",
-      logoUrl: "/logos/ucl-institute-education.jpg",
+      logoUrl: "/logos/ucl.png",
       website: "https://www.ucl.ac.uk/ioe/"
     },
     {
@@ -24,7 +24,7 @@ export default function PartnersSection() {
       name: "Centre for Digital Innovation (UCL)",
       type: "institution", 
       description: "Powered by AWS, driving digital transformation in education through cutting-edge research and industry partnerships.",
-      logoUrl: "/logos/ucl-institute-education.jpg",
+      logoUrl: "/logos/ucl-digital-innovation.png",
       website: "https://www.ucl.ac.uk/digital-innovation/"
     },
     {
@@ -32,7 +32,7 @@ export default function PartnersSection() {
       name: "Centre for Engineering Education (UCL)",
       type: "institution",
       description: "Advancing engineering education through innovative teaching methods, curriculum development, and educational technology.",
-      logoUrl: "/logos/ucl-institute-education.jpg", 
+      logoUrl: "/logos/ucl-engineering-education.png", 
       website: "https://www.ucl.ac.uk/engineering/"
     },
     {
