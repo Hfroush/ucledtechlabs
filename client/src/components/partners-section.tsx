@@ -60,12 +60,12 @@ export default function PartnersSection() {
       website: "https://www.cyu.fr/"
     },
     {
-      id: "london-edtech-week",
-      name: "London EdTech Week",
+      id: "startup-labs",
+      name: "Startup Labs",
       type: "mentor",
-      description: "Europe's largest EdTech festival bringing together educators, entrepreneurs, and investors to shape the future of learning.",
-      logoUrl: "/logos/london-edtech-week.png", 
-      website: "https://www.londonedtechweek.com/"
+      description: "Innovation accelerator and mentorship organization supporting early-stage startups with expert guidance, resources, and network connections.",
+      logoUrl: "/logos/startup-labs.png", 
+      website: "https://startuplabs.com/"
     },
     {
       id: "ideal-london",
