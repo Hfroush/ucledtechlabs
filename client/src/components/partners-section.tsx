@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 interface Partner {
   id: string;
   name: string;
-  type: "investor" | "mentor" | "institution" | "corporate";
+  type: "investor" | "mentor" | "institution" | "corporate" | "government" | "delivery" | "coworking";
   description: string;
   logoUrl: string;
   website?: string;
@@ -12,8 +12,8 @@ interface Partner {
 export default function PartnersSection() {
   const partners: Partner[] = [
     {
-      id: "ucl-ioe",
-      name: "UCL Institute of Education",
+      id: "ucl",
+      name: "UCL",
       type: "institution",
       description: "World's #1 ranked education faculty (QS World University Rankings). Leading global education research and teacher training institution with unparalleled expertise in educational innovation.",
       logoUrl: "/logos/ucl-institute-education.jpg",
@@ -46,7 +46,7 @@ export default function PartnersSection() {
     {
       id: "ile-de-france",
       name: "Île-de-France Region",
-      type: "institution",
+      type: "government",
       description: "Leading European region supporting innovation and digital transformation in education, home to world-class universities and research institutions.",
       logoUrl: "/logos/ile-de-france.png",
       website: "https://www.iledefrance.fr/"
@@ -62,15 +62,15 @@ export default function PartnersSection() {
     {
       id: "startup-labs",
       name: "Startup Labs",
-      type: "mentor",
+      type: "delivery",
       description: "Innovation accelerator and mentorship organization supporting early-stage startups with expert guidance, resources, and network connections.",
       logoUrl: "/logos/startup-labs.png", 
       website: "https://startuplabs.com/"
     },
     {
       id: "ideal-london",
-      name: "IDEAL London",
-      type: "mentor",
+      name: "IDEALondon",
+      type: "coworking",
       description: "Innovation hub fostering collaboration between academics, entrepreneurs, and industry leaders to accelerate educational innovation.",
       logoUrl: "/logos/ideal-london.png",
       website: "https://www.ideallondon.co.uk/"
@@ -87,6 +87,12 @@ export default function PartnersSection() {
         return "bg-purple-100 text-purple-800";
       case "mentor":
         return "bg-orange-100 text-orange-800";
+      case "government":
+        return "bg-red-100 text-red-800";
+      case "delivery":
+        return "bg-yellow-100 text-yellow-800";
+      case "coworking":
+        return "bg-indigo-100 text-indigo-800";
       default:
         return "bg-gray-100 text-gray-800";
     }
@@ -102,6 +108,12 @@ export default function PartnersSection() {
         return "Investment Partner";
       case "mentor":
         return "Mentor Organization";
+      case "government":
+        return "Regional Government";
+      case "delivery":
+        return "Delivery Partner";
+      case "coworking":
+        return "Co-working Partner";
       default:
         return "Partner";
     }
