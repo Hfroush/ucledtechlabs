@@ -98,7 +98,7 @@ export default function StartupsSection() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex flex-col items-center text-center mb-4">
-                      <div className="w-16 h-16 bg-white rounded-xl p-3 shadow-lg flex items-center justify-center mb-3 group-hover:shadow-xl transition-shadow">
+                      <div className="w-20 h-20 bg-white rounded-xl p-3 shadow-lg flex items-center justify-center mb-4 group-hover:shadow-xl transition-shadow">
                         <img 
                           src={startup.logoUrl} 
                           alt={`${startup.name} logo`}
