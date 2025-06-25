@@ -80,7 +80,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 EduAccelerator. All rights reserved. Transforming education, one startup at a time.</p>
+          <p>© 2025 UCL Edtech Labs. All rights reserved. Transforming education, one startup at a time.</p>
         </div>
       </div>
     </footer>
