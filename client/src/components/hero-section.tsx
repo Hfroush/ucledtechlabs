@@ -18,9 +18,7 @@ export default function HeroSection() {
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Are you building an <span className="text-[#e58c00]">edtech product</span> that could change the way people learn and teach?
             </h1>
-            <p className="text-xl mb-8 text-blue-100">
-              Our mission is to build accelerator programs that collectively help improve the way people learn all over the world, based on true academic methods and iterated through hundreds of entrepreneurs. We will guide you through our powerful and effective methodology to build successful learning and teaching products as well as introduce you to the most suitable and successful mentors.
-            </p>
+            <p className="text-xl mb-8 text-blue-100">Turn your bold EdTech idea into real‑world impact, backed by research. Our mission is to build accelerator programs that collectively help improve the way people learn all over the world, based on true academic methods and iterated through hundreds of entrepreneurs. We will guide you through our powerful and effective methodology to build successful learning and teaching products as well as introduce you to the most suitable and successful mentors.</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={() => scrollToSection("apply")}
