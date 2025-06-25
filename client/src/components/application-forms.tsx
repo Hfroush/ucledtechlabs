@@ -141,7 +141,7 @@ export default function ApplicationForms() {
               <p className="text-gray-600">Get notified about future programs and be first to apply when applications open.</p>
               <div className="flex items-center mt-4">
                 <span className="w-3 h-3 bg-accent rounded-full mr-2"></span>
-                <Badge className="bg-accent text-gray-900">Applications Opening Soon</Badge>
+                <Badge className="bg-[#e57c00] text-[#ffffff]">Applications Opening Soon</Badge>
               </div>
             </div>
 
