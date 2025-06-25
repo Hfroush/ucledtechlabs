@@ -22,10 +22,10 @@ export default function FounderTestimonials() {
     {
       id: "2",
       quote: "The impact on our 'self-made assumption' was massive, we have to work a lot to build a robust logical structure around our evaluations and decisions",
-      name: "Michael Rodriguez",
-      title: "Founder",
-      company: "Learning Platform",
-      avatar: "/api/placeholder/64/64"
+      name: "Angela Newton",
+      title: "Co-Founder",
+      company: "Real Fast Reports",
+      avatar: "/avatars/angela-newton.png"
     },
     {
       id: "3",
