@@ -12,168 +12,161 @@ interface Partner {
 export default function PartnersSection() {
   const partners: Partner[] = [
     {
-      id: "university-college-london",
-      name: "University College London",
+      id: "ucl-ioe",
+      name: "UCL Institute of Education",
       type: "institution",
-      description: "Leading research institution providing academic expertise and validation methodologies.",
-      logoUrl: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      description: "World's #1 ranked education faculty (QS World University Rankings). Leading global education research and teacher training institution with unparalleled expertise in educational innovation.",
+      logoUrl: "/logos/ucl-institute-education.jpg",
+      website: "https://www.ucl.ac.uk/ioe/"
     },
     {
-      id: "microsoft-education",
-      name: "Microsoft for Education",
+      id: "ucl-cdi",
+      name: "Centre for Digital Innovation (UCL)",
+      type: "institution", 
+      description: "Powered by AWS, driving digital transformation in education through cutting-edge research and industry partnerships.",
+      logoUrl: "/logos/ucl-institute-education.jpg",
+      website: "https://www.ucl.ac.uk/digital-innovation/"
+    },
+    {
+      id: "ucl-cee",
+      name: "Centre for Engineering Education (UCL)",
+      type: "institution",
+      description: "Advancing engineering education through innovative teaching methods, curriculum development, and educational technology.",
+      logoUrl: "/logos/ucl-institute-education.jpg", 
+      website: "https://www.ucl.ac.uk/engineering/"
+    },
+    {
+      id: "santander",
+      name: "Santander Universities",
       type: "corporate",
-      description: "Technology partner providing Azure credits and educational tools for our startups.",
-      logoUrl: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      description: "Global banking partner supporting education and entrepreneurship initiatives across 40 countries with over 1,200 university partnerships.",
+      logoUrl: "/logos/santander-universities.png",
+      website: "https://www.santander.com/en/about-us/santander-universities"
     },
     {
-      id: "reach-capital",
-      name: "Reach Capital",
-      type: "investor",
-      description: "EdTech-focused venture capital firm supporting our portfolio companies with funding.",
-      logoUrl: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
-    },
-    {
-      id: "university-of-toronto",
-      name: "University of Toronto",
+      id: "ile-de-france",
+      name: "Île-de-France Region",
       type: "institution",
-      description: "Academic partner in Toronto providing research facilities and student talent pipeline.",
-      logoUrl: "https://images.unsplash.com/photo-1564981797816-1043664bf78d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      description: "Leading European region supporting innovation and digital transformation in education, home to world-class universities and research institutions.",
+      logoUrl: "/logos/ile-de-france.png",
+      website: "https://www.iledefrance.fr/"
     },
     {
-      id: "google-for-education",
-      name: "Google for Education",
-      type: "corporate",
-      description: "Cloud platform partner offering Google Cloud credits and workspace solutions.",
-      logoUrl: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
-    },
-    {
-      id: "sorbonne-university",
-      name: "Sorbonne University",
+      id: "cy-cergy",
+      name: "CY Cergy Paris Université",
       type: "institution",
-      description: "French academic excellence partner contributing to European program development.",
-      logoUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      description: "Leading French university with strong focus on innovation, entrepreneurship, and international collaboration in education technology.",
+      logoUrl: "/logos/cy-cergy-paris.png",
+      website: "https://www.cyu.fr/"
     },
     {
-      id: "aws-activate",
-      name: "AWS Activate",
-      type: "corporate",
-      description: "Cloud infrastructure partner providing AWS credits and technical support for scaling.",
-      logoUrl: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      id: "london-edtech-week",
+      name: "London EdTech Week",
+      type: "mentor",
+      description: "Europe's largest EdTech festival bringing together educators, entrepreneurs, and investors to shape the future of learning.",
+      logoUrl: "/logos/london-edtech-week.png", 
+      website: "https://www.londonedtechweek.com/"
     },
     {
-      id: "london-business-school",
-      name: "London Business School",
-      type: "institution",
-      description: "Business education expertise and entrepreneurship curriculum development partner.",
-      logoUrl: "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      id: "ideal-london",
+      name: "IDEAL London",
+      type: "mentor",
+      description: "Innovation hub fostering collaboration between academics, entrepreneurs, and industry leaders to accelerate educational innovation.",
+      logoUrl: "/logos/ideal-london.png",
+      website: "https://www.ideallondon.co.uk/"
     }
   ];
 
-  const getPartnerTypeColor = (type: Partner["type"]) => {
+  const getTypeColor = (type: Partner["type"]) => {
     switch (type) {
-      case "investor":
-        return "bg-success text-white";
-      case "mentor":
-        return "bg-secondary text-white";
       case "institution":
-        return "bg-primary text-white";
+        return "bg-blue-100 text-blue-800";
       case "corporate":
-        return "bg-accent text-gray-900";
+        return "bg-green-100 text-green-800";
+      case "investor":
+        return "bg-purple-100 text-purple-800";
+      case "mentor":
+        return "bg-orange-100 text-orange-800";
       default:
-        return "bg-gray-500 text-white";
+        return "bg-gray-100 text-gray-800";
     }
   };
 
-  const getPartnerTypeLabel = (type: Partner["type"]) => {
+  const getTypeLabel = (type: Partner["type"]) => {
     switch (type) {
+      case "institution":
+        return "Academic Institution";
+      case "corporate":
+        return "Corporate Partner";
       case "investor":
         return "Investment Partner";
       case "mentor":
-        return "Mentor Network";
-      case "institution":
-        return "Academic Partner";
-      case "corporate":
-        return "Technology Partner";
+        return "Mentor Organization";
       default:
         return "Partner";
     }
   };
 
   return (
-    <section id="partners" className="bg-white py-20">
+    <section id="partners" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Partners & Supporters</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Partners</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We collaborate with leading institutions, investors, and technology companies to provide 
-            comprehensive support for our startup community across all four global locations.
+            We collaborate with the world's leading educational institutions, including the #1 ranked education faculty globally, 
+            along with innovative organizations driving digital transformation in learning.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {partners.map((partner) => (
-            <div key={partner.id} className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="mb-4">
-                <Badge className={`${getPartnerTypeColor(partner.type)} mb-3`}>
-                  {getPartnerTypeLabel(partner.type)}
-                </Badge>
-                <div className="h-16 mb-4 flex items-center justify-center bg-white rounded-lg overflow-hidden">
-                  <img 
-                    src={partner.logoUrl} 
-                    alt={`${partner.name} logo`} 
-                    className="max-h-12 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all"
-                  />
+            <div
+              key={partner.id}
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-gray-100"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-16 h-16 bg-gray-50 rounded-lg p-2 flex items-center justify-center">
+                      <img 
+                        src={partner.logoUrl} 
+                        alt={`${partner.name} logo`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-1">
+                        {partner.name}
+                      </h3>
+                      <Badge className={`text-xs ${getTypeColor(partner.type)}`}>
+                        {getTypeLabel(partner.type)}
+                      </Badge>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">{partner.name}</h3>
-              <p className="text-gray-600 text-sm">{partner.description}</p>
+
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                {partner.description}
+              </p>
+
+              {partner.website && (
+                <div className="pt-4 border-t border-gray-100">
+                  <a 
+                    href={partner.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary text-sm font-medium hover:text-primary/80 transition-colors inline-flex items-center gap-1"
+                  >
+                    Visit website
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              )}
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 bg-slate-50 rounded-2xl p-8">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Partnership Benefits</h3>
-            <div className="grid md:grid-cols-4 gap-8 mt-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl font-bold">$1M+</span>
-                </div>
-                <h4 className="font-semibold text-gray-900">Member Perks</h4>
-                <p className="text-gray-600 text-sm">Free and discounted services</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl font-bold">150+</span>
-                </div>
-                <h4 className="font-semibold text-gray-900">Expert Mentors</h4>
-                <p className="text-gray-600 text-sm">Industry-leading guidance</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl font-bold">4</span>
-                </div>
-                <h4 className="font-semibold text-gray-900">Global Hubs</h4>
-                <p className="text-gray-600 text-sm">International network access</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-success rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl font-bold">0%</span>
-                </div>
-                <h4 className="font-semibold text-gray-900">Equity Required</h4>
-                <p className="text-gray-600 text-sm">100% equity-free program</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-gray-600 mb-6">
-            Interested in partnering with EduAccelerator to support the next generation of EdTech innovators?
-          </p>
-          <button className="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-            Become a Partner
-          </button>
         </div>
       </div>
     </section>
