@@ -135,7 +135,7 @@ export default function PastProgramsSection() {
                 </div>
                 
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Cohort {program.cohortNumber} - {program.year}
+                  Cohort {program.cohortNumber}
                 </h3>
                 
                 {program.location === "London" ? (
