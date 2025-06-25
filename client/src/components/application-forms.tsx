@@ -302,7 +302,7 @@ export default function ApplicationForms() {
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-accent text-gray-900 py-4 font-bold text-lg hover:bg-yellow-500"
+                  className="w-full py-4 font-bold hover:bg-yellow-500 bg-[#e57c00] text-[26px] text-[#ffffff]"
                   disabled={interestMutation.isPending}
                 >
                   {interestMutation.isPending ? "Registering..." : "Register Interest"}
