@@ -38,10 +38,10 @@ export default function FounderTestimonials() {
     {
       id: "4",
       quote: "UCL EdTech Labs is the bridge between UCL and the EdTech ecosystem in London, Europe and beyond. The accelerator has helped us reach many key individuals, and it has been the root reason for our growth for the past year.",
-      name: "David Park",
-      title: "Founder & CTO",
-      company: "AI Learning Co",
-      avatar: "/api/placeholder/64/64"
+      name: "Arum Tufan",
+      title: "Founder",
+      company: "Happy Student",
+      avatar: "/avatars/arum-tufan.png"
     },
     {
       id: "5",
