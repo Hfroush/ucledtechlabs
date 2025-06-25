@@ -12,6 +12,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
+import { CityAutocomplete } from "@/components/ui/city-autocomplete";
+import { validateCity } from "@/lib/cities";
 
 const applicationSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -29,7 +31,10 @@ const interestSchema = z.object({
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Valid email is required"),
   startupName: z.string().min(1, "Startup name is required"),
-  hqLocation: z.string().min(1, "HQ location is required"),
+  hqLocation: z.string().min(1, "HQ location is required").refine(
+    (value) => validateCity(value),
+    "Please select a valid city from the dropdown"
+  ),
   currentStatus: z.string().optional(),
   areasOfInterest: z.string().optional(),
   receiveUpdates: z.boolean().default(false),
@@ -204,7 +209,11 @@ export default function ApplicationForms() {
                     <FormItem>
                       <FormLabel>HQ Location *</FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your headquarters location" {...field} />
+                        <CityAutocomplete
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Select your headquarters location"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
