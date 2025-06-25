@@ -41,28 +41,24 @@ export default function PastProgramsSection() {
       ]
     },
     {
-      id: "cohort-11-2024",
-      cohortNumber: 11,
+      id: "cohort-5-paris",
+      cohortNumber: 5,
       year: "2024",
       location: "Paris",
-      startupCount: 12,
-      totalFunding: "€6.8M",
-      demoDay: "July 2024",
-      highlights: [
-        "2 unicorn potential companies",
-        "85% retention rate",
-        "Cross-border expansion to 8 countries"
-      ],
+      startupCount: 0,
+      totalFunding: "",
+      demoDay: "",
+      highlights: [],
       featuredStartups: [
         {
-          name: "EduMetrics",
-          description: "Learning analytics platform for higher education institutions",
-          outcome: "€3.2M funding, partnership with Sorbonne University"
+          name: "Vittascience",
+          description: "300,000+ teachers & students engaged — since its 2018 launch, Vittascience's coding & AI platform has been adopted widely across France, making STEM education accessible from middle school through high school",
+          outcome: "Partnered with STMicroelectronics to launch embedded AI kit — in September 2024, they released a beginner‑friendly AI toolkit built around STM32 microcontrollers for classrooms, marking their fifth co‑developed STEM kit"
         },
         {
-          name: "ClassroomAI",
-          description: "Automated assessment and feedback system",
-          outcome: "Deployed across 50+ French universities"
+          name: "Infolab.ai",
+          description: "Innovation in AI-powered educational agents — founded in Tallinn in 2024, Infolab.ai builds LLM-based tutors that help educators understand student learning deeply and support tailored instruction",
+          outcome: "Committed to impact measurement — actively conducting research and case studies to quantify how their AI solutions improve teaching efficiency and student outcomes, ensuring the platform delivers real-world educational benefits"
         }
       ]
     },
@@ -131,13 +127,15 @@ export default function PastProgramsSection() {
                     </Badge>
                     <span className="text-sm text-gray-500">{program.demoDay}</span>
                   </div>
-                  {program.location !== "London" && (
+                  {program.location !== "London" && program.location !== "Paris" && (
                     <span className="text-2xl font-bold text-primary">#{program.cohortNumber}</span>
                   )}
                 </div>
                 
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {program.location === "London" ? "6 Cohorts" : `Cohort ${program.cohortNumber}`}
+                  {program.location === "London" ? "6 Cohorts" : 
+                   program.location === "Paris" ? "5 Cohorts" : 
+                   `Cohort ${program.cohortNumber}`}
                 </h3>
                 
                 {program.location === "London" ? (
@@ -153,6 +151,23 @@ export default function PastProgramsSection() {
                       <img
                         src="/logos/ucl-institute-education.png"
                         alt="UCL Institute of Education"
+                        className="h-12 mx-auto object-contain"
+                      />
+                    </div>
+                  </div>
+                ) : program.location === "Paris" ? (
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    <div className="text-center p-3 bg-white rounded-lg border">
+                      <img
+                        src="/logos/cergy-paris-universite.png"
+                        alt="CY Cergy Paris Université"
+                        className="h-12 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-3 bg-white rounded-lg border">
+                      <img
+                        src="/logos/essec-business-school.png"
+                        alt="ESSEC Business School"
                         className="h-12 mx-auto object-contain"
                       />
                     </div>
