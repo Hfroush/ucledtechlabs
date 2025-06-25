@@ -14,44 +14,64 @@ interface Partner {
 export default function LogoCarousel() {
   const partners: Partner[] = [
     {
-      id: "ucl-edtech-labs",
-      name: "UCL EdTech Labs",
-      logoUrl: "/logo.jpg"
+      id: "ucl-institute-education",
+      name: "UCL Institute of Education",
+      logoUrl: "/logos/ucl-institute-education.png"
     },
     {
-      id: "jisc",
-      name: "Jisc",
-      logoUrl: "https://www.jisc.ac.uk/sites/default/files/jisc-logo.svg"
+      id: "santander-universities",
+      name: "Santander Universities",
+      logoUrl: "/logos/santander-universities.png"
     },
     {
-      id: "innovate-uk",
-      name: "Innovate UK",
-      logoUrl: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/organisation/logo/1348/innovate-uk-logo.png"
+      id: "ucl-engineering",
+      name: "UCL Engineering",
+      logoUrl: "/logos/ucl-engineering.png"
     },
     {
-      id: "british-council",
-      name: "British Council",
-      logoUrl: "https://www.britishcouncil.org/sites/default/files/british-council-logo.svg"
+      id: "ucl-digital-innovation",
+      name: "UCL Centre for Digital Innovation",
+      logoUrl: "/logos/ucl-digital-innovation.png"
     },
     {
-      id: "techstars",
-      name: "Techstars",
-      logoUrl: "https://www.techstars.com/content/themes/techstars/dist/images/techstars-logo-black.svg"
+      id: "ucl-cee",
+      name: "UCL Centre for Engineering Education",
+      logoUrl: "/logos/ucl-cee.png"
     },
     {
-      id: "edtech-hub",
-      name: "EdTech Hub",
-      logoUrl: "https://edtechhub.org/wp-content/uploads/2020/06/cropped-EdTech-Hub-Logo-2020-Full-Colour-1.png"
+      id: "ucl-school-management",
+      name: "UCL School of Management",
+      logoUrl: "/logos/ucl-school-management.png"
     },
     {
-      id: "reach-capital",
-      name: "Reach Capital",
-      logoUrl: "https://reachcap.com/wp-content/uploads/2021/03/reach-capital-logo.svg"
+      id: "ideal-london",
+      name: "IDEAL London",
+      logoUrl: "/logos/ideal-london.png"
     },
     {
-      id: "nesta",
-      name: "Nesta",
-      logoUrl: "https://www.nesta.org.uk/app/uploads/2022/09/nesta-logo.svg"
+      id: "edtechx-europe",
+      name: "EdTechX Europe",
+      logoUrl: "/logos/edtechx-europe.png"
+    },
+    {
+      id: "cergy-paris-universite",
+      name: "CY Cergy Paris Université",
+      logoUrl: "/logos/cergy-paris-universite.png"
+    },
+    {
+      id: "essec-business-school",
+      name: "ESSEC Business School",
+      logoUrl: "/logos/essec-business-school.png"
+    },
+    {
+      id: "val-d-oise",
+      name: "Val d'Oise",
+      logoUrl: "/logos/val-d-oise.png"
+    },
+    {
+      id: "ile-de-france",
+      name: "Île-de-France",
+      logoUrl: "/logos/ile-de-france.png"
     }
   ];
 
