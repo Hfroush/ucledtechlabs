@@ -172,7 +172,11 @@ export default function PastProgramsSection() {
                 ) : program.location === "Toronto" ? (
                   <div className="grid grid-cols-1 gap-4 mt-4">
                     <div className="text-center p-3 bg-white rounded-lg border">
-                      <div className="text-lg font-semibold text-gray-700">Startup Labs</div>
+                      <img
+                        src="/logos/startup-labs.png"
+                        alt="Startup Labs"
+                        className="h-12 mx-auto object-contain"
+                      />
                     </div>
                   </div>
                 ) : (
