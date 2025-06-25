@@ -1,4 +1,5 @@
 import { Linkedin, Mail } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Footer() {
   const programs = [
@@ -15,6 +16,15 @@ export default function Footer() {
     { name: "Alumni Community", href: "#" },
   ];
 
+  const policies = [
+    { name: "Accessibility", href: "/accessibility" },
+    { name: "Disclaimer", href: "/disclaimer" },
+    { name: "Freedom of Information", href: "/freedom-of-information" },
+    { name: "Policies & Guidance", href: "/policies-guidance" },
+    { name: "Privacy and Cookies", href: "/privacy-cookies" },
+    { name: "Slavery Statement", href: "/slavery-statement" },
+  ];
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId.replace("#", ""));
     if (section) {
@@ -25,7 +35,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
             <div className="mb-6">
               <span className="text-3xl font-bold text-[#c57e00]">UCL Edtech Labs</span>
@@ -68,6 +78,20 @@ export default function Footer() {
                   >
                     {resource.name}
                   </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Policies</h4>
+            <ul className="space-y-2 text-gray-300">
+              {policies.map((policy) => (
+                <li key={policy.name}>
+                  <Link href={policy.href}>
+                    <span className="hover:text-white transition-colors cursor-pointer">
+                      {policy.name}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
