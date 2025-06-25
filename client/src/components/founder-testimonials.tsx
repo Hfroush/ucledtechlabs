@@ -62,10 +62,10 @@ export default function FounderTestimonials() {
     {
       id: "7",
       quote: "I now approach product development with a research-backed, data-driven mindset—using evidence to reinforce value and inform the development of new features.",
-      name: "Lisa Zhang",
-      title: "Co-Founder",
-      company: "Learning Management System",
-      avatar: "/api/placeholder/64/64"
+      name: "Kate Bodrova",
+      title: "Co-Founder and CEO",
+      company: "Amazy.uk",
+      avatar: "/avatars/kate-bodrova.png"
     },
     {
       id: "8",
