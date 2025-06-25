@@ -19,39 +19,39 @@ export default function LogoCarousel() {
       logoUrl: "/logo.jpg"
     },
     {
-      id: "microsoft-education",
-      name: "Microsoft for Education",
-      logoUrl: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      id: "microsoft",
+      name: "Microsoft",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/512px-Microsoft_logo.svg.png"
     },
     {
-      id: "reach-capital",
-      name: "Reach Capital",
-      logoUrl: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      id: "google",
+      name: "Google",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/512px-Google_2015_logo.svg.png"
+    },
+    {
+      id: "amazon-aws",
+      name: "AWS",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/512px-Amazon_Web_Services_Logo.svg.png"
     },
     {
       id: "university-of-toronto",
       name: "University of Toronto",
-      logoUrl: "https://images.unsplash.com/photo-1564981797816-1043664bf78d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
-    },
-    {
-      id: "google-for-education",
-      name: "Google for Education",
-      logoUrl: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/256px-Utoronto_coa.svg.png"
     },
     {
       id: "sorbonne-university",
       name: "Sorbonne University",
-      logoUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Sorbonne_University_logo.svg/256px-Sorbonne_University_logo.svg.png"
     },
     {
-      id: "aws-activate",
-      name: "AWS Activate",
-      logoUrl: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      id: "imperial-college",
+      name: "Imperial College London",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Imperial_College_London_crest.svg/256px-Imperial_College_London_crest.svg.png"
     },
     {
-      id: "london-business-school",
-      name: "London Business School",
-      logoUrl: "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100"
+      id: "cambridge",
+      name: "University of Cambridge",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/University_of_Cambridge_coat_of_arms_official.svg/256px-University_of_Cambridge_coat_of_arms_official.svg.png"
     }
   ];
 
@@ -67,23 +67,26 @@ export default function LogoCarousel() {
           opts={{
             align: "start",
             loop: true,
+            dragFree: true,
           }}
           plugins={[
             Autoplay({
-              delay: 2000,
+              delay: 3000,
+              stopOnInteraction: false,
             }),
           ]}
           className="w-full"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {partners.map((partner) => (
-              <CarouselItem key={partner.id} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-                <div className="p-4">
-                  <div className="bg-white rounded-lg p-6 h-24 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+            {[...partners, ...partners].map((partner, index) => (
+              <CarouselItem key={`${partner.id}-${index}`} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                <div className="p-2">
+                  <div className="bg-white rounded-lg p-4 h-20 flex items-center justify-center shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300">
                     <img
                       src={partner.logoUrl}
                       alt={`${partner.name} logo`}
-                      className="max-h-12 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                      className="max-h-10 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                      loading="lazy"
                     />
                   </div>
                 </div>
