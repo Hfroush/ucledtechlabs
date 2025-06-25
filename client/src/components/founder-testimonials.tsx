@@ -70,10 +70,10 @@ export default function FounderTestimonials() {
     {
       id: "8",
       quote: "I learned how to plan user testing logically by setting up clear scenarios and hypotheses, allowing us to gather meaningful insights from real users.",
-      name: "Robert Kim",
-      title: "Founder & Head of Product",
-      company: "Educational Games Studio",
-      avatar: "/api/placeholder/64/64"
+      name: "Chayanon Lieng",
+      title: "Founder",
+      company: "Useless Land",
+      avatar: "/avatars/chayanon-lieng.png"
     }
   ];
 
