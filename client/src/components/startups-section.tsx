@@ -78,15 +78,15 @@ export default function StartupsSection() {
   return (
     <section id="startups" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Success Stories</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Our alumni are transforming education worldwide, from AI-powered learning platforms 
             to inclusive language training, each validated through rigorous academic methodology.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {startups.map((startup) => (
             <div
               key={startup.id}
@@ -94,11 +94,11 @@ export default function StartupsSection() {
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${startup.gradientClass} opacity-5 group-hover:opacity-10 transition-opacity`}></div>
               
-              <div className="relative p-8">
+              <div className="relative p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <div className="flex flex-col items-center text-center mb-6">
-                      <div className="w-20 h-20 bg-white rounded-xl p-3 shadow-lg flex items-center justify-center mb-4 group-hover:shadow-xl transition-shadow">
+                    <div className="flex flex-col items-center text-center mb-4">
+                      <div className="w-16 h-16 bg-white rounded-xl p-3 shadow-lg flex items-center justify-center mb-3 group-hover:shadow-xl transition-shadow">
                         <img 
                           src={startup.logoUrl} 
                           alt={`${startup.name} logo`}
@@ -117,7 +117,7 @@ export default function StartupsSection() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed mb-6 text-center">
+                <p className="text-gray-600 text-sm leading-relaxed mb-4 text-center">
                   {startup.description}
                 </p>
 
