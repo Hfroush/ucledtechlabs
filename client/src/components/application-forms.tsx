@@ -28,7 +28,8 @@ const interestSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Valid email is required"),
-  programs: z.array(z.string()).min(1, "Please select at least one program"),
+  startupName: z.string().min(1, "Startup name is required"),
+  hqLocation: z.string().min(1, "HQ location is required"),
   currentStatus: z.string().optional(),
   areasOfInterest: z.string().optional(),
   receiveUpdates: z.boolean().default(false),
@@ -61,7 +62,8 @@ export default function ApplicationForms() {
       firstName: "",
       lastName: "",
       email: "",
-      programs: [],
+      startupName: "",
+      hqLocation: "",
       currentStatus: "",
       areasOfInterest: "",
       receiveUpdates: false,
@@ -92,7 +94,7 @@ export default function ApplicationForms() {
     onSuccess: () => {
       toast({
         title: "Interest Registered!",
-        description: "We'll notify you when applications open for your selected programs.",
+        description: "We'll notify you when applications open for future cohorts.",
       });
       interestForm.reset();
       queryClient.invalidateQueries({ queryKey: ["/api/interest-registrations"] });
@@ -183,50 +185,27 @@ export default function ApplicationForms() {
 
                 <FormField
                   control={interestForm.control}
-                  name="programs"
-                  render={() => (
+                  name="startupName"
+                  render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Interested Programs *</FormLabel>
-                      <div className="space-y-2">
-                        {[
-                          { id: "paris", label: "Paris Program - June 2024" },
-                          { id: "dubai", label: "Dubai Program - September 2024" },
-                          { id: "london-future", label: "Future London Cohorts" },
-                          { id: "toronto-future", label: "Future Toronto Cohorts" },
-                        ].map((program) => (
-                          <FormField
-                            key={program.id}
-                            control={interestForm.control}
-                            name="programs"
-                            render={({ field }) => {
-                              return (
-                                <FormItem
-                                  key={program.id}
-                                  className="flex flex-row items-start space-x-3 space-y-0"
-                                >
-                                  <FormControl>
-                                    <Checkbox
-                                      checked={field.value?.includes(program.id)}
-                                      onCheckedChange={(checked) => {
-                                        return checked
-                                          ? field.onChange([...field.value, program.id])
-                                          : field.onChange(
-                                              field.value?.filter(
-                                                (value) => value !== program.id
-                                              )
-                                            )
-                                      }}
-                                    />
-                                  </FormControl>
-                                  <FormLabel className="font-normal">
-                                    {program.label}
-                                  </FormLabel>
-                                </FormItem>
-                              )
-                            }}
-                          />
-                        ))}
-                      </div>
+                      <FormLabel>Startup Name *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter your startup name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={interestForm.control}
+                  name="hqLocation"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>HQ Location *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter your headquarters location" {...field} />
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -261,11 +240,11 @@ export default function ApplicationForms() {
                   name="areasOfInterest"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Areas of Interest</FormLabel>
+                      <FormLabel>What is the most important challenge your organisation is attempting to solve?</FormLabel>
                       <FormControl>
                         <Textarea 
                           rows={3} 
-                          placeholder="What aspects of education are you passionate about improving?" 
+                          placeholder="Describe the key challenge your organization is working to address in education" 
                           {...field} 
                         />
                       </FormControl>
@@ -303,7 +282,7 @@ export default function ApplicationForms() {
                 </Button>
 
                 <p className="text-sm text-gray-500 text-center">
-                  We'll notify you when applications open for your selected programs.
+                  We'll notify you when applications open for future cohorts.
                 </p>
               </form>
             </Form>
