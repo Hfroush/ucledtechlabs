@@ -208,7 +208,7 @@ const FORM_STEPS = [
   },
   {
     id: 3,
-    title: "Problem & Solution",
+    title: "Product Details",
     description: "What you're building",
     icon: Lightbulb,
   },
