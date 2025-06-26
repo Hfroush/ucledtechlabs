@@ -224,6 +224,8 @@ const FORM_STEPS = [
 export default function Apply() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<ApplicationForm>({
@@ -281,6 +283,53 @@ export default function Apply() {
 
   const onSubmit = (data: ApplicationForm) => {
     submitMutation.mutate(data);
+  };
+
+  const handleFileUpload = async (files: FileList) => {
+    setIsUploading(true);
+    const formData = new FormData();
+    
+    Array.from(files).forEach(file => {
+      formData.append('files', file);
+    });
+
+    try {
+      const response = await fetch('/api/upload-research', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
+
+      const result = await response.json();
+      
+      if (result.success) {
+        const fileNames = result.files.map((f: any) => f.originalName);
+        setUploadedFiles(prev => [...prev, ...fileNames]);
+        
+        // Update form field with uploaded file names
+        const currentValue = form.getValues('researchEvidence') || '';
+        const newValue = currentValue 
+          ? `${currentValue}\n\nUploaded files: ${fileNames.join(', ')}`
+          : `Uploaded files: ${fileNames.join(', ')}`;
+        form.setValue('researchEvidence', newValue);
+        
+        toast({
+          title: "Files uploaded successfully",
+          description: `${fileNames.length} file(s) uploaded`,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Upload failed",
+        description: "Please try again or contact support",
+        variant: "destructive",
+      });
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const nextStep = () => {
@@ -1121,14 +1170,85 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel>Research Evidence</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Attach or link research papers that evidence your product's potential educational impact, support the theory(ies) that your product is based on or describe the problem you are aiming to solve."
-                              className="min-h-[120px]"
-                              {...field} 
-                            />
+                            <div className="space-y-4">
+                              <Textarea 
+                                placeholder="Provide links to research papers or attach evidence that supports your product's educational impact, underlying theories, or problem definition."
+                                className="min-h-[100px]"
+                                {...field} 
+                              />
+                              <div 
+                                className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
+                                  isUploading 
+                                    ? 'border-blue-400 bg-blue-50' 
+                                    : 'border-gray-300 hover:border-gray-400'
+                                }`}
+                                onDrop={(e) => {
+                                  e.preventDefault();
+                                  const files = e.dataTransfer.files;
+                                  if (files.length > 0) {
+                                    handleFileUpload(files);
+                                  }
+                                }}
+                                onDragOver={(e) => e.preventDefault()}
+                                onDragEnter={(e) => e.preventDefault()}
+                              >
+                                <input
+                                  type="file"
+                                  multiple
+                                  accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg"
+                                  className="hidden"
+                                  id="research-evidence-upload"
+                                  onChange={(e) => {
+                                    if (e.target.files && e.target.files.length > 0) {
+                                      handleFileUpload(e.target.files);
+                                    }
+                                  }}
+                                  disabled={isUploading}
+                                />
+                                <label 
+                                  htmlFor="research-evidence-upload"
+                                  className={`cursor-pointer flex flex-col items-center space-y-2 ${
+                                    isUploading ? 'pointer-events-none' : ''
+                                  }`}
+                                >
+                                  {isUploading ? (
+                                    <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                                  ) : (
+                                    <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                    </svg>
+                                  )}
+                                  <span className="text-sm text-gray-600">
+                                    {isUploading 
+                                      ? 'Uploading files...' 
+                                      : 'Click to upload files or drag and drop'
+                                    }
+                                  </span>
+                                  <span className="text-xs text-gray-400">
+                                    PDF, DOC, DOCX, TXT, PNG, JPG (Max 10MB each)
+                                  </span>
+                                </label>
+                                
+                                {uploadedFiles.length > 0 && (
+                                  <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-md">
+                                    <p className="text-sm font-medium text-green-800 mb-2">Uploaded files:</p>
+                                    <ul className="text-xs text-green-700 space-y-1">
+                                      {uploadedFiles.map((fileName, index) => (
+                                        <li key={index} className="flex items-center space-x-1">
+                                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                          </svg>
+                                          <span>{fileName}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
                           </FormControl>
                           <FormDescription>
-                            Provide links to research papers or attach evidence that supports your product's educational impact, underlying theories, or problem definition.
+                            Attach or link research papers that evidence your product's potential educational impact, support the theory(ies) that your product is based on or describe the problem you are aiming to solve.
                           </FormDescription>
                           <FormMessage />
                         </FormItem>

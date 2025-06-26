@@ -129,6 +129,7 @@ The application is configured for Replit's autoscale deployment:
 - June 26, 2025: Updated number of employees field to dropdown with ranges: 1, 2-3, 4-10, 11-20, >20 for better data consistency
 - June 26, 2025: Updated Monthly Recurring Revenue field to dropdown with ranges: Pre-revenue, <£1,000, <£5,000, <£10,000, <£25,000, >£25,000
 - June 26, 2025: Added research evidence field supporting Evidence-Led methodology - allows applicants to attach/link research papers evidencing educational impact, supporting theories, or problem descriptions
+- June 26, 2025: Implemented comprehensive file upload system with drag-and-drop functionality, 10MB file limits, support for academic document formats (PDF, DOC, DOCX, TXT, PNG, JPG), and real-time upload progress feedback
 
 ## User Preferences
 
