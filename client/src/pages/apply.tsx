@@ -284,12 +284,16 @@ export default function Apply() {
   const nextStep = () => {
     if (currentStep < FORM_STEPS.length) {
       setCurrentStep(currentStep + 1);
+      // Scroll to top of page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const prevStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+      // Scroll to top of page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
