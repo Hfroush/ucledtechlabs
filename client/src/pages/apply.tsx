@@ -214,8 +214,8 @@ const FORM_STEPS = [
   },
   {
     id: 4,
-    title: "Review & Submit",
-    description: "Confirm your application",
+    title: "Deck and Uploads",
+    description: "Finalise your application",
     icon: CheckCircle,
   },
 ];
