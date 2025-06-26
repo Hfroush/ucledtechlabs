@@ -9,19 +9,167 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { CheckCircle, Clock, Users, Target, Lightbulb, ArrowLeft, ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { CheckCircle, Clock, Users, Target, Lightbulb, ArrowLeft, ArrowRight, HelpCircle } from "lucide-react";
+import { CityAutocomplete } from "@/components/ui/city-autocomplete";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 
-// Application schema will be defined here
+// Comprehensive application schema with all required fields
 const applicationSchema = z.object({
-  // Basic fields for now - we'll add the detailed fields next
+  // Personal Information
+  fullName: z.string().min(1, "Full name is required"),
+  dateOfBirth: z.string().optional(),
   email: z.string().email("Please enter a valid email address"),
+  telephoneNumber: z.string().optional(),
+  countryOfResidence: z.string().optional(),
+  
+  // Company Details
+  companyName: z.string().optional(),
+  productName: z.string().optional(),
+  hqLocation: z.string().optional(),
+  startupStage: z.enum(["idea", "prototype", "mvp", "go-to-market", "product-market-fit", "investment", "scaling"]).optional(),
+  businessModel: z.enum(["b2b", "b2c", "b2e", "b2g", "b2e2c", "b2b2c", "b2g2e"]).optional(),
+  coFounders: z.string().optional(),
+  numberOfEmployees: z.number().optional(),
+  monthlyRecurringRevenue: z.string().optional(),
+  investmentRounds: z.number().optional(),
+  companyValuation: z.string().optional(),
+  plannedRaiseAmount: z.string().optional(),
+  plannedRaiseValuation: z.string().optional(),
+  
+  // Product Information
+  problemDescription: z.string().optional(),
+  problemCauses: z.array(z.string()).default([]),
+  edtechDomains: z.array(z.string()).default([]),
+  relevantExperience: z.string().optional(),
+  keyGroupAffected: z.array(z.string()).default([]),
+  problemImpact: z.string().optional(),
+  customerType: z.array(z.string()).default([]),
+  elevatorPitch: z.string().optional(),
+  solutionExplanation: z.string().optional(),
+  programGoals: z.string().optional(),
+  companyWebsite: z.string().optional(),
+  pitchDeckLink: z.string().optional(),
+  linkedinProfile: z.string().optional(),
 });
 
 type ApplicationForm = z.infer<typeof applicationSchema>;
+
+// Form field options
+const STARTUP_STAGES = [
+  { value: "idea", label: "Idea" },
+  { value: "prototype", label: "Prototype" },
+  { value: "mvp", label: "MVP" },
+  { value: "go-to-market", label: "Go-to-market" },
+  { value: "product-market-fit", label: "Product-market fit" },
+  { value: "investment", label: "Investment" },
+  { value: "scaling", label: "Scaling" }
+];
+
+const BUSINESS_MODELS = [
+  { value: "b2b", label: "B2B" },
+  { value: "b2c", label: "B2C" },
+  { value: "b2e", label: "B2E" },
+  { value: "b2g", label: "B2G" },
+  { value: "b2e2c", label: "B2E2C" },
+  { value: "b2b2c", label: "B2B2C" },
+  { value: "b2g2e", label: "B2G2E" }
+];
+
+const PROBLEM_CAUSES = [
+  "Lack of Training/Expertise",
+  "Lack of focus and vision by entrepreneurs",
+  "Lack of Resources (Human): Professional context",
+  "Lack of Resources (Financial)",
+  "Lack of Social Network: Community, Family, Peer Support",
+  "Lack of Political Will",
+  "Lack of Resources (Time)",
+  "Lack of a technology",
+  "Human Bias/Subjectivity hindering diversity/equity/inclusion/fairness",
+  "Lack of awareness",
+  "Dichotomy of disciplines",
+  "Geographic Limitations",
+  "Lack of tools"
+];
+
+const EDTECH_DOMAINS = [
+  "Education Management - Learning Environment (e.g. LMS/VLE)",
+  "Education Management - Platforms",
+  "Knowledge and Content - Curriculum",
+  "International Education - Language Testing",
+  "Knowledge and Content - Educational Resources",
+  "New Delivery Models - Proprietary Online",
+  "Learning Support - Teacher Resources",
+  "New Delivery Models - Apps",
+  "International Education - Language Learning",
+  "Workforce and Talent - Talent Acquisition",
+  "Skills and Jobs - Upskilling",
+  "Education Management - Classroom technology",
+  "Education Management - Admissions Platforms",
+  "Experiencing Learning - AI (Voice, Chat, Wearables)",
+  "International Education - International Study",
+  "Traditional Models - Vocational",
+  "Workforce and Talent - Workforce Planning",
+  "Experiencing Learning - Games and Simulations",
+  "Education Management - Finance",
+  "Learning Support - After School Tutoring",
+  "Assessment and Verification - Skills Verification",
+  "Assessment and Verification - Assessment",
+  "Learning Support - Tutoring",
+  "Workforce and Talent - Wellness",
+  "International Education - Discovery",
+  "Workforce and Talent - Capability Development",
+  "Skills and Jobs - Mentoring",
+  "Experiencing Learning - STEAM/Coding",
+  "Assessment and Verification - Career Planning",
+  "Assessment and Verification - Portfolio",
+  "Experiencing Learning - XR, AR, VR",
+  "Knowledge and Content - Peer-to-Peer Q&A Platform"
+];
+
+const RELEVANT_EXPERIENCE = [
+  { value: "close-to-affected", label: "Close to someone who has been affected" },
+  { value: "worked-3-5-years", label: "Worked directly in the field (3 - 5 years)" },
+  { value: "worked-5plus-years", label: "Worked directly in the field (> 5 years)" },
+  { value: "experience-as-user", label: "Experience as someone affected/target user" },
+  { value: "no-experience", label: "No professional experience in specific field/domain" }
+];
+
+const KEY_GROUPS_AFFECTED = [
+  "EYFS",
+  "Grades K - 6 (4 - 11 years)",
+  "Grades 7 - 12 (11 - 18 years)",
+  "Students in Further Education (FE) or Vocational Learning (16-24 years)",
+  "Students in Higher Education (HE) (18-24 years)",
+  "Professional Development and Lifelong Learners (not FE or HE) (18+ years)",
+  "Teachers EYFS",
+  "Teachers (K - 12)",
+  "Teachers (FE)",
+  "Teachers/Lecturers (HE)",
+  "Parents/Guardians/Carers",
+  "Other"
+];
+
+const CUSTOMER_TYPES = [
+  "Students in Further Education (FE) or Vocational Learning (16-24 years)",
+  "Students in Higher Education (HE) (18-24 years)",
+  "Teachers (K - 12)",
+  "Parents/Guardians/Carers",
+  "Teachers (FE)",
+  "Lecturers and Researchers (Higher Education and Academic Research)",
+  "Businesses (SMEs, Start-ups, Corporations)",
+  "Professional Development and Lifelong Learners (not FE or HE) (18+ years)",
+  "Governments, NGOs, and Public Policy Makers",
+  "Other"
+];
 
 // Multi-step form configuration
 const FORM_STEPS = [
@@ -59,7 +207,33 @@ export default function Apply() {
   const form = useForm<ApplicationForm>({
     resolver: zodResolver(applicationSchema),
     defaultValues: {
+      fullName: "",
+      dateOfBirth: "",
       email: "",
+      telephoneNumber: "",
+      countryOfResidence: "",
+      companyName: "",
+      productName: "",
+      hqLocation: "",
+      coFounders: "",
+      numberOfEmployees: 0,
+      monthlyRecurringRevenue: "",
+      investmentRounds: 0,
+      companyValuation: "",
+      plannedRaiseAmount: "",
+      plannedRaiseValuation: "",
+      problemDescription: "",
+      problemCauses: [],
+      edtechDomains: [],
+      keyGroupAffected: [],
+      problemImpact: "",
+      customerType: [],
+      elevatorPitch: "",
+      solutionExplanation: "",
+      programGoals: "",
+      companyWebsite: "",
+      pitchDeckLink: "",
+      linkedinProfile: "",
     },
     mode: "onChange",
   });
@@ -244,59 +418,741 @@ export default function Apply() {
           </CardHeader>
           
           <CardContent>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              
-              {/* Placeholder for form fields - we'll add these next */}
-              <div className="text-center py-16 text-gray-500">
-                <p>Form fields for {FORM_STEPS[currentStep - 1].title} will be added here</p>
-                <p className="text-sm mt-2">Step {currentStep} content coming next</p>
-              </div>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                
+                {/* Step 1: Personal Information */}
+                {currentStep === 1 && (
+                  <div className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="fullName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="flex items-center space-x-1">
+                            <span>Full Name</span>
+                            <span className="text-red-500">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <Input placeholder="Enter your full name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-              <Separator />
+                    <FormField
+                      control={form.control}
+                      name="dateOfBirth"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Date of Birth</FormLabel>
+                          <FormControl>
+                            <Input type="date" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-              {/* Navigation Buttons */}
-              <div className="flex justify-between items-center pt-6">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={prevStep}
-                  disabled={currentStep === 1}
-                  className="flex items-center space-x-2"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  <span>Previous</span>
-                </Button>
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="flex items-center space-x-1">
+                            <span>Email</span>
+                            <span className="text-red-500">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="your.email@example.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                <div className="flex items-center space-x-4">
+                    <FormField
+                      control={form.control}
+                      name="telephoneNumber"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Telephone Number</FormLabel>
+                          <FormControl>
+                            <Input placeholder="+44 20 1234 5678" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="countryOfResidence"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Country of Residence</FormLabel>
+                          <FormControl>
+                            <CityAutocomplete
+                              value={field.value}
+                              onValueChange={field.onChange}
+                              placeholder="Select your country"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                )}
+
+                {/* Step 2: Company Details */}
+                {currentStep === 2 && (
+                  <div className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="companyName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Company Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your company name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="productName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Product Name (if different from Company name)</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your product name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="hqLocation"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>HQ Location</FormLabel>
+                          <FormControl>
+                            <Input placeholder="London, UK" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="startupStage"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Startup Stage</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select your startup stage" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {STARTUP_STAGES.map((stage) => (
+                                <SelectItem key={stage.value} value={stage.value}>
+                                  {stage.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="businessModel"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Business Model</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select your business model" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {BUSINESS_MODELS.map((model) => (
+                                <SelectItem key={model.value} value={model.value}>
+                                  {model.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="coFounders"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Please list all co-founders and their expertise</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="John Smith - CTO, 10 years software development&#10;Jane Doe - CMO, 5 years EdTech marketing"
+                              className="min-h-[100px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormDescription>
+                            List each co-founder on a new line with their name, role, and relevant expertise
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="numberOfEmployees"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Number of employees</FormLabel>
+                            <FormControl>
+                              <Input 
+                                type="number" 
+                                placeholder="5" 
+                                {...field}
+                                onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="monthlyRecurringRevenue"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Monthly Recurring Revenue (MRR) - GBP</FormLabel>
+                            <FormControl>
+                              <Input placeholder="50000" {...field} />
+                            </FormControl>
+                            <FormDescription>Enter amount in GBP</FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="investmentRounds"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Total number of investment rounds closed</FormLabel>
+                            <FormControl>
+                              <Input 
+                                type="number" 
+                                placeholder="2" 
+                                {...field}
+                                onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="companyValuation"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Company valuation at last investment round (GBP)</FormLabel>
+                            <FormControl>
+                              <Input placeholder="5000000" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="plannedRaiseAmount"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>If currently planning on raising, how much?</FormLabel>
+                            <FormControl>
+                              <Input placeholder="1000000" {...field} />
+                            </FormControl>
+                            <FormDescription>Amount in GBP</FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="plannedRaiseValuation"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>At what company valuation?</FormLabel>
+                            <FormControl>
+                              <Input placeholder="10000000" {...field} />
+                            </FormControl>
+                            <FormDescription>Valuation in GBP</FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 3: Problem & Solution */}
+                {currentStep === 3 && (
+                  <div className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="problemDescription"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>What is the problem your product/startup is trying to solve?</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Describe the specific problem you're addressing in education..."
+                              className="min-h-[120px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="problemCauses"
+                      render={() => (
+                        <FormItem>
+                          <FormLabel>What are the key causes of the problem you identify above?</FormLabel>
+                          <FormDescription className="mb-4">
+                            Select all that apply
+                          </FormDescription>
+                          <div className="space-y-3 max-h-64 overflow-y-auto border rounded-md p-4">
+                            {PROBLEM_CAUSES.map((cause) => (
+                              <FormField
+                                key={cause}
+                                control={form.control}
+                                name="problemCauses"
+                                render={({ field }) => {
+                                  return (
+                                    <FormItem
+                                      key={cause}
+                                      className="flex flex-row items-start space-x-3 space-y-0"
+                                    >
+                                      <FormControl>
+                                        <Checkbox
+                                          checked={field.value?.includes(cause)}
+                                          onCheckedChange={(checked) => {
+                                            return checked
+                                              ? field.onChange([...field.value, cause])
+                                              : field.onChange(
+                                                  field.value.filter(
+                                                    (value) => value !== cause
+                                                  )
+                                                )
+                                          }}
+                                        />
+                                      </FormControl>
+                                      <FormLabel className="text-sm font-normal leading-5">
+                                        {cause}
+                                      </FormLabel>
+                                    </FormItem>
+                                  )
+                                }}
+                              />
+                            ))}
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="edtechDomains"
+                      render={() => (
+                        <FormItem>
+                          <FormLabel>What field(s) or domain(s) is your edtech product in?</FormLabel>
+                          <FormDescription className="mb-4">
+                            Please choose as many answers as applicable. For more information on the domains, please see HolonIQ 2021 Global Learning Landscape
+                          </FormDescription>
+                          <div className="space-y-3 max-h-80 overflow-y-auto border rounded-md p-4">
+                            {EDTECH_DOMAINS.map((domain) => (
+                              <FormField
+                                key={domain}
+                                control={form.control}
+                                name="edtechDomains"
+                                render={({ field }) => {
+                                  return (
+                                    <FormItem
+                                      key={domain}
+                                      className="flex flex-row items-start space-x-3 space-y-0"
+                                    >
+                                      <FormControl>
+                                        <Checkbox
+                                          checked={field.value?.includes(domain)}
+                                          onCheckedChange={(checked) => {
+                                            return checked
+                                              ? field.onChange([...field.value, domain])
+                                              : field.onChange(
+                                                  field.value.filter(
+                                                    (value) => value !== domain
+                                                  )
+                                                )
+                                          }}
+                                        />
+                                      </FormControl>
+                                      <FormLabel className="text-sm font-normal leading-5">
+                                        {domain}
+                                      </FormLabel>
+                                    </FormItem>
+                                  )
+                                }}
+                              />
+                            ))}
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="relevantExperience"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>
+                            What relevant experience do you and your key colleague(s) have in the field/domain that your edtech product is in?
+                          </FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select your experience level" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {RELEVANT_EXPERIENCE.map((exp) => (
+                                <SelectItem key={exp.value} value={exp.value}>
+                                  {exp.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="keyGroupAffected"
+                      render={() => (
+                        <FormItem>
+                          <FormLabel>Who is the key group affected by the problem you identified above?</FormLabel>
+                          <FormDescription className="mb-4">
+                            Select all that apply
+                          </FormDescription>
+                          <div className="space-y-3 max-h-64 overflow-y-auto border rounded-md p-4">
+                            {KEY_GROUPS_AFFECTED.map((group) => (
+                              <FormField
+                                key={group}
+                                control={form.control}
+                                name="keyGroupAffected"
+                                render={({ field }) => {
+                                  return (
+                                    <FormItem
+                                      key={group}
+                                      className="flex flex-row items-start space-x-3 space-y-0"
+                                    >
+                                      <FormControl>
+                                        <Checkbox
+                                          checked={field.value?.includes(group)}
+                                          onCheckedChange={(checked) => {
+                                            return checked
+                                              ? field.onChange([...field.value, group])
+                                              : field.onChange(
+                                                  field.value.filter(
+                                                    (value) => value !== group
+                                                  )
+                                                )
+                                          }}
+                                        />
+                                      </FormControl>
+                                      <FormLabel className="text-sm font-normal leading-5">
+                                        {group}
+                                      </FormLabel>
+                                    </FormItem>
+                                  )
+                                }}
+                              />
+                            ))}
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="problemImpact"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>How has your identified problem negatively impacted the key group you selected above?</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Describe the specific negative impacts..."
+                              className="min-h-[120px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="customerType"
+                      render={() => (
+                        <FormItem>
+                          <FormLabel>Who is your customer, if different from the end user?</FormLabel>
+                          <FormDescription className="mb-4">
+                            Select all that apply
+                          </FormDescription>
+                          <div className="space-y-3 max-h-64 overflow-y-auto border rounded-md p-4">
+                            {CUSTOMER_TYPES.map((customer) => (
+                              <FormField
+                                key={customer}
+                                control={form.control}
+                                name="customerType"
+                                render={({ field }) => {
+                                  return (
+                                    <FormItem
+                                      key={customer}
+                                      className="flex flex-row items-start space-x-3 space-y-0"
+                                    >
+                                      <FormControl>
+                                        <Checkbox
+                                          checked={field.value?.includes(customer)}
+                                          onCheckedChange={(checked) => {
+                                            return checked
+                                              ? field.onChange([...field.value, customer])
+                                              : field.onChange(
+                                                  field.value.filter(
+                                                    (value) => value !== customer
+                                                  )
+                                                )
+                                          }}
+                                        />
+                                      </FormControl>
+                                      <FormLabel className="text-sm font-normal leading-5">
+                                        {customer}
+                                      </FormLabel>
+                                    </FormItem>
+                                  )
+                                }}
+                              />
+                            ))}
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                )}
+
+                {/* Step 4: Review & Submit */}
+                {currentStep === 4 && (
+                  <div className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="elevatorPitch"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>What is your elevator pitch?</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="In 2-3 sentences, describe your startup and what makes it unique..."
+                              className="min-h-[100px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="solutionExplanation"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Explain in detail how your product fixes/solves the problem you identified above</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Provide a detailed explanation of your solution approach..."
+                              className="min-h-[150px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="programGoals"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>What would you like to achieve by taking part in this programme?</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Describe your specific goals and what you hope to gain from the program..."
+                              className="min-h-[120px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="companyWebsite"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Company website</FormLabel>
+                          <FormControl>
+                            <Input placeholder="https://yourcompany.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="pitchDeckLink"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Please link your current pitch deck</FormLabel>
+                          <FormControl>
+                            <Input placeholder="https://drive.google.com/..." {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            Share a Google Drive, Dropbox, or similar link to your pitch deck
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="linkedinProfile"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>LinkedIn profile</FormLabel>
+                          <FormControl>
+                            <Input placeholder="https://linkedin.com/in/yourprofile" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    {/* GDPR Compliance Notice */}
+                    <Alert>
+                      <HelpCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        <strong>Data Privacy Notice:</strong> By submitting this application, you consent to UCL EdTech Labs 
+                        processing your personal data for the purpose of evaluating your application and communicating with you 
+                        about our program. Your data will be stored securely and will not be shared with third parties without 
+                        your consent. You have the right to access, modify, or delete your data at any time by contacting us at 
+                        privacy@ucledtechlabs.com.
+                      </AlertDescription>
+                    </Alert>
+                  </div>
+                )}
+
+                <Separator />
+
+                {/* Navigation Buttons */}
+                <div className="flex justify-between items-center pt-6">
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => window.location.href = "/"}
+                    onClick={prevStep}
+                    disabled={currentStep === 1}
+                    className="flex items-center space-x-2"
                   >
-                    Save & Exit
+                    <ArrowLeft className="w-4 h-4" />
+                    <span>Previous</span>
                   </Button>
-                  
-                  {currentStep < FORM_STEPS.length ? (
+
+                  <div className="flex items-center space-x-4">
                     <Button
                       type="button"
-                      onClick={nextStep}
-                      className="bg-[#e57c00] text-white hover:bg-orange-600 flex items-center space-x-2"
+                      variant="outline"
+                      onClick={() => window.location.href = "/"}
                     >
-                      <span>Continue</span>
-                      <ArrowRight className="w-4 h-4" />
+                      Save & Exit
                     </Button>
-                  ) : (
-                    <Button
-                      type="submit"
-                      disabled={submitMutation.isPending}
-                      className="bg-[#e57c00] text-white hover:bg-orange-600"
-                    >
-                      {submitMutation.isPending ? "Submitting..." : "Submit Application"}
-                    </Button>
-                  )}
+                    
+                    {currentStep < FORM_STEPS.length ? (
+                      <Button
+                        type="button"
+                        onClick={nextStep}
+                        className="bg-[#e57c00] text-white hover:bg-orange-600 flex items-center space-x-2"
+                      >
+                        <span>Continue</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    ) : (
+                      <Button
+                        type="submit"
+                        disabled={submitMutation.isPending}
+                        className="bg-[#e57c00] text-white hover:bg-orange-600"
+                      >
+                        {submitMutation.isPending ? "Submitting..." : "Submit Application"}
+                      </Button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </Form>
           </CardContent>
         </Card>
 
