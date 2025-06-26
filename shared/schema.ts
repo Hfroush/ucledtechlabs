@@ -43,6 +43,7 @@ export const applications = pgTable("applications", {
   companyWebsite: text("company_website"),
   pitchDeckLink: text("pitch_deck_link"),
   linkedinProfile: text("linkedin_profile"),
+  researchEvidence: text("research_evidence"),
   
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });

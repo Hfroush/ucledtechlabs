@@ -63,6 +63,7 @@ const applicationSchema = z.object({
   companyWebsite: z.string().optional(),
   pitchDeckLink: z.string().optional(),
   linkedinProfile: z.string().optional(),
+  researchEvidence: z.string().optional(),
 });
 
 type ApplicationForm = z.infer<typeof applicationSchema>;
@@ -255,6 +256,7 @@ export default function Apply() {
       companyWebsite: "",
       pitchDeckLink: "",
       linkedinProfile: "",
+      researchEvidence: "",
     },
     mode: "onChange",
   });
@@ -1107,6 +1109,27 @@ export default function Apply() {
                           <FormControl>
                             <Input placeholder="https://linkedin.com/in/yourprofile" {...field} />
                           </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="researchEvidence"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Research Evidence</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Attach or link research papers that evidence your product's potential educational impact, support the theory(ies) that your product is based on or describe the problem you are aiming to solve."
+                              className="min-h-[120px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormDescription>
+                            Provide links to research papers or attach evidence that supports your product's educational impact, underlying theories, or problem definition.
+                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
