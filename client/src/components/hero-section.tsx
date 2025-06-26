@@ -21,10 +21,10 @@ export default function HeroSection() {
             <p className="text-xl mb-8 text-blue-100">Turn your bold EdTech idea into real‑world impact, backed by research. Our mission is to build accelerator programs that collectively help improve the way people learn all over the world, based on true academic methods and iterated through hundreds of entrepreneurs. We will guide you through our powerful and effective methodology to build successful learning and teaching products as well as introduce you to the most suitable and successful mentors.</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={() => window.location.href = "/apply"}
+                onClick={() => scrollToSection("apply")}
                 className="px-8 py-4 rounded-lg font-semibold hover:bg-yellow-500 transition-colors text-lg h-auto text-[#ffffff] bg-[#e57c00]"
               >
-                Apply Now
+                Register Interest
               </Button>
             </div>
             <div className="flex flex-wrap items-center gap-8 mt-8 text-sm">
