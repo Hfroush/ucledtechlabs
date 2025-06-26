@@ -375,7 +375,6 @@ export default function Apply() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
-      
       {/* Header Section */}
       <div className="bg-white border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -428,7 +427,6 @@ export default function Apply() {
           </div>
         </div>
       </div>
-
       {/* Form Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Card>
@@ -1038,7 +1036,7 @@ export default function Apply() {
                       name="solutionExplanation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Explain in detail how your product fixes/solves the problem you identified above</FormLabel>
+                          <FormLabel>Explain in detail how your product fixes/solves the problem you identified previously</FormLabel>
                           <FormControl>
                             <Textarea 
                               placeholder="Provide a detailed explanation of your solution approach..."
@@ -1203,7 +1201,6 @@ export default function Apply() {
           </CardContent>
         </Card>
       </div>
-
       <Footer />
     </div>
   );
