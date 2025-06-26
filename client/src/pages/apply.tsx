@@ -19,6 +19,7 @@ import { CheckCircle, Clock, Users, Target, Lightbulb, ArrowLeft, ArrowRight, He
 import { CityAutocomplete } from "@/components/ui/city-autocomplete";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { validateCity } from "@/lib/cities";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 
@@ -34,7 +35,10 @@ const applicationSchema = z.object({
   // Company Details
   companyName: z.string().optional(),
   productName: z.string().optional(),
-  hqLocation: z.string().optional(),
+  hqLocation: z.string().optional().refine(
+    (value) => !value || validateCity(value),
+    "Please select a valid city from the dropdown"
+  ),
   startupStage: z.enum(["idea", "prototype", "mvp", "go-to-market", "product-market-fit", "investment", "scaling"]).optional(),
   businessModel: z.enum(["b2b", "b2c", "b2e", "b2g", "b2e2c", "b2b2c", "b2g2e"]).optional(),
   coFounders: z.string().optional(),
@@ -544,7 +548,11 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel>HQ Location</FormLabel>
                           <FormControl>
-                            <Input placeholder="London, UK" {...field} />
+                            <CityAutocomplete
+                              value={field.value}
+                              onValueChange={field.onChange}
+                              placeholder="Select your headquarters location"
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
