@@ -1183,16 +1183,7 @@ export default function Apply() {
             <CardTitle className="text-lg">Need Help?</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <h4 className="font-medium mb-2">Technical Support</h4>
-                <p className="text-gray-600">
-                  Having trouble with the form? Email us at{" "}
-                  <a href="mailto:tech@ucledtechlabs.com" className="text-[#e57c00] hover:underline">
-                    tech@ucledtechlabs.com
-                  </a>
-                </p>
-              </div>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
               <div>
                 <h4 className="font-medium mb-2">Application Questions</h4>
                 <p className="text-gray-600">
