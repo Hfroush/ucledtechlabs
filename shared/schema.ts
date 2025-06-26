@@ -22,7 +22,7 @@ export const applications = pgTable("applications", {
     enum: ["b2b", "b2c", "b2e", "b2g", "b2e2c", "b2b2c", "b2g2e"] 
   }),
   coFounders: text("co_founders"),
-  numberOfEmployees: integer("number_of_employees"),
+  numberOfEmployees: text("number_of_employees"),
   monthlyRecurringRevenue: decimal("monthly_recurring_revenue"),
   investmentRounds: integer("investment_rounds"),
   companyValuation: decimal("company_valuation"),

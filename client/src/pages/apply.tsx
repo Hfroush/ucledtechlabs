@@ -42,7 +42,7 @@ const applicationSchema = z.object({
   startupStage: z.enum(["idea", "prototype", "mvp", "go-to-market", "product-market-fit", "investment", "scaling"]).optional(),
   businessModel: z.enum(["b2b", "b2c", "b2e", "b2g", "b2e2c", "b2b2c", "b2g2e"]).optional(),
   coFounders: z.string().optional(),
-  numberOfEmployees: z.number().optional(),
+  numberOfEmployees: z.string().optional(),
   monthlyRecurringRevenue: z.string().optional(),
   investmentRounds: z.number().optional(),
   companyValuation: z.string().optional(),
@@ -175,6 +175,14 @@ const CUSTOMER_TYPES = [
   "Other"
 ];
 
+const EMPLOYEE_COUNT_OPTIONS = [
+  { value: "1", label: "1" },
+  { value: "2-3", label: "2-3" },
+  { value: "4-10", label: "4-10" },
+  { value: "11-20", label: "11-20" },
+  { value: ">20", label: ">20" }
+];
+
 // Multi-step form configuration
 const FORM_STEPS = [
   {
@@ -220,7 +228,7 @@ export default function Apply() {
       productName: "",
       hqLocation: "",
       coFounders: "",
-      numberOfEmployees: 0,
+      numberOfEmployees: "",
       monthlyRecurringRevenue: "",
       investmentRounds: 0,
       companyValuation: "",
@@ -637,14 +645,20 @@ export default function Apply() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Number of employees</FormLabel>
-                            <FormControl>
-                              <Input 
-                                type="number" 
-                                placeholder="5" 
-                                {...field}
-                                onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
-                              />
-                            </FormControl>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select employee count" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {EMPLOYEE_COUNT_OPTIONS.map((option) => (
+                                  <SelectItem key={option.value} value={option.value}>
+                                    {option.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
                             <FormMessage />
                           </FormItem>
                         )}
