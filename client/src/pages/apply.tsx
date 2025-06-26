@@ -183,6 +183,15 @@ const EMPLOYEE_COUNT_OPTIONS = [
   { value: ">20", label: ">20" }
 ];
 
+const MRR_OPTIONS = [
+  { value: "pre-revenue", label: "Pre-revenue" },
+  { value: "<1000", label: "<£1,000" },
+  { value: "<5000", label: "<£5,000" },
+  { value: "<10000", label: "<£10,000" },
+  { value: "<25000", label: "<£25,000" },
+  { value: ">25000", label: ">£25,000" }
+];
+
 // Multi-step form configuration
 const FORM_STEPS = [
   {
@@ -670,10 +679,20 @@ export default function Apply() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Monthly Recurring Revenue (MRR) - GBP</FormLabel>
-                            <FormControl>
-                              <Input placeholder="50000" {...field} />
-                            </FormControl>
-                            <FormDescription>Enter amount in GBP</FormDescription>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select MRR range" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {MRR_OPTIONS.map((option) => (
+                                  <SelectItem key={option.value} value={option.value}>
+                                    {option.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
                             <FormMessage />
                           </FormItem>
                         )}

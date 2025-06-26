@@ -127,6 +127,7 @@ The application is configured for Replit's autoscale deployment:
 - June 26, 2025: Implemented EdTech domain selection with 32 specific categories, problem cause analysis, and customer type identification
 - June 26, 2025: Added multi-step progress tracking, real-time validation, accessibility features (WCAG 2.1 AA), and GDPR compliance notices
 - June 26, 2025: Updated number of employees field to dropdown with ranges: 1, 2-3, 4-10, 11-20, >20 for better data consistency
+- June 26, 2025: Updated Monthly Recurring Revenue field to dropdown with ranges: Pre-revenue, <£1,000, <£5,000, <£10,000, <£25,000, >£25,000
 
 ## User Preferences
 
