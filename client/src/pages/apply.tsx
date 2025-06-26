@@ -921,47 +921,23 @@ export default function Apply() {
                     <FormField
                       control={form.control}
                       name="keyGroupAffected"
-                      render={() => (
+                      render={({ field }) => (
                         <FormItem>
                           <FormLabel>Who is the key group affected by the problem you identified above?</FormLabel>
-                          <FormDescription className="mb-4">
-                            Select all that apply
-                          </FormDescription>
-                          <div className="space-y-3 max-h-64 overflow-y-auto border rounded-md p-4">
-                            {KEY_GROUPS_AFFECTED.map((group) => (
-                              <FormField
-                                key={group}
-                                control={form.control}
-                                name="keyGroupAffected"
-                                render={({ field }) => {
-                                  return (
-                                    <FormItem
-                                      key={group}
-                                      className="flex flex-row items-start space-x-3 space-y-0"
-                                    >
-                                      <FormControl>
-                                        <Checkbox
-                                          checked={field.value?.includes(group)}
-                                          onCheckedChange={(checked) => {
-                                            return checked
-                                              ? field.onChange([...field.value, group])
-                                              : field.onChange(
-                                                  field.value.filter(
-                                                    (value) => value !== group
-                                                  )
-                                                )
-                                          }}
-                                        />
-                                      </FormControl>
-                                      <FormLabel className="text-sm font-normal leading-5">
-                                        {group}
-                                      </FormLabel>
-                                    </FormItem>
-                                  )
-                                }}
-                              />
-                            ))}
-                          </div>
+                          <Select onValueChange={(value) => field.onChange([value])} defaultValue={field.value?.[0]}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select the primary group affected" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {KEY_GROUPS_AFFECTED.map((group) => (
+                                <SelectItem key={group} value={group}>
+                                  {group}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
