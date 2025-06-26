@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
+import Apply from "@/pages/apply";
 import Accessibility from "@/pages/accessibility";
 import Disclaimer from "@/pages/disclaimer";
 import FreedomOfInformation from "@/pages/freedom-of-information";
@@ -16,6 +17,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/apply" component={Apply} />
       <Route path="/accessibility" component={Accessibility} />
       <Route path="/disclaimer" component={Disclaimer} />
       <Route path="/freedom-of-information" component={FreedomOfInformation} />

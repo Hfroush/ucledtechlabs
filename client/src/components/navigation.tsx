@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,12 +54,11 @@ export default function Navigation() {
               >
                 Partners
               </button>
-              <Button 
-                onClick={() => scrollToSection("apply")}
-                className="bg-primary text-white hover:bg-blue-700"
-              >
-                Register Interest
-              </Button>
+              <Link href="/apply">
+                <Button className="bg-[#e57c00] text-white hover:bg-orange-600">
+                  Apply Now
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -96,12 +96,11 @@ export default function Navigation() {
                   >
                     Partners
                   </button>
-                  <Button 
-                    onClick={() => scrollToSection("apply")}
-                    className="bg-primary text-white hover:bg-blue-700 w-full mt-4"
-                  >
-                    Register Interest
-                  </Button>
+                  <Link href="/apply">
+                    <Button className="bg-[#e57c00] text-white hover:bg-orange-600 w-full mt-4">
+                      Apply Now
+                    </Button>
+                  </Link>
                 </div>
               </SheetContent>
             </Sheet>
