@@ -214,7 +214,7 @@ const FORM_STEPS = [
   },
   {
     id: 4,
-    title: "Deck and Uploads",
+    title: "Pitch Deck and Links",
     description: "Finalise your application",
     icon: CheckCircle,
   },
