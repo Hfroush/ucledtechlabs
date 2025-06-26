@@ -54,11 +54,12 @@ export default function Navigation() {
               >
                 Partners
               </button>
-              <Link href="/apply">
-                <Button className="bg-[#e57c00] text-white hover:bg-orange-600">
-                  Apply Now
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => scrollToSection("apply")}
+                className="bg-[#e57c00] text-white hover:bg-orange-600"
+              >
+                Register Interest
+              </Button>
             </div>
           </div>
 
@@ -96,11 +97,15 @@ export default function Navigation() {
                   >
                     Partners
                   </button>
-                  <Link href="/apply">
-                    <Button className="bg-[#e57c00] text-white hover:bg-orange-600 w-full mt-4">
-                      Apply Now
-                    </Button>
-                  </Link>
+                  <Button 
+                    onClick={() => {
+                      scrollToSection("apply");
+                      setIsOpen(false);
+                    }}
+                    className="bg-[#e57c00] text-white hover:bg-orange-600 w-full mt-4"
+                  >
+                    Register Interest
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>

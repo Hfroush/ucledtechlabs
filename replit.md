@@ -131,7 +131,7 @@ The application is configured for Replit's autoscale deployment:
 - June 26, 2025: Added research evidence field supporting Evidence-Led methodology - allows applicants to attach/link research papers evidencing educational impact, supporting theories, or problem descriptions
 - June 26, 2025: Implemented comprehensive file upload system with drag-and-drop functionality, 10MB file limits, support for academic document formats (PDF, DOC, DOCX, TXT, PNG, JPG), and real-time upload progress feedback
 - June 26, 2025: Made comprehensive application form accessible from homepage by updating hero section "Apply Now" button and application section to prominently feature the detailed 4-step application process instead of just interest registration
-- June 26, 2025: Reverted homepage buttons back to "Register Interest" - comprehensive application form remains accessible via direct URL while homepage focuses on lead capture for future cohort notifications
+- June 26, 2025: Reverted all website buttons to "Register Interest" including navigation header - comprehensive application form remains accessible via direct URL while entire website focuses on lead capture for future cohort notifications
 
 ## User Preferences
 
