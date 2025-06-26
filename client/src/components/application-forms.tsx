@@ -127,22 +127,39 @@ export default function ApplicationForms() {
     <section id="apply" className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Register Your Interest</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">Apply to Our Program</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get notified about upcoming cohorts and be first to apply when applications open. We're looking for passionate founders ready to transform education.
+            Ready to transform education? Submit your comprehensive application now. We're looking for passionate founders with evidence-backed EdTech solutions.
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
-          {/* Interest Registration Form */}
+        <div className="max-w-4xl mx-auto">
+          {/* Main Application CTA */}
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 mb-12 text-center">
+            <div className="mb-8">
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">Submit Your Application</h3>
+              <p className="text-lg text-gray-700 mb-6">Complete our comprehensive 4-step application process with detailed information about your EdTech startup, evidence of educational impact, and supporting research.</p>
+              <div className="flex items-center justify-center mb-6">
+                <span className="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                <Badge className="bg-green-600 text-white text-sm">Applications Open Now</Badge>
+              </div>
+              <Button 
+                onClick={() => window.location.href = "/apply"}
+                className="px-12 py-4 text-xl font-bold hover:bg-yellow-500 bg-[#e57c00] text-white rounded-lg shadow-lg hover:shadow-xl transition-all"
+              >
+                Start Your Application
+              </Button>
+              <p className="text-sm text-gray-600 mt-4">
+                Complete application includes: Personal details, company information, product specifics, research evidence, and pitch materials
+              </p>
+            </div>
+          </div>
+
+          {/* Secondary: Interest Registration */}
           <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8">
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Register Your Interest</h3>
-              <p className="text-gray-600">Get notified about future programs and be first to apply when applications open.</p>
-              <div className="flex items-center mt-4">
-                <span className="w-3 h-3 bg-accent rounded-full mr-2"></span>
-                <Badge className="bg-[#e57c00] text-[#ffffff]">Applications Opening Soon</Badge>
-              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Or Register Interest for Future Cohorts</h3>
+              <p className="text-gray-600">Not ready to apply yet? Get notified about upcoming programs and events.</p>
             </div>
 
             <Form {...interestForm}>
