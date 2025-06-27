@@ -112,19 +112,61 @@ export default function PastProgramsSection() {
                 </h3>
                 
                 {program.location === "London" ? (
-                  <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div className="text-center p-3 bg-white rounded-lg border">
+                  <div className="grid grid-cols-3 gap-3 mt-4">
+                    <div className="text-center p-2 bg-white rounded-lg border">
                       <img
                         src="/logos/santander-universities.png"
                         alt="Santander Universities"
-                        className="h-12 mx-auto object-contain"
+                        className="h-10 mx-auto object-contain"
                       />
                     </div>
-                    <div className="text-center p-3 bg-white rounded-lg border">
+                    <div className="text-center p-2 bg-white rounded-lg border">
                       <img
                         src="/logos/ucl-institute-education.png"
                         alt="UCL Institute of Education"
-                        className="h-12 mx-auto object-contain"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src="/logos/ucl-engineering-new.png"
+                        alt="UCL Engineering"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src="/logos/ucl-digital-innovation-aws.png"
+                        alt="UCL Centre for Digital Innovation powered by AWS"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src="/logos/ucl-cee-new.png"
+                        alt="UCL Centre for Engineering Education"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src="/logos/ucl-school-management-new.png"
+                        alt="UCL School of Management"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src="/logos/ideal-london-new.png"
+                        alt="IDEAL London"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src="/logos/dohe-global.png"
+                        alt="DOHE Global"
+                        className="h-10 mx-auto object-contain"
                       />
                     </div>
                   </div>
