@@ -135,7 +135,7 @@ The application is configured for Replit's autoscale deployment:
 - June 27, 2025: Added contact form to Past Programs and Partners page with email functionality using SendGrid to send messages to info@ucledtechlabs.com, includes name, email, and message fields with proper validation and success/error handling
 - June 27, 2025: Created custom EdTech hero SVG illustration (600x400px) as alternative to existing collaborative workshop photo, optimized for the two-column hero layout
 - June 27, 2025: Added dedicated hero section to Past Programs and Partners page featuring cityscape cartoon illustration with iconic landmarks from program cities (London, Paris, Toronto, Dubai) to reinforce global network messaging
-- June 27, 2025: Fixed broken logo links in London section of Past Programs page by implementing authentic partner logos provided by user (Santander Universities, UCL departments, IDEAL London, DOHE Global)
+- June 27, 2025: Fixed broken logo links in London section of Past Programs page by implementing authentic partner logos provided by user (Santander Universities, UCL departments, IDEAL London, DOHE Global, London EdTech Week) - all 9 partner logos now display correctly
 
 ## User Preferences
 
