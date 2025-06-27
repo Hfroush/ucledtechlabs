@@ -169,6 +169,13 @@ export default function PastProgramsSection() {
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src="/logos/london-edtechweek.png"
+                        alt="London EdTech Week"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
                   </div>
                 ) : program.location === "Paris" ? (
                   <div className="grid grid-cols-2 gap-4 mt-4">
