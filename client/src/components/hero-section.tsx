@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-import postits_on_a_table from "@assets/postits on a table.png";
+import cityscape_cartoon from "@assets/cityscape cartoon_1751016300492.png";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -45,16 +45,10 @@ export default function HeroSection() {
           <div className="lg:text-right">
             <div className="relative">
               <img 
-                src={postits_on_a_table} 
-                alt="Collaborative workshop with educators and entrepreneurs" 
+                src={cityscape_cartoon} 
+                alt="Global cities representing our international EdTech accelerator programs across London, Paris, Toronto, and Dubai" 
                 className="rounded-xl shadow-2xl w-full max-w-lg ml-auto"
               />
-              {/* Alternative: EdTech SVG illustration */}
-              {/* <img 
-                src="/hero-edtech.svg" 
-                alt="EdTech innovation and learning technology" 
-                className="rounded-xl shadow-2xl w-full max-w-lg ml-auto"
-              /> */}
             </div>
           </div>
         </div>
