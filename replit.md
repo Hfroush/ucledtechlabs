@@ -134,7 +134,7 @@ The application is configured for Replit's autoscale deployment:
 - June 26, 2025: Reverted all website buttons to "Register Interest" including navigation header - comprehensive application form remains accessible via direct URL while entire website focuses on lead capture for future cohort notifications
 - June 27, 2025: Added contact form to Past Programs and Partners page with email functionality using SendGrid to send messages to info@ucledtechlabs.com, includes name, email, and message fields with proper validation and success/error handling
 - June 27, 2025: Created custom EdTech hero SVG illustration (600x400px) as alternative to existing collaborative workshop photo, optimized for the two-column hero layout
-- June 27, 2025: Updated hero section with new cityscape cartoon illustration featuring iconic landmarks from program cities (London, Paris, Toronto, Dubai) to reinforce global network messaging
+- June 27, 2025: Added dedicated hero section to Past Programs and Partners page featuring cityscape cartoon illustration with iconic landmarks from program cities (London, Paris, Toronto, Dubai) to reinforce global network messaging
 
 ## User Preferences
 
