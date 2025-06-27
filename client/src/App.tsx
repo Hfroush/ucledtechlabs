@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Route, Switch } from "wouter";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import Home from "@/pages/home";
 import Apply from "@/pages/apply";
@@ -13,26 +14,22 @@ import FreedomOfInformation from "@/pages/freedom-of-information";
 import PoliciesGuidance from "@/pages/policies-guidance";
 import PastProgramsPartnersPage from "@/pages/past-programs-partners";
 
-const queryClient = new QueryClient();
-
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/apply" element={<Apply />} />
-          <Route path="/past-programs-partners" element={<PastProgramsPartnersPage />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/accessibility" element={<Accessibility />} />
-          <Route path="/privacy-cookies" element={<PrivacyCookies />} />
-          <Route path="/disclaimer" element={<Disclaimer />} />
-          <Route path="/slavery-statement" element={<SlaveryStatement />} />
-          <Route path="/freedom-of-information" element={<FreedomOfInformation />} />
-          <Route path="/policies-guidance" element={<PoliciesGuidance />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/apply" component={Apply} />
+        <Route path="/past-programs-partners" component={PastProgramsPartnersPage} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/accessibility" component={Accessibility} />
+        <Route path="/privacy-cookies" component={PrivacyCookies} />
+        <Route path="/disclaimer" component={Disclaimer} />
+        <Route path="/slavery-statement" component={SlaveryStatement} />
+        <Route path="/freedom-of-information" component={FreedomOfInformation} />
+        <Route path="/policies-guidance" component={PoliciesGuidance} />
+        <Route component={NotFound} />
+      </Switch>
       <Toaster />
     </QueryClientProvider>
   );
