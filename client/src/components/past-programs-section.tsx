@@ -10,6 +10,17 @@ import idealLondonLogo from "@assets/Screenshot 2025-06-27 at 13.47.58_175101841
 import doheGlobalLogo from "@assets/Screenshot 2025-06-27 at 13.48.10_1751018414551.png";
 import londonEdtechWeekLogo from "@assets/Screenshot 2025-06-27 at 14.05.02_1751018713158.png";
 
+// Paris partner logos
+import uclEducationParis from "@assets/Screenshot 2025-06-27 at 14.10.19_1751019096795.png";
+import cyUniversiteLogo from "@assets/Screenshot 2025-06-27 at 14.10.27_1751019096794.png";
+import uclEngineeringParis from "@assets/Screenshot 2025-06-27 at 14.10.31_1751019096794.png";
+import essecLogo from "@assets/Screenshot 2025-06-27 at 14.10.37_1751019096793.png";
+import valOiseLogo from "@assets/Screenshot 2025-06-27 at 14.10.42_1751019096792.png";
+import laTurbineLogo from "@assets/Screenshot 2025-06-27 at 14.10.47_1751019096791.png";
+import bpiFranceLogo from "@assets/Screenshot 2025-06-27 at 14.10.52_1751019096789.png";
+import edtechFranceLogo from "@assets/Screenshot 2025-06-27 at 14.10.59_1751019096787.png";
+import ileDeFranceLogo from "@assets/Screenshot 2025-06-27 at 14.11.05_1751019096782.png";
+
 interface PastProgram {
   id: string;
   cohortNumber: number;
@@ -188,19 +199,68 @@ export default function PastProgramsSection() {
                     </div>
                   </div>
                 ) : program.location === "Paris" ? (
-                  <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div className="text-center p-3 bg-white rounded-lg border">
+                  <div className="grid grid-cols-3 gap-4 mt-4">
+                    <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/cergy-paris-universite.svg"
-                        alt="CY Cergy Paris Université"
-                        className="h-12 mx-auto object-contain"
+                        src={uclEducationParis}
+                        alt="UCL Institute of Education"
+                        className="h-10 mx-auto object-contain"
                       />
                     </div>
-                    <div className="text-center p-3 bg-white rounded-lg border">
+                    <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/essec-business-school.svg"
+                        src={cyUniversiteLogo}
+                        alt="CY Cergy Paris Université"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src={uclEngineeringParis}
+                        alt="UCL Engineering"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src={essecLogo}
                         alt="ESSEC Business School"
-                        className="h-12 mx-auto object-contain"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src={valOiseLogo}
+                        alt="Val d'Oise le département"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src={laTurbineLogo}
+                        alt="La Turbine"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src={bpiFranceLogo}
+                        alt="bpifrance"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src={edtechFranceLogo}
+                        alt="EdTech France"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src={ileDeFranceLogo}
+                        alt="Île-de-France"
+                        className="h-10 mx-auto object-contain"
                       />
                     </div>
                   </div>
