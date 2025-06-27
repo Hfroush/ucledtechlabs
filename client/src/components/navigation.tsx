@@ -26,7 +26,7 @@ export default function Navigation() {
               className="h-10 w-auto"
             />
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
@@ -37,23 +37,17 @@ export default function Navigation() {
                 Methodology
               </button>
               <button 
-                onClick={() => scrollToSection("past-programs")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Past Programs
-              </button>
-              <button 
                 onClick={() => scrollToSection("startups")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Startups
               </button>
-              <button 
-                onClick={() => scrollToSection("partners")}
+              <Link
+                href="/past-programs-partners"
                 className="text-gray-700 hover:text-primary transition-colors"
               >
-                Partners
-              </button>
+                Past Programs & Partners
+              </Link>
               <Button 
                 onClick={() => scrollToSection("apply")}
                 className="bg-[#e57c00] text-white hover:bg-orange-600"
@@ -80,23 +74,18 @@ export default function Navigation() {
                     Methodology
                   </button>
                   <button 
-                    onClick={() => scrollToSection("past-programs")}
-                    className="text-left text-gray-700 hover:text-primary transition-colors py-2"
-                  >
-                    Past Programs
-                  </button>
-                  <button 
                     onClick={() => scrollToSection("startups")}
                     className="text-left text-gray-700 hover:text-primary transition-colors py-2"
                   >
                     Startups
                   </button>
-                  <button 
-                    onClick={() => scrollToSection("partners")}
-                    className="text-left text-gray-700 hover:text-primary transition-colors py-2"
+                  <Link
+                    href="/past-programs-partners"
+                    className="block text-left text-gray-700 hover:text-primary transition-colors py-2"
+                    onClick={() => setIsOpen(false)}
                   >
-                    Partners
-                  </button>
+                    Past Programs & Partners
+                  </Link>
                   <Button 
                     onClick={() => {
                       scrollToSection("apply");
