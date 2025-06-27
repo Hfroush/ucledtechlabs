@@ -45,7 +45,7 @@ export default function HeroSection() {
           <div className="lg:text-right">
             <div className="relative">
               <img 
-                src={postits_on_a_table} 
+                src="/hero-edtech.svg"
                 alt="Collaborative workshop with educators and entrepreneurs" 
                 className="rounded-xl shadow-2xl w-full max-w-lg ml-auto"
               />
