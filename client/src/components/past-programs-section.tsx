@@ -8,6 +8,7 @@ import uclCeeLogo from "@assets/Screenshot 2025-06-27 at 13.47.41_1751018414553.
 import uclManagementLogo from "@assets/Screenshot 2025-06-27 at 13.47.49_1751018414552.png";
 import idealLondonLogo from "@assets/Screenshot 2025-06-27 at 13.47.58_1751018414552.png";
 import doheGlobalLogo from "@assets/Screenshot 2025-06-27 at 13.48.10_1751018414551.png";
+import londonEdtechWeekLogo from "@assets/Screenshot 2025-06-27 at 14.05.02_1751018713158.png";
 
 interface PastProgram {
   id: string;
@@ -175,6 +176,13 @@ export default function PastProgramsSection() {
                       <img
                         src={doheGlobalLogo}
                         alt="DOHE Global"
+                        className="h-10 mx-auto object-contain"
+                      />
+                    </div>
+                    <div className="text-center p-2 bg-white rounded-lg border">
+                      <img
+                        src={londonEdtechWeekLogo}
+                        alt="London EdTech Week"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
