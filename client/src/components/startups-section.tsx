@@ -7,7 +7,6 @@ interface Startup {
   sector: string;
   keyMetric: string;
   gradientClass: string;
-  logoUrl: string;
   websiteUrl: string;
 }
 
@@ -20,7 +19,6 @@ export default function StartupsSection() {
       sector: "EdTech – coding & AI for youth",
       keyMetric: "Over 26,000 students, 1 million training hours, and 10 million lines of code written; raised US $4.5 million",
       gradientClass: "from-blue-500 to-purple-600",
-      logoUrl: "/startup-logos/ischool.png",
       websiteUrl: "https://ischool.ai"
     },
     {
@@ -30,7 +28,6 @@ export default function StartupsSection() {
       sector: "Early childhood EdTech – global digital citizenship",
       keyMetric: "100% user satisfaction, 100% friend-making rate, winner of EdTechX Mission Driven Award 2024",
       gradientClass: "from-green-500 to-teal-600",
-      logoUrl: "/startup-logos/moi-panda.png",
       websiteUrl: "https://moipanda.com"
     },
     {
@@ -40,7 +37,6 @@ export default function StartupsSection() {
       sector: "Language learning & workforce inclusion",
       keyMetric: "Raised £1.5 million pre-seed; clients include Unilever, PwC, and the British Red Cross; recognised with awards from the Next Billion EdTech Prize and Forbes 30 Under 30",
       gradientClass: "from-pink-500 to-rose-600",
-      logoUrl: "/startup-logos/chatterbox.png",
       websiteUrl: "https://chatterbox.co"
     },
     {
@@ -50,7 +46,6 @@ export default function StartupsSection() {
       sector: "AI-powered active learning tools",
       keyMetric: "Won a share of £1 million in UK Government/Department for Education AI competition",
       gradientClass: "from-orange-500 to-red-600",
-      logoUrl: "/startup-logos/graffinity.png",
       websiteUrl: "https://graffinity.com"
     },
     {
@@ -60,7 +55,6 @@ export default function StartupsSection() {
       sector: "Literacy & creative thinking education",
       keyMetric: "Worked with 2,000+ schools and tens of thousands of teachers",
       gradientClass: "from-indigo-500 to-blue-600",
-      logoUrl: "/startup-logos/linkythinks.png",
       websiteUrl: "https://linkythinks.com"
     },
     {
@@ -70,7 +64,6 @@ export default function StartupsSection() {
       sector: "EdTech – K–12 mathematics learning",
       keyMetric: "Raised $20 million Series A; supports 300,000+ students and over 100 school boards across Canada, the US, Mexico, and the UK",
       gradientClass: "from-yellow-500 to-orange-600",
-      logoUrl: "/startup-logos/knowledgehook.png",
       websiteUrl: "https://knowledgehook.com"
     }
   ];
@@ -98,12 +91,10 @@ export default function StartupsSection() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex flex-col items-center text-center mb-4">
-                      <div className="w-20 h-20 bg-white rounded-xl p-3 shadow-lg flex items-center justify-center mb-4 group-hover:shadow-xl transition-shadow">
-                        <img 
-                          src={startup.logoUrl} 
-                          alt={`${startup.name} logo`}
-                          className="w-full h-full object-contain"
-                        />
+                      <div className={`w-20 h-20 bg-gradient-to-br ${startup.gradientClass} rounded-xl shadow-lg flex items-center justify-center mb-4 group-hover:shadow-xl transition-shadow`}>
+                        <span className="text-white font-bold text-lg">
+                          {startup.name.charAt(0)}
+                        </span>
                       </div>
                       <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                         {startup.name}

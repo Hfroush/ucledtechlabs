@@ -6,7 +6,6 @@ interface Testimonial {
   name: string;
   title: string;
   company: string;
-  avatar: string;
 }
 
 export default function FounderTestimonials() {
@@ -16,64 +15,56 @@ export default function FounderTestimonials() {
       quote: "After a few workshops things are beginning to fall into place. We've had a few good team sessions over the last few days and have made progress with stakeholder mapping and logic modelling for product, marketing & sales",
       name: "Andrea De Giorgio",
       title: "CEO & Co-founder",
-      company: "eWorking",
-      avatar: "/avatars/andrea-de-giorgio.png"
+      company: "eWorking"
     },
     {
       id: "2",
       quote: "The impact on our 'self-made assumption' was massive, we have to work a lot to build a robust logical structure around our evaluations and decisions",
       name: "Angela Newton",
       title: "Co-Founder",
-      company: "Real Fast Reports",
-      avatar: "/avatars/angela-newton.png"
+      company: "Real Fast Reports"
     },
     {
       id: "3",
       quote: "We received HUGE value - we had a full team/board meeting yesterday to see how we can implement changes to our product and marketing strategy using the stakeholder mapping and research questioning",
       name: "Dan Rosenberg",
       title: "Founder",
-      company: "LinkyThinks",
-      avatar: "/avatars/dan-rosenberg.png"
+      company: "LinkyThinks"
     },
     {
       id: "4",
       quote: "UCL EdTech Labs is the bridge between UCL and the EdTech ecosystem in London, Europe and beyond. The accelerator has helped us reach many key individuals, and it has been the root reason for our growth for the past year.",
       name: "Arum Tufan",
       title: "Founder",
-      company: "Happy Student",
-      avatar: "/avatars/arum-tufan.png"
+      company: "Happy Student"
     },
     {
       id: "5",
       quote: "I learned the value of feedback, and the importance of compiling and using research data to guide decision-making.",
       name: "Arthur Vincent",
       title: "Founder/Director",
-      company: "Planet Citizens",
-      avatar: "/avatars/arthur-vincent.png"
+      company: "Planet Citizens"
     },
     {
       id: "6",
       quote: "The programme taught me how to apply research methods, use the innovation spiral effectively, and structure a compelling value proposition.",
       name: "Clare Daly",
       title: "Developer of Potential",
-      company: "Dynamigo",
-      avatar: "/avatars/clare-daly.png"
+      company: "Dynamigo"
     },
     {
       id: "7",
       quote: "I now approach product development with a research-backed, data-driven mindset—using evidence to reinforce value and inform the development of new features.",
       name: "Kate Bodrova",
       title: "Co-Founder and CEO",
-      company: "Amazy.uk",
-      avatar: "/avatars/kate-bodrova.png"
+      company: "Amazy.uk"
     },
     {
       id: "8",
       quote: "I learned how to plan user testing logically by setting up clear scenarios and hypotheses, allowing us to gather meaningful insights from real users.",
       name: "Chayanon Lieng",
       title: "Founder",
-      company: "Useless Land",
-      avatar: "/avatars/chayanon-lieng.png"
+      company: "Useless Land"
     }
   ];
 
@@ -98,11 +89,11 @@ export default function FounderTestimonials() {
               </div>
               
               <div className="flex items-center mt-6 pt-4 border-t border-gray-100">
-                <img 
-                  src={testimonial.avatar} 
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                  <span className="text-primary font-semibold text-sm">
+                    {testimonial.name.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                  </span>
+                </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
                   <p className="text-sm text-gray-600">{testimonial.title}</p>

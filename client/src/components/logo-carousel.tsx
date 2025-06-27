@@ -5,6 +5,19 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
+// Import authentic logos
+import uclEducationLogo from "@assets/Screenshot 2025-06-25 at 08.45.01_1751018427014.png";
+import santanderLogo from "@assets/Screenshot 2025-06-25 at 08.45.11_1751018427011.png";
+import uclEngineeringLogo from "@assets/Screenshot 2025-06-27 at 13.47.12_1751018414555.png";
+import uclDigitalLogo from "@assets/Screenshot 2025-06-27 at 13.47.20_1751018414553.png";
+import uclCeeLogo from "@assets/Screenshot 2025-06-27 at 13.47.41_1751018414553.png";
+import uclManagementLogo from "@assets/Screenshot 2025-06-27 at 13.47.49_1751018414552.png";
+import idealLondonLogo from "@assets/Screenshot 2025-06-27 at 13.47.58_1751018414552.png";
+import cyUniversiteLogo from "@assets/Screenshot 2025-06-27 at 14.10.27_1751019096794.png";
+import essecLogo from "@assets/Screenshot 2025-06-27 at 14.10.37_1751019096793.png";
+import valOiseLogo from "@assets/Screenshot 2025-06-27 at 14.10.42_1751019096792.png";
+import ileDeFranceLogo from "@assets/Screenshot 2025-06-27 at 14.11.05_1751019096782.png";
+
 interface Partner {
   id: string;
   name: string;
@@ -17,73 +30,67 @@ export default function LogoCarousel() {
     {
       id: "ucl-institute-education",
       name: "UCL Institute of Education",
-      logoUrl: "/logos/ucl-institute-education.png",
+      logoUrl: uclEducationLogo,
       website: "https://www.ucl.ac.uk/ioe/"
     },
     {
       id: "santander-universities",
       name: "Santander Universities",
-      logoUrl: "/logos/santander-universities.png",
+      logoUrl: santanderLogo,
       website: "https://www.santander.com/en/about-us/sustainability/santander-universities"
     },
     {
       id: "ucl-engineering",
       name: "UCL Engineering",
-      logoUrl: "/logos/ucl-engineering.png",
+      logoUrl: uclEngineeringLogo,
       website: "https://www.ucl.ac.uk/engineering/"
     },
     {
       id: "ucl-digital-innovation",
       name: "UCL Centre for Digital Innovation",
-      logoUrl: "/logos/ucl-digital-innovation.png",
+      logoUrl: uclDigitalLogo,
       website: "https://www.ucl.ac.uk/digital-innovation/"
     },
     {
       id: "ucl-cee",
       name: "UCL Centre for Engineering Education",
-      logoUrl: "/logos/ucl-cee.png",
+      logoUrl: uclCeeLogo,
       website: "https://www.ucl.ac.uk/engineering/study/undergraduate-study/centre-engineering-education"
     },
     {
       id: "ucl-school-management",
       name: "UCL School of Management",
-      logoUrl: "/logos/ucl-school-management.png",
+      logoUrl: uclManagementLogo,
       website: "https://www.mgmt.ucl.ac.uk/"
     },
     {
       id: "ideal-london",
       name: "IDEAL London",
-      logoUrl: "/logos/ideal-london.png",
+      logoUrl: idealLondonLogo,
       website: "https://www.ideallondon.co.uk/"
-    },
-    {
-      id: "edtechx-europe",
-      name: "EdTechX Europe",
-      logoUrl: "/logos/edtechx-europe.png",
-      website: "https://www.edtechxeurope.com/"
     },
     {
       id: "cergy-paris-universite",
       name: "CY Cergy Paris Université",
-      logoUrl: "/logos/cergy-paris-universite.png",
+      logoUrl: cyUniversiteLogo,
       website: "https://www.cyu.fr/"
     },
     {
       id: "essec-business-school",
       name: "ESSEC Business School",
-      logoUrl: "/logos/essec-business-school.png",
+      logoUrl: essecLogo,
       website: "https://www.essec.edu/"
     },
     {
       id: "val-d-oise",
       name: "Val d'Oise",
-      logoUrl: "/logos/val-d-oise.png",
+      logoUrl: valOiseLogo,
       website: "https://www.valdoise.fr/"
     },
     {
       id: "ile-de-france",
       name: "Île-de-France",
-      logoUrl: "/logos/ile-de-france.png",
+      logoUrl: ileDeFranceLogo,
       website: "https://www.iledefrance.fr/"
     }
   ];

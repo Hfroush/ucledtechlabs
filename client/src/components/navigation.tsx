@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Link } from "wouter";
+import uclLogo from "@assets/UCL_Standalone_Edtech Labs_1750772093665.jpg";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/">
               <img 
-                src="/logo.jpg" 
+                src={uclLogo} 
                 alt="UCL EdTech Labs" 
                 className="h-10 w-auto cursor-pointer hover:opacity-80 transition-opacity"
               />
