@@ -46,7 +46,7 @@ export default function Navigation() {
                 href="/past-programs-partners"
                 className="text-gray-700 hover:text-primary transition-colors"
               >
-                Past Programs & Partners
+                Supporters and Programs
               </Link>
               <Button 
                 onClick={() => scrollToSection("apply")}
@@ -84,7 +84,7 @@ export default function Navigation() {
                     className="block text-left text-gray-700 hover:text-primary transition-colors py-2"
                     onClick={() => setIsOpen(false)}
                   >
-                    Past Programs & Partners
+                    Supporters and Programs
                   </Link>
                   <Button 
                     onClick={() => {
