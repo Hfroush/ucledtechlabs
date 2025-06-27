@@ -18,7 +18,7 @@ export default function PastProgramsPartnersPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Our <span className="text-[#e58c00]">Global Network</span> of Success Stories
+                Our <span className="text-[#e58c00]">Global Network</span> of Partners and Supporters
               </h1>
               <p className="text-xl mb-8 text-blue-100">
                 From London to Paris, Toronto to Dubai - discover the remarkable journey of our past programs and the incredible partners who make our global EdTech accelerator possible.
