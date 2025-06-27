@@ -6,7 +6,6 @@ import MethodologySection from "@/components/methodology-section";
 import StartupsSection from "@/components/startups-section";
 import FounderTestimonials from "@/components/founder-testimonials";
 import ApplicationForms from "@/components/application-forms";
-import ContactForm from "@/components/contact-form";
 import Footer from "@/components/footer";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
       <StartupsSection />
       <FounderTestimonials />
       <ApplicationForms />
-      <ContactForm />
       <Footer />
     </div>
   );
