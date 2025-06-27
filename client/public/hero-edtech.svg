@@ -1,0 +1,79 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#bgGradient)"/>
+  
+  <!-- Main laptop/screen -->
+  <rect x="180" y="120" width="240" height="160" rx="8" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <rect x="190" y="130" width="220" height="130" rx="4" fill="url(#screenGradient)"/>
+  
+  <!-- Screen content - EdTech interface -->
+  <rect x="200" y="140" width="200" height="20" rx="2" fill="#e58c00"/>
+  <text x="300" y="153" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">EdTech Dashboard</text>
+  
+  <!-- Progress bars representing learning -->
+  <rect x="210" y="170" width="120" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="210" y="170" width="90" height="8" rx="4" fill="#10b981"/>
+  <text x="340" y="177" fill="#64748b" font-family="Arial, sans-serif" font-size="8">Mathematics 75%</text>
+  
+  <rect x="210" y="185" width="120" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="210" y="185" width="72" height="8" rx="4" fill="#3b82f6"/>
+  <text x="340" y="192" fill="#64748b" font-family="Arial, sans-serif" font-size="8">Science 60%</text>
+  
+  <rect x="210" y="200" width="120" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="210" y="200" width="108" height="8" rx="4" fill="#8b5cf6"/>
+  <text x="340" y="207" fill="#64748b" font-family="Arial, sans-serif" font-size="8">Literature 90%</text>
+  
+  <!-- Charts/graphs -->
+  <circle cx="230" cy="230" r="15" fill="none" stroke="#e58c00" stroke-width="3" stroke-dasharray="70 30"/>
+  <circle cx="270" cy="230" r="15" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="60 40"/>
+  <circle cx="310" cy="230" r="15" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="80 20"/>
+  
+  <!-- Books stack -->
+  <rect x="80" y="250" width="60" height="8" rx="2" fill="#dc2626"/>
+  <rect x="85" y="242" width="60" height="8" rx="2" fill="#2563eb"/>
+  <rect x="90" y="234" width="60" height="8" rx="2" fill="#16a34a"/>
+  <rect x="95" y="226" width="60" height="8" rx="2" fill="#ca8a04"/>
+  
+  <!-- Floating elements - representing innovation -->
+  <circle cx="480" cy="80" r="20" fill="#e58c00" opacity="0.3"/>
+  <circle cx="520" cy="120" r="15" fill="#3b82f6" opacity="0.3"/>
+  <circle cx="460" cy="140" r="12" fill="#10b981" opacity="0.3"/>
+  
+  <!-- Network connections -->
+  <line x1="480" y1="80" x2="520" y2="120" stroke="#64748b" stroke-width="1" opacity="0.5"/>
+  <line x1="520" y1="120" x2="460" y2="140" stroke="#64748b" stroke-width="1" opacity="0.5"/>
+  <line x1="460" y1="140" x2="480" y2="80" stroke="#64748b" stroke-width="1" opacity="0.5"/>
+  
+  <!-- People silhouettes representing collaboration -->
+  <circle cx="120" cy="320" r="12" fill="#64748b"/>
+  <rect x="114" y="332" width="12" height="20" rx="6" fill="#64748b"/>
+  
+  <circle cx="160" cy="315" r="12" fill="#64748b"/>
+  <rect x="154" y="327" width="12" height="25" rx="6" fill="#64748b"/>
+  
+  <circle cx="200" cy="325" r="12" fill="#64748b"/>
+  <rect x="194" y="337" width="12" height="15" rx="6" fill="#64748b"/>
+  
+  <!-- Lightbulb representing innovation -->
+  <circle cx="500" cy="300" r="16" fill="none" stroke="#e58c00" stroke-width="2"/>
+  <rect x="492" y="316" width="16" height="6" rx="3" fill="#e58c00"/>
+  <line x1="484" y1="284" x2="516" y2="316" stroke="#e58c00" stroke-width="1"/>
+  <line x1="516" y1="284" x2="484" y2="316" stroke="#e58c00" stroke-width="1"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="100" r="3" fill="#e58c00" opacity="0.6"/>
+  <circle cx="550" cy="50" r="2" fill="#3b82f6" opacity="0.6"/>
+  <circle cx="70" cy="80" r="2" fill="#10b981" opacity="0.6"/>
+  <circle cx="530" cy="350" r="3" fill="#8b5cf6" opacity="0.6"/>
+</svg>

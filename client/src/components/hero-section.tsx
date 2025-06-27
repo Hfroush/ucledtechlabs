@@ -43,11 +43,19 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="lg:text-right">
-            <img 
-              src={postits_on_a_table} 
-              alt="Collaborative workshop with educators and entrepreneurs" 
-              className="rounded-xl shadow-2xl w-full max-w-lg ml-auto"
-            />
+            <div className="relative">
+              <img 
+                src={postits_on_a_table} 
+                alt="Collaborative workshop with educators and entrepreneurs" 
+                className="rounded-xl shadow-2xl w-full max-w-lg ml-auto"
+              />
+              {/* Alternative: EdTech SVG illustration */}
+              {/* <img 
+                src="/hero-edtech.svg" 
+                alt="EdTech innovation and learning technology" 
+                className="rounded-xl shadow-2xl w-full max-w-lg ml-auto"
+              /> */}
+            </div>
           </div>
         </div>
       </div>

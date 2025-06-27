@@ -132,6 +132,8 @@ The application is configured for Replit's autoscale deployment:
 - June 26, 2025: Implemented comprehensive file upload system with drag-and-drop functionality, 10MB file limits, support for academic document formats (PDF, DOC, DOCX, TXT, PNG, JPG), and real-time upload progress feedback
 - June 26, 2025: Made comprehensive application form accessible from homepage by updating hero section "Apply Now" button and application section to prominently feature the detailed 4-step application process instead of just interest registration
 - June 26, 2025: Reverted all website buttons to "Register Interest" including navigation header - comprehensive application form remains accessible via direct URL while entire website focuses on lead capture for future cohort notifications
+- June 27, 2025: Added contact form at bottom of homepage with email functionality using SendGrid to send messages to info@ucledtechlabs.com, includes name, email, and message fields with proper validation and success/error handling
+- June 27, 2025: Created custom EdTech hero SVG illustration (600x400px) as alternative to existing collaborative workshop photo, optimized for the two-column hero layout
 
 ## User Preferences
 

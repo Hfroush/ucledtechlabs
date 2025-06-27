@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import express from "express";
 import { storage } from "./storage";
 import { insertApplicationSchema, insertInterestRegistrationSchema } from "@shared/schema";
+import { sendContactEmail, type ContactEmailData } from "./email";
 import { z } from "zod";
 import multer from "multer";
 import path from "path";
@@ -144,6 +145,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: false, 
         message: "Failed to fetch registrations" 
       });
+    }
+  });
+
+  // Contact form endpoint
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const contactSchema = z.object({
+        name: z.string().min(2, "Name must be at least 2 characters"),
+        email: z.string().email("Please enter a valid email address"),
+        message: z.string().min(10, "Message must be at least 10 characters"),
+      });
+
+      const validatedData = contactSchema.parse(req.body);
+      const emailSent = await sendContactEmail(validatedData);
+      
+      if (emailSent) {
+        res.json({ success: true, message: "Email sent successfully" });
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to send email" 
+        });
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          success: false, 
+          message: "Validation failed", 
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: error instanceof Error ? error.message : "Failed to send contact email" 
+        });
+      }
     }
   });
 
