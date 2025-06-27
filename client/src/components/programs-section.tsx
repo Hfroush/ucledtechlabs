@@ -42,17 +42,6 @@ export default function ProgramsSection() {
       imageUrl: "https://images.unsplash.com/photo-1502602898536-47ad22581b52?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
     },
     {
-      id: "toronto",
-      city: "Toronto",
-      name: "Toronto Program",
-      description: "Access Canada's thriving tech ecosystem with government support and North American market entry.",
-      nextCohort: "April 2024",
-      startupCount: 18,
-      duration: "12-Week Intensive",
-      status: "open",
-      imageUrl: "https://images.unsplash.com/photo-1517935706615-2717063c2225?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
-    },
-    {
       id: "dubai",
       city: "Dubai",
       name: "Dubai Program",
@@ -65,7 +54,7 @@ export default function ProgramsSection() {
     }
   ];
 
-  const cities = ["all", "london", "paris", "toronto", "dubai"];
+  const cities = ["all", "london", "paris", "dubai"];
   
   const filteredPrograms = selectedCity === "all" 
     ? programs 

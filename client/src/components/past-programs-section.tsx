@@ -62,28 +62,7 @@ export default function PastProgramsSection() {
         }
       ]
     },
-    {
-      id: "cohort-1-toronto",
-      cohortNumber: 1,
-      year: "2024",
-      location: "Toronto",
-      startupCount: 0,
-      totalFunding: "",
-      demoDay: "",
-      highlights: [],
-      featuredStartups: [
-        {
-          name: "KnowledgeHook",
-          description: "$20 million Series A to scale math learning globally — the funding supports expansion of their ClassOS platform, bringing interactive, curriculum-aligned math content to schools worldwide",
-          outcome: "Engaging 300,000+ students with real-time feedback — the gamified ClassOS system delivers interactive lessons, badges and analytics that boost motivation and inform teaching practice in K–10 classrooms"
-        },
-        {
-          name: "4theWords",
-          description: "Gamified writing platform with deep engagement — writers \"kill monsters with words,\" using quests, streaks, and community events to build writing habits and drive daily output",
-          outcome: "Community‑driven with pro‑level storytelling tools — users praise the rich RPG-style mechanics (\"great artwork,\" \"timers make you write now\"), and 4theWords supports both solo and group quests to foster collaboration among writers"
-        }
-      ]
-    }
+    
   ];
 
   const getLocationColor = (location: string) => {
@@ -92,8 +71,6 @@ export default function PastProgramsSection() {
         return "bg-blue-500 text-white";
       case "Paris":
         return "bg-purple-500 text-white";
-      case "Toronto":
-        return "bg-red-500 text-white";
       case "Dubai":
         return "bg-orange-500 text-white";
       default:
@@ -123,7 +100,7 @@ export default function PastProgramsSection() {
                     </Badge>
                     <span className="text-sm text-gray-500">{program.demoDay}</span>
                   </div>
-                  {program.location !== "London" && program.location !== "Paris" && program.location !== "Toronto" && (
+                  {program.location !== "London" && program.location !== "Paris" && (
                     <span className="text-2xl font-bold text-primary">#{program.cohortNumber}</span>
                   )}
                 </div>
@@ -131,7 +108,6 @@ export default function PastProgramsSection() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {program.location === "London" ? "6 Cohorts" : 
                    program.location === "Paris" ? "5 Cohorts" : 
-                   program.location === "Toronto" ? "1 Cohort" :
                    `Cohort ${program.cohortNumber}`}
                 </h3>
                 
@@ -165,16 +141,6 @@ export default function PastProgramsSection() {
                       <img
                         src="/logos/essec-business-school.png"
                         alt="ESSEC Business School"
-                        className="h-12 mx-auto object-contain"
-                      />
-                    </div>
-                  </div>
-                ) : program.location === "Toronto" ? (
-                  <div className="grid grid-cols-1 gap-4 mt-4">
-                    <div className="text-center p-3 bg-white rounded-lg border">
-                      <img
-                        src="/logos/startup-labs.png"
-                        alt="Startup Labs"
                         className="h-12 mx-auto object-contain"
                       />
                     </div>
