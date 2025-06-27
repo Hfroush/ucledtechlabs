@@ -1,5 +1,14 @@
 import { Badge } from "@/components/ui/badge";
 
+import santanderLogo from "@assets/Screenshot 2025-06-25 at 08.45.11_1751018427011.png";
+import uclEducationLogo from "@assets/Screenshot 2025-06-25 at 08.45.01_1751018427014.png";
+import uclEngineeringLogo from "@assets/Screenshot 2025-06-27 at 13.47.12_1751018414555.png";
+import uclDigitalLogo from "@assets/Screenshot 2025-06-27 at 13.47.20_1751018414553.png";
+import uclCeeLogo from "@assets/Screenshot 2025-06-27 at 13.47.41_1751018414553.png";
+import uclManagementLogo from "@assets/Screenshot 2025-06-27 at 13.47.49_1751018414552.png";
+import idealLondonLogo from "@assets/Screenshot 2025-06-27 at 13.47.58_1751018414552.png";
+import doheGlobalLogo from "@assets/Screenshot 2025-06-27 at 13.48.10_1751018414551.png";
+
 interface PastProgram {
   id: string;
   cohortNumber: number;
@@ -115,64 +124,57 @@ export default function PastProgramsSection() {
                   <div className="grid grid-cols-3 gap-3 mt-4">
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/santander-universities.svg"
+                        src={santanderLogo}
                         alt="Santander Universities"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-institute-education.svg"
+                        src={uclEducationLogo}
                         alt="UCL Institute of Education"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-engineering-new.svg"
+                        src={uclEngineeringLogo}
                         alt="UCL Engineering"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-digital-innovation-aws.svg"
+                        src={uclDigitalLogo}
                         alt="UCL Centre for Digital Innovation powered by AWS"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-cee-new.svg"
+                        src={uclCeeLogo}
                         alt="UCL Centre for Engineering Education"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-school-management-new.svg"
+                        src={uclManagementLogo}
                         alt="UCL School of Management"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ideal-london-new.svg"
+                        src={idealLondonLogo}
                         alt="IDEAL London"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/dohe-global.svg"
+                        src={doheGlobalLogo}
                         alt="DOHE Global"
-                        className="h-10 mx-auto object-contain"
-                      />
-                    </div>
-                    <div className="text-center p-2 bg-white rounded-lg border">
-                      <img
-                        src="/logos/london-edtechweek.svg"
-                        alt="London EdTech Week"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
