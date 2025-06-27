@@ -115,63 +115,63 @@ export default function PastProgramsSection() {
                   <div className="grid grid-cols-3 gap-3 mt-4">
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/santander-universities.png"
+                        src="/logos/santander-universities.svg"
                         alt="Santander Universities"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-institute-education.png"
+                        src="/logos/ucl-institute-education.svg"
                         alt="UCL Institute of Education"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-engineering-new.png"
+                        src="/logos/ucl-engineering-new.svg"
                         alt="UCL Engineering"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-digital-innovation-aws.png"
+                        src="/logos/ucl-digital-innovation-aws.svg"
                         alt="UCL Centre for Digital Innovation powered by AWS"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-cee-new.png"
+                        src="/logos/ucl-cee-new.svg"
                         alt="UCL Centre for Engineering Education"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ucl-school-management-new.png"
+                        src="/logos/ucl-school-management-new.svg"
                         alt="UCL School of Management"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/ideal-london-new.png"
+                        src="/logos/ideal-london-new.svg"
                         alt="IDEAL London"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/dohe-global.png"
+                        src="/logos/dohe-global.svg"
                         alt="DOHE Global"
                         className="h-10 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-2 bg-white rounded-lg border">
                       <img
-                        src="/logos/london-edtechweek.png"
+                        src="/logos/london-edtechweek.svg"
                         alt="London EdTech Week"
                         className="h-10 mx-auto object-contain"
                       />
@@ -181,14 +181,14 @@ export default function PastProgramsSection() {
                   <div className="grid grid-cols-2 gap-4 mt-4">
                     <div className="text-center p-3 bg-white rounded-lg border">
                       <img
-                        src="/logos/cergy-paris-universite.png"
+                        src="/logos/cergy-paris-universite.svg"
                         alt="CY Cergy Paris Université"
                         className="h-12 mx-auto object-contain"
                       />
                     </div>
                     <div className="text-center p-3 bg-white rounded-lg border">
                       <img
-                        src="/logos/essec-business-school.png"
+                        src="/logos/essec-business-school.svg"
                         alt="ESSEC Business School"
                         className="h-12 mx-auto object-contain"
                       />
