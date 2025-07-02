@@ -29,7 +29,7 @@ export default function LogoCarousel() {
     },
     {
       id: "ucl-engineering",
-      name: "UCL Engineering",
+      name: "UCL Engineering Faculty",
       website: "https://www.ucl.ac.uk/engineering/",
       logoUrl: "/logos/ucl-engineering-new.png"
     },
@@ -58,6 +58,18 @@ export default function LogoCarousel() {
       logoUrl: "/logos/ideal-london-new.png"
     },
     {
+      id: "dohe-global",
+      name: "DOHE Global",
+      website: "#",
+      logoUrl: "/logos/dohe-global.png"
+    },
+    {
+      id: "london-edtechweek",
+      name: "London EdTech Week",
+      website: "#",
+      logoUrl: "/logos/london-edtechweek.png"
+    },
+    {
       id: "cergy-paris-universite",
       name: "CY Cergy Paris Université",
       website: "https://www.cyu.fr/",
@@ -80,18 +92,6 @@ export default function LogoCarousel() {
       name: "Île-de-France",
       website: "https://www.iledefrance.fr/",
       logoUrl: "/logos/ile-de-france.png"
-    },
-    {
-      id: "dohe-global",
-      name: "DOHE Global",
-      website: "#",
-      logoUrl: "/logos/dohe-global.png"
-    },
-    {
-      id: "london-edtechweek",
-      name: "London EdTech Week",
-      website: "#",
-      logoUrl: "/logos/london-edtechweek.png"
     }
   ];
 
