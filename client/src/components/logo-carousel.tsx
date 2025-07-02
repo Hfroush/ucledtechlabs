@@ -101,6 +101,22 @@ export default function LogoCarousel() {
     }
   ];
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, partnerName: string) => {
+    const target = e.target as HTMLImageElement;
+    const parent = target.parentElement;
+    
+    // Hide the broken image
+    target.style.display = 'none';
+    
+    // Add fallback text if not already present
+    if (parent && !parent.querySelector('.fallback-text')) {
+      const fallback = document.createElement('div');
+      fallback.className = 'fallback-text text-xs font-medium text-gray-700 text-center leading-tight px-2';
+      fallback.textContent = partnerName;
+      parent.appendChild(fallback);
+    }
+  };
+
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,17 +154,8 @@ export default function LogoCarousel() {
                       src={partner.logoUrl} 
                       alt={`${partner.name} logo`}
                       className="h-full w-full object-contain"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const parent = target.parentElement;
-                        if (parent && !parent.querySelector('.fallback-text')) {
-                          const fallback = document.createElement('span');
-                          fallback.className = 'text-xs font-medium text-gray-700 text-center leading-tight fallback-text';
-                          fallback.textContent = partner.name;
-                          parent.appendChild(fallback);
-                        }
-                      }}
+                      onError={(e) => handleImageError(e, partner.name)}
+                      loading="lazy"
                     />
                   </a>
                 </div>
