@@ -1,25 +1,26 @@
 import { Badge } from "@/components/ui/badge";
 
-import santanderLogo from "@assets/Screenshot 2025-06-25 at 08.45.11_1751018427011.png";
-import uclEducationLogo from "@assets/Screenshot 2025-06-25 at 08.45.01_1751018427014.png";
-import uclEngineeringLogo from "@assets/Screenshot 2025-06-27 at 13.47.12_1751018414555.png";
-import uclDigitalLogo from "@assets/Screenshot 2025-06-27 at 13.47.20_1751018414553.png";
-import uclCeeLogo from "@assets/Screenshot 2025-06-27 at 13.47.41_1751018414553.png";
-import uclManagementLogo from "@assets/Screenshot 2025-06-27 at 13.47.49_1751018414552.png";
-import idealLondonLogo from "@assets/Screenshot 2025-06-27 at 13.47.58_1751018414552.png";
-import doheGlobalLogo from "@assets/Screenshot 2025-06-27 at 13.48.10_1751018414551.png";
-import londonEdtechWeekLogo from "@assets/Screenshot 2025-06-27 at 14.05.02_1751018713158.png";
+// London partner logos
+const santanderLogo = "/logos/santander-universities.png";
+const uclEducationLogo = "/logos/ucl-institute-education.png";
+const uclEngineeringLogo = "/logos/ucl-engineering-new.png";
+const uclDigitalLogo = "/logos/ucl-digital-innovation-aws.png";
+const uclCeeLogo = "/logos/ucl-cee-new.png";
+const uclManagementLogo = "/logos/ucl-school-management-new.png";
+const idealLondonLogo = "/logos/ideal-london-new.png";
+const doheGlobalLogo = "/logos/dohe-global.png";
+const londonEdtechWeekLogo = "/logos/london-edtechweek.png";
 
 // Paris partner logos
-import uclEducationParis from "@assets/Screenshot 2025-06-27 at 14.10.19_1751019096795.png";
-import cyUniversiteLogo from "@assets/Screenshot 2025-06-27 at 14.10.27_1751019096794.png";
-import uclEngineeringParis from "@assets/Screenshot 2025-06-27 at 14.10.31_1751019096794.png";
-import essecLogo from "@assets/Screenshot 2025-06-27 at 14.10.37_1751019096793.png";
-import valOiseLogo from "@assets/Screenshot 2025-06-27 at 14.10.42_1751019096792.png";
-import laTurbineLogo from "@assets/Screenshot 2025-06-27 at 14.10.47_1751019096791.png";
-import bpiFranceLogo from "@assets/Screenshot 2025-06-27 at 14.10.52_1751019096789.png";
-import edtechFranceLogo from "@assets/Screenshot 2025-06-27 at 14.10.59_1751019096787.png";
-import ileDeFranceLogo from "@assets/Screenshot 2025-06-27 at 14.11.05_1751019096782.png";
+const uclEducationParis = "/logos/ucl-institute-education.png";
+const cyUniversiteLogo = "/logos/cy-cergy-paris.png";
+const uclEngineeringParis = "/logos/ucl-engineering-new.png";
+const essecLogo = "/logos/essec-business-school.png";
+const valOiseLogo = "/logos/val-d-oise.png";
+const laTurbineLogo = "/logos/val-d-oise.png"; // Using val-d-oise as placeholder
+const bpiFranceLogo = "/logos/val-d-oise.png"; // Using val-d-oise as placeholder
+const edtechFranceLogo = "/logos/val-d-oise.png"; // Using val-d-oise as placeholder
+const ileDeFranceLogo = "/logos/ile-de-france.png";
 
 interface PastProgram {
   id: string;

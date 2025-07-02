@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-import postits_on_a_table from "@assets/postits on a table.png";
+const postits_on_a_table = "/postits-on-a-table.png";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
