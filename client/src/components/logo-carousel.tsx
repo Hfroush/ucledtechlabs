@@ -135,10 +135,13 @@ export default function LogoCarousel() {
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.style.display = 'none';
-                        const fallback = document.createElement('span');
-                        fallback.className = 'text-xs font-medium text-gray-700 text-center leading-tight';
-                        fallback.textContent = partner.name;
-                        target.parentElement?.appendChild(fallback);
+                        const parent = target.parentElement;
+                        if (parent && !parent.querySelector('.fallback-text')) {
+                          const fallback = document.createElement('span');
+                          fallback.className = 'text-xs font-medium text-gray-700 text-center leading-tight fallback-text';
+                          fallback.textContent = partner.name;
+                          parent.appendChild(fallback);
+                        }
                       }}
                     />
                   </a>
