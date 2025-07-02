@@ -5,23 +5,11 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
-// Partner logos using authentic assets
-import uclEducationLogo from "@assets/image_1750839476270.png";
-import santanderLogo from "@assets/image_1750839498097.png";
-import uclEngineeringLogo from "@assets/image_1750839523412.png";
-import uclDigitalLogo from "@assets/image_1750839540748.png";
-import uclCeeLogo from "@assets/image_1750839561321.png";
-import uclManagementLogo from "@assets/image_1750839597019.png";
-import idealLondonLogo from "@assets/image_1750839655196.png";
-import cyUniversiteLogo from "@assets/image_1750841810487.png";
-import essecLogo from "@assets/image_1750849384444.png";
-import valOiseLogo from "@assets/image_1750849522896.png";
-import ileDeFranceLogo from "@assets/image_1750849663139.png";
+// Partner logos - using text placeholders for now
 
 interface Partner {
   id: string;
   name: string;
-  logoUrl: string;
   website: string;
 }
 
@@ -30,67 +18,56 @@ export default function LogoCarousel() {
     {
       id: "ucl-institute-education",
       name: "UCL Institute of Education",
-      logoUrl: uclEducationLogo,
       website: "https://www.ucl.ac.uk/ioe/"
     },
     {
       id: "santander-universities",
       name: "Santander Universities",
-      logoUrl: santanderLogo,
       website: "https://www.santander.com/en/about-us/sustainability/santander-universities"
     },
     {
       id: "ucl-engineering",
       name: "UCL Engineering",
-      logoUrl: uclEngineeringLogo,
       website: "https://www.ucl.ac.uk/engineering/"
     },
     {
       id: "ucl-digital-innovation",
       name: "UCL Centre for Digital Innovation",
-      logoUrl: uclDigitalLogo,
       website: "https://www.ucl.ac.uk/digital-innovation/"
     },
     {
       id: "ucl-cee",
       name: "UCL Centre for Engineering Education",
-      logoUrl: uclCeeLogo,
       website: "https://www.ucl.ac.uk/engineering/study/undergraduate-study/centre-engineering-education"
     },
     {
       id: "ucl-school-management",
       name: "UCL School of Management",
-      logoUrl: uclManagementLogo,
       website: "https://www.mgmt.ucl.ac.uk/"
     },
     {
       id: "ideal-london",
       name: "IDEAL London",
-      logoUrl: idealLondonLogo,
       website: "https://www.ideallondon.co.uk/"
     },
     {
       id: "cergy-paris-universite",
       name: "CY Cergy Paris Université",
-      logoUrl: cyUniversiteLogo,
       website: "https://www.cyu.fr/"
     },
     {
       id: "essec-business-school",
       name: "ESSEC Business School",
-      logoUrl: essecLogo,
       website: "https://www.essec.edu/"
     },
     {
       id: "val-d-oise",
       name: "Val d'Oise",
-      logoUrl: valOiseLogo,
       website: "https://www.valdoise.fr/"
     },
     {
       id: "ile-de-france",
       name: "Île-de-France",
-      logoUrl: ileDeFranceLogo,
       website: "https://www.iledefrance.fr/"
     }
   ];
@@ -128,12 +105,9 @@ export default function LogoCarousel() {
                     className="block bg-white rounded-lg p-4 h-20 flex items-center justify-center shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300 cursor-pointer"
                     title={`Visit ${partner.name}`}
                   >
-                    <img
-                      src={partner.logoUrl}
-                      alt={`${partner.name} logo`}
-                      className="max-h-10 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-                      loading="lazy"
-                    />
+                    <span className="text-xs font-medium text-gray-700 text-center leading-tight">
+                      {partner.name}
+                    </span>
                   </a>
                 </div>
               </CarouselItem>
