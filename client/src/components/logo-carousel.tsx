@@ -1,3 +1,4 @@
+
 import {
   Carousel,
   CarouselContent,
@@ -5,12 +6,11 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
-// Partner logos - using text placeholders for now
-
 interface Partner {
   id: string;
   name: string;
   website: string;
+  logoUrl: string;
 }
 
 export default function LogoCarousel() {
@@ -18,57 +18,80 @@ export default function LogoCarousel() {
     {
       id: "ucl-institute-education",
       name: "UCL Institute of Education",
-      website: "https://www.ucl.ac.uk/ioe/"
+      website: "https://www.ucl.ac.uk/ioe/",
+      logoUrl: "/logos/ucl-institute-education.png"
     },
     {
       id: "santander-universities",
       name: "Santander Universities",
-      website: "https://www.santander.com/en/about-us/sustainability/santander-universities"
+      website: "https://www.santander.com/en/about-us/sustainability/santander-universities",
+      logoUrl: "/logos/santander-universities.png"
     },
     {
       id: "ucl-engineering",
       name: "UCL Engineering",
-      website: "https://www.ucl.ac.uk/engineering/"
+      website: "https://www.ucl.ac.uk/engineering/",
+      logoUrl: "/logos/ucl-engineering-new.png"
     },
     {
       id: "ucl-digital-innovation",
       name: "UCL Centre for Digital Innovation",
-      website: "https://www.ucl.ac.uk/digital-innovation/"
+      website: "https://www.ucl.ac.uk/digital-innovation/",
+      logoUrl: "/logos/ucl-digital-innovation-aws.png"
     },
     {
       id: "ucl-cee",
       name: "UCL Centre for Engineering Education",
-      website: "https://www.ucl.ac.uk/engineering/study/undergraduate-study/centre-engineering-education"
+      website: "https://www.ucl.ac.uk/engineering/study/undergraduate-study/centre-engineering-education",
+      logoUrl: "/logos/ucl-cee-new.png"
     },
     {
       id: "ucl-school-management",
       name: "UCL School of Management",
-      website: "https://www.mgmt.ucl.ac.uk/"
+      website: "https://www.mgmt.ucl.ac.uk/",
+      logoUrl: "/logos/ucl-school-management-new.png"
     },
     {
       id: "ideal-london",
       name: "IDEAL London",
-      website: "https://www.ideallondon.co.uk/"
+      website: "https://www.ideallondon.co.uk/",
+      logoUrl: "/logos/ideal-london-new.png"
     },
     {
       id: "cergy-paris-universite",
       name: "CY Cergy Paris Université",
-      website: "https://www.cyu.fr/"
+      website: "https://www.cyu.fr/",
+      logoUrl: "/logos/cy-cergy-paris.png"
     },
     {
       id: "essec-business-school",
       name: "ESSEC Business School",
-      website: "https://www.essec.edu/"
+      website: "https://www.essec.edu/",
+      logoUrl: "/logos/essec-business-school.png"
     },
     {
       id: "val-d-oise",
       name: "Val d'Oise",
-      website: "https://www.valdoise.fr/"
+      website: "https://www.valdoise.fr/",
+      logoUrl: "/logos/val-d-oise.png"
     },
     {
       id: "ile-de-france",
       name: "Île-de-France",
-      website: "https://www.iledefrance.fr/"
+      website: "https://www.iledefrance.fr/",
+      logoUrl: "/logos/ile-de-france.png"
+    },
+    {
+      id: "dohe-global",
+      name: "DOHE Global",
+      website: "#",
+      logoUrl: "/logos/dohe-global.png"
+    },
+    {
+      id: "london-edtechweek",
+      name: "London EdTech Week",
+      website: "#",
+      logoUrl: "/logos/london-edtechweek.png"
     }
   ];
 
@@ -105,9 +128,19 @@ export default function LogoCarousel() {
                     className="block bg-white rounded-lg p-4 h-20 flex items-center justify-center shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300 cursor-pointer"
                     title={`Visit ${partner.name}`}
                   >
-                    <span className="text-xs font-medium text-gray-700 text-center leading-tight">
-                      {partner.name}
-                    </span>
+                    <img 
+                      src={partner.logoUrl} 
+                      alt={`${partner.name} logo`}
+                      className="h-full w-full object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = document.createElement('span');
+                        fallback.className = 'text-xs font-medium text-gray-700 text-center leading-tight';
+                        fallback.textContent = partner.name;
+                        target.parentElement?.appendChild(fallback);
+                      }}
+                    />
                   </a>
                 </div>
               </CarouselItem>
