@@ -155,6 +155,10 @@ export default function LogoCarousel() {
                       className="h-full w-full object-contain"
                       onError={(e) => handleImageError(e, partner.name)}
                       loading="lazy"
+                      onLoad={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'block';
+                      }}
                     />
                   </a>
                 </div>
