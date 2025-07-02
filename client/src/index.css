@@ -59,10 +59,25 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Safari specific fixes */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure consistent flexbox behavior */
+  .flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
