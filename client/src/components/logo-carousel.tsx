@@ -55,7 +55,7 @@ export default function LogoCarousel() {
       id: "ideal-london",
       name: "IDEAL London",
       website: "https://www.ideallondon.co.uk/",
-      logoUrl: "/logos/ideal-london-new.png"
+      logoUrl: "/logos/ideal-london-updated.png"
     },
     {
       id: "dohe-global",
@@ -92,6 +92,12 @@ export default function LogoCarousel() {
       name: "Île-de-France",
       website: "https://www.iledefrance.fr/",
       logoUrl: "/logos/ile-de-france.png"
+    },
+    {
+      id: "ree-engineering-education",
+      name: "REE - Re-imagining Engineering Education",
+      website: "#",
+      logoUrl: "/logos/ree-engineering-education.png"
     }
   ];
 
