@@ -1,4 +1,3 @@
-
 import {
   Carousel,
   CarouselContent,
@@ -104,10 +103,10 @@ export default function LogoCarousel() {
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, partnerName: string) => {
     const target = e.target as HTMLImageElement;
     const parent = target.parentElement;
-    
+
     // Hide the broken image
     target.style.display = 'none';
-    
+
     // Add fallback text if not already present
     if (parent && !parent.querySelector('.fallback-text')) {
       const fallback = document.createElement('div');
@@ -124,7 +123,7 @@ export default function LogoCarousel() {
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Trusted by Leading Organizations</h2>
           <p className="text-gray-600">Our partners and supporters across the global EdTech ecosystem</p>
         </div>
-        
+
         <Carousel
           opts={{
             align: "start",
