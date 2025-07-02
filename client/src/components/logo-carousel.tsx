@@ -5,18 +5,18 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
-// Partner logos using public folder paths
-const uclEducationLogo = "/logos/ucl-institute-education.png";
-const santanderLogo = "/logos/santander-universities.png";
-const uclEngineeringLogo = "/logos/ucl-engineering-new.png";
-const uclDigitalLogo = "/logos/ucl-digital-innovation-aws.png";
-const uclCeeLogo = "/logos/ucl-cee-new.png";
-const uclManagementLogo = "/logos/ucl-school-management-new.png";
-const idealLondonLogo = "/logos/ideal-london-new.png";
-const cyUniversiteLogo = "/logos/cy-cergy-paris.png";
-const essecLogo = "/logos/essec-business-school.png";
-const valOiseLogo = "/logos/val-d-oise.png";
-const ileDeFranceLogo = "/logos/ile-de-france.png";
+// Partner logos using authentic assets
+import uclEducationLogo from "@assets/image_1750839476270.png";
+import santanderLogo from "@assets/image_1750839498097.png";
+import uclEngineeringLogo from "@assets/image_1750839523412.png";
+import uclDigitalLogo from "@assets/image_1750839540748.png";
+import uclCeeLogo from "@assets/image_1750839561321.png";
+import uclManagementLogo from "@assets/image_1750839597019.png";
+import idealLondonLogo from "@assets/image_1750839655196.png";
+import cyUniversiteLogo from "@assets/image_1750841810487.png";
+import essecLogo from "@assets/image_1750849384444.png";
+import valOiseLogo from "@assets/image_1750849522896.png";
+import ileDeFranceLogo from "@assets/image_1750849663139.png";
 
 interface Partner {
   id: string;
