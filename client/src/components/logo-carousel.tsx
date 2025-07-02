@@ -70,6 +70,12 @@ export default function LogoCarousel() {
       logoUrl: "/logos/london-edtechweek.png"
     },
     {
+      id: "edtechx-london",
+      name: "EdTechX London",
+      website: "https://www.edtechxeurope.com/",
+      logoUrl: "/logos/edtechx-london.png"
+    },
+    {
       id: "cergy-paris-universite",
       name: "CY Cergy Paris Université",
       website: "https://www.cyu.fr/",
@@ -92,12 +98,6 @@ export default function LogoCarousel() {
       name: "Île-de-France",
       website: "https://www.iledefrance.fr/",
       logoUrl: "/logos/ile-de-france.png"
-    },
-    {
-      id: "ree-engineering-education",
-      name: "REE - Re-imagining Engineering Education",
-      website: "#",
-      logoUrl: "/logos/ree-engineering-education.png"
     }
   ];
 
