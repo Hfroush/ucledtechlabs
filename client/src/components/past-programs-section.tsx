@@ -111,7 +111,7 @@ export default function PastProgramsSection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8">
           {pastPrograms.map((program) => (
             <div key={program.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div className="p-6 border-b border-gray-100">
