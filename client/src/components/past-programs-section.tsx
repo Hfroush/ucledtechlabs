@@ -18,8 +18,8 @@ const uclEngineeringParis = "/logos/ucl-engineering-new.png";
 const essecLogo = "/logos/essec-business-school.png";
 const valOiseLogo = "/logos/val-d-oise.png";
 const laTurbineLogo = "/logos/la-turbine.png";
-const bpiFranceLogo = "/logos/val-d-oise.png"; // Using val-d-oise as placeholder
-const edtechFranceLogo = "/logos/val-d-oise.png"; // Using val-d-oise as placeholder
+const bpiFranceLogo = "/logos/bpifrance.png";
+const edtechFranceLogo = "/logos/edtech-france.png";
 const ileDeFranceLogo = "/logos/ile-de-france.png";
 
 interface PastProgram {
