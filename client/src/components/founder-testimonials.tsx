@@ -89,10 +89,26 @@ export default function FounderTestimonials() {
               </div>
               
               <div className="flex items-center mt-6 pt-4 border-t border-gray-100">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                  <span className="text-primary font-semibold text-sm">
-                    {testimonial.name.split(' ').map(n => n[0]).join('').substring(0, 2)}
-                  </span>
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center mr-4">
+                  <img
+                    src={`/avatars/${testimonial.name.toLowerCase().replace(/\s+/g, '-')}.png`}
+                    alt={`${testimonial.name} headshot`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to initials if photo fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const fallback = target.parentElement?.querySelector('.fallback-initials');
+                      if (fallback) {
+                        (fallback as HTMLElement).style.display = 'flex';
+                      }
+                    }}
+                  />
+                  <div className="fallback-initials w-full h-full bg-primary/10 rounded-full hidden items-center justify-center">
+                    <span className="text-primary font-semibold text-sm">
+                      {testimonial.name.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                    </span>
+                  </div>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
