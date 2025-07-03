@@ -14,7 +14,7 @@ const londonEdtechWeekLogo = "/logos/london-edtechweek.png";
 // Paris partner logos
 const uclEducationParis = "/logos/ucl-institute-education.png";
 const cyUniversiteLogo = "/logos/cy-cergy-paris.png";
-const uclEngineeringParis = "/logos/ucl-engineering-new.png";
+const uclEngineeringParis = "/logos/ucl-engineering.png";
 const essecLogo = "/logos/essec-business-school.png";
 const valOiseLogo = "/logos/val-d-oise.png";
 const laTurbineLogo = "/logos/la-turbine.png";
