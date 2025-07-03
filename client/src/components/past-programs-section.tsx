@@ -7,7 +7,7 @@ const uclEngineeringLogo = "/logos/ucl-engineering-new.png";
 const uclDigitalLogo = "/logos/ucl-digital-innovation-aws.png";
 const uclCeeLogo = "/logos/ucl-cee-new.png";
 const uclManagementLogo = "/logos/ucl-school-management-new.png";
-const idealLondonLogo = "/logos/ideal-london-new.png";
+const idealLondonLogo = "/logos/ideal-london-updated.png";
 const doheGlobalLogo = "/logos/dohe-global.png";
 const londonEdtechWeekLogo = "/logos/london-edtechweek.png";
 
