@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import StatsSection from "@/components/stats-section";
@@ -9,6 +10,19 @@ import ApplicationForms from "@/components/application-forms";
 import Footer from "@/components/footer";
 
 export default function Home() {
+  useEffect(() => {
+    // Check if there's a hash in the URL and scroll to that section
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setTimeout(() => {
+        const section = document.getElementById(hash);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50">
       <Navigation />

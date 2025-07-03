@@ -13,6 +13,9 @@ export default function Navigation() {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
+    } else {
+      // If section not found, navigate to homepage first
+      window.location.href = `/#${sectionId}`;
     }
   };
 
