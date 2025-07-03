@@ -91,10 +91,26 @@ export default function StartupsSection() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex flex-col items-center text-center mb-4">
-                      <div className={`w-20 h-20 bg-gradient-to-br ${startup.gradientClass} rounded-xl shadow-lg flex items-center justify-center mb-4 group-hover:shadow-xl transition-shadow`}>
-                        <span className="text-white font-bold text-lg">
-                          {startup.name.charAt(0)}
-                        </span>
+                      <div className="w-20 h-20 rounded-xl shadow-lg flex items-center justify-center mb-4 group-hover:shadow-xl transition-shadow bg-white border border-gray-100">
+                        <img
+                          src={`/startup-logos/${startup.id}.png`}
+                          alt={`${startup.name} logo`}
+                          className="w-16 h-16 object-contain"
+                          onError={(e) => {
+                            // Fallback to gradient with initial if logo fails to load
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const fallback = target.parentElement?.querySelector('.fallback-initial');
+                            if (fallback) {
+                              (fallback as HTMLElement).style.display = 'flex';
+                            }
+                          }}
+                        />
+                        <div className={`fallback-initial w-16 h-16 bg-gradient-to-br ${startup.gradientClass} rounded-lg hidden items-center justify-center`}>
+                          <span className="text-white font-bold text-lg">
+                            {startup.name.charAt(0)}
+                          </span>
+                        </div>
                       </div>
                       <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                         {startup.name}
