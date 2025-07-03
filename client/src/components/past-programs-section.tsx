@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 // London partner logos
 const santanderLogo = "/logos/santander-universities.png";
 const uclEducationLogo = "/logos/ucl-institute-education.png";
-const uclEngineeringLogo = "/logos/ucl-engineering-new.png";
+const uclEngineeringLogo = "/logos/ucl-engineering.png";
 const uclDigitalLogo = "/logos/ucl-digital-innovation-aws.png";
 const uclCeeLogo = "/logos/ucl-cee-new.png";
 const uclManagementLogo = "/logos/ucl-school-management-new.png";
