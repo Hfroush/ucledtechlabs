@@ -1,28 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
 
 import postits_on_a_table from "@assets/postits on a table.png";
 
 export default function HeroSection() {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    // Check if WebP is supported and preload appropriate image
-    const supportsWebP = () => {
-      const canvas = document.createElement('canvas');
-      return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-    };
-
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    
-    // Use WebP if supported, otherwise fallback to PNG
-    if (supportsWebP()) {
-      img.src = '/postits-on-a-table.webp'; // You'll need to create this
-    } else {
-      img.src = postits_on_a_table;
-    }
-  }, []);
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -34,26 +14,13 @@ export default function HeroSection() {
     <section 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: '#1a1a1a' // Fallback color while loading
+        backgroundImage: `url(${postits_on_a_table})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'scroll'
       }}
     >
-      {/* Background image with loading state */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-        style={{
-          backgroundImage: imageLoaded ? `url(${postits_on_a_table})` : 'none',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'scroll'
-        }}
-      />
-      
-      {/* Loading placeholder */}
-      {!imageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-blue-800 animate-pulse" />
-      )}
-      
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black/50 z-0"></div>
       
