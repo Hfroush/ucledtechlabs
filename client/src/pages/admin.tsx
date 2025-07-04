@@ -2,6 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Admin() {
+  // Immediate debug logging to see what's happening
+  console.error("ADMIN COMPONENT LOADING");
+  alert("Admin component is loading - check console for data");
+
   const { data: applications, isLoading: applicationsLoading } = useQuery({
     queryKey: ["/api/applications"],
   });
@@ -15,20 +19,22 @@ export default function Admin() {
     gcTime: 0,
   });
 
-  // Comprehensive debug logging with alerts
-  console.warn("=== INTERESTS DEBUG ===");
-  console.warn("Interests data:", interests);
-  console.warn("Interests data type:", typeof interests);
-  console.warn("Interests is array:", Array.isArray(interests));
-  console.warn("Interests length:", interests?.length);
-  console.warn("Raw interests object:", JSON.stringify(interests, null, 2));
-  console.warn("Interests loading:", interestsLoading);
-  console.warn("Interests error:", interestsError);
-  console.warn("=== END INTERESTS DEBUG ===");
-  
-  // Temporary alert to ensure we see the data
-  if (interests && !interestsLoading) {
-    alert(`DEBUG: Interests data type: ${typeof interests}, Length: ${interests?.length}, Content: ${JSON.stringify(interests).substring(0, 200)}...`);
+  // Log everything immediately
+  console.error("=== ADMIN DEBUG INFO ===");
+  console.error("Applications:", applications);
+  console.error("Applications loading:", applicationsLoading);
+  console.error("Interests:", interests);
+  console.error("Interests loading:", interestsLoading);
+  console.error("Interests error:", interestsError);
+  console.error("=== RAW INTERESTS ===", JSON.stringify(interests, null, 2));
+  console.error("=== END DEBUG ===");
+
+  // Multiple alerts to force visibility
+  if (interests !== undefined) {
+    alert(`INTERESTS DATA: Type=${typeof interests}, IsArray=${Array.isArray(interests)}, Length=${interests?.length}`);
+  }
+  if (interestsError) {
+    alert(`INTERESTS ERROR: ${JSON.stringify(interestsError)}`);
   }
 
   if (applicationsLoading || interestsLoading) {
