@@ -19,23 +19,29 @@ export default function Admin() {
     gcTime: 0,
   });
 
-  // Log everything immediately
-  console.error("=== ADMIN DEBUG INFO ===");
-  console.error("Applications:", applications);
-  console.error("Applications loading:", applicationsLoading);
-  console.error("Interests:", interests);
-  console.error("Interests loading:", interestsLoading);
-  console.error("Interests error:", interestsError);
-  console.error("=== RAW INTERESTS ===", JSON.stringify(interests, null, 2));
-  console.error("=== END DEBUG ===");
-
-  // Multiple alerts to force visibility
-  if (interests !== undefined) {
-    alert(`INTERESTS DATA: Type=${typeof interests}, IsArray=${Array.isArray(interests)}, Length=${interests?.length}`);
-  }
-  if (interestsError) {
-    alert(`INTERESTS ERROR: ${JSON.stringify(interestsError)}`);
-  }
+  // Persistent debugging that survives hot reloads
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      console.group("🔍 ADMIN DEBUG - PERSISTENT");
+      console.log("Applications:", applications);
+      console.log("Applications loading:", applicationsLoading);
+      console.log("Interests:", interests);
+      console.log("Interests loading:", interestsLoading);
+      console.log("Interests error:", interestsError);
+      console.log("Interests type:", typeof interests);
+      console.log("Interests is array:", Array.isArray(interests));
+      console.log("Interests length:", interests?.length);
+      console.log("Raw interests JSON:", JSON.stringify(interests, null, 2));
+      console.groupEnd();
+      
+      // Also log to the document for absolute visibility
+      if (interests !== undefined) {
+        document.title = `Admin - Interests: ${interests?.length || 0}`;
+      }
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, [interests, applications, interestsLoading, applicationsLoading, interestsError]);
 
   if (applicationsLoading || interestsLoading) {
     return (
