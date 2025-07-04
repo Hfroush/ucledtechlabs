@@ -82,8 +82,21 @@ export default function Admin() {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
+        
+        {/* DEBUG INFO - VISIBLE ON PAGE */}
+        <div className="mb-8 p-4 bg-yellow-100 border border-yellow-400 rounded">
+          <h2 className="font-bold text-yellow-800 mb-2">🔍 DEBUG INFO (visible on page):</h2>
+          <div className="text-sm text-yellow-700 space-y-1">
+            <div><strong>Interests Array:</strong> {JSON.stringify(interests)}</div>
+            <div><strong>Interests Length:</strong> {interests?.length || 'undefined'}</div>
+            <div><strong>Interests Type:</strong> {typeof interests}</div>
+            <div><strong>Applications Length:</strong> {applications?.length || 'undefined'}</div>
+            <div><strong>Loading State:</strong> {loading.toString()}</div>
+            <div><strong>Error State:</strong> {error || 'none'}</div>
+          </div>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8"></div>
           {/* Applications */}
           <Card>
             <CardHeader>
