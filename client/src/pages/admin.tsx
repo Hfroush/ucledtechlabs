@@ -17,6 +17,10 @@ export default function Admin() {
 
   // Debug logging
   console.log("Interests data:", interests);
+  console.log("Interests data type:", typeof interests);
+  console.log("Interests is array:", Array.isArray(interests));
+  console.log("Interests length:", interests?.length);
+  console.log("Raw interests object:", JSON.stringify(interests, null, 2));
   console.log("Interests loading:", interestsLoading);
   console.log("Interests error:", interestsError);
 
