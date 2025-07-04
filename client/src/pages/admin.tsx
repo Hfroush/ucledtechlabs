@@ -15,16 +15,21 @@ export default function Admin() {
     gcTime: 0,
   });
 
-  // Comprehensive debug logging
-  console.log("=== INTERESTS DEBUG ===");
-  console.log("Interests data:", interests);
-  console.log("Interests data type:", typeof interests);
-  console.log("Interests is array:", Array.isArray(interests));
-  console.log("Interests length:", interests?.length);
-  console.log("Raw interests object:", JSON.stringify(interests, null, 2));
-  console.log("Interests loading:", interestsLoading);
-  console.log("Interests error:", interestsError);
-  console.log("=== END INTERESTS DEBUG ===");
+  // Comprehensive debug logging with alerts
+  console.warn("=== INTERESTS DEBUG ===");
+  console.warn("Interests data:", interests);
+  console.warn("Interests data type:", typeof interests);
+  console.warn("Interests is array:", Array.isArray(interests));
+  console.warn("Interests length:", interests?.length);
+  console.warn("Raw interests object:", JSON.stringify(interests, null, 2));
+  console.warn("Interests loading:", interestsLoading);
+  console.warn("Interests error:", interestsError);
+  console.warn("=== END INTERESTS DEBUG ===");
+  
+  // Temporary alert to ensure we see the data
+  if (interests && !interestsLoading) {
+    alert(`DEBUG: Interests data type: ${typeof interests}, Length: ${interests?.length}, Content: ${JSON.stringify(interests).substring(0, 200)}...`);
+  }
 
   if (applicationsLoading || interestsLoading) {
     return (
