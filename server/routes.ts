@@ -126,7 +126,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/applications", async (req, res) => {
     try {
       const applications = await storage.getApplications();
-      res.json({ success: true, applications });
+      res.json(applications);
     } catch (error) {
       res.status(500).json({ 
         success: false, 
@@ -139,7 +139,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/interest-registrations", async (req, res) => {
     try {
       const registrations = await storage.getInterestRegistrations();
-      res.json({ success: true, registrations });
+      res.json(registrations);
     } catch (error) {
       res.status(500).json({ 
         success: false, 
