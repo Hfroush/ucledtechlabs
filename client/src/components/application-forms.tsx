@@ -27,9 +27,10 @@ const applicationSchema = z.object({
 });
 
 const interestSchema = z.object({
-  fullName: z.string().min(1, "Full name is required"),
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Valid email is required"),
-  companyName: z.string().min(1, "Company name is required"),
+  startupName: z.string().min(1, "Startup name is required"),
   hqLocation: z.string().min(1, "HQ location is required").refine(
     (value) => validateCity(value),
     "Please select a valid city from the dropdown"
@@ -64,9 +65,10 @@ export default function ApplicationForms() {
   const interestForm = useForm<InterestForm>({
     resolver: zodResolver(interestSchema),
     defaultValues: {
-      fullName: "",
+      firstName: "",
+      lastName: "",
       email: "",
-      companyName: "",
+      startupName: "",
       hqLocation: "",
       companyWebsite: "",
       startupStage: undefined,
@@ -145,19 +147,35 @@ export default function ApplicationForms() {
 
             <Form {...interestForm}>
               <form onSubmit={interestForm.handleSubmit(onInterestSubmit)} className="space-y-6">
-                <FormField
-                  control={interestForm.control}
-                  name="fullName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Full Name *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter your full name" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField
+                    control={interestForm.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>First Name *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter your first name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={interestForm.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Last Name *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter your last name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
                 <FormField
                   control={interestForm.control}
@@ -175,12 +193,12 @@ export default function ApplicationForms() {
 
                 <FormField
                   control={interestForm.control}
-                  name="companyName"
+                  name="startupName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Company Name *</FormLabel>
+                      <FormLabel>Startup Name *</FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your company name" {...field} />
+                        <Input placeholder="Enter your startup name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
