@@ -15,7 +15,8 @@ export default function Admin() {
     gcTime: 0,
   });
 
-  // Debug logging
+  // Comprehensive debug logging
+  console.log("=== INTERESTS DEBUG ===");
   console.log("Interests data:", interests);
   console.log("Interests data type:", typeof interests);
   console.log("Interests is array:", Array.isArray(interests));
@@ -23,6 +24,7 @@ export default function Admin() {
   console.log("Raw interests object:", JSON.stringify(interests, null, 2));
   console.log("Interests loading:", interestsLoading);
   console.log("Interests error:", interestsError);
+  console.log("=== END INTERESTS DEBUG ===");
 
   if (applicationsLoading || interestsLoading) {
     return (
