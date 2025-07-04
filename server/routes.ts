@@ -103,10 +103,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Interest registration endpoint
   app.post("/api/interest-registrations", async (req, res) => {
     try {
+      console.log("POST /api/interest-registrations - Request body:", req.body);
       const validatedData = insertInterestRegistrationSchema.parse(req.body);
+      console.log("Validated data:", validatedData);
       const registration = await storage.createInterestRegistration(validatedData);
+      console.log("Created registration:", registration);
       res.json({ success: true, registration });
     } catch (error) {
+      console.error("Interest registration error:", error);
       if (error instanceof z.ZodError) {
         res.status(400).json({ 
           success: false, 
@@ -138,9 +142,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get interest registrations (admin endpoint)
   app.get("/api/interest-registrations", async (req, res) => {
     try {
+      console.log("GET /api/interest-registrations - Fetching registrations...");
       const registrations = await storage.getInterestRegistrations();
+      console.log("Retrieved registrations:", registrations);
+      console.log("Number of registrations:", registrations.length);
       res.json(registrations);
     } catch (error) {
+      console.error("Failed to fetch registrations:", error);
       res.status(500).json({ 
         success: false, 
         message: "Failed to fetch registrations" 

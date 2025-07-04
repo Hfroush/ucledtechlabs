@@ -6,9 +6,14 @@ export default function Admin() {
     queryKey: ["/api/applications"],
   });
 
-  const { data: interests, isLoading: interestsLoading } = useQuery({
+  const { data: interests, isLoading: interestsLoading, error: interestsError } = useQuery({
     queryKey: ["/api/interest-registrations"],
   });
+
+  // Debug logging
+  console.log("Interests data:", interests);
+  console.log("Interests loading:", interestsLoading);
+  console.log("Interests error:", interestsError);
 
   if (applicationsLoading || interestsLoading) {
     return (
@@ -19,6 +24,10 @@ export default function Admin() {
         </div>
       </div>
     );
+  }
+
+  if (interestsError) {
+    console.error("Interest registrations error:", interestsError);
   }
 
   return (
