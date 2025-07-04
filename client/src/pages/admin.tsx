@@ -1,61 +1,81 @@
-import { useQuery } from "@tanstack/react-query";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Admin() {
-  // Immediate debug logging to see what's happening
-  console.error("ADMIN COMPONENT LOADING");
-  alert("Admin component is loading - check console for data");
+  const [applications, setApplications] = useState([]);
+  const [interests, setInterests] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const { data: applications, isLoading: applicationsLoading } = useQuery({
-    queryKey: ["/api/applications"],
-  });
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        console.log("🚀 Starting direct fetch...");
+        
+        // Fetch interests with direct fetch
+        const interestsResponse = await fetch("/api/interest-registrations");
+        console.log("📡 Interests response status:", interestsResponse.status);
+        console.log("📡 Interests response headers:", Object.fromEntries(interestsResponse.headers.entries()));
+        
+        const interestsText = await interestsResponse.text();
+        console.log("📄 Raw interests response text:", interestsText);
+        
+        let interestsData;
+        try {
+          interestsData = JSON.parse(interestsText);
+          console.log("✅ Parsed interests data:", interestsData);
+          console.log("📊 Interests data type:", typeof interestsData);
+          console.log("📊 Is array:", Array.isArray(interestsData));
+          console.log("📊 Length:", interestsData?.length);
+        } catch (parseError) {
+          console.error("❌ Failed to parse interests JSON:", parseError);
+          setError("Failed to parse interests data");
+          return;
+        }
 
-  const { data: interests, isLoading: interestsLoading, error: interestsError } = useQuery({
-    queryKey: ["/api/interest-registrations"],
-    retry: false,
-    refetchOnMount: "always",
-    refetchOnWindowFocus: true,
-    staleTime: 0,
-    gcTime: 0,
-  });
+        // Fetch applications
+        const applicationsResponse = await fetch("/api/applications");
+        const applicationsData = await applicationsResponse.json();
+        console.log("📄 Applications data:", applicationsData);
 
-  // Persistent debugging that survives hot reloads
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      console.group("🔍 ADMIN DEBUG - PERSISTENT");
-      console.log("Applications:", applications);
-      console.log("Applications loading:", applicationsLoading);
-      console.log("Interests:", interests);
-      console.log("Interests loading:", interestsLoading);
-      console.log("Interests error:", interestsError);
-      console.log("Interests type:", typeof interests);
-      console.log("Interests is array:", Array.isArray(interests));
-      console.log("Interests length:", interests?.length);
-      console.log("Raw interests JSON:", JSON.stringify(interests, null, 2));
-      console.groupEnd();
-      
-      // Also log to the document for absolute visibility
-      if (interests !== undefined) {
-        document.title = `Admin - Interests: ${interests?.length || 0}`;
+        setInterests(interestsData || []);
+        setApplications(applicationsData || []);
+        setLoading(false);
+        
+        // Show alert with actual data
+        alert(`✅ SUCCESS! Found ${interestsData?.length || 0} interests and ${applicationsData?.length || 0} applications`);
+        
+      } catch (err) {
+        console.error("❌ Fetch error:", err);
+        setError(err.message);
+        setLoading(false);
+        alert(`❌ ERROR: ${err.message}`);
       }
-    }, 1000);
-    
-    return () => clearTimeout(timer);
-  }, [interests, applications, interestsLoading, applicationsLoading, interestsError]);
+    }
 
-  if (applicationsLoading || interestsLoading) {
+    fetchData();
+  }, []);
+
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 p-8">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-gray-600">Loading with direct fetch...</p>
         </div>
       </div>
     );
   }
 
-  if (interestsError) {
-    console.error("Interest registrations error:", interestsError);
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 p-8">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
+          <p className="text-red-600">Error: {error}</p>
+        </div>
+      </div>
+    );
   }
 
   return (
