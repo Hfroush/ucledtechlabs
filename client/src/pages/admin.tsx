@@ -8,6 +8,11 @@ export default function Admin() {
 
   const { data: interests, isLoading: interestsLoading, error: interestsError } = useQuery({
     queryKey: ["/api/interest-registrations"],
+    retry: false,
+    refetchOnMount: "always",
+    refetchOnWindowFocus: true,
+    staleTime: 0,
+    gcTime: 0,
   });
 
   // Debug logging
@@ -34,7 +39,7 @@ export default function Admin() {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Applications */}
           <Card>
