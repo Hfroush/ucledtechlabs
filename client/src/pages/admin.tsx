@@ -1,55 +1,60 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+interface Application {
+  id: number;
+  fullName: string;
+  email: string;
+  startupName: string;
+  program: string;
+  stage: string;
+  createdAt: string;
+}
+
+interface InterestRegistration {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  startupName: string;
+  hqLocation: string;
+  currentStatus?: string;
+  areasOfInterest?: string;
+  createdAt: string;
+}
+
 export default function Admin() {
-  const [applications, setApplications] = useState([]);
-  const [interests, setInterests] = useState([]);
+  const [applications, setApplications] = useState<Application[]>([]);
+  const [interests, setInterests] = useState<InterestRegistration[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     async function fetchData() {
       try {
-        console.log("🚀 Starting direct fetch...");
-        
-        // Fetch interests with direct fetch
-        const interestsResponse = await fetch("/api/interest-registrations");
-        console.log("📡 Interests response status:", interestsResponse.status);
-        console.log("📡 Interests response headers:", Object.fromEntries(interestsResponse.headers.entries()));
-        
-        const interestsText = await interestsResponse.text();
-        console.log("📄 Raw interests response text:", interestsText);
-        
-        let interestsData;
-        try {
-          interestsData = JSON.parse(interestsText);
-          console.log("✅ Parsed interests data:", interestsData);
-          console.log("📊 Interests data type:", typeof interestsData);
-          console.log("📊 Is array:", Array.isArray(interestsData));
-          console.log("📊 Length:", interestsData?.length);
-        } catch (parseError) {
-          console.error("❌ Failed to parse interests JSON:", parseError);
-          setError("Failed to parse interests data");
-          return;
+        // Fetch both endpoints simultaneously
+        const [interestsResponse, applicationsResponse] = await Promise.all([
+          fetch("/api/interest-registrations"),
+          fetch("/api/applications")
+        ]);
+
+        if (!interestsResponse.ok || !applicationsResponse.ok) {
+          throw new Error("Failed to fetch data from server");
         }
 
-        // Fetch applications
-        const applicationsResponse = await fetch("/api/applications");
-        const applicationsData = await applicationsResponse.json();
-        console.log("📄 Applications data:", applicationsData);
+        const [interestsData, applicationsData] = await Promise.all([
+          interestsResponse.json(),
+          applicationsResponse.json()
+        ]);
 
         setInterests(interestsData || []);
         setApplications(applicationsData || []);
         setLoading(false);
         
-        // Show alert with actual data
-        alert(`✅ SUCCESS! Found ${interestsData?.length || 0} interests and ${applicationsData?.length || 0} applications`);
-        
       } catch (err) {
-        console.error("❌ Fetch error:", err);
-        setError(err.message);
+        console.error("Fetch error:", err);
+        setError(err instanceof Error ? err.message : "Unknown error occurred");
         setLoading(false);
-        alert(`❌ ERROR: ${err.message}`);
       }
     }
 
@@ -92,9 +97,9 @@ export default function Admin() {
             <CardContent>
               {applications?.length > 0 ? (
                 <div className="space-y-4">
-                  {applications.map((app: any) => (
+                  {applications.map((app) => (
                     <div key={app.id} className="border-l-4 border-orange-500 pl-4 py-2">
-                      <h3 className="font-semibold">{app.firstName} {app.lastName}</h3>
+                      <h3 className="font-semibold">{app.fullName}</h3>
                       <p className="text-sm text-gray-600">{app.email}</p>
                       <p className="text-sm"><strong>Startup:</strong> {app.startupName}</p>
                       <p className="text-sm"><strong>Program:</strong> {app.program}</p>
@@ -119,7 +124,7 @@ export default function Admin() {
             <CardContent>
               {interests?.length > 0 ? (
                 <div className="space-y-4">
-                  {interests.map((interest: any) => (
+                  {interests.map((interest) => (
                     <div key={interest.id} className="border-l-4 border-blue-500 pl-4 py-2">
                       <h3 className="font-semibold">{interest.firstName} {interest.lastName}</h3>
                       <p className="text-sm text-gray-600">{interest.email}</p>
@@ -129,7 +134,15 @@ export default function Admin() {
                         <p className="text-sm"><strong>Status:</strong> {interest.currentStatus}</p>
                       )}
                       {interest.areasOfInterest && (
-                        <p className="text-sm"><strong>Challenge:</strong> {interest.areasOfInterest}</p>
+                        <div className="text-sm mt-2">
+                          <strong>Challenge:</strong> 
+                          <p className="mt-1 text-gray-700 max-w-md">
+                            {interest.areasOfInterest.length > 200 
+                              ? `${interest.areasOfInterest.substring(0, 200)}...` 
+                              : interest.areasOfInterest
+                            }
+                          </p>
+                        </div>
                       )}
                       <p className="text-sm text-gray-500">
                         {new Date(interest.createdAt).toLocaleDateString()}
