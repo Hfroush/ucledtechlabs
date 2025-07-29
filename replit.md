@@ -139,6 +139,7 @@ The application is configured for Replit's autoscale deployment:
 - June 27, 2025: Added all 9 authentic partner logos to Paris section (UCL Institute of Education, CY Cergy Paris Université, UCL Engineering, ESSEC Business School, Val d'Oise, La Turbine, bpifrance, EdTech France, Île-de-France)
 - June 27, 2025: Fixed all broken images on homepage including logo carousel (replaced with authentic partner logos), navigation logo (UCL EdTech Labs), hero section image (collaborative workshop photo), startup section (gradient text placeholders), and testimonials (text-based initials)
 - July 2, 2025: Redesigned hero section with full-width background image layout - collaborative workshop photo now fills entire viewport width with headline and subheading overlaid on image with dark overlay for optimal text readability
+- July 29, 2025: Fixed application startup issue by removing unnecessary explicit React import from admin.tsx file - Vite configuration already handles JSX transformation automatically, making explicit React imports redundant
 
 ## User Preferences
 
