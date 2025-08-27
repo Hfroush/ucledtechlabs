@@ -1,0 +1,216 @@
+Build a production-ready, single-file landing page for a startup accelerator programme. Output one file named index.html using:
+
+HTML5 + Tailwind CSS via CDN (no build step)
+
+Vanilla JS (inlined <script>)
+
+Lightweight, accessible, fast (Lighthouse ≥90)
+
+Mobile-first, responsive, semantic landmarks, WCAG AA
+
+No external fonts or heavy libs (system UI stack)
+
+Clear, confident microcopy (light, dry humour welcome)
+
+Brand & vibe
+
+Academic + startup hybrid: modern, minimal, confident
+
+Color palette: deep indigo #1a3e72, UCL purple #4a3b8f, soft gray #f5f7fb, accents with #0ea5e9 for CTAs. Use plenty of white space.
+
+Rounded corners (rounded-2xl), soft shadows (shadow-lg), grid + cards
+
+Page purpose
+
+Promote UCL EdTech Labs Autumn ’25 accelerator (Oct–Jan 2026) in London
+
+Focus: AI-first edtech startups
+
+Primary CTA: Apply Now (link placeholder #apply)
+
+Secondary CTA: Download Programme Outline (PDF) (link placeholder #pdf)
+
+Deadline window: Early September (3-week call)
+
+Location: London + Hybrid
+
+Top nav
+
+Logo placeholder “UCL EdTech Labs”
+
+Anchors: Programme • AI 101 Stream • Timeline • Criteria • Workshops • FAQs • Apply
+
+Sticky on scroll, subtle blur background
+
+Hero section
+
+Punchy headline: “Accelerate your AI edtech startup at UCL.”
+
+Subhead: One sentence: “Oct–Jan 2026 • London + Hybrid • Evidence-driven, founder-focused.”
+
+Primary CTA button “Apply Now”
+
+Secondary CTA “View Programme PDF”
+
+Trust row: small logos/placeholders: IOE, CDI (Centre for Digital Innovation), Base KX (use neutral boxes with labels)
+
+Value props (3–4 cards)
+
+Evidence-Driven: “Turn research into adoption and revenue.”
+
+Product Velocity: “Tight feedback loops, faster learning.”
+
+Expert Network: “UCL academics, product leaders, operators.”
+
+Funding Prep: “Investor-ready narrative, clean metrics.”
+
+Programme Overview section (cards + bullets)
+Use this content:
+
+0. Application & Selection (3 weeks, early Sept)
+
+Channels: EdTech Labs, Base KX/CDI, IOE
+
+Eligibility: credible AI-first approach; early hypotheses, working prototypes, or pilots welcome
+
+At least one of: (a) user traction, (b) testable prototype, (c) research foundation; exceptions require strong selector case
+
+1. Setting the Foundations (4–6 weeks)
+
+Kick-off Day (in-person, 6h): goals, end users, stakeholders
+
+Assumption Mapping (2h)
+
+What is Research (2h): metrics, success, dependencies
+
+Outcomes: Logic Model, Stakeholder Map, Vision/Mission, VLE access
+
+2. The Research Method (4 weeks)
+
+Research Methods Masterclass (3×2h)
+
+Tool-Kit tutorials (surveys, interviews)
+
+Methodology Clinics (4×1h)
+
+Outcomes: Research Library, Research Question, Research Plan, templates
+
+3. AI 101 Stream (3–4 weeks, integrated)
+
+AI Deployment in Educational Contexts (IOE, 2h)
+
+AI 101: Landscape, Use Cases & Implementation (CDI AWS Solutions Architect, 2h)
+
+Product Development 101 (CDI, 2h)
+
+Outcomes: Deployment framework, use-case inventory, draft implementation roadmap
+
+4. Applying the Method (4 weeks)
+
+Sales Narrative Workshop (2h)
+
+Final Day: Funding & Investment Strategy (in-person, 6h)
+
+Outcomes: Elevator pitch & deck, evidence cycles integrated into roadmap, VLE workspace
+
+Timeline section (horizontal)
+
+Visual timeline from Aug–Jan with milestones: Call Opens (early Sept, 3 weeks) → Foundations (Oct) → Research Method (Nov) + AI 101 Stream (overlapping) → Applying the Method (Dec–Jan) → Final Day (late Jan)
+
+Selection Criteria (checklist)
+
+AI-first product approach
+
+One of: traction / testable prototype / research foundation
+
+Research mindset; ethical and responsible development
+
+Team capacity to execute during programme
+
+Workshops & Partners (grid)
+
+Cards for IOE, CDI, Base KX, EdTech Labs with one-liners
+
+FAQs (accordion)
+Include at least 8 items:
+
+Who should apply?
+
+Do I need a working prototype?
+
+Time commitment & format?
+
+Do you take equity?
+
+What support is in the VLE?
+
+What happens on Final Day?
+
+Can I join remotely?
+
+How are selections scored?
+
+Application CTA section
+
+Short, energetic copy in my tone: “If you’re building for learning, we’ll help you learn faster. Apply—it’s cheaper than guesswork.”
+
+Button “Start Your Application” (#apply)
+
+“Download Programme Outline (PDF)” link (#pdf)
+
+Contact line: “Questions? edtechlabs@ucl.example
+”
+
+Footer
+
+UCL EdTech Labs • © 2025
+
+Social placeholders
+
+Privacy / Terms links
+
+Form (modal or anchored section with id="apply")
+
+Fields: Founder name, Email, Startup name, Website, One-liner, Stage (dropdown), Which criterion you meet (checkboxes), 100-word problem statement, 100-word approach, Consent checkbox
+
+Simple client-side validation; on submit, show success toast and console.log form JSON (no backend)
+
+SEO & meta
+
+Title: “UCL EdTech Labs Autumn ’25 — Call for AI EdTech Startups”
+
+Description: “Oct–Jan 2026 accelerator in London. Evidence-driven pathway for AI-first education startups. Apply by early September.”
+
+Open Graph/Twitter meta tags
+
+JSON-LD Organization + Event (dates: Oct 2025–Jan 2026; location: London; organizer: UCL EdTech Labs)
+
+Nice touches
+
+Subtle scroll-reveal animations (IntersectionObserver + translate-y, opacity)
+
+Sticky CTA on mobile (“Apply Now”)
+
+Progress indicator on timeline when scrolling
+
+Back-to-top button
+
+Reduced-motion support (prefers-reduced-motion)
+
+Copy guide (tone)
+
+Informal, respectful, energetic. No hype-fluff. Short sentences. Occasional dry humour.
+
+Avoid repeating “AI” in every sentence—let it be implicit.
+
+Deliverables
+
+A single index.html file, fully self-contained, with:
+
+Tailwind CDN <script> and <link>
+
+All sections implemented exactly as specified
+
+Placeholder links for #apply and #pdf
+
+Clean, commented structure to edit later
