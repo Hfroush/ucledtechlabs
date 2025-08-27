@@ -13,7 +13,6 @@ import SlaveryStatement from "@/pages/slavery-statement";
 import FreedomOfInformation from "@/pages/freedom-of-information";
 import PoliciesGuidance from "@/pages/policies-guidance";
 import PastProgramsPartnersPage from "@/pages/past-programs-partners";
-import AcceleratorLanding from "@/pages/accelerator-landing";
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/apply" component={Apply} />
-        <Route path="/accelerator" component={AcceleratorLanding} />
         <Route path="/past-programs-partners" component={PastProgramsPartnersPage} />
         <Route path="/admin" component={Admin} />
         <Route path="/accessibility" component={Accessibility} />
