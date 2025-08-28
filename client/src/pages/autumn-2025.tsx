@@ -130,7 +130,7 @@ export default function Autumn2025() {
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/attached_assets/image_1756356089588.png')`
+            backgroundImage: `url('/hero-background.png')`
           }}
         />
         
