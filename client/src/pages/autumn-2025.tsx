@@ -234,7 +234,7 @@ export default function Autumn2025() {
               <div className="text-sm text-gray-500 mb-3">4–6 weeks</div>
               <ul className="text-gray-600 space-y-2">
                 <li>🔑 Clarity from day one.Cut the noise and get crystal clear on who you serve, why it matters, and how you’ll measure success.</li>
-                <li>• Assumption Mapping (2h)</li>
+                <li>• Map your users and stakeholders with precision</li>
                 <li>• What is Research (2h): metrics, success, dependencies</li>
                 <li>• Outcomes: Logic Model, Stakeholder Map, Vision/Mission, VLE access</li>
               </ul>
