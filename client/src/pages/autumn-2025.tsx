@@ -233,7 +233,7 @@ export default function Autumn2025() {
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Setting the Foundations</h3>
               <div className="text-sm text-gray-500 mb-3">4–6 weeks</div>
               <ul className="text-gray-600 space-y-2">
-                <li>• Kick-off Day (in-person, 6h): goals, end users, stakeholders</li>
+                <li>🔑 Clarity from day one.Cut the noise and get crystal clear on who you serve, why it matters, and how you’ll measure success.</li>
                 <li>• Assumption Mapping (2h)</li>
                 <li>• What is Research (2h): metrics, success, dependencies</li>
                 <li>• Outcomes: Logic Model, Stakeholder Map, Vision/Mission, VLE access</li>
