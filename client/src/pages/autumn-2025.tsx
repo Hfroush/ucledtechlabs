@@ -243,7 +243,6 @@ export default function Autumn2025() {
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 2</div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">The Research Method</h3>
-              <div className="text-sm text-gray-500 mb-3">4 weeks</div>
               <ul className="text-gray-600 space-y-2">
                 <li>🔍 Decisions powered by evidence, not guesswork.</li>
                 <li>• Tool-Kit tutorials (surveys, interviews)</li>
