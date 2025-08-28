@@ -125,12 +125,15 @@ export default function Autumn2025() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-[#1a3e72]">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/attached_assets/UCL-Welcome-2024-04.jpg_1756365039242.jpg')`
+        <img 
+          src="/attached_assets/UCL-Welcome-2024-04.jpg_1756365039242.jpg"
+          alt="UCL Welcome Building"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          onError={(e) => {
+            console.log('Image failed to load:', e);
+            e.currentTarget.style.display = 'none';
           }}
         />
         
