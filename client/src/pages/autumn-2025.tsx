@@ -442,7 +442,7 @@ export default function Autumn2025() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 rounded-2xl mx-auto mb-4 overflow-hidden">
+              <div className="w-24 h-24 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/ucl-main-building.jpg" 
                   alt="UCL Main Building" 
