@@ -236,7 +236,7 @@ export default function Autumn2025() {
                 <li>🔑 Clarity from day one.Cut the noise and get crystal clear on who you serve, why it matters, and how you’ll measure success.</li>
                 <li>• Map your users and stakeholders with precision</li>
                 <li>• Pressure-test your assumptions before they cost you</li>
-                <li>• Outcomes: Logic Model, Stakeholder Map, Vision/Mission, VLE access</li>
+                <li>You leave with: A sharp logic model, a focused mission, and the tools to align your team and story.</li>
               </ul>
             </div>
 
