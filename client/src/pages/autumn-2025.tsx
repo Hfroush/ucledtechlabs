@@ -245,7 +245,7 @@ export default function Autumn2025() {
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">The Research Method</h3>
               <div className="text-sm text-gray-500 mb-3">4 weeks</div>
               <ul className="text-gray-600 space-y-2">
-                <li>• Research Methods Masterclass (3×2h)</li>
+                <li>🔍 Decisions powered by evidence, not guesswork.</li>
                 <li>• Tool-Kit tutorials (surveys, interviews)</li>
                 <li>• Methodology Clinics (4×1h)</li>
                 <li>• Outcomes: Research Library, Research Question, Research Plan, templates</li>
