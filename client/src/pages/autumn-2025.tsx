@@ -444,7 +444,7 @@ export default function Autumn2025() {
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 rounded-2xl mx-auto mb-4 overflow-hidden">
                 <img 
-                  src="/attached_assets/ucl-main-building.jpg" 
+                  src="/ucl-main-building.jpg" 
                   alt="UCL Main Building" 
                   className="w-full h-full object-cover"
                 />
