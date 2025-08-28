@@ -246,7 +246,7 @@ export default function Autumn2025() {
               <ul className="text-gray-600 space-y-2">
                 <li>🔍 Decisions powered by evidence, not guesswork. Learn a repeatable system for testing ideas, gathering insights, and avoiding expensive mistakes.</li>
                 <li>• Master practical methods without the jargon</li>
-                <li>• Methodology Clinics (4×1h)</li>
+                <li>• Build lean surveys, interviews, and tests that actually convert into answers</li>
                 <li>• Outcomes: Research Library, Research Question, Research Plan, templates</li>
               </ul>
             </div>
