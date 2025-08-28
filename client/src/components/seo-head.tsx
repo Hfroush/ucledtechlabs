@@ -77,7 +77,7 @@ export default function SEOHead({
       }
       
       scriptElement = document.createElement('script');
-      scriptElement.type = 'application/ld+json';
+      (scriptElement as HTMLScriptElement).type = 'application/ld+json';
       scriptElement.innerHTML = JSON.stringify(structuredData);
       document.head.appendChild(scriptElement);
     }

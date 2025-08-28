@@ -125,11 +125,21 @@ export default function Autumn2025() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-white bg-gradient-to-br from-[#1a3e72] via-[#2d5aa0] to-[#4a90e2]">
-        <div className="absolute inset-0 bg-black/20 z-0"></div>
+      <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/attached_assets/image_1756355796781.png')`
+          }}
+        />
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-[#1a3e72]/50 z-10"></div>
+        
+        {/* Content */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white scroll-reveal opacity-0 animate-fade-in">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Accelerate your <span className="text-[#FF6C0E]">AI edtech startup</span> at UCL.
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed">
@@ -143,9 +153,15 @@ export default function Autumn2025() {
             >
               Apply Now
             </a>
+            <a 
+              href="#programme" 
+              className="border-2 border-white text-white hover:bg-white hover:text-[#1a3e72] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
+            >
+              Learn More
+            </a>
           </div>
           
-          <div className="text-sm text-white/80 mb-4">
+          <div className="text-sm text-white/90 mb-4">
             Application deadline: <span className="font-semibold text-[#FF6C0E]">19 September 2025</span>
           </div>
         </div>
@@ -203,7 +219,7 @@ export default function Autumn2025() {
       </section>
 
       {/* Programme Overview */}
-      <section className="py-20 bg-slate-50 scroll-reveal">
+      <section id="programme" className="py-20 bg-slate-50 scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">Programme Overview</h2>
@@ -520,9 +536,29 @@ export default function Autumn2025() {
           transform: translateY(0);
         }
         
+        .animate-fade-in {
+          animation: fadeInUp 1.2s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
         #backToTop.show {
           transform: translateY(0);
           opacity: 1;
+        }
+        
+        /* Ensure navigation stays above hero */
+        nav {
+          z-index: 1000;
         }
         
         @media (prefers-reduced-motion: reduce) {
