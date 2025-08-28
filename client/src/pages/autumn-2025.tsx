@@ -183,7 +183,7 @@ export default function Autumn2025() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-2">Validation First</h3>
-              <p className="text-gray-600">Evidence that drives tractions and revenue.</p>
+              <p className="text-gray-600">Evidence that drives traction and revenue.</p>
             </div>
             
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
