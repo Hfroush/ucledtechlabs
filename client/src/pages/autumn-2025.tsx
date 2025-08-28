@@ -247,7 +247,7 @@ export default function Autumn2025() {
                 <li>🔍 Decisions powered by evidence, not guesswork. Learn a repeatable system for testing ideas, gathering insights, and avoiding expensive mistakes.</li>
                 <li>• Master practical methods without the jargon</li>
                 <li>• Build lean surveys, interviews, and tests that actually convert into answers</li>
-                <li>• You leave with: A research library, a live research plan, and the confidence to validate any big bet.</li>
+                <li>You leave with: A research library, a live research plan, and the confidence to validate any big bet.</li>
               </ul>
             </div>
 
