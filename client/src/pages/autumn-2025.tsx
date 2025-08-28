@@ -232,7 +232,7 @@ export default function Autumn2025() {
               <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 1</div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Setting the Foundations</h3>
               <ul className="text-gray-600 space-y-2">
-                <li>🔑 Clarity from day one.Cut the noise and get crystal clear on who you serve, why it matters, and how you’ll measure success.</li>
+                <li>🔑 Clarity from day one. Cut the noise and get crystal clear on who you serve, why it matters, and how you’ll measure success.</li>
                 <li>• Map your users and stakeholders with precision</li>
                 <li>• Pressure-test your assumptions before they cost you</li>
                 <li>You leave with: A sharp logic model, a focused mission, and the tools to align your team and story.</li>
