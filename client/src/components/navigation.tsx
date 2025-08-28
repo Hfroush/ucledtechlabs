@@ -53,6 +53,12 @@ export default function Navigation() {
                 Startups
               </button>
               <Link
+                href="/autumn-2025"
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Autumn 2025
+              </Link>
+              <Link
                 href="/past-programs-partners"
                 className="text-gray-700 hover:text-primary transition-colors"
               >
@@ -89,6 +95,13 @@ export default function Navigation() {
                   >
                     Startups
                   </button>
+                  <Link
+                    href="/autumn-2025"
+                    className="block text-left text-gray-700 hover:text-primary transition-colors py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Autumn 2025
+                  </Link>
                   <Link
                     href="/past-programs-partners"
                     className="block text-left text-gray-700 hover:text-primary transition-colors py-2"
