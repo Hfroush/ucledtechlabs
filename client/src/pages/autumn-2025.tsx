@@ -229,19 +229,6 @@ export default function Autumn2025() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Stage 0 */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 0</div>
-              <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Application & Selection</h3>
-              <div className="text-sm text-gray-500 mb-3">3 weeks, early Sept</div>
-              <ul className="text-gray-600 space-y-2">
-                <li>• Channels: EdTech Labs, Base KX/CDI, IOE</li>
-                <li>• Eligibility: credible AI-first approach</li>
-                <li>• Early hypotheses, working prototypes, or pilots welcome</li>
-                <li>• At least one of: user traction, testable prototype, or research foundation</li>
-              </ul>
-            </div>
-
             {/* Stage 1 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 1</div>
