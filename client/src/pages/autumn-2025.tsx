@@ -442,8 +442,12 @@ export default function Autumn2025() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                <span className="text-sm font-bold text-gray-600">IOE</span>
+              <div className="w-16 h-16 rounded-2xl mx-auto mb-4 overflow-hidden">
+                <img 
+                  src="/attached_assets/ucl-main-building.jpg" 
+                  alt="UCL Main Building" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Institute of Education</h3>
               <p className="text-sm text-gray-600">World-leading education research and pedagogy expertise</p>
