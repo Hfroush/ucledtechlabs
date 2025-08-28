@@ -244,7 +244,7 @@ export default function Autumn2025() {
               <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 2</div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">The Research Method</h3>
               <ul className="text-gray-600 space-y-2">
-                <li>🔍 Decisions powered by evidence, not guesswork.</li>
+                <li>🔍 Decisions powered by evidence, not guesswork. Learn a repeatable system for testing ideas, gathering insights, and avoiding expensive mistakes.</li>
                 <li>• Tool-Kit tutorials (surveys, interviews)</li>
                 <li>• Methodology Clinics (4×1h)</li>
                 <li>• Outcomes: Research Library, Research Question, Research Plan, templates</li>
