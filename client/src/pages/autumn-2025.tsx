@@ -123,7 +123,6 @@ export default function Autumn2025() {
         structuredData={structuredData}
       />
       <Navigation />
-
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-[#1a3e72]">
         {/* Background Image */}
@@ -169,7 +168,6 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
-
       {/* Value Props */}
       <section className="py-20 bg-white scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -184,7 +182,7 @@ export default function Autumn2025() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#1a3e72] mb-2">Evidence-Driven</h3>
+              <h3 className="text-xl font-bold text-[#1a3e72] mb-2">Validation- First</h3>
               <p className="text-gray-600">Turn research into adoption and revenue.</p>
             </div>
             
@@ -220,7 +218,6 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
-
       {/* Programme Overview */}
       <section id="programme" className="py-20 bg-slate-50 scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -298,7 +295,6 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
-
       {/* Timeline */}
       <section id="timeline-section" className="py-20 bg-white scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -361,7 +357,6 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
-
       {/* Selection Criteria */}
       <section className="py-20 bg-slate-50 scroll-reveal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -421,7 +416,6 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
-
       {/* Workshops & Partners */}
       <section className="py-20 bg-white scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -469,7 +463,6 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
-
       {/* Application CTA */}
       <section className="py-20 bg-gradient-to-br from-[#1a3e72] to-[#2d5aa0] text-white scroll-reveal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -494,9 +487,7 @@ export default function Autumn2025() {
           </p>
         </div>
       </section>
-
       <Footer />
-      
       {/* Back to Top Button */}
       <button 
         id="backToTop" 
@@ -507,7 +498,6 @@ export default function Autumn2025() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
       </button>
-
       {/* Mobile Sticky CTA */}
       <div id="mobile-cta" className="fixed bottom-0 left-0 right-0 bg-[#FF6C0E] p-4 z-40 md:hidden transform translate-y-full transition-transform">
         <a 
@@ -517,7 +507,6 @@ export default function Autumn2025() {
           Apply Now
         </a>
       </div>
-
       <style>{`
         .scroll-reveal {
           opacity: 0;
