@@ -213,7 +213,7 @@ export default function Autumn2025() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-2">Pitch Ready</h3>
-              <p className="text-gray-600">Investor-ready narrative, clean metrics.</p>
+              <p className="text-gray-600">Investor-ready stories, impact metrics.</p>
             </div>
           </div>
         </div>
