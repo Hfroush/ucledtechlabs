@@ -257,7 +257,7 @@ export default function Autumn2025() {
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">AIEd Stream</h3>
               <ul className="text-gray-600 space-y-2">
                 <li>⚡ Cut through the AI hype — deploy what matters. Understand what’s real, what’s possible, and how to build AI into your product roadmap.</li>
-                <li>• AI 101: Landscape, Use Cases & Implementation (CDI AWS Solutions Architect, 2h)</li>
+                <li>• Explore how AI plays out in real educational contexts</li>
                 <li>• Product Development 101 (CDI, 2h)</li>
                 <li>• Outcomes: Deployment framework, use-case inventory, draft implementation roadmap</li>
               </ul>
