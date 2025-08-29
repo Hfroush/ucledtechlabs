@@ -88,7 +88,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50">
       <Navigation />
-      
       {/* Autumn '25 Applications Overlay */}
       <section id="etl-topsheet"
         className="fixed inset-x-0 top-32 z-[60] translate-y-[-100%] opacity-0 transition duration-500 will-change-transform"
@@ -111,10 +110,7 @@ export default function Home() {
                 <h2 className="mt-1 text-2xl md:text-3xl font-bold text-slate-900">
                   London Autumn '25 applications are now open
                 </h2>
-                <p className="mt-2 text-slate-600">
-                  3-week window • Early September deadline • London + Hybrid.  
-                  If you're building for learning, we'll help you learn faster.
-                </p>
+                <p className="mt-2 text-slate-600">Join our unique, equity-free programme • Application deadline 19 September • London + Hybrid. If you're building for learning, we'll help you learn faster.</p>
 
                 <div className="mt-4 flex flex-col sm:flex-row gap-3">
                   <a href="/autumn-2025"
