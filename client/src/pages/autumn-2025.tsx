@@ -411,36 +411,36 @@ export default function Autumn2025() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-20 h-20 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md bg-white flex items-center justify-center p-2">
-                {/* UCL Institute of Education logo placeholder */}
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">IOE</div>
+              <div className="w-24 h-24 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md">
+                <img 
+                  src="/ucl-main-building.jpg" 
+                  alt="UCL Main Building" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Institute of Education</h3>
               <p className="text-sm text-gray-600">World-leading education research and pedagogy expertise</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-20 h-20 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md bg-white flex items-center justify-center p-2">
-                {/* AWS CDI logo placeholder */}
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">AWS</div>
+              <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                <span className="text-sm font-bold text-gray-600">CDI</span>
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Centre for Digital Innovation powered by AWS</h3>
               <p className="text-sm text-gray-600">Technology innovation and digital transformation</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-20 h-20 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md bg-white flex items-center justify-center p-2">
-                {/* EdTech Impact logo placeholder */}
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">ETI</div>
+              <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                <span className="text-xs font-bold text-gray-600">Base KX</span>
               </div>
-              <h3 className="font-bold text-[#1a3e72] mb-2">EdTech Impact</h3>
+              <h3 className="font-bold text-[#1a3e72] mb-2">Edtech Impact</h3>
               <p className="text-sm text-gray-600">Startup acceleration and venture building</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-20 h-20 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md bg-white flex items-center justify-center p-2">
-                {/* UCL EdTech Labs logo placeholder */}
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">UCL</div>
+              <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                <span className="text-xs font-bold text-gray-600">Labs</span>
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">EdTech Labs</h3>
               <p className="text-sm text-gray-600">Product development and go-to-market strategy</p>
