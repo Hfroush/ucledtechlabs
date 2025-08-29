@@ -276,18 +276,7 @@ export default function Autumn2025() {
               </ul>
             </div>
 
-            {/* Final Showcase */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-2 border-[#FF6C0E]">
-              <div className="text-[#FF6C0E] font-bold text-sm mb-2">FINALE</div>
-              <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Final Day & Showcase</h3>
-              <div className="text-sm text-gray-500 mb-3">BETT '26 Week</div>
-              <ul className="text-gray-600 space-y-2">
-                <li>• Demo Day presentation</li>
-                <li>• Investor pitch sessions</li>
-                <li>• Network with education industry leaders</li>
-                <li>• Launch market-ready product</li>
-              </ul>
-            </div>
+
           </div>
         </div>
       </section>
