@@ -426,7 +426,7 @@ export default function Autumn2025() {
               <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <span className="text-sm font-bold text-gray-600">CDI</span>
               </div>
-              <h3 className="font-bold text-[#1a3e72] mb-2">Centre for Digital Innovation</h3>
+              <h3 className="font-bold text-[#1a3e72] mb-2">Centre for Digital Innovation powered by AWS</h3>
               <p className="text-sm text-gray-600">Technology innovation and digital transformation</p>
             </div>
 
