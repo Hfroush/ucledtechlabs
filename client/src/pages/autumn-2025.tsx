@@ -256,7 +256,7 @@ export default function Autumn2025() {
               <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 3</div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">AIEd Stream</h3>
               <ul className="text-gray-600 space-y-2">
-                <li>• AI Deployment in Educational Contexts (IOE, 2h)</li>
+                <li>⚡ Cut through the AI hype — deploy what matters.</li>
                 <li>• AI 101: Landscape, Use Cases & Implementation (CDI AWS Solutions Architect, 2h)</li>
                 <li>• Product Development 101 (CDI, 2h)</li>
                 <li>• Outcomes: Deployment framework, use-case inventory, draft implementation roadmap</li>
