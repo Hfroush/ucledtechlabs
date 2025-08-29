@@ -442,7 +442,7 @@ export default function Autumn2025() {
               <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <span className="text-xs font-bold text-gray-600">Labs</span>
               </div>
-              <h3 className="font-bold text-[#1a3e72] mb-2">EdTech Labs</h3>
+              <h3 className="font-bold text-[#1a3e72] mb-2">Startup Labs Global</h3>
               <p className="text-sm text-gray-600">Product development and go-to-market strategy</p>
             </div>
           </div>
