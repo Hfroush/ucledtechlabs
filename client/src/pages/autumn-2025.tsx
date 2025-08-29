@@ -270,7 +270,7 @@ export default function Autumn2025() {
               <div className="text-sm text-gray-500 mb-3">4 weeks</div>
               <ul className="text-gray-600 space-y-2">
                 <li>🎤 Turn validation into a story investors can’t ignore. It’s not just about the outcomes — it’s about the story you build around it.</li>
-                <li>• Final Day: Funding & Investment Strategy (in-person, 6h)</li>
+                <li>• Shape a sales narrative that lands with partners and investors</li>
                 <li>• Outcomes: Elevator pitch & deck, evidence cycles integrated into roadmap, VLE workspace</li>
               </ul>
             </div>
