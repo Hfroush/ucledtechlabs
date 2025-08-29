@@ -269,7 +269,7 @@ export default function Autumn2025() {
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Applying the Method</h3>
               <div className="text-sm text-gray-500 mb-3">4 weeks</div>
               <ul className="text-gray-600 space-y-2">
-                <li>• Sales Narrative Workshop (2h)</li>
+                <li>🎤 Turn validation into a story investors can’t ignore. It’s not just about the outcomes — it’s about the story you build around it.</li>
                 <li>• Final Day: Funding & Investment Strategy (in-person, 6h)</li>
                 <li>• Outcomes: Elevator pitch & deck, evidence cycles integrated into roadmap, VLE workspace</li>
               </ul>
