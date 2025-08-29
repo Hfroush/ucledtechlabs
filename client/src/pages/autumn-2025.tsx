@@ -423,8 +423,12 @@ export default function Autumn2025() {
             </div>
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                <span className="text-sm font-bold text-gray-600">CDI</span>
+              <div className="w-24 h-16 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md">
+                <img 
+                  src="/attached_assets/Screenshot 2025-08-29 at 13.14.46_1756458918577.png" 
+                  alt="UCL Centre for Digital Innovation powered by AWS" 
+                  className="w-full h-full object-contain"
+                />
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Centre for Digital Innovation powered by AWS</h3>
               <p className="text-sm text-gray-600">Technology innovation and digital transformation</p>
