@@ -29,7 +29,7 @@ export default function Autumn2025() {
       if (timeline) {
         const rect = timeline.getBoundingClientRect();
         const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        
+
         if (isVisible) {
           const dots = timeline.querySelectorAll('.timeline-dot');
           dots.forEach((dot, index) => {
@@ -42,7 +42,7 @@ export default function Autumn2025() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     // Back to top button
     const backToTop = document.getElementById('backToTop');
     const handleBackToTop = () => {
@@ -61,7 +61,7 @@ export default function Autumn2025() {
     const handleMobileCTA = () => {
       const scrolled = window.pageYOffset;
       const viewportHeight = window.innerHeight;
-      
+
       if (scrolled > viewportHeight && !ctaShown && window.innerWidth < 768) {
         mobileCTA?.classList.remove('translate-y-full');
         ctaShown = true;
@@ -135,10 +135,10 @@ export default function Autumn2025() {
             e.currentTarget.style.display = 'none';
           }}
         />
-        
+
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-[#1a3e72]/50 z-10"></div>
-        
+
         {/* Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white scroll-reveal opacity-0 animate-fade-in">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -147,7 +147,7 @@ export default function Autumn2025() {
           <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed">
             Oct–Jan 2026 • London + Hybrid • Evidence-driven, founder-focused.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a 
               href="#apply" 
@@ -162,7 +162,7 @@ export default function Autumn2025() {
               Learn More
             </a>
           </div>
-          
+
           <div className="text-sm text-white/90 mb-4">
             Application deadline: <span className="font-semibold text-[#FF6C0E]">19 September 2025</span>
           </div>
@@ -174,7 +174,7 @@ export default function Autumn2025() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">Why Choose UCL EdTech Labs</h2>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-16 h-16 bg-[#FF6C0E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FF6C0E]/20">
@@ -185,7 +185,7 @@ export default function Autumn2025() {
               <h3 className="text-xl font-bold text-[#1a3e72] mb-2">Validation First</h3>
               <p className="text-gray-600">Evidence that drives traction and revenue.</p>
             </div>
-            
+
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-16 h-16 bg-[#FF6C0E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FF6C0E]/20">
                 <svg className="w-8 h-8 text-[#FF6C0E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,7 +195,7 @@ export default function Autumn2025() {
               <h3 className="text-xl font-bold text-[#1a3e72] mb-2">Product Velocity</h3>
               <p className="text-gray-600">Tight feedback loops, faster learning.</p>
             </div>
-            
+
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-16 h-16 bg-[#FF6C0E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FF6C0E]/20">
                 <svg className="w-8 h-8 text-[#FF6C0E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,7 +205,7 @@ export default function Autumn2025() {
               <h3 className="text-xl font-bold text-[#1a3e72] mb-2">Expert Direction</h3>
               <p className="text-gray-600">UCL academics, product leaders, operators.</p>
             </div>
-            
+
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-16 h-16 bg-[#FF6C0E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FF6C0E]/20">
                 <svg className="w-8 h-8 text-[#FF6C0E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,7 +225,7 @@ export default function Autumn2025() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">Programme Overview</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">A structured pathway to market-ready outcomes</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Stage 1 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
@@ -254,8 +254,7 @@ export default function Autumn2025() {
             {/* Stage 3 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 3</div>
-              <h3 className="text-xl font-bold text-[#1a3e72] mb-4">AIEd Stream</h3>
-              <div className="text-sm text-gray-500 mb-3">3–4 weeks, integrated</div>
+              <h3 className="text-xl font-bold text-[#1a3e72] mb-4">AIEd Stream</h3>
               <ul className="text-gray-600 space-y-2">
                 <li>• AI Deployment in Educational Contexts (IOE, 2h)</li>
                 <li>• AI 101: Landscape, Use Cases & Implementation (CDI AWS Solutions Architect, 2h)</li>
@@ -298,7 +297,7 @@ export default function Autumn2025() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">Programme Timeline</h2>
             <p className="text-xl text-gray-600">Five months from application to showcase</p>
           </div>
-          
+
           <div className="relative">
             <div className="flex flex-wrap justify-between items-center">
               <div className="timeline-dot flex flex-col items-center mb-8 lg:mb-0 relative">
@@ -310,7 +309,7 @@ export default function Autumn2025() {
                 </div>
                 <div className="hidden lg:block absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
               </div>
-              
+
               <div className="timeline-dot flex flex-col items-center mb-8 lg:mb-0 relative">
                 <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
                 <div className="text-center">
@@ -320,7 +319,7 @@ export default function Autumn2025() {
                 </div>
                 <div className="hidden lg:block absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
               </div>
-              
+
               <div className="timeline-dot flex flex-col items-center mb-8 lg:mb-0 relative">
                 <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
                 <div className="text-center">
@@ -330,7 +329,7 @@ export default function Autumn2025() {
                 </div>
                 <div className="hidden lg:block absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
               </div>
-              
+
               <div className="timeline-dot flex flex-col items-center mb-8 lg:mb-0 relative">
                 <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
                 <div className="text-center">
@@ -340,7 +339,7 @@ export default function Autumn2025() {
                 </div>
                 <div className="hidden lg:block absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
               </div>
-              
+
               <div className="timeline-dot flex flex-col items-center">
                 <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
                 <div className="text-center">
@@ -360,7 +359,7 @@ export default function Autumn2025() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">Selection Criteria</h2>
             <p className="text-xl text-gray-600">What we're looking for in applicants</p>
           </div>
-          
+
           <div className="space-y-6">
             <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg">
               <div className="w-6 h-6 bg-[#FF6C0E] rounded-full flex-shrink-0 flex items-center justify-center mt-1">
@@ -373,7 +372,7 @@ export default function Autumn2025() {
                 <p className="text-gray-600">Your product uses machine learning, natural language processing, or other forms of artificial intelligence as a core feature, not just an add-on.</p>
               </div>
             </div>
-            
+
             <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg">
               <div className="w-6 h-6 bg-[#FF6C0E] rounded-full flex-shrink-0 flex items-center justify-center mt-1">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -385,7 +384,7 @@ export default function Autumn2025() {
                 <p className="text-gray-600">You have early users, a working prototype, or solid research backing your approach. Exceptions require strong selector case.</p>
               </div>
             </div>
-            
+
             <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg">
               <div className="w-6 h-6 bg-[#FF6C0E] rounded-full flex-shrink-0 flex items-center justify-center mt-1">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -397,7 +396,7 @@ export default function Autumn2025() {
                 <p className="text-gray-600">You're committed to evidence-based development and ethical considerations around privacy, bias, and educational impact.</p>
               </div>
             </div>
-            
+
             <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg">
               <div className="w-6 h-6 bg-[#FF6C0E] rounded-full flex-shrink-0 flex items-center justify-center mt-1">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -419,7 +418,7 @@ export default function Autumn2025() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">Workshops & Partners</h2>
             <p className="text-xl text-gray-600">Learn from the best in education and technology</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-24 h-24 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md">
@@ -432,7 +431,7 @@ export default function Autumn2025() {
               <h3 className="font-bold text-[#1a3e72] mb-2">Institute of Education</h3>
               <p className="text-sm text-gray-600">World-leading education research and pedagogy expertise</p>
             </div>
-            
+
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <span className="text-sm font-bold text-gray-600">CDI</span>
@@ -440,7 +439,7 @@ export default function Autumn2025() {
               <h3 className="font-bold text-[#1a3e72] mb-2">Centre for Digital Innovation</h3>
               <p className="text-sm text-gray-600">Technology innovation and digital transformation</p>
             </div>
-            
+
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <span className="text-xs font-bold text-gray-600">Base KX</span>
@@ -448,7 +447,7 @@ export default function Autumn2025() {
               <h3 className="font-bold text-[#1a3e72] mb-2">BaseKX</h3>
               <p className="text-sm text-gray-600">Startup acceleration and venture building</p>
             </div>
-            
+
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <span className="text-xs font-bold text-gray-600">Labs</span>
@@ -468,7 +467,7 @@ export default function Autumn2025() {
           <p className="text-xl mb-8 opacity-90">
             Join UCL's evidence-driven accelerator programme.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a 
               href="#apply" 
@@ -477,7 +476,7 @@ export default function Autumn2025() {
               Apply Now - Deadline Sep 19
             </a>
           </div>
-          
+
           <p className="text-sm opacity-75">
             Questions? Email <a href="mailto:edtechlabs@ucl.ac.uk" className="underline hover:no-underline">edtechlabs@ucl.ac.uk</a>
           </p>
@@ -509,16 +508,16 @@ export default function Autumn2025() {
           transform: translateY(20px);
           transition: all 0.6s ease-out;
         }
-        
+
         .scroll-reveal.animate-fade-in {
           opacity: 1;
           transform: translateY(0);
         }
-        
+
         .animate-fade-in {
           animation: fadeInUp 1.2s ease-out forwards;
         }
-        
+
         @keyframes fadeInUp {
           0% {
             opacity: 0;
@@ -529,17 +528,17 @@ export default function Autumn2025() {
             transform: translateY(0);
           }
         }
-        
+
         #backToTop.show {
           transform: translateY(0);
           opacity: 1;
         }
-        
+
         /* Ensure navigation stays above hero */
         nav {
           z-index: 1000;
         }
-        
+
         @media (prefers-reduced-motion: reduce) {
           .scroll-reveal,
           .animate-fade-in,
