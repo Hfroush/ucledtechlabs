@@ -412,11 +412,8 @@ export default function Autumn2025() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-20 h-20 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md bg-white flex items-center justify-center p-2">
-                <img 
-                  src="/attached_assets/UCL_Standalone_Edtech Labs_1750772002603.png" 
-                  alt="UCL Institute of Education" 
-                  className="w-full h-full object-contain"
-                />
+                {/* UCL Institute of Education logo placeholder */}
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">IOE</div>
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Institute of Education</h3>
               <p className="text-sm text-gray-600">World-leading education research and pedagogy expertise</p>
@@ -424,11 +421,8 @@ export default function Autumn2025() {
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-20 h-20 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md bg-white flex items-center justify-center p-2">
-                <img 
-                  src="/attached_assets/generated_images/AWS_official_logo_266521d3.png" 
-                  alt="AWS Centre for Digital Innovation" 
-                  className="w-full h-full object-contain"
-                />
+                {/* AWS CDI logo placeholder */}
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">AWS</div>
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Centre for Digital Innovation powered by AWS</h3>
               <p className="text-sm text-gray-600">Technology innovation and digital transformation</p>
@@ -436,11 +430,8 @@ export default function Autumn2025() {
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-20 h-20 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md bg-white flex items-center justify-center p-2">
-                <img 
-                  src="/attached_assets/generated_images/EdTech_Impact_logo_fcc278f1.png" 
-                  alt="EdTech Impact" 
-                  className="w-full h-full object-contain"
-                />
+                {/* EdTech Impact logo placeholder */}
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">ETI</div>
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">EdTech Impact</h3>
               <p className="text-sm text-gray-600">Startup acceleration and venture building</p>
@@ -448,11 +439,8 @@ export default function Autumn2025() {
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-20 h-20 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md bg-white flex items-center justify-center p-2">
-                <img 
-                  src="/attached_assets/generated_images/UCL_EdTech_Labs_logo_eac0d278.png" 
-                  alt="UCL EdTech Labs" 
-                  className="w-full h-full object-contain"
-                />
+                {/* UCL EdTech Labs logo placeholder */}
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">UCL</div>
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">EdTech Labs</h3>
               <p className="text-sm text-gray-600">Product development and go-to-market strategy</p>
