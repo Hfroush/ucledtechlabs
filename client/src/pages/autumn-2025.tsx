@@ -259,7 +259,7 @@ export default function Autumn2025() {
                 <li>⚡ Cut through the AI hype — deploy what matters. Understand what’s real, what’s possible, and how to build AI into your product roadmap.</li>
                 <li>• Explore how AI plays out in real educational contexts</li>
                 <li>• Map the landscape with AWS architects</li>
-                <li>• Outcomes: Deployment framework, use-case inventory, draft implementation roadmap</li>
+                <li>You leave with: A deployment framework, a bank of real use cases, and a draft AI implementation plan.</li>
               </ul>
             </div>
 
