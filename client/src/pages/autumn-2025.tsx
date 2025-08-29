@@ -271,7 +271,7 @@ export default function Autumn2025() {
               <ul className="text-gray-600 space-y-2">
                 <li>🎤 Turn validation into a story investors can’t ignore. It’s not just about the outcomes — it’s about the story you build around it.</li>
                 <li>• Shape a sales narrative that lands with partners and investors</li>
-                <li>• Outcomes: Elevator pitch & deck, evidence cycles integrated into roadmap, VLE workspace</li>
+                <li>• End with funding insights you can run with tomorrow</li>
               </ul>
             </div>
 
