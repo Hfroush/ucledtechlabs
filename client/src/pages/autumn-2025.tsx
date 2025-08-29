@@ -468,7 +468,7 @@ export default function Autumn2025() {
           </div>
 
           <p className="text-sm opacity-75">
-            Questions? Email <a href="mailto:edtechlabs@ucl.ac.uk" className="underline hover:no-underline">edtechlabs@ucl.ac.uk</a>
+            Questions? Email <a href="mailto:edtechlabs@ucl.ac.uk" className="underline hover:no-underline">info@ucledtechlabs.com</a>
           </p>
         </div>
       </section>
