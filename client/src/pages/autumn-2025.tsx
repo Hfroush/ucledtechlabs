@@ -258,7 +258,7 @@ export default function Autumn2025() {
               <ul className="text-gray-600 space-y-2">
                 <li>⚡ Cut through the AI hype — deploy what matters. Understand what’s real, what’s possible, and how to build AI into your product roadmap.</li>
                 <li>• Explore how AI plays out in real educational contexts</li>
-                <li>• Product Development 101 (CDI, 2h)</li>
+                <li>• Map the landscape with AWS architects</li>
                 <li>• Outcomes: Deployment framework, use-case inventory, draft implementation roadmap</li>
               </ul>
             </div>
