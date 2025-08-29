@@ -434,7 +434,7 @@ export default function Autumn2025() {
               <div className="w-16 h-16 bg-gray-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <span className="text-xs font-bold text-gray-600">Base KX</span>
               </div>
-              <h3 className="font-bold text-[#1a3e72] mb-2">BaseKX</h3>
+              <h3 className="font-bold text-[#1a3e72] mb-2">Edtech Impact</h3>
               <p className="text-sm text-gray-600">Startup acceleration and venture building</p>
             </div>
 
