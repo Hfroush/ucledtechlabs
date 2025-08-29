@@ -413,9 +413,9 @@ export default function Autumn2025() {
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
               <div className="w-24 h-24 rounded-2xl mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
-                  src="/ucl-main-building.jpg" 
-                  alt="UCL Main Building" 
-                  className="w-full h-full object-cover"
+                  src="/attached_assets/ioe-logo-standalone-blue_1756459020645.png" 
+                  alt="UCL Institute of Education" 
+                  className="w-full h-full object-contain"
                 />
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Institute of Education</h3>
