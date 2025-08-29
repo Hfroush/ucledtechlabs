@@ -91,10 +91,10 @@ export default function Home() {
       
       {/* Autumn '25 Applications Overlay */}
       <section id="etl-topsheet"
-        className="fixed inset-x-0 top-0 z-[60] translate-y-[-100%] opacity-0 transition duration-500 will-change-transform"
+        className="fixed inset-x-0 top-32 z-[60] translate-y-[-100%] opacity-0 transition duration-500 will-change-transform"
         aria-hidden="true">
         {/* Backdrop */}
-        <div id="etl-backdrop" className="hidden fixed inset-0 bg-black/30"></div>
+        <div id="etl-backdrop" className="hidden fixed inset-0 bg-black/25"></div>
 
         {/* Panel */}
         <div className="relative mx-auto max-w-screen-xl">
@@ -116,10 +116,14 @@ export default function Home() {
                   If you're building for learning, we'll help you learn faster.
                 </p>
 
-                <div className="mt-4">
+                <div className="mt-4 flex flex-col sm:flex-row gap-3">
                   <a href="/autumn-2025"
                      className="inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold text-white bg-[#FF6C0E] hover:bg-[#e55a00] transition-colors">
                     Apply Now
+                  </a>
+                  <a href="/autumn-2025"
+                     className="inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold text-[#FF6C0E] bg-white border-2 border-[#FF6C0E] hover:bg-[#FF6C0E] hover:text-white transition-colors">
+                    Learn More
                   </a>
                 </div>
 
