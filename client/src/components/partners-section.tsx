@@ -125,10 +125,7 @@ export default function PartnersSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Some of our Partners
 </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We collaborate with the world's leading educational institutions, including the #1 ranked education faculty globally, 
-            along with innovative organizations driving digital transformation in learning.
-          </p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">We have collaborated with the world's leading educational institutions, including the #1 ranked education faculty globally, along with innovative organisations driving digital transformation in learning.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
