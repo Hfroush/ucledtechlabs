@@ -482,7 +482,7 @@ export default function Autumn2025() {
                     <strong>World #1 in Education (QS 2025)</strong> — consistent depth and scale in education research & impact.
                   </p>
                   <p className="text-gray-600 leading-relaxed mt-3">
-                    <strong>UCL Knowledge Lab (AIEd theme)</strong> — interdisciplinary lab focused on AI and education, co-design, and real-world deployment.
+                    <strong>UCL Knowledge Lab</strong> — interdisciplinary lab focused on AI and education, co-design, and real-world deployment.
                   </p>
                 </div>
               </div>
