@@ -464,7 +464,7 @@ export default function Autumn2025() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50 scroll-reveal">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">IOE AIEd Leadership</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">IOE's AIEd Leadership</h2>
             <p className="text-xl text-gray-600">Why UCL Institute of Education gives us an unfair advantage</p>
           </div>
 
