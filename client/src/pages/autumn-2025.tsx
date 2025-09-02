@@ -226,7 +226,8 @@ export default function Autumn2025() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">A structured pathway to market-ready outcomes</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Mobile and Tablet Layout */}
+          <div className="grid md:grid-cols-2 gap-8 lg:hidden">
             {/* Stage 1 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 1</div>
@@ -275,8 +276,64 @@ export default function Autumn2025() {
                 <li>You leave with: An investor-ready pitch deck, impact metrics that matter, and a clear growth path.</li>
               </ul>
             </div>
+          </div>
 
+          {/* Desktop Layout - Stage 4 Centered */}
+          <div className="hidden lg:block">
+            {/* First Row - Stages 1, 2, 3 */}
+            <div className="grid grid-cols-3 gap-8 mb-8">
+              {/* Stage 1 */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 1</div>
+                <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Setting the Foundations</h3>
+                <ul className="text-gray-600 space-y-2">
+                  <li>🔑 Clarity from day one. Cut the noise and get crystal clear on who you serve, why it matters, and how you'll measure success.</li>
+                  <li>• Map your users and stakeholders with precision</li>
+                  <li>• Pressure-test your assumptions before they cost you</li>
+                  <li>You leave with: A sharp logic model, a focused mission, and the tools to align your team and story.</li>
+                </ul>
+              </div>
 
+              {/* Stage 2 */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 2</div>
+                <h3 className="text-xl font-bold text-[#1a3e72] mb-4">The Research Method</h3>
+                <ul className="text-gray-600 space-y-2">
+                  <li>🔍 Decisions powered by evidence, not guesswork. Learn a repeatable system for testing ideas, gathering insights, and avoiding expensive mistakes.</li>
+                  <li>• Master practical methods without the jargon</li>
+                  <li>• Build lean surveys, interviews, and tests that actually convert into answers</li>
+                  <li>You leave with: A research library, a live research plan, and the confidence to validate any big bet.</li>
+                </ul>
+              </div>
+
+              {/* Stage 3 */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 3</div>
+                <h3 className="text-xl font-bold text-[#1a3e72] mb-4">AIEd Stream</h3>
+                <ul className="text-gray-600 space-y-2">
+                  <li>⚡ Cut through the AI hype — deploy what matters. Understand what's real, what's possible, and how to build AI into your product roadmap.</li>
+                  <li>• Explore how AI plays out in real educational contexts</li>
+                  <li>• Map the landscape with AWS architects</li>
+                  <li>You leave with: A deployment framework, a bank of real use cases, and a draft AI implementation plan.</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Second Row - Stage 4 Centered */}
+            <div className="flex justify-center">
+              <div className="w-full max-w-md">
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 4</div>
+                  <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Applying the Method</h3>
+                  <ul className="text-gray-600 space-y-2">
+                    <li>🎤 Turn validation into a story investors can't ignore. It's not just about the outcomes — it's about the story you build around it.</li>
+                    <li>• Shape a sales narrative that lands with partners and investors</li>
+                    <li>• End with funding insights you can run with tomorrow</li>
+                    <li>You leave with: An investor-ready pitch deck, impact metrics that matter, and a clear growth path.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
