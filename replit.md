@@ -144,6 +144,7 @@ The application is configured for Replit's autoscale deployment:
 - August 28, 2025: Added "Autumn 2025" link to main navigation menu (both desktop and mobile versions) to promote the new accelerator programme
 - August 28, 2025: Implemented SEOHead component for dynamic meta tag management and added full SEO optimization including structured data (JSON-LD) for the Autumn 2025 programme page
 - August 28, 2025: Implemented full-width hero section with UCL Welcome building background image, configured server static file serving for attached_assets directory, achieved responsive layout with gradient overlay and smooth animations
+- September 2, 2025: Fixed mobile browser viewport issues where top content was cut off - implemented mobile-safe height calculations, safe area padding, and improved responsive hero section sizing for better mobile compatibility
 
 ## User Preferences
 

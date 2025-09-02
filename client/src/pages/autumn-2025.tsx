@@ -124,7 +124,7 @@ export default function Autumn2025() {
       />
       <Navigation />
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-[#1a3e72]">
+      <section className="relative w-full min-h-[calc(100vh-4rem)] md:h-[80vh] flex items-center justify-center overflow-hidden bg-[#1a3e72]">
         {/* Background Image */}
         <img 
           src="/attached_assets/UCL-Welcome-2024-04.jpg_1756365039242.jpg"
@@ -140,11 +140,11 @@ export default function Autumn2025() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-[#1a3e72]/50 z-10"></div>
 
         {/* Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white scroll-reveal opacity-0 animate-fade-in">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white scroll-reveal opacity-0 animate-fade-in pt-4 pb-8">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
             Accelerate your <span className="text-[#FF6C0E]">AI edtech startup</span> at UCL.
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed">
             Oct–Jan 2026 • London + Hybrid • Evidence-driven, founder-focused.
           </p>
 

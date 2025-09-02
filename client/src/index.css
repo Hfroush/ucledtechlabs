@@ -67,6 +67,38 @@
     scroll-behavior: smooth;
   }
 
+  /* Mobile viewport fixes */
+  @supports (-webkit-touch-callout: none) {
+    /* iOS Safari specific fixes */
+    .min-h-screen {
+      min-height: -webkit-fill-available;
+    }
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Mobile safe area and browser UI fixes */
+  @media (max-width: 768px) {
+    /* Better mobile touch targets */
+    button, a {
+      min-height: 44px;
+    }
+    
+    /* Ensure content is not hidden behind mobile browser UI */
+    body {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    /* Fix for mobile browser address bar */
+    .min-h-screen {
+      min-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    }
+  }
+
   /* Safari specific fixes */
   img {
     max-width: 100%;
