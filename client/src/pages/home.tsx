@@ -113,7 +113,7 @@ export default function Home() {
                 <p className="mt-2 text-slate-600">Join our unique, equity-free programme • Application deadline 19 September • London + Hybrid.</p>
 
                 <div className="mt-4 flex flex-col sm:flex-row gap-3">
-                  <a href="/autumn-2025"
+                  <a href="/apply"
                      className="inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold text-white bg-[#FF6C0E] hover:bg-[#e55a00] transition-colors">
                     Apply Now
                   </a>
