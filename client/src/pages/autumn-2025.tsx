@@ -419,7 +419,7 @@ export default function Autumn2025() {
                 />
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Institute of Education</h3>
-              <p className="text-sm text-gray-600">World-leading education research and pedagogy expertise</p>
+              <p className="text-sm text-gray-600">World #1 in Education (12 years running, QS 2025). Home to UCL Knowledge Lab, and contributors to UNESCO's global guidance on GenAI in education.</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
