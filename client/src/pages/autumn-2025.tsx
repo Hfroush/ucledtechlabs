@@ -443,7 +443,7 @@ export default function Autumn2025() {
                 />
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Edtech Impact</h3>
-              <p className="text-sm text-gray-600">Startup acceleration and venture building</p>
+              <p className="text-sm text-gray-600">The leading independent reviews and quality framework for EdTech. Helps schools compare, choose, and trust products.</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
