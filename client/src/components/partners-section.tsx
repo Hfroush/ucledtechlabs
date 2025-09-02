@@ -36,12 +36,12 @@ export default function PartnersSection() {
       website: "https://www.ucl.ac.uk/engineering/"
     },
     {
-      id: "santander",
-      name: "Santander Universities",
+      id: "edtech-impact",
+      name: "EdTech Impact",
       type: "corporate",
-      description: "Global banking partner supporting education and entrepreneurship initiatives across 40 countries with over 1,200 university partnerships.",
-      logoUrl: "/logos/santander-universities.png",
-      website: "https://www.santander.com/en/about-us/santander-universities"
+      description: "Global EdTech discovery platform with 1,600+ companies across 60 categories, 10,000+ authentic educator reviews, and 100% free access to help schools find the right educational technology solutions.",
+      logoUrl: "/attached_assets/edtech impact_1756458967959.png",
+      website: "https://edtechimpact.com"
     },
     {
       id: "ile-de-france",
