@@ -460,13 +460,12 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
-
       {/* IOE AIEd Leadership */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50 scroll-reveal">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">IOE AIEd Leadership</h2>
-            <p className="text-xl text-gray-600">Why IOE is the unfair advantage</p>
+            <p className="text-xl text-gray-600">Why UCL Institute of Education gives us an unfair advantage</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -523,7 +522,6 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
-
       {/* Application CTA */}
       <section className="py-20 bg-gradient-to-br from-[#1a3e72] to-[#2d5aa0] text-white scroll-reveal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
