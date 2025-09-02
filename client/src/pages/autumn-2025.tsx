@@ -500,6 +500,9 @@ export default function Autumn2025() {
                   <p className="text-gray-600 leading-relaxed">
                     <strong>Global policy influence</strong> — IOE researchers co-authored UNESCO's first global guidance on GenAI in education, shaping responsible adoption.
                   </p>
+                  <p className="text-gray-600 leading-relaxed mt-3">
+                    <strong>OECD & UK government advisory</strong> — IOE experts regularly advise the OECD, Ofsted, and the Department for Education on the safe and effective use of AI and digital technologies in schools.
+                  </p>
                 </div>
               </div>
             </div>
