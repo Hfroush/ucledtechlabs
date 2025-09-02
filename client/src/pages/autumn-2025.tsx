@@ -288,54 +288,122 @@ export default function Autumn2025() {
             <p className="text-xl text-gray-600">Five months from application to showcase</p>
           </div>
 
-          <div className="relative">
-            <div className="flex flex-wrap justify-between items-center">
-              <div className="timeline-dot flex flex-col items-center mb-8 lg:mb-0 relative">
-                <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
-                <div className="text-center">
-                  <div className="font-bold text-[#1a3e72]">September</div>
-                  <div className="text-sm text-gray-600">Call Opens</div>
-                  <div className="text-xs text-gray-500">Sept 1-19</div>
+          {/* Mobile Timeline - Vertical Layout */}
+          <div className="lg:hidden">
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-[#1a3e72]"></div>
+              
+              <div className="space-y-8">
+                <div className="flex items-start space-x-6">
+                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                    1
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
+                    <div className="font-bold text-[#1a3e72] text-lg">September</div>
+                    <div className="text-sm text-gray-600">Call Opens</div>
+                    <div className="text-xs text-gray-500 mt-1">Sept 1-19</div>
+                  </div>
                 </div>
-                <div className="hidden lg:block absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
-              </div>
 
-              <div className="timeline-dot flex flex-col items-center mb-8 lg:mb-0 relative">
-                <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
-                <div className="text-center">
-                  <div className="font-bold text-[#1a3e72]">October</div>
-                  <div className="text-sm text-gray-600">Foundations</div>
-                  <div className="text-xs text-gray-500">Kick-off & Setup</div>
+                <div className="flex items-start space-x-6">
+                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                    2
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
+                    <div className="font-bold text-[#1a3e72] text-lg">October</div>
+                    <div className="text-sm text-gray-600">Foundations</div>
+                    <div className="text-xs text-gray-500 mt-1">Kick-off & Setup</div>
+                  </div>
                 </div>
-                <div className="hidden lg:block absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
-              </div>
 
-              <div className="timeline-dot flex flex-col items-center mb-8 lg:mb-0 relative">
-                <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
-                <div className="text-center">
-                  <div className="font-bold text-[#1a3e72]">November</div>
-                  <div className="text-sm text-gray-600">Research Method</div>
-                  <div className="text-xs text-gray-500">+ AI 101 Stream</div>
+                <div className="flex items-start space-x-6">
+                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                    3
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
+                    <div className="font-bold text-[#1a3e72] text-lg">November</div>
+                    <div className="text-sm text-gray-600">Research Method</div>
+                    <div className="text-xs text-gray-500 mt-1">+ AI 101 Stream</div>
+                  </div>
                 </div>
-                <div className="hidden lg:block absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
-              </div>
 
-              <div className="timeline-dot flex flex-col items-center mb-8 lg:mb-0 relative">
-                <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
-                <div className="text-center">
-                  <div className="font-bold text-[#1a3e72]">December</div>
-                  <div className="text-sm text-gray-600">Applying Method</div>
-                  <div className="text-xs text-gray-500">Implementation</div>
+                <div className="flex items-start space-x-6">
+                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                    4
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
+                    <div className="font-bold text-[#1a3e72] text-lg">December</div>
+                    <div className="text-sm text-gray-600">Applying Method</div>
+                    <div className="text-xs text-gray-500 mt-1">Implementation</div>
+                  </div>
                 </div>
-                <div className="hidden lg:block absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
-              </div>
 
-              <div className="timeline-dot flex flex-col items-center">
-                <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
-                <div className="text-center">
-                  <div className="font-bold text-[#1a3e72]">January</div>
-                  <div className="text-sm text-gray-600">Final Day</div>
-                  <div className="text-xs text-gray-500">BETT '26 Week</div>
+                <div className="flex items-start space-x-6">
+                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                    5
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
+                    <div className="font-bold text-[#1a3e72] text-lg">January</div>
+                    <div className="text-sm text-gray-600">Final Day</div>
+                    <div className="text-xs text-gray-500 mt-1">BETT '26 Week</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Timeline - Horizontal Layout */}
+          <div className="hidden lg:block">
+            <div className="relative">
+              <div className="flex justify-between items-center">
+                <div className="timeline-dot flex flex-col items-center relative">
+                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="text-center">
+                    <div className="font-bold text-[#1a3e72]">September</div>
+                    <div className="text-sm text-gray-600">Call Opens</div>
+                    <div className="text-xs text-gray-500">Sept 1-19</div>
+                  </div>
+                  <div className="absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
+                </div>
+
+                <div className="timeline-dot flex flex-col items-center relative">
+                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="text-center">
+                    <div className="font-bold text-[#1a3e72]">October</div>
+                    <div className="text-sm text-gray-600">Foundations</div>
+                    <div className="text-xs text-gray-500">Kick-off & Setup</div>
+                  </div>
+                  <div className="absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
+                </div>
+
+                <div className="timeline-dot flex flex-col items-center relative">
+                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="text-center">
+                    <div className="font-bold text-[#1a3e72]">November</div>
+                    <div className="text-sm text-gray-600">Research Method</div>
+                    <div className="text-xs text-gray-500">+ AI 101 Stream</div>
+                  </div>
+                  <div className="absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
+                </div>
+
+                <div className="timeline-dot flex flex-col items-center relative">
+                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="text-center">
+                    <div className="font-bold text-[#1a3e72]">December</div>
+                    <div className="text-sm text-gray-600">Applying Method</div>
+                    <div className="text-xs text-gray-500">Implementation</div>
+                  </div>
+                  <div className="absolute top-3 left-full w-20 h-0.5 bg-[#1a3e72]"></div>
+                </div>
+
+                <div className="timeline-dot flex flex-col items-center">
+                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="text-center">
+                    <div className="font-bold text-[#1a3e72]">January</div>
+                    <div className="text-sm text-gray-600">Final Day</div>
+                    <div className="text-xs text-gray-500">BETT '26 Week</div>
+                  </div>
                 </div>
               </div>
             </div>
