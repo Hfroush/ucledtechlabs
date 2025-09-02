@@ -455,7 +455,7 @@ export default function Autumn2025() {
                 />
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Startup Labs Global</h3>
-              <p className="text-sm text-gray-600">Product development and go-to-market strategy</p>
+              <p className="text-sm text-gray-600">Selection, coaching, and an evidence-driven playbook that turns validation into product velocity and investor-ready stories.</p>
             </div>
           </div>
         </div>
