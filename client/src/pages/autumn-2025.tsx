@@ -604,10 +604,10 @@ export default function Autumn2025() {
                 <div>
                   <h3 className="text-xl font-bold text-[#1a3e72] mb-3">World #1 in Education Research</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    <strong>World #1 in Education (QS 2025)</strong> — consistent depth and scale in education research & impact.
+                    <strong>World #1 in Education (QS 2025)</strong> → consistent depth and scale in education research & impact.
                   </p>
                   <p className="text-gray-600 leading-relaxed mt-3">
-                    <strong>UCL Knowledge Lab</strong> — interdisciplinary lab focused on AI and education, co-design, and real-world deployment.
+                    <strong>UCL Knowledge Lab</strong> → interdisciplinary lab focused on AI and education, co-design, and real-world deployment.
                   </p>
                 </div>
               </div>
