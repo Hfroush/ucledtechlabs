@@ -431,7 +431,7 @@ export default function Autumn2025() {
                 />
               </div>
               <h3 className="font-bold text-[#1a3e72] mb-2">Centre for Digital Innovation powered by AWS</h3>
-              <p className="text-sm text-gray-600">Technology innovation and digital transformation</p>
+              <p className="text-sm text-gray-600">Cloud architecture, data pipelines, and security patterns aligned with enterprise expectations. Founders get hands-on guidance from solutions architects to move from demo to dependable.</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow">
