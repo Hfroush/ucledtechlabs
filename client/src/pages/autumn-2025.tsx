@@ -642,7 +642,7 @@ export default function Autumn2025() {
                 <div>
                   <h3 className="text-xl font-bold text-[#1a3e72] mb-3">EdTech Startup Track Record</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    <strong>EdTech startup track record</strong> — UCL EdTech Labs has already supported 500+ startups through its accelerator programmes in London and Paris. This track record shows that UCL doesn't just generate ideas — it scales companies that transform learning.
+                    <strong>EdTech startup track record</strong> → UCL EdTech Labs has already supported 500+ startups through its accelerator programmes in London and Paris. This track record shows that UCL doesn't just generate ideas → it scales companies that transform learning.
                   </p>
                 </div>
               </div>
