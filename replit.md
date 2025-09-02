@@ -145,6 +145,7 @@ The application is configured for Replit's autoscale deployment:
 - August 28, 2025: Implemented SEOHead component for dynamic meta tag management and added full SEO optimization including structured data (JSON-LD) for the Autumn 2025 programme page
 - August 28, 2025: Implemented full-width hero section with UCL Welcome building background image, configured server static file serving for attached_assets directory, achieved responsive layout with gradient overlay and smooth animations
 - September 2, 2025: Fixed mobile browser viewport issues where top content was cut off - implemented mobile-safe height calculations, safe area padding, and improved responsive hero section sizing for better mobile compatibility
+- September 2, 2025: Enhanced application form with AI-specific section between Product Details and Pitch Deck sections - added three new questions focusing on AI problem-solving capabilities, team expertise, and development stage with comprehensive dropdown options
 
 ## User Preferences
 

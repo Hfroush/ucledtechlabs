@@ -64,6 +64,17 @@ const applicationSchema = z.object({
   pitchDeckLink: z.string().optional(),
   linkedinProfile: z.string().optional(),
   researchEvidence: z.string().optional(),
+  
+  // AI-specific questions
+  aiProblemSolving: z.string().optional(),
+  aiTeamExpertise: z.string().optional(),
+  aiDevelopmentStage: z.enum([
+    "exploring",
+    "prototype-apis",
+    "custom-components", 
+    "live-pilot",
+    "advanced-scaling"
+  ]).optional(),
 });
 
 type ApplicationForm = z.infer<typeof applicationSchema>;
@@ -193,6 +204,14 @@ const MRR_OPTIONS = [
   { value: ">25000", label: ">£25,000" }
 ];
 
+const AI_DEVELOPMENT_STAGES = [
+  { value: "exploring", label: "Exploring AI opportunities (idea stage, no build yet)" },
+  { value: "prototype-apis", label: "Early prototype using off-the-shelf APIs (e.g. OpenAI, AWS, Hugging Face)" },
+  { value: "custom-components", label: "Working prototype with custom AI components" },
+  { value: "live-pilot", label: "Pilot in live educational setting" },
+  { value: "advanced-scaling", label: "Scaling product with advanced AI infrastructure" }
+];
+
 // Multi-step form configuration
 const FORM_STEPS = [
   {
@@ -215,6 +234,12 @@ const FORM_STEPS = [
   },
   {
     id: 4,
+    title: "AI Implementation",
+    description: "Your AI expertise and approach",
+    icon: HelpCircle,
+  },
+  {
+    id: 5,
     title: "Pitch Deck and Links",
     description: "Finalise your application",
     icon: CheckCircle,
@@ -259,6 +284,9 @@ export default function Apply() {
       pitchDeckLink: "",
       linkedinProfile: "",
       researchEvidence: "",
+      aiProblemSolving: "",
+      aiTeamExpertise: "",
+      aiDevelopmentStage: undefined,
     },
     mode: "onChange",
   });
@@ -1061,8 +1089,74 @@ export default function Apply() {
                   </div>
                 )}
 
-                {/* Step 4: Review & Submit */}
+                {/* Step 4: AI Implementation */}
                 {currentStep === 4 && (
+                  <div className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="aiProblemSolving"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>What specific problem does AI help you solve that couldn't be solved otherwise?</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Explain the specific educational problem that AI uniquely addresses in your solution..."
+                              className="min-h-[150px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="aiTeamExpertise"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Outline your team's AI expertise (e.g. technical roles, academic/industry background, prior projects)</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Describe your team's AI capabilities, relevant education, work experience, and previous AI projects..."
+                              className="min-h-[150px]"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="aiDevelopmentStage"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>What best describes your AI development stage?</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select your current AI development stage" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {AI_DEVELOPMENT_STAGES.map((stage) => (
+                                <SelectItem key={stage.value} value={stage.value}>
+                                  {stage.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                )}
+
+                {/* Step 5: Review & Submit */}
+                {currentStep === 5 && (
                   <div className="space-y-6">
                     <FormField
                       control={form.control}

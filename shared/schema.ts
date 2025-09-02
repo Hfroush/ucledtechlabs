@@ -45,6 +45,13 @@ export const applications = pgTable("applications", {
   linkedinProfile: text("linkedin_profile"),
   researchEvidence: text("research_evidence"),
   
+  // AI-specific fields
+  aiProblemSolving: text("ai_problem_solving"),
+  aiTeamExpertise: text("ai_team_expertise"),
+  aiDevelopmentStage: text("ai_development_stage", { 
+    enum: ["exploring", "prototype-apis", "custom-components", "live-pilot", "advanced-scaling"] 
+  }),
+  
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
