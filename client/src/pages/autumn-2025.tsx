@@ -460,6 +460,70 @@ export default function Autumn2025() {
           </div>
         </div>
       </section>
+
+      {/* IOE AIEd Leadership */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50 scroll-reveal">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a3e72] mb-4">IOE AIEd Leadership</h2>
+            <p className="text-xl text-gray-600">Why IOE is the unfair advantage</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 bg-[#FF6C0E] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#1a3e72] mb-3">World #1 in Education Research</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    <strong>World #1 in Education (QS 2025)</strong> — consistent depth and scale in education research & impact.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mt-3">
+                    <strong>UCL Knowledge Lab (AIEd theme)</strong> — interdisciplinary lab focused on AI and education, co-design, and real-world deployment.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 bg-[#1a3e72] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#1a3e72] mb-3">Global Policy Influence</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    <strong>Global policy influence</strong> — IOE researchers co-authored UNESCO's first global guidance on GenAI in education, shaping responsible adoption.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-2 bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#FF6C0E] to-[#1a3e72] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#1a3e72] mb-3">EdTech Startup Track Record</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    <strong>EdTech startup track record</strong> — UCL EdTech Labs has already supported 500+ startups through its accelerator programmes in London and Paris. This track record shows that UCL doesn't just generate ideas — it scales companies that transform learning.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Application CTA */}
       <section className="py-20 bg-gradient-to-br from-[#1a3e72] to-[#2d5aa0] text-white scroll-reveal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
