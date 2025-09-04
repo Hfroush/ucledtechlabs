@@ -44,7 +44,7 @@ const applicationSchema = z.object({
   coFounders: z.string().optional(),
   numberOfEmployees: z.string().optional(),
   monthlyRecurringRevenue: z.string().optional(),
-  investmentRounds: z.number().optional(),
+  investmentRounds: z.string().optional().transform((val) => val ? parseInt(val) : undefined),
   companyValuation: z.string().optional(),
   plannedRaiseAmount: z.string().optional(),
   plannedRaiseValuation: z.string().optional(),
