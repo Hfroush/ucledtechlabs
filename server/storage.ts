@@ -145,6 +145,18 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createApplication(data: InsertApplication): Promise<Application> {
+    // Helper function to convert string numbers to decimal or null
+    const parseNumericField = (value: any): string | null => {
+      if (!value || typeof value !== 'string') return null;
+      
+      // Handle dropdown string values (like "<25000", "Pre-revenue", etc.)
+      if (isNaN(Number(value))) {
+        return null; // Store dropdown selections as null since they're categorical
+      }
+      
+      return value;
+    };
+
     // Clean and process the data before insertion
     const processedData = {
       ...data,
@@ -155,11 +167,11 @@ export class DatabaseStorage implements IStorage {
       customerType: data.customerType || [],
       // Convert string numbers to proper types
       investmentRounds: data.investmentRounds ? Number(data.investmentRounds) : null,
-      // Handle decimal fields - convert empty strings to null
-      monthlyRecurringRevenue: data.monthlyRecurringRevenue || null,
-      companyValuation: data.companyValuation || null,
-      plannedRaiseAmount: data.plannedRaiseAmount || null,
-      plannedRaiseValuation: data.plannedRaiseValuation || null,
+      // Handle decimal fields - convert dropdown strings and empty strings to null
+      monthlyRecurringRevenue: parseNumericField(data.monthlyRecurringRevenue),
+      companyValuation: parseNumericField(data.companyValuation),
+      plannedRaiseAmount: parseNumericField(data.plannedRaiseAmount),
+      plannedRaiseValuation: parseNumericField(data.plannedRaiseValuation),
       // Handle date field
       dateOfBirth: data.dateOfBirth || null,
     };
