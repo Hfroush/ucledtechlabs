@@ -81,20 +81,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Application submission endpoint
   app.post("/api/applications", async (req, res) => {
     try {
+      console.log("POST /api/applications - Request body:", JSON.stringify(req.body, null, 2));
       const validatedData = insertApplicationSchema.parse(req.body);
+      console.log("Validated data:", JSON.stringify(validatedData, null, 2));
       const application = await storage.createApplication(validatedData);
+      console.log("Created application:", application);
       res.json({ success: true, application });
     } catch (error) {
+      console.error("Application submission error:", error);
       if (error instanceof z.ZodError) {
+        console.error("Validation errors:", error.errors);
         res.status(400).json({ 
           success: false, 
           message: "Validation failed", 
           errors: error.errors 
         });
       } else {
+        console.error("Database error:", error);
         res.status(500).json({ 
           success: false, 
-          message: "Failed to submit application" 
+          message: "Failed to submit application",
+          error: error instanceof Error ? error.message : "Unknown error"
         });
       }
     }

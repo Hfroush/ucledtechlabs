@@ -1,8 +1,8 @@
-import { 
-  users, 
-  applications, 
+import {
+  users,
+  applications,
   interestRegistrations,
-  type User, 
+  type User,
   type InsertUser,
   type Application,
   type InsertApplication,
@@ -16,10 +16,10 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  
+
   createApplication(application: InsertApplication): Promise<Application>;
   getApplications(): Promise<Application[]>;
-  
+
   createInterestRegistration(registration: InsertInterestRegistration): Promise<InterestRegistration>;
   getInterestRegistrations(): Promise<InterestRegistration[]>;
 }
@@ -144,12 +144,28 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
-  async createApplication(application: InsertApplication): Promise<Application> {
-    const [createdApplication] = await db
-      .insert(applications)
-      .values(application)
-      .returning();
-    return createdApplication;
+  async createApplication(data: InsertApplication): Promise<Application> {
+    // Clean and process the data before insertion
+    const processedData = {
+      ...data,
+      // Ensure array fields are properly handled
+      problemCauses: data.problemCauses || [],
+      edtechDomains: data.edtechDomains || [],
+      keyGroupAffected: data.keyGroupAffected || [],
+      customerType: data.customerType || [],
+      // Convert string numbers to proper types
+      investmentRounds: data.investmentRounds ? Number(data.investmentRounds) : null,
+      // Handle decimal fields - convert empty strings to null
+      monthlyRecurringRevenue: data.monthlyRecurringRevenue || null,
+      companyValuation: data.companyValuation || null,
+      plannedRaiseAmount: data.plannedRaiseAmount || null,
+      plannedRaiseValuation: data.plannedRaiseValuation || null,
+      // Handle date field
+      dateOfBirth: data.dateOfBirth || null,
+    };
+
+    const [application] = await db.insert(applications).values(processedData).returning();
+    return application;
   }
 
   async getApplications(): Promise<Application[]> {
