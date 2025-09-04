@@ -44,7 +44,7 @@ const applicationSchema = z.object({
   coFounders: z.string().optional(),
   numberOfEmployees: z.string().optional(),
   monthlyRecurringRevenue: z.string().optional(),
-  investmentRounds: z.string().optional().transform((val) => val ? parseInt(val) : undefined),
+  investmentRounds: z.number().optional(),
   companyValuation: z.string().optional(),
   plannedRaiseAmount: z.string().optional(),
   plannedRaiseValuation: z.string().optional(),
@@ -264,10 +264,12 @@ export default function Apply() {
       companyName: "",
       productName: "",
       hqLocation: "",
+      startupStage: undefined,
+      businessModel: undefined,
       coFounders: "",
       numberOfEmployees: "",
       monthlyRecurringRevenue: "",
-      investmentRounds: 0,
+      investmentRounds: undefined,
       companyValuation: "",
       plannedRaiseAmount: "",
       plannedRaiseValuation: "",
@@ -310,7 +312,47 @@ export default function Apply() {
   });
 
   const onSubmit = (data: ApplicationForm) => {
-    submitMutation.mutate(data);
+    // Clean up the data before submission to handle empty strings and type conversions
+    const cleanedData: any = {
+      fullName: data.fullName,
+      email: data.email,
+      problemCauses: data.problemCauses || [],
+      edtechDomains: data.edtechDomains || [],
+      keyGroupAffected: data.keyGroupAffected || [],
+      customerType: data.customerType || [],
+    };
+
+    // Add optional fields only if they have values
+    if (data.dateOfBirth && data.dateOfBirth !== "") cleanedData.dateOfBirth = data.dateOfBirth;
+    if (data.telephoneNumber && data.telephoneNumber !== "") cleanedData.telephoneNumber = data.telephoneNumber;
+    if (data.countryOfResidence && data.countryOfResidence !== "") cleanedData.countryOfResidence = data.countryOfResidence;
+    if (data.companyName && data.companyName !== "") cleanedData.companyName = data.companyName;
+    if (data.productName && data.productName !== "") cleanedData.productName = data.productName;
+    if (data.hqLocation && data.hqLocation !== "") cleanedData.hqLocation = data.hqLocation;
+    if (data.startupStage && data.startupStage !== "") cleanedData.startupStage = data.startupStage;
+    if (data.businessModel && data.businessModel !== "") cleanedData.businessModel = data.businessModel;
+    if (data.coFounders && data.coFounders !== "") cleanedData.coFounders = data.coFounders;
+    if (data.numberOfEmployees && data.numberOfEmployees !== "") cleanedData.numberOfEmployees = data.numberOfEmployees;
+    if (data.monthlyRecurringRevenue && data.monthlyRecurringRevenue !== "") cleanedData.monthlyRecurringRevenue = data.monthlyRecurringRevenue;
+    if (data.investmentRounds !== undefined && data.investmentRounds !== null) cleanedData.investmentRounds = data.investmentRounds;
+    if (data.companyValuation && data.companyValuation !== "") cleanedData.companyValuation = data.companyValuation;
+    if (data.plannedRaiseAmount && data.plannedRaiseAmount !== "") cleanedData.plannedRaiseAmount = data.plannedRaiseAmount;
+    if (data.plannedRaiseValuation && data.plannedRaiseValuation !== "") cleanedData.plannedRaiseValuation = data.plannedRaiseValuation;
+    if (data.problemDescription && data.problemDescription !== "") cleanedData.problemDescription = data.problemDescription;
+    if (data.relevantExperience && data.relevantExperience !== "") cleanedData.relevantExperience = data.relevantExperience;
+    if (data.problemImpact && data.problemImpact !== "") cleanedData.problemImpact = data.problemImpact;
+    if (data.elevatorPitch && data.elevatorPitch !== "") cleanedData.elevatorPitch = data.elevatorPitch;
+    if (data.solutionExplanation && data.solutionExplanation !== "") cleanedData.solutionExplanation = data.solutionExplanation;
+    if (data.programGoals && data.programGoals !== "") cleanedData.programGoals = data.programGoals;
+    if (data.companyWebsite && data.companyWebsite !== "") cleanedData.companyWebsite = data.companyWebsite;
+    if (data.pitchDeckLink && data.pitchDeckLink !== "") cleanedData.pitchDeckLink = data.pitchDeckLink;
+    if (data.linkedinProfile && data.linkedinProfile !== "") cleanedData.linkedinProfile = data.linkedinProfile;
+    if (data.researchEvidence && data.researchEvidence !== "") cleanedData.researchEvidence = data.researchEvidence;
+    if (data.aiProblemSolving && data.aiProblemSolving !== "") cleanedData.aiProblemSolving = data.aiProblemSolving;
+    if (data.aiTeamExpertise && data.aiTeamExpertise !== "") cleanedData.aiTeamExpertise = data.aiTeamExpertise;
+    if (data.aiDevelopmentStage && data.aiDevelopmentStage !== "") cleanedData.aiDevelopmentStage = data.aiDevelopmentStage;
+    
+    submitMutation.mutate(cleanedData);
   };
 
   const handleFileUpload = async (files: FileList) => {
