@@ -81,24 +81,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Application submission endpoint
   app.post("/api/applications", async (req, res) => {
     const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    const startTime = Date.now();
+    
     console.log(`[${requestId}] POST /api/applications - Starting request`);
-    console.log(`[${requestId}] Request body:`, JSON.stringify(req.body, null, 2));
-    console.log(`[${requestId}] Content-Type:`, req.headers['content-type']);
+    console.log(`[${requestId}] Headers:`, {
+      'content-type': req.headers['content-type'],
+      'content-length': req.headers['content-length'],
+      'user-agent': req.headers['user-agent'],
+      'origin': req.headers['origin'],
+      'referer': req.headers['referer']
+    });
     console.log(`[${requestId}] Body size:`, JSON.stringify(req.body).length, 'bytes');
     
     try {
+      // Input validation with timeout
       console.log(`[${requestId}] Validating request data...`);
       const validatedData = insertApplicationSchema.parse(req.body);
       console.log(`[${requestId}] Validation successful`);
-      console.log(`[${requestId}] Validated data:`, JSON.stringify(validatedData, null, 2));
       
+      // Database operation with timeout  
       console.log(`[${requestId}] Creating application in database...`);
-      const application = await storage.createApplication(validatedData);
-      console.log(`[${requestId}] Application created successfully with ID:`, application.id);
+      const application = await Promise.race([
+        storage.createApplication(validatedData),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Database timeout')), 10000)
+        )
+      ]) as Application;
+      
+      const duration = Date.now() - startTime;
+      console.log(`[${requestId}] Application created successfully with ID: ${application.id} (${duration}ms)`);
       
       res.json({ success: true, application });
+      
     } catch (error) {
-      console.error(`[${requestId}] Application submission error:`, error);
+      const duration = Date.now() - startTime;
+      console.error(`[${requestId}] Application submission error (${duration}ms):`, error);
       
       if (error instanceof z.ZodError) {
         console.error(`[${requestId}] Validation errors:`, error.errors);
@@ -107,17 +124,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Validation failed", 
           errors: error.errors 
         });
+      } else if (error instanceof Error) {
+        // Map specific database errors to appropriate status codes
+        if (error.message.includes('unique constraint') || error.message.includes('duplicate')) {
+          console.error(`[${requestId}] Duplicate entry error:`, error.message);
+          res.status(409).json({
+            success: false,
+            message: "Application already exists",
+            error: "Duplicate submission detected"
+          });
+        } else if (error.message.includes('timeout')) {
+          console.error(`[${requestId}] Database timeout:`, error.message);
+          res.status(503).json({
+            success: false,
+            message: "Service temporarily unavailable",
+            error: "Database connection timeout"
+          });
+        } else {
+          console.error(`[${requestId}] Database error details:`, {
+            message: error.message,
+            stack: error.stack,
+            name: error.name
+          });
+          
+          res.status(500).json({ 
+            success: false, 
+            message: "Failed to submit application",
+            requestId: requestId
+          });
+        }
       } else {
-        console.error(`[${requestId}] Database error details:`, {
-          message: error instanceof Error ? error.message : "Unknown error",
-          stack: error instanceof Error ? error.stack : "No stack trace",
-          name: error instanceof Error ? error.name : "Unknown error type"
-        });
-        
+        console.error(`[${requestId}] Unknown error type:`, error);
         res.status(500).json({ 
           success: false, 
           message: "Failed to submit application",
-          error: error instanceof Error ? error.message : "Unknown error"
+          requestId: requestId
         });
       }
     }
