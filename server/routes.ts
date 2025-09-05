@@ -80,24 +80,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Application submission endpoint
   app.post("/api/applications", async (req, res) => {
+    const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    console.log(`[${requestId}] POST /api/applications - Starting request`);
+    console.log(`[${requestId}] Request body:`, JSON.stringify(req.body, null, 2));
+    console.log(`[${requestId}] Content-Type:`, req.headers['content-type']);
+    console.log(`[${requestId}] Body size:`, JSON.stringify(req.body).length, 'bytes');
+    
     try {
-      console.log("POST /api/applications - Request body:", JSON.stringify(req.body, null, 2));
+      console.log(`[${requestId}] Validating request data...`);
       const validatedData = insertApplicationSchema.parse(req.body);
-      console.log("Validated data:", JSON.stringify(validatedData, null, 2));
+      console.log(`[${requestId}] Validation successful`);
+      console.log(`[${requestId}] Validated data:`, JSON.stringify(validatedData, null, 2));
+      
+      console.log(`[${requestId}] Creating application in database...`);
       const application = await storage.createApplication(validatedData);
-      console.log("Created application:", application);
+      console.log(`[${requestId}] Application created successfully with ID:`, application.id);
+      
       res.json({ success: true, application });
     } catch (error) {
-      console.error("Application submission error:", error);
+      console.error(`[${requestId}] Application submission error:`, error);
+      
       if (error instanceof z.ZodError) {
-        console.error("Validation errors:", error.errors);
+        console.error(`[${requestId}] Validation errors:`, error.errors);
         res.status(400).json({ 
           success: false, 
           message: "Validation failed", 
           errors: error.errors 
         });
       } else {
-        console.error("Database error:", error);
+        console.error(`[${requestId}] Database error details:`, {
+          message: error instanceof Error ? error.message : "Unknown error",
+          stack: error instanceof Error ? error.stack : "No stack trace",
+          name: error instanceof Error ? error.name : "Unknown error type"
+        });
+        
         res.status(500).json({ 
           success: false, 
           message: "Failed to submit application",

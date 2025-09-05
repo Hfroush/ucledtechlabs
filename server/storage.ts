@@ -147,17 +147,33 @@ export class DatabaseStorage implements IStorage {
   async createApplication(data: InsertApplication): Promise<Application> {
     // Helper function to convert string numbers to decimal or null
     const parseNumericField = (value: any): string | null => {
-      if (!value || typeof value !== 'string') return null;
+      console.log('parseNumericField input:', { value, type: typeof value });
       
-      // Handle dropdown string values (like "<25000", "Pre-revenue", etc.)
-      if (isNaN(Number(value))) {
+      // Handle null, undefined, or empty values
+      if (!value || value === '' || value === undefined || value === null) {
+        console.log('parseNumericField returning null for empty/null value');
+        return null;
+      }
+      
+      // Convert to string if not already
+      const stringValue = String(value).trim();
+      console.log('parseNumericField stringValue:', stringValue);
+      
+      // Handle dropdown string values (non-numeric categorical values)
+      const numericValue = Number(stringValue);
+      if (isNaN(numericValue)) {
+        console.log('parseNumericField returning null for non-numeric value:', stringValue);
         return null; // Store dropdown selections as null since they're categorical
       }
       
-      return value;
+      // Return the string representation for valid numbers
+      console.log('parseNumericField returning numeric string:', stringValue);
+      return stringValue;
     };
 
     // Clean and process the data before insertion
+    console.log('Original data before processing:', JSON.stringify(data, null, 2));
+    
     const processedData = {
       ...data,
       // Ensure array fields are properly handled
@@ -176,8 +192,22 @@ export class DatabaseStorage implements IStorage {
       dateOfBirth: data.dateOfBirth || null,
     };
 
-    const [application] = await db.insert(applications).values(processedData).returning();
-    return application;
+    console.log('Processed data for database insertion:', JSON.stringify(processedData, null, 2));
+    console.log('Decimal field values:', {
+      monthlyRecurringRevenue: processedData.monthlyRecurringRevenue,
+      companyValuation: processedData.companyValuation,
+      plannedRaiseAmount: processedData.plannedRaiseAmount,
+      plannedRaiseValuation: processedData.plannedRaiseValuation
+    });
+
+    try {
+      const [application] = await db.insert(applications).values(processedData).returning();
+      console.log('Database insertion successful:', application);
+      return application;
+    } catch (dbError) {
+      console.error('Database insertion failed:', dbError);
+      throw dbError;
+    }
   }
 
   async getApplications(): Promise<Application[]> {
