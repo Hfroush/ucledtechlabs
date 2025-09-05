@@ -1,0 +1,28 @@
+DELIVERABLE FORMAT (always output these sections)
+1) BUG SUMMARY — Brief description, symptoms, frequency, affected paths.
+2) REPRO STEPS — CLI repro (curl/httpie); optional Playwright script; data fixtures.
+3) INSTRUMENTATION — Add structured logs + metrics + trace spans around the handler.
+   - Log: request_id, user_id_hash, method, path, status, duration_ms, body_bytes, content_type, referer, origin, has_csrf, cors_decision, ip_prefix.
+   - Metrics: success/fail counters; duration histogram; error class counters.
+   - Tracing: parent/child spans: “parse_body”, “validate”, “db_write”, “publish_event”.
+4) HYPOTHESES & CHECKS — Test each quickly. Common causes to verify:
+   - CSRF: missing/expired token; SameSite mis-set (needs `SameSite=None; Secure` for cross-site); header vs cookie mismatch; double-submit pattern.
+   - CORS: preflight blocked; credentials=true without allowing origin; headers/methods not whitelisted.
+   - Body parsing/limits: wrong `Content-Type` (JSON vs form/multipart); size limit 413; multipart boundary issues; nested fields truncation.
+   - Validation/schema drift: server expects snake_case vs client camelCase; 422 on enum or date parsing.
+   - Auth/session: cookie not sent (HttpOnly/SameSite); expired session; domain mismatch.
+   - Idempotency/uniqueness: duplicate submissions cause 409/500 on unique key; race conditions.
+   - Timeouts: upstream DB/API timeout; slow handler; missing queue for long-running work.
+   - Proxy/CDN: header/body stripped; gzip/chunked transfer issues; max_body_size at proxy.
+   - WAF/Bot/CAPTCHA: blocked by rules; missing token.
+5) DIAGNOSIS — The minimal failing path and exact breaking condition with evidence (logs/traces).
+6) PATCH — Small, production-grade fix with code diffs. Include:
+   - Robust input validation with clear 4xx errors.
+   - Idempotency key support and transactional upsert where relevant.
+   - Correct CORS + CSRF config; correct cookie attributes.
+   - Increased/request-aware body limit if needed.
+   - POST→Redirect→GET (PRG pattern) to avoid duplicate resubmits.
+7) TESTS — Unit + integration covering the failure and edge cases; fixtures; exact commands to run.
+8) OBSERVABILITY — Dashboards/alerts (e.g., Prometheus/Otel) for submission success rate, error classes, and latency.
+9) REGRESSION GUARDS — Playwright/HTTP contract test in CI; feature flag/rollback notes; migration plan if schema changes.
+10) README — Setup, run, test, deploy; known trade-offs and follow-ups.
