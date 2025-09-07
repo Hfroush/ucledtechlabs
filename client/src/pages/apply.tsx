@@ -1063,49 +1063,42 @@ export default function Apply() {
                     <FormField
                       control={form.control}
                       name="edtechDomains"
-                      render={() => (
+                      render={({ field }) => (
                         <FormItem>
                           <FieldLabel htmlFor="edtechDomains" required className="font-medium">
                             What field(s) or domain(s) is your edtech product in?
                           </FieldLabel>
-                          <FormDescription className="mb-4">
-                            Please choose as many answers as applicable. For more information on the domains, please see HolonIQ 2021 Global Learning Landscape
-                          </FormDescription>
-                          <div className="space-y-3 max-h-80 overflow-y-auto border rounded-md p-4">
-                            {EDTECH_DOMAINS.map((domain) => (
-                              <FormField
-                                key={domain}
-                                control={form.control}
-                                name="edtechDomains"
-                                render={({ field }) => {
-                                  return (
-                                    <FormItem
-                                      key={domain}
-                                      className="flex flex-row items-start space-x-3 space-y-0"
-                                    >
-                                      <FormControl>
-                                        <Checkbox
-                                          checked={field.value?.includes(domain)}
-                                          onCheckedChange={(checked) => {
-                                            return checked
-                                              ? field.onChange([...field.value, domain])
-                                              : field.onChange(
-                                                  field.value.filter(
-                                                    (value) => value !== domain
-                                                  )
-                                                )
-                                          }}
-                                        />
-                                      </FormControl>
-                                      <FormLabel className="text-sm font-normal leading-5">
-                                        {domain}
-                                      </FormLabel>
-                                    </FormItem>
-                                  )
-                                }}
-                              />
-                            ))}
-                          </div>
+                          <FormControl>
+                            <div>
+                              <FormDescription className="mb-4">
+                                Please choose as many answers as applicable. For more information on the domains, please see HolonIQ 2021 Global Learning Landscape
+                              </FormDescription>
+                              <div className="space-y-3 max-h-80 overflow-y-auto border rounded-md p-4">
+                                {EDTECH_DOMAINS.map((domain) => (
+                                  <div
+                                    key={domain}
+                                    className="flex flex-row items-start space-x-3 space-y-0"
+                                  >
+                                    <Checkbox
+                                      checked={field.value?.includes(domain)}
+                                      onCheckedChange={(checked) => {
+                                        return checked
+                                          ? field.onChange([...field.value, domain])
+                                          : field.onChange(
+                                              field.value.filter(
+                                                (value) => value !== domain
+                                              )
+                                            )
+                                      }}
+                                    />
+                                    <label className="text-sm font-normal leading-5">
+                                      {domain}
+                                    </label>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
