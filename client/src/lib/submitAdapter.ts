@@ -1,13 +1,10 @@
 // Submit Adapter - Normalizes form data to API-ready payload
 // Fixes 422 contract mismatches between client form state and server expectations
 
+import { parseMrrLabelToNumber } from "./mrr";
+
 export function toNumberSafe(v: unknown): number {
-  const cleaned = String(v ?? "").replace(/[^\d.-]/g, "");
-  const n = Number(cleaned);
-  if (Number.isNaN(n) || n < 0) {
-    throw new Error("monthlyRecurringRevenue>=0");
-  }
-  return n;
+  return parseMrrLabelToNumber(v);
 }
 
 export function normalizeForSubmit(formData: any) {

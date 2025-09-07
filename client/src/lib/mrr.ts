@@ -5,17 +5,44 @@ export function parseMrrLabelToNumber(v: unknown): number {
   if (typeof v === "number" && v >= 0) return v;
   if (v == null || v === "") throw new Error("mrr_required");
 
-  // Normalize string: remove currency words/symbols, commas
-  let s = String(v).toLowerCase()
+  const s = String(v).toLowerCase().trim();
+
+  // Handle our specific MRR dropdown values
+  if (s === "pre-revenue") return 0;
+  if (s === "<1000") return 0;          // Less than £1,000
+  if (s === "<5000") return 1000;       // £1,000-£4,999 range
+  if (s === "<10000") return 5000;      // £5,000-£9,999 range  
+  if (s === "<25000") return 10000;     // £10,000-£24,999 range
+  if (s === ">25000") return 25000;     // £25,000+ range
+
+  // Handle comparison operators with numbers
+  const lessThanMatch = s.match(/^<(\d+)$/);
+  if (lessThanMatch) {
+    const threshold = parseInt(lessThanMatch[1], 10);
+    // Return a safe lower bound based on common thresholds
+    if (threshold <= 1000) return 0;
+    if (threshold <= 5000) return 1000;
+    if (threshold <= 10000) return 5000;
+    if (threshold <= 25000) return 10000;
+    return Math.max(0, threshold - 5000); // Generic fallback
+  }
+
+  const greaterThanMatch = s.match(/^>(\d+)$/);
+  if (greaterThanMatch) {
+    return parseInt(greaterThanMatch[1], 10);
+  }
+
+  // Fallback: parse general currency labels
+  let normalized = s
     .replace(/gbp|£|per\s*month|\/mo|\/month/g, "") // remove currency words/symbols
     .replace(/,/g, "")                               // strip thousands separators
     .trim();
 
   // Handle special cases
-  if (s === "pre-revenue" || s === "0" || s === "none") return 0;
+  if (normalized === "0" || normalized === "none") return 0;
 
   // Split ranges "a-b", "a–b", "a to b" -> take lower bound
-  const firstPart = s.split(/(?:-|–|to)/)[0].trim();
+  const firstPart = normalized.split(/(?:-|–|to)/)[0].trim();
 
   // Match number with optional decimal and suffix k/m, optional plus
   const m = firstPart.match(/^(\d+(?:\.\d+)?)([km])?\+?$/);

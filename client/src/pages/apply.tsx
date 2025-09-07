@@ -24,6 +24,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { FieldLabel } from "@/components/ui/field-label";
 import { normalizeForSubmit } from "@/lib/submitAdapter";
+import { parseMrrLabelToNumber } from "@/lib/mrr";
 
 // Single Source of Truth Schema - matches backend exactly with proper coercion
 const SubmitSchema = z.object({
@@ -47,7 +48,16 @@ const SubmitSchema = z.object({
     required_error: "Business model is required" 
   }),
   numberOfEmployees: z.string().min(1, "Number of employees is required"),
-  monthlyRecurringRevenue: z.string().min(1, "Please select your MRR range"),
+  monthlyRecurringRevenue: z.preprocess(
+    (v) => {
+      try {
+        return parseMrrLabelToNumber(v);
+      } catch {
+        return v; // Keep original value for validation error
+      }
+    },
+    z.number().min(0, "Please select a valid MRR option")
+  ),
   productName: z.string().optional(),
   coFounders: z.string().optional(),
   investmentRounds: z.number().optional(),
@@ -94,8 +104,15 @@ const SubmitSchema = z.object({
 }).refine(
   // Cross-field validation: Revenue vs Stage
   (data) => {
-    if (data.monthlyRecurringRevenue && !["pre-revenue", ""].includes(data.monthlyRecurringRevenue)) {
-      return ["Pre-seed", "Seed", "Series A+", "Bootstrapped"].includes(data.startupStage);
+    try {
+      const mrrValue = typeof data.monthlyRecurringRevenue === 'number' 
+        ? data.monthlyRecurringRevenue 
+        : parseMrrLabelToNumber(data.monthlyRecurringRevenue);
+      if (mrrValue > 0) {
+        return ["Pre-seed", "Seed", "Series A+", "Bootstrapped"].includes(data.startupStage);
+      }
+    } catch {
+      // If MRR parsing fails, skip this validation
     }
     return true;
   },
@@ -445,10 +462,10 @@ export default function Apply() {
       submitMutation.mutate(normalizedPayload);
     } catch (error: any) {
       // Handle adapter validation errors with specific field targeting
-      if (error.message === "monthlyRecurringRevenue>=0") {
+      if (error.message === "mrr_parse" || error.message === "mrr_required") {
         form.setError("monthlyRecurringRevenue", { 
           type: "manual", 
-          message: "Enter a non-negative number (remove currency symbols)" 
+          message: "Select a valid MRR option" 
         });
       } else if (error.message === "relevantExperience_minlen") {
         form.setError("relevantExperience", { 
