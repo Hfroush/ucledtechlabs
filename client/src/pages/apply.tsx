@@ -1017,7 +1017,9 @@ export default function Apply() {
                       name="problemCauses"
                       render={() => (
                         <FormItem>
-                          <FormLabel>What are the key causes of the problem you identify above?</FormLabel>
+                          <FieldLabel htmlFor="problemCauses" required className="font-medium">
+                            What are the key causes of the problem you identify above?
+                          </FieldLabel>
                           <FormDescription className="mb-4">
                             Select all that apply
                           </FormDescription>
@@ -1066,7 +1068,9 @@ export default function Apply() {
                       name="edtechDomains"
                       render={() => (
                         <FormItem>
-                          <FormLabel>What field(s) or domain(s) is your edtech product in?</FormLabel>
+                          <FieldLabel htmlFor="edtechDomains" required className="font-medium">
+                            What field(s) or domain(s) is your edtech product in?
+                          </FieldLabel>
                           <FormDescription className="mb-4">
                             Please choose as many answers as applicable. For more information on the domains, please see HolonIQ 2021 Global Learning Landscape
                           </FormDescription>
@@ -1115,12 +1119,12 @@ export default function Apply() {
                       name="relevantExperience"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>
+                          <FieldLabel htmlFor="relevantExperience" required className="font-medium">
                             What relevant experience do you and your key colleague(s) have in the field/domain that your edtech product is in?
-                          </FormLabel>
+                          </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger id="relevantExperience" required aria-required="true">
                                 <SelectValue placeholder="Select your experience level" />
                               </SelectTrigger>
                             </FormControl>
@@ -1142,10 +1146,12 @@ export default function Apply() {
                       name="keyGroupAffected"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Who is the key group affected by the problem you identified above?</FormLabel>
+                          <FieldLabel htmlFor="keyGroupAffected" required className="font-medium">
+                            Who is the key group affected by the problem you identified above?
+                          </FieldLabel>
                           <Select onValueChange={(value) => field.onChange([value])} defaultValue={field.value?.[0]}>
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger id="keyGroupAffected" required aria-required="true">
                                 <SelectValue placeholder="Select the primary group affected" />
                               </SelectTrigger>
                             </FormControl>
@@ -1167,11 +1173,16 @@ export default function Apply() {
                       name="problemImpact"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>How has your identified problem negatively impacted the key group you selected above?</FormLabel>
+                          <FieldLabel htmlFor="problemImpact" required className="font-medium">
+                            How has your identified problem negatively impacted the key group you selected above?
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
+                              id="problemImpact"
                               placeholder="Describe the specific negative impacts..."
                               className="min-h-[120px]"
+                              required
+                              aria-required="true"
                               {...field} 
                             />
                           </FormControl>
@@ -1239,11 +1250,16 @@ export default function Apply() {
                       name="aiProblemSolving"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>What specific problem does AI help you solve that couldn't be solved otherwise?</FormLabel>
+                          <FieldLabel htmlFor="aiProblemSolving" required className="font-medium">
+                            What specific problem does AI help you solve that couldn't be solved otherwise?
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
+                              id="aiProblemSolving"
                               placeholder="Explain the specific educational problem that AI uniquely addresses in your solution..."
                               className="min-h-[150px]"
+                              required
+                              aria-required="true"
                               {...field} 
                             />
                           </FormControl>
@@ -1275,10 +1291,12 @@ export default function Apply() {
                       name="aiDevelopmentStage"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>What best describes your AI development stage?</FormLabel>
+                          <FieldLabel htmlFor="aiDevelopmentStage" required className="font-medium">
+                            What best describes your AI development stage?
+                          </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger id="aiDevelopmentStage" required aria-required="true">
                                 <SelectValue placeholder="Select your current AI development stage" />
                               </SelectTrigger>
                             </FormControl>
@@ -1305,11 +1323,16 @@ export default function Apply() {
                       name="elevatorPitch"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>What is your elevator pitch?</FormLabel>
+                          <FieldLabel htmlFor="elevatorPitch" required className="font-medium">
+                            What is your elevator pitch?
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
+                              id="elevatorPitch"
                               placeholder="In 2-3 sentences, describe your startup and what makes it unique..."
                               className="min-h-[100px]"
+                              required
+                              aria-required="true"
                               {...field} 
                             />
                           </FormControl>
@@ -1323,11 +1346,16 @@ export default function Apply() {
                       name="solutionExplanation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Explain in detail how your product fixes/solves the problem you identified previously</FormLabel>
+                          <FieldLabel htmlFor="solutionExplanation" required className="font-medium">
+                            Explain in detail how your product fixes/solves the problem you identified previously
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
+                              id="solutionExplanation"
                               placeholder="Provide a detailed explanation of your solution approach..."
                               className="min-h-[150px]"
+                              required
+                              aria-required="true"
                               {...field} 
                             />
                           </FormControl>
@@ -1341,11 +1369,16 @@ export default function Apply() {
                       name="programGoals"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>What would you like to achieve by taking part in this programme?</FormLabel>
+                          <FieldLabel htmlFor="programGoals" required className="font-medium">
+                            What would you like to achieve by taking part in this programme?
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
+                              id="programGoals"
                               placeholder="Describe your specific goals and what you hope to gain from the program..."
                               className="min-h-[120px]"
+                              required
+                              aria-required="true"
                               {...field} 
                             />
                           </FormControl>
