@@ -897,19 +897,20 @@ export default function Apply() {
                             <FieldLabel htmlFor="monthlyRecurringRevenue" required className="font-medium">
                               Monthly Recurring Revenue (MRR) - GBP
                             </FieldLabel>
-                            <FormControl>
-                              <Input 
-                                id="monthlyRecurringRevenue"
-                                type="text"
-                                placeholder="e.g., 5000 or Pre-revenue"
-                                required
-                                aria-required="true"
-                                {...field} 
-                              />
-                            </FormControl>
-                            <FormDescription>
-                              Enter your monthly recurring revenue in GBP or "Pre-revenue" if not applicable
-                            </FormDescription>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger id="monthlyRecurringRevenue" aria-required="true">
+                                  <SelectValue placeholder="Select MRR range" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {MRR_OPTIONS.map((option) => (
+                                  <SelectItem key={option.value} value={option.value}>
+                                    {option.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
                             <FormMessage />
                           </FormItem>
                         )}
