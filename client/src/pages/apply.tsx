@@ -109,12 +109,12 @@ const SubmitSchema = z.object({
       const affectedGroup = Array.isArray(data.keyGroupAffected) 
         ? data.keyGroupAffected.join(" ").toLowerCase()
         : String(data.keyGroupAffected).toLowerCase();
-      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry") || affectedGroup.includes("government") || affectedGroup.includes("public");
+      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry") || affectedGroup.includes("government") || affectedGroup.includes("public") || affectedGroup.includes("education") || affectedGroup.includes("university") || affectedGroup.includes("college");
     }
     return true;
   },
   {
-    message: "B2G business model should affect schools, districts, ministries, or government entities",
+    message: "B2G business model should affect educational institutions, schools, districts, or government entities",
     path: ["keyGroupAffected"]
   }
 );
@@ -361,21 +361,20 @@ export default function Apply() {
     researchEvidence: "",
   };
 
-  const form = useForm<ApplicationForm>({
-    resolver: zodResolver(applicationSchema),
+  const form = useForm<z.infer<typeof SubmitSchema>>({
+    resolver: zodResolver(SubmitSchema),
     mode: "onChange",
-    reValidateMode: "onChange", 
-    defaultValues,
-    shouldUnregister: false, // Keep hidden step values registered
+    reValidateMode: "onChange",
+    defaultValues,             // from draft/server
+    shouldUnregister: false,   // keep hidden step values registered
     criteriaMode: "all",
   });
 
-  // Force validation refresh when schema changes
   React.useEffect(() => {
-    // Clear form state and re-validate with new schema
-    form.clearErrors();
-    setTimeout(() => form.trigger(), 100);
-  }, []);
+    if (!defaultValues) return;
+    form.reset(defaultValues, { keepDirty: false, keepErrors: false });
+    queueMicrotask(() => form.trigger()); // recompute isValid after reset
+  }, [defaultValues]);
 
   // Simple logic: enable submit button on final step, let form validation handle the rest
   const canSubmit = currentStep === FORM_STEPS.length && !form.formState.isSubmitting;

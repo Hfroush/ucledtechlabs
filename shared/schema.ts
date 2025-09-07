@@ -174,12 +174,12 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
   (data) => {
     if (data.businessModel === "B2G") {
       const affectedGroup = data.keyGroupAffected.toLowerCase();
-      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry") || affectedGroup.includes("government") || affectedGroup.includes("public");
+      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry") || affectedGroup.includes("government") || affectedGroup.includes("public") || affectedGroup.includes("education") || affectedGroup.includes("university") || affectedGroup.includes("college");
     }
     return true;
   },
   {
-    message: "B2G business model should affect schools, districts, ministries, or government entities",
+    message: "B2G business model should affect educational institutions, schools, districts, or government entities",
     path: ["keyGroupAffected"]
   }
 );
