@@ -48,10 +48,7 @@ const applicationSchema = z.object({
   }),
   coFounders: z.string().optional(),
   numberOfEmployees: z.string().min(1, "Number of employees is required"), // Keep as string for Select
-  monthlyRecurringRevenue: z.string().refine((val) => {
-    const num = parseFloat(val);
-    return !isNaN(num) && num >= 0;
-  }, "Monthly recurring revenue must be a number >= 0"),
+  monthlyRecurringRevenue: z.string().min(1, "Please select your MRR range"),
   investmentRounds: z.number().optional(),
   companyValuation: z.string().optional(),
   plannedRaiseAmount: z.string().optional(),
