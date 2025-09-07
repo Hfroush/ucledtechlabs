@@ -370,6 +370,12 @@ export default function Apply() {
   // Simple logic: enable submit button on final step, let form validation handle the rest
   const canSubmit = currentStep === FORM_STEPS.length && !form.formState.isSubmitting;
 
+  // Development diagnostics for form validation debugging
+  const errorFields = Object.keys(form.formState.errors || {});
+  if (process.env.NODE_ENV === "development" && attempted && !form.formState.isValid) {
+    console.debug("Submit disabled; invalid fields:", errorFields);
+  }
+
   const submitMutation = useMutation({
     mutationFn: (data: ApplicationForm) => apiRequest("POST", "/api/applications/submit", data),
     onSuccess: () => {
@@ -1598,6 +1604,18 @@ export default function Apply() {
                           <p role="alert" className="text-sm text-red-600 mt-2">
                             Please complete all required fields to submit your application.
                           </p>
+                        )}
+
+                        {/* Development diagnostic banner */}
+                        {process.env.NODE_ENV === "development" && attempted && !form.formState.isValid && errorFields.length > 0 && (
+                          <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
+                            <div className="text-xs font-medium text-yellow-800 mb-1">
+                              🛠️ Development Diagnostics
+                            </div>
+                            <div className="text-xs text-yellow-700">
+                              <strong>Invalid fields ({errorFields.length}):</strong> {errorFields.join(", ")}
+                            </div>
+                          </div>
                         )}
                       </>
                     )}
