@@ -6,7 +6,8 @@ import {
   insertApplicationSchema, 
   insertApplicationDraftSchema,
   insertApplicationSubmitSchema,
-  insertInterestRegistrationSchema 
+  insertInterestRegistrationSchema,
+  type Application 
 } from "@shared/schema";
 import { sendContactEmail, type ContactEmailData } from "./email";
 import { z } from "zod";

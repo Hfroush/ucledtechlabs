@@ -1061,10 +1061,11 @@ export default function Apply() {
                                         <Checkbox
                                           checked={field.value?.includes(cause)}
                                           onCheckedChange={(checked) => {
+                                            const currentValue = Array.isArray(field.value) ? field.value : [];
                                             return checked
-                                              ? field.onChange([...field.value, cause])
+                                              ? field.onChange([...currentValue, cause])
                                               : field.onChange(
-                                                  field.value.filter(
+                                                  currentValue.filter(
                                                     (value) => value !== cause
                                                   )
                                                 )
@@ -1107,10 +1108,11 @@ export default function Apply() {
                                     <Checkbox
                                       checked={field.value?.includes(domain)}
                                       onCheckedChange={(checked) => {
+                                        const currentValue = Array.isArray(field.value) ? field.value : [];
                                         return checked
-                                          ? field.onChange([...field.value, domain])
+                                          ? field.onChange([...currentValue, domain])
                                           : field.onChange(
-                                              field.value.filter(
+                                              currentValue.filter(
                                                 (value) => value !== domain
                                               )
                                             )
