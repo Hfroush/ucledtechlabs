@@ -61,7 +61,7 @@ const applicationSchema = z.object({
   problemDescription: z.string().trim().min(20, "Problem statement must be at least 20 characters"),
   problemCauses: z.array(z.string()).min(1, "Select at least one cause"), // Keep as array for frontend
   edtechDomains: z.array(z.string().min(2).max(40)).min(1, "Select at least one domain"),
-  relevantExperience: z.string().trim().min(20, "Team experience must be at least 20 characters"),
+  relevantExperience: z.string().min(1, "Please select your experience level"),
   keyGroupAffected: z.array(z.string()).min(1, "Select at least one affected group"), // Keep as array for frontend
   problemImpact: z.string().trim().min(20, "Impact description must be at least 20 characters"),
   customerType: z.array(z.string()).default([]),
