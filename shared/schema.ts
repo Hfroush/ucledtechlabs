@@ -63,23 +63,23 @@ export const applications = pgTable("applications", {
     // Conditional constraint - only enforce when status = 'submitted'
     submittedFieldsCheck: check("submitted_fields_check", sql`
       status <> 'submitted' OR (
-        company_name IS NOT NULL AND LENGTH(TRIM(company_name)) >= 2 AND LENGTH(TRIM(company_name)) <= 140 AND
-        hq_location IS NOT NULL AND LENGTH(TRIM(hq_location)) >= 2 AND LENGTH(TRIM(hq_location)) <= 120 AND
+        company_name IS NOT NULL AND LENGTH(TRIM(company_name)) >= 2 AND
+        hq_location IS NOT NULL AND LENGTH(TRIM(hq_location)) >= 2 AND
         startup_stage IS NOT NULL AND
         business_model IS NOT NULL AND
-        number_of_employees IS NOT NULL AND number_of_employees >= 1 AND number_of_employees <= 5000 AND
+        number_of_employees IS NOT NULL AND number_of_employees >= 1 AND
         monthly_recurring_revenue IS NOT NULL AND monthly_recurring_revenue >= 0 AND
-        problem_description IS NOT NULL AND LENGTH(TRIM(problem_description)) >= 20 AND
-        problem_causes IS NOT NULL AND LENGTH(TRIM(problem_causes)) >= 20 AND
+        problem_description IS NOT NULL AND LENGTH(TRIM(problem_description)) >= 10 AND
+        problem_causes IS NOT NULL AND LENGTH(TRIM(problem_causes)) >= 5 AND
         edtech_domains IS NOT NULL AND array_length(edtech_domains, 1) >= 1 AND
         relevant_experience IS NOT NULL AND LENGTH(TRIM(relevant_experience)) >= 1 AND
-        key_group_affected IS NOT NULL AND LENGTH(TRIM(key_group_affected)) >= 2 AND LENGTH(TRIM(key_group_affected)) <= 80 AND
-        problem_impact IS NOT NULL AND LENGTH(TRIM(problem_impact)) >= 20 AND
-        ai_problem_solving IS NOT NULL AND LENGTH(TRIM(ai_problem_solving)) >= 20 AND
+        key_group_affected IS NOT NULL AND LENGTH(TRIM(key_group_affected)) >= 2 AND
+        problem_impact IS NOT NULL AND LENGTH(TRIM(problem_impact)) >= 10 AND
+        ai_problem_solving IS NOT NULL AND LENGTH(TRIM(ai_problem_solving)) >= 10 AND
         ai_development_stage IS NOT NULL AND
-        elevator_pitch IS NOT NULL AND LENGTH(TRIM(elevator_pitch)) >= 20 AND LENGTH(TRIM(elevator_pitch)) <= 280 AND
-        solution_explanation IS NOT NULL AND LENGTH(TRIM(solution_explanation)) >= 50 AND
-        program_goals IS NOT NULL AND LENGTH(TRIM(program_goals)) >= 20
+        elevator_pitch IS NOT NULL AND LENGTH(TRIM(elevator_pitch)) >= 10 AND
+        solution_explanation IS NOT NULL AND LENGTH(TRIM(solution_explanation)) >= 20 AND
+        program_goals IS NOT NULL AND LENGTH(TRIM(program_goals)) >= 10
       )
     `)
   };
