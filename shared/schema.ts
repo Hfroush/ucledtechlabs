@@ -63,23 +63,23 @@ export const applications = pgTable("applications", {
     // Conditional constraint - only enforce when status = 'submitted'
     submittedFieldsCheck: check("submitted_fields_check", sql`
       status <> 'submitted' OR (
-        company_name IS NOT NULL AND LENGTH(TRIM(company_name)) >= 2 AND
-        hq_location IS NOT NULL AND LENGTH(TRIM(hq_location)) >= 2 AND
+        company_name IS NOT NULL AND LENGTH(TRIM(company_name)) >= 2 AND LENGTH(TRIM(company_name)) <= 140 AND
+        hq_location IS NOT NULL AND LENGTH(TRIM(hq_location)) >= 2 AND LENGTH(TRIM(hq_location)) <= 120 AND
         startup_stage IS NOT NULL AND
         business_model IS NOT NULL AND
-        number_of_employees IS NOT NULL AND number_of_employees >= 1 AND
+        number_of_employees IS NOT NULL AND number_of_employees >= 1 AND number_of_employees <= 5000 AND
         monthly_recurring_revenue IS NOT NULL AND monthly_recurring_revenue >= 0 AND
-        problem_description IS NOT NULL AND LENGTH(TRIM(problem_description)) >= 10 AND
-        problem_causes IS NOT NULL AND LENGTH(TRIM(problem_causes)) >= 5 AND
+        problem_description IS NOT NULL AND LENGTH(TRIM(problem_description)) >= 20 AND
+        problem_causes IS NOT NULL AND LENGTH(TRIM(problem_causes)) >= 20 AND
         edtech_domains IS NOT NULL AND array_length(edtech_domains, 1) >= 1 AND
         relevant_experience IS NOT NULL AND LENGTH(TRIM(relevant_experience)) >= 1 AND
-        key_group_affected IS NOT NULL AND LENGTH(TRIM(key_group_affected)) >= 2 AND
-        problem_impact IS NOT NULL AND LENGTH(TRIM(problem_impact)) >= 10 AND
-        ai_problem_solving IS NOT NULL AND LENGTH(TRIM(ai_problem_solving)) >= 10 AND
+        key_group_affected IS NOT NULL AND LENGTH(TRIM(key_group_affected)) >= 2 AND LENGTH(TRIM(key_group_affected)) <= 80 AND
+        problem_impact IS NOT NULL AND LENGTH(TRIM(problem_impact)) >= 20 AND
+        ai_problem_solving IS NOT NULL AND LENGTH(TRIM(ai_problem_solving)) >= 20 AND
         ai_development_stage IS NOT NULL AND
-        elevator_pitch IS NOT NULL AND LENGTH(TRIM(elevator_pitch)) >= 10 AND
-        solution_explanation IS NOT NULL AND LENGTH(TRIM(solution_explanation)) >= 20 AND
-        program_goals IS NOT NULL AND LENGTH(TRIM(program_goals)) >= 10
+        elevator_pitch IS NOT NULL AND LENGTH(TRIM(elevator_pitch)) >= 20 AND LENGTH(TRIM(elevator_pitch)) <= 280 AND
+        solution_explanation IS NOT NULL AND LENGTH(TRIM(solution_explanation)) >= 50 AND
+        program_goals IS NOT NULL AND LENGTH(TRIM(program_goals)) >= 20
       )
     `)
   };
@@ -137,23 +137,23 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
   monthlyRecurringRevenue: z.number().min(0, "Monthly recurring revenue must be >= 0"),
   
   // Product Details - Required fields
-  problemDescription: z.string().trim().min(10, "Problem statement must be at least 10 characters"),
-  problemCauses: z.string().trim().min(5, "Root causes must be at least 5 characters"),
+  problemDescription: z.string().trim().min(20, "Problem statement must be at least 20 characters"),
+  problemCauses: z.string().trim().min(20, "Root causes must be at least 20 characters"),
   edtechDomains: z.array(z.string().min(2)).min(1, "Select at least one domain"),
   relevantExperience: z.string().trim().min(1, "Please select your experience level"),
   keyGroupAffected: z.string().trim().min(2, "Affected group must be at least 2 characters").max(80, "Affected group must be under 80 characters"),
-  problemImpact: z.string().trim().min(10, "Impact description must be at least 10 characters"),
+  problemImpact: z.string().trim().min(20, "Impact description must be at least 20 characters"),
   
   // AI Implementation - Required fields
-  aiProblemSolving: z.string().trim().min(10, "AI-specific problem must be at least 10 characters"),
+  aiProblemSolving: z.string().trim().min(20, "AI-specific problem must be at least 20 characters"),
   aiDevelopmentStage: z.enum(["Exploring", "Prototype", "MVP", "In-production", "Scaling"], { 
     required_error: "AI development stage is required" 
   }),
   
   // Pitch Deck & Links - Required fields
-  elevatorPitch: z.string().trim().min(10, "Elevator pitch must be at least 10 characters").max(280, "Elevator pitch must be under 280 characters"),
-  solutionExplanation: z.string().trim().min(20, "Solution explanation must be at least 20 characters"),
-  programGoals: z.string().trim().min(10, "Programme goals must be at least 10 characters"),
+  elevatorPitch: z.string().trim().min(20, "Elevator pitch must be at least 20 characters").max(280, "Elevator pitch must be under 280 characters"),
+  solutionExplanation: z.string().trim().min(50, "Solution explanation must be at least 50 characters"),
+  programGoals: z.string().trim().min(20, "Programme goals must be at least 20 characters"),
 }).refine(
   // Cross-field validation: Revenue vs Stage
   (data) => {
