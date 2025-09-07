@@ -62,7 +62,7 @@ const SubmitSchema = z.object({
   ),
   edtechDomains: z.preprocess(
     v => Array.isArray(v) ? v : (typeof v === "string" && v ? v.split(",").map(s=>s.trim()).filter(Boolean) : []),
-    z.array(z.string().min(2).max(40)).min(1, "Select at least one domain")
+    z.array(z.string().min(2)).min(1, "Select at least one domain")
   ),
   relevantExperience: z.string().min(1, "Please select your experience level"),
   keyGroupAffected: z.preprocess(
@@ -109,12 +109,12 @@ const SubmitSchema = z.object({
       const affectedGroup = Array.isArray(data.keyGroupAffected) 
         ? data.keyGroupAffected.join(" ").toLowerCase()
         : String(data.keyGroupAffected).toLowerCase();
-      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry");
+      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry") || affectedGroup.includes("government") || affectedGroup.includes("public");
     }
     return true;
   },
   {
-    message: "B2G business model should affect schools, districts, or ministries",
+    message: "B2G business model should affect schools, districts, ministries, or government entities",
     path: ["keyGroupAffected"]
   }
 );
@@ -370,7 +370,12 @@ export default function Apply() {
     criteriaMode: "all",
   });
 
-  // No automatic validation - let users fill out fields without seeing errors for future steps
+  // Force validation refresh when schema changes
+  React.useEffect(() => {
+    // Clear form state and re-validate with new schema
+    form.clearErrors();
+    setTimeout(() => form.trigger(), 100);
+  }, []);
 
   // Simple logic: enable submit button on final step, let form validation handle the rest
   const canSubmit = currentStep === FORM_STEPS.length && !form.formState.isSubmitting;
@@ -1628,10 +1633,14 @@ export default function Apply() {
                           disabled={!canSubmit}
                           className="bg-[#e57c00] text-white hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed"
                           aria-describedby={!canSubmit ? "submit-help" : undefined}
-                          onClick={() => {
+                          onClick={async () => {
                             // Force attempt state for better UX
                             setAttempted(true);
                             console.log('Submit button clicked, canSubmit:', canSubmit);
+                            // Clear errors and refresh validation with updated schema
+                            form.clearErrors();
+                            await form.trigger();
+                            console.log('After manual trigger:', form.formState.errors);
                           }}
                         >
                           {submitMutation.isPending ? "Submitting..." : "Submit Application"}

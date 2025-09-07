@@ -142,7 +142,7 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
   // Product Details - Required fields
   problemDescription: z.string().trim().min(20, "Problem statement must be at least 20 characters"),
   problemCauses: z.string().trim().min(20, "Root causes must be at least 20 characters"),
-  edtechDomains: z.array(z.string().min(2).max(40)).min(1, "Select at least one domain"),
+  edtechDomains: z.array(z.string().min(2)).min(1, "Select at least one domain"),
   relevantExperience: z.string().trim().min(20, "Team experience must be at least 20 characters"),
   keyGroupAffected: z.string().trim().min(2, "Affected group must be at least 2 characters").max(80, "Affected group must be under 80 characters"),
   problemImpact: z.string().trim().min(20, "Impact description must be at least 20 characters"),
@@ -174,12 +174,12 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
   (data) => {
     if (data.businessModel === "B2G") {
       const affectedGroup = data.keyGroupAffected.toLowerCase();
-      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry");
+      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry") || affectedGroup.includes("government") || affectedGroup.includes("public");
     }
     return true;
   },
   {
-    message: "B2G business model should affect schools, districts, or ministries",
+    message: "B2G business model should affect schools, districts, ministries, or government entities",
     path: ["keyGroupAffected"]
   }
 );
