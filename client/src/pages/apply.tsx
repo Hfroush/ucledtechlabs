@@ -119,9 +119,6 @@ const SubmitSchema = z.object({
   }
 );
 
-// Export the schema and type
-export { SubmitSchema };
-export type SubmitForm = z.infer<typeof SubmitSchema>;
 
 // Keep compatibility with existing code
 const applicationSchema = SubmitSchema;
