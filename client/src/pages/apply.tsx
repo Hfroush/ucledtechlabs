@@ -96,10 +96,10 @@ const applicationSchema = z.object({
 ).refine(
   // Cross-field validation: B2G business model
   (data) => {
-    if (data.businessModel === "B2G") {
+    if (data.businessModel === "B2G" && data.keyGroupAffected && data.keyGroupAffected.length > 0) {
       const affectedGroup = Array.isArray(data.keyGroupAffected) 
         ? data.keyGroupAffected.join(" ").toLowerCase()
-        : data.keyGroupAffected.toLowerCase();
+        : String(data.keyGroupAffected).toLowerCase();
       return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry");
     }
     return true;
@@ -773,12 +773,9 @@ export default function Apply() {
                           </FieldLabel>
                           <FormControl>
                             <CityAutocomplete
-                              id="hqLocation"
                               value={field.value}
                               onValueChange={field.onChange}
                               placeholder="Select your headquarters location"
-                              required
-                              aria-required="true"
                             />
                           </FormControl>
                           <FormMessage />
@@ -796,7 +793,7 @@ export default function Apply() {
                           </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger id="startupStage" required aria-required="true">
+                              <SelectTrigger id="startupStage" aria-required="true">
                                 <SelectValue placeholder="Select your startup stage" />
                               </SelectTrigger>
                             </FormControl>
@@ -823,7 +820,7 @@ export default function Apply() {
                           </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger id="businessModel" required aria-required="true">
+                              <SelectTrigger id="businessModel" aria-required="true">
                                 <SelectValue placeholder="Select your business model" />
                               </SelectTrigger>
                             </FormControl>
@@ -872,7 +869,7 @@ export default function Apply() {
                             </FieldLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger id="numberOfEmployees" required aria-required="true">
+                                <SelectTrigger id="numberOfEmployees" aria-required="true">
                                   <SelectValue placeholder="Select employee count" />
                                 </SelectTrigger>
                               </FormControl>
@@ -1124,7 +1121,7 @@ export default function Apply() {
                           </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger id="relevantExperience" required aria-required="true">
+                              <SelectTrigger id="relevantExperience" aria-required="true">
                                 <SelectValue placeholder="Select your experience level" />
                               </SelectTrigger>
                             </FormControl>
@@ -1151,7 +1148,7 @@ export default function Apply() {
                           </FieldLabel>
                           <Select onValueChange={(value) => field.onChange([value])} defaultValue={field.value?.[0]}>
                             <FormControl>
-                              <SelectTrigger id="keyGroupAffected" required aria-required="true">
+                              <SelectTrigger id="keyGroupAffected" aria-required="true">
                                 <SelectValue placeholder="Select the primary group affected" />
                               </SelectTrigger>
                             </FormControl>
@@ -1296,7 +1293,7 @@ export default function Apply() {
                           </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger id="aiDevelopmentStage" required aria-required="true">
+                              <SelectTrigger id="aiDevelopmentStage" aria-required="true">
                                 <SelectValue placeholder="Select your current AI development stage" />
                               </SelectTrigger>
                             </FormControl>
