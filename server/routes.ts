@@ -178,8 +178,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     console.log(`[${requestId}] POST /api/applications/draft - Starting request`);
     
     try {
-      // Permissive validation for drafts
-      const validatedData = insertApplicationDraftSchema.parse(req.body);
+      // Add server-side coercion for drafts too
+      const preprocessedData = {
+        ...req.body,
+        // Ensure arrays are properly handled for drafts
+        edtechDomains: Array.isArray(req.body.edtechDomains) ? req.body.edtechDomains : [],
+        customerType: Array.isArray(req.body.customerType) ? req.body.customerType : [],
+        // Ensure numbers are properly parsed if provided
+        numberOfEmployees: req.body.numberOfEmployees 
+          ? (typeof req.body.numberOfEmployees === 'string' 
+              ? parseInt(req.body.numberOfEmployees, 10) 
+              : req.body.numberOfEmployees)
+          : undefined,
+      };
+      
+      // Permissive validation for drafts with preprocessed data
+      const validatedData = insertApplicationDraftSchema.parse(preprocessedData);
       console.log(`[${requestId}] Draft validation successful`);
       
       const application = await Promise.race([
@@ -222,8 +236,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
     console.log(`[${requestId}] POST /api/applications/submit - Starting request`);
     
     try {
-      // Strict validation for submission
-      const validatedData = insertApplicationSubmitSchema.parse(req.body);
+      // Add server-side coercion to mirror client schema processing
+      const preprocessedData = {
+        ...req.body,
+        // Ensure arrays are properly handled (mirror client z.preprocess)
+        edtechDomains: Array.isArray(req.body.edtechDomains) ? req.body.edtechDomains : [],
+        customerType: Array.isArray(req.body.customerType) ? req.body.customerType : [],
+        // Ensure numbers are properly parsed
+        numberOfEmployees: typeof req.body.numberOfEmployees === 'string' 
+          ? parseInt(req.body.numberOfEmployees, 10) 
+          : req.body.numberOfEmployees,
+      };
+      
+      // Strict validation for submission with preprocessed data
+      const validatedData = insertApplicationSubmitSchema.parse(preprocessedData);
       console.log(`[${requestId}] Submit validation successful`);
       
       const application = await Promise.race([
