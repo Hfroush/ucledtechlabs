@@ -370,45 +370,8 @@ export default function Apply() {
     criteriaMode: "all",
   });
 
-  React.useEffect(() => {
-    if (!defaultValues) return;
-    form.reset(defaultValues, { keepDirty: false, keepErrors: false });
-    queueMicrotask(() => form.trigger()); // recompute isValid after reset
-  }, [defaultValues]);
-
   // Simple logic: enable submit button on final step, let form validation handle the rest
   const canSubmit = currentStep === FORM_STEPS.length && !form.formState.isSubmitting;
-  
-  // Debug logging - what's preventing submit (only log on final step to reduce noise)
-  React.useEffect(() => {
-    if (process.env.NODE_ENV === 'development' && currentStep === FORM_STEPS.length) {
-      console.log('Submit button state:', {
-        canSubmit,
-        isValid: form.formState.isValid,
-        isSubmitting: form.formState.isSubmitting,
-        currentStep,
-        totalSteps: FORM_STEPS.length,
-        errors: form.formState.errors,
-        errorCount: Object.keys(form.formState.errors).length
-      });
-    }
-  }, [canSubmit, currentStep]);
-  
-  // Dev observability logs (only when attempted changes)
-  React.useEffect(() => {
-    if (process.env.NODE_ENV === 'development' && attempted && !canSubmit) {
-      const errors = form.formState.errors;
-      const invalidFields = Object.keys(errors);
-      console.log('Submit disabled - Form state:', {
-        isValid: form.formState.isValid,
-        isSubmitting: form.formState.isSubmitting,
-        isDirty: form.formState.isDirty,
-        currentStep,
-        invalidFields,
-        errors
-      });
-    }
-  }, [attempted]); // Only re-run when attempted changes
 
   const submitMutation = useMutation({
     mutationFn: (data: ApplicationForm) => apiRequest("POST", "/api/applications/submit", data),
@@ -476,9 +439,7 @@ export default function Apply() {
     submitMutation.mutate(data);
   };
   
-  const onInvalidSubmit = () => {
-    setAttempted(true);
-  };
+  // Remove this function - we'll handle it inline
 
   const handleFileUpload = async (files: FileList) => {
     setIsUploading(true);
@@ -689,7 +650,7 @@ export default function Apply() {
           <CardContent>
             <Form {...form}>
               <form 
-                onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)} 
+                onSubmit={form.handleSubmit(onSubmit, () => setAttempted(true))} 
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && currentStep !== FORM_STEPS.length) {
                     e.preventDefault();
@@ -1631,42 +1592,13 @@ export default function Apply() {
                           type="submit"
                           disabled={!canSubmit}
                           className="bg-[#e57c00] text-white hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed"
-                          aria-describedby={!canSubmit ? "submit-help" : undefined}
-                          onClick={async () => {
-                            // Force attempt state for better UX
-                            setAttempted(true);
-                            console.log('Submit button clicked, canSubmit:', canSubmit);
-                            // Clear errors and refresh validation with updated schema
-                            form.clearErrors();
-                            await form.trigger();
-                            console.log('After manual trigger:', form.formState.errors);
-                          }}
                         >
                           {submitMutation.isPending ? "Submitting..." : "Submit Application"}
                         </Button>
-                        {attempted && Object.keys(form.formState.errors).length > 0 && (
-                          <p id="submit-help" className="text-sm text-red-600 mt-2" role="alert">
+                        {attempted && !form.formState.isValid && (
+                          <p role="alert" className="text-sm text-red-600 mt-2">
                             Please complete all required fields to submit your application.
                           </p>
-                        )}
-                        
-                        {/* Dev debug info */}
-                        {process.env.NODE_ENV === 'development' && (
-                          <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded text-xs">
-                            <strong>Debug Info:</strong><br/>
-                            Can Submit: {canSubmit ? 'YES' : 'NO'}<br/>
-                            Form Valid: {form.formState.isValid ? 'YES' : 'NO'}<br/>
-                            Current Step: {currentStep}/{FORM_STEPS.length}<br/>
-                            Errors: {Object.keys(form.formState.errors).length}<br/>
-                            {Object.keys(form.formState.errors).length > 0 && (
-                              <details className="mt-2">
-                                <summary>Form Errors</summary>
-                                <pre className="mt-1 text-xs overflow-auto">
-                                  {JSON.stringify(form.formState.errors, null, 2)}
-                                </pre>
-                              </details>
-                            )}
-                          </div>
                         )}
                       </>
                     )}
