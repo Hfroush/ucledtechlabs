@@ -24,7 +24,7 @@ export const applications = pgTable("applications", {
     enum: ["Idea", "Prototype/MVP", "Pre-seed", "Seed", "Series A+", "Bootstrapped"] 
   }),
   businessModel: text("business_model", { 
-    enum: ["B2B", "B2C", "B2B2C", "B2G", "Marketplace", "SaaS", "Hardware"] 
+    enum: ["B2B", "B2C", "B2E", "B2G", "B2E2C", "B2B2C", "B2G2E", "Marketplace", "SaaS", "Hardware"] 
   }),
   coFounders: text("co_founders"),
   numberOfEmployees: integer("number_of_employees"), // Changed to integer
@@ -130,9 +130,10 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
   startupStage: z.enum(["Idea", "Prototype/MVP", "Pre-seed", "Seed", "Series A+", "Bootstrapped"], { 
     required_error: "Startup stage is required" 
   }),
-  businessModel: z.enum(["B2B", "B2C", "B2B2C", "B2G", "Marketplace", "SaaS", "Hardware"], { 
-    required_error: "Business model is required" 
-  }),
+  businessModel: z.union([
+    z.enum(["B2B", "B2C", "B2E", "B2G", "B2E2C", "B2B2C", "B2G2E"]), // New values
+    z.enum(["Marketplace", "SaaS", "Hardware"]) // Legacy values for backwards compatibility
+  ]).transform(v => v as any),
   numberOfEmployees: z.number().int().min(1, "Must have at least 1 employee").max(5000, "Number of employees cannot exceed 5000"),
   monthlyRecurringRevenue: z.number().min(0, "Monthly recurring revenue must be >= 0"),
   

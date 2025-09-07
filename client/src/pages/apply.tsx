@@ -44,9 +44,10 @@ const SubmitSchema = z.object({
   startupStage: z.enum(["Idea", "Prototype/MVP", "Pre-seed", "Seed", "Series A+", "Bootstrapped"], { 
     required_error: "Startup stage is required" 
   }),
-  businessModel: z.enum(["B2B", "B2C", "B2B2C", "B2G", "Marketplace", "SaaS", "Hardware"], { 
-    required_error: "Business model is required" 
-  }),
+  businessModel: z.union([
+    z.enum(["B2B", "B2C", "B2E", "B2G", "B2E2C", "B2B2C", "B2G2E"]), // New values
+    z.enum(["Marketplace", "SaaS", "Hardware"]) // Legacy values for backwards compatibility
+  ]).transform(v => v as any),
   numberOfEmployees: z.string().min(1, "Number of employees is required"),
   monthlyRecurringRevenue: z.preprocess(
     (v) => {
@@ -157,11 +158,11 @@ const STARTUP_STAGES = [
 const BUSINESS_MODELS = [
   { value: "B2B", label: "B2B" },
   { value: "B2C", label: "B2C" },
-  { value: "B2B2C", label: "B2B2C" },
+  { value: "B2E", label: "B2E" },
   { value: "B2G", label: "B2G" },
-  { value: "Marketplace", label: "Marketplace" },
-  { value: "SaaS", label: "SaaS" },
-  { value: "Hardware", label: "Hardware" }
+  { value: "B2E2C", label: "B2E2C" },
+  { value: "B2B2C", label: "B2B2C" },
+  { value: "B2G2E", label: "B2G2E" }
 ];
 
 const NUMBER_OF_EMPLOYEES = [
