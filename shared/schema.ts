@@ -137,23 +137,23 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
   monthlyRecurringRevenue: z.number().min(0, "Monthly recurring revenue must be >= 0"),
   
   // Product Details - Required fields
-  problemDescription: z.string().trim().min(20, "Problem statement must be at least 20 characters"),
-  problemCauses: z.string().trim().min(20, "Root causes must be at least 20 characters"),
+  problemDescription: z.string().trim().min(10, "Problem statement must be at least 10 characters"),
+  problemCauses: z.string().trim().min(5, "Root causes must be at least 5 characters"),
   edtechDomains: z.array(z.string().min(2)).min(1, "Select at least one domain"),
   relevantExperience: z.string().trim().min(1, "Please select your experience level"),
   keyGroupAffected: z.string().trim().min(2, "Affected group must be at least 2 characters").max(80, "Affected group must be under 80 characters"),
-  problemImpact: z.string().trim().min(20, "Impact description must be at least 20 characters"),
+  problemImpact: z.string().trim().min(10, "Impact description must be at least 10 characters"),
   
   // AI Implementation - Required fields
-  aiProblemSolving: z.string().trim().min(20, "AI-specific problem must be at least 20 characters"),
+  aiProblemSolving: z.string().trim().min(10, "AI-specific problem must be at least 10 characters"),
   aiDevelopmentStage: z.enum(["Exploring", "Prototype", "MVP", "In-production", "Scaling"], { 
     required_error: "AI development stage is required" 
   }),
   
   // Pitch Deck & Links - Required fields
-  elevatorPitch: z.string().trim().min(20, "Elevator pitch must be at least 20 characters").max(280, "Elevator pitch must be under 280 characters"),
-  solutionExplanation: z.string().trim().min(50, "Solution explanation must be at least 50 characters"),
-  programGoals: z.string().trim().min(20, "Programme goals must be at least 20 characters"),
+  elevatorPitch: z.string().trim().min(10, "Elevator pitch must be at least 10 characters").max(280, "Elevator pitch must be under 280 characters"),
+  solutionExplanation: z.string().trim().min(20, "Solution explanation must be at least 20 characters"),
+  programGoals: z.string().trim().min(10, "Programme goals must be at least 10 characters"),
 }).refine(
   // Cross-field validation: Revenue vs Stage
   (data) => {
