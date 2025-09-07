@@ -7,6 +7,16 @@ export function toNumberSafe(v: unknown): number {
   return parseMrrLabelToNumber(v);
 }
 
+export function parseEmployeeCount(v: unknown): number {
+  const str = String(v ?? "").trim();
+  if (str === "1") return 1;
+  if (str === "2-3") return 2;
+  if (str === "4-10") return 4;
+  if (str === "11-20") return 11;
+  if (str === ">20") return 21;
+  return parseInt(str) || 1; // fallback
+}
+
 export function normalizeForSubmit(formData: any) {
   // Helper functions
   const join = (x: any) => Array.isArray(x) ? x.filter(Boolean).join(", ") : String(x ?? "");
@@ -20,6 +30,9 @@ export function normalizeForSubmit(formData: any) {
     
     // Convert currency/comma MRR to number >= 0
     monthlyRecurringRevenue: toNumberSafe(formData.monthlyRecurringRevenue),
+    
+    // Convert employee count strings to integers
+    numberOfEmployees: parseEmployeeCount(formData.numberOfEmployees),
     
     // Join multi-select arrays to strings (server expects strings)
     problemCauses: trim(join(formData.problemCauses)),
