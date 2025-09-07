@@ -23,7 +23,7 @@ import { validateCity } from "@/lib/cities";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 
-// Comprehensive application schema with all required fields
+// Enhanced application schema with strict validation for required fields
 const applicationSchema = z.object({
   // Personal Information
   fullName: z.string().min(1, "Full name is required"),
@@ -32,72 +32,122 @@ const applicationSchema = z.object({
   telephoneNumber: z.string().optional(),
   countryOfResidence: z.string().optional(),
   
-  // Company Details
-  companyName: z.string().optional(),
+  // Company Details - REQUIRED FIELDS
+  companyName: z.string().trim().min(2, "Company name must be at least 2 characters").max(140, "Company name must be under 140 characters"),
   productName: z.string().optional(),
-  hqLocation: z.string().optional().refine(
-    (value) => !value || validateCity(value),
+  hqLocation: z.string().trim().min(2, "HQ location must be at least 2 characters").max(120, "HQ location must be under 120 characters").refine(
+    (value) => validateCity(value),
     "Please select a valid city from the dropdown"
   ),
-  startupStage: z.enum(["idea", "prototype", "mvp", "go-to-market", "product-market-fit", "investment", "scaling"]).optional(),
-  businessModel: z.enum(["b2b", "b2c", "b2e", "b2g", "b2e2c", "b2b2c", "b2g2e"]).optional(),
+  startupStage: z.enum(["Idea", "Prototype/MVP", "Pre-seed", "Seed", "Series A+", "Bootstrapped"], { 
+    required_error: "Startup stage is required" 
+  }),
+  businessModel: z.enum(["B2B", "B2C", "B2B2C", "B2G", "Marketplace", "SaaS", "Hardware"], { 
+    required_error: "Business model is required" 
+  }),
   coFounders: z.string().optional(),
-  numberOfEmployees: z.string().optional(),
-  monthlyRecurringRevenue: z.string().optional(),
+  numberOfEmployees: z.string().min(1, "Number of employees is required"), // Keep as string for Select
+  monthlyRecurringRevenue: z.string().refine((val) => {
+    const num = parseFloat(val);
+    return !isNaN(num) && num >= 0;
+  }, "Monthly recurring revenue must be a number >= 0"),
   investmentRounds: z.number().optional(),
   companyValuation: z.string().optional(),
   plannedRaiseAmount: z.string().optional(),
   plannedRaiseValuation: z.string().optional(),
   
-  // Product Information
-  problemDescription: z.string().optional(),
-  problemCauses: z.array(z.string()).default([]),
-  edtechDomains: z.array(z.string()).default([]),
-  relevantExperience: z.string().optional(),
-  keyGroupAffected: z.array(z.string()).default([]),
-  problemImpact: z.string().optional(),
+  // Product Information - REQUIRED FIELDS
+  problemDescription: z.string().trim().min(20, "Problem statement must be at least 20 characters"),
+  problemCauses: z.array(z.string()).min(1, "Select at least one cause"), // Keep as array for frontend
+  edtechDomains: z.array(z.string().min(2).max(40)).min(1, "Select at least one domain"),
+  relevantExperience: z.string().trim().min(20, "Team experience must be at least 20 characters"),
+  keyGroupAffected: z.array(z.string()).min(1, "Select at least one affected group"), // Keep as array for frontend
+  problemImpact: z.string().trim().min(20, "Impact description must be at least 20 characters"),
   customerType: z.array(z.string()).default([]),
-  elevatorPitch: z.string().optional(),
-  solutionExplanation: z.string().optional(),
-  programGoals: z.string().optional(),
+  
+  // AI Implementation - REQUIRED FIELDS
+  aiProblemSolving: z.string().trim().min(20, "AI-specific problem must be at least 20 characters"),
+  aiTeamExpertise: z.string().optional(),
+  aiDevelopmentStage: z.enum(["Exploring", "Prototype", "MVP", "In-production", "Scaling"], { 
+    required_error: "AI development stage is required" 
+  }),
+  
+  // Pitch Deck & Links - REQUIRED FIELDS
+  elevatorPitch: z.string().trim().min(20, "Elevator pitch must be at least 20 characters").max(280, "Elevator pitch must be under 280 characters"),
+  solutionExplanation: z.string().trim().min(50, "Solution explanation must be at least 50 characters"),
+  programGoals: z.string().trim().min(20, "Programme goals must be at least 20 characters"),
   companyWebsite: z.string().optional(),
   pitchDeckLink: z.string().optional(),
   linkedinProfile: z.string().optional(),
   researchEvidence: z.string().optional(),
-  
-  // AI-specific questions
-  aiProblemSolving: z.string().optional(),
-  aiTeamExpertise: z.string().optional(),
-  aiDevelopmentStage: z.enum([
-    "exploring",
-    "prototype-apis",
-    "custom-components", 
-    "live-pilot",
-    "advanced-scaling"
-  ]).optional(),
-});
+}).refine(
+  // Cross-field validation: Revenue vs Stage
+  (data) => {
+    if (data.monthlyRecurringRevenue && parseFloat(data.monthlyRecurringRevenue) > 0) {
+      return ["Pre-seed", "Seed", "Series A+", "Bootstrapped"].includes(data.startupStage);
+    }
+    return true;
+  },
+  {
+    message: "Startups with revenue should be Pre-seed, Seed, Series A+, or Bootstrapped stage",
+    path: ["startupStage"]
+  }
+).refine(
+  // Cross-field validation: B2G business model
+  (data) => {
+    if (data.businessModel === "B2G") {
+      const affectedGroup = data.keyGroupAffected.toLowerCase();
+      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry");
+    }
+    return true;
+  },
+  {
+    message: "B2G business model should affect schools, districts, or ministries",
+    path: ["keyGroupAffected"]
+  }
+);
 
 type ApplicationForm = z.infer<typeof applicationSchema>;
 
 // Form field options
+// Updated enum values to match backend schema
 const STARTUP_STAGES = [
-  { value: "idea", label: "Idea" },
-  { value: "prototype", label: "Prototype" },
-  { value: "mvp", label: "MVP" },
-  { value: "go-to-market", label: "Go-to-market" },
-  { value: "product-market-fit", label: "Product-market fit" },
-  { value: "investment", label: "Investment" },
-  { value: "scaling", label: "Scaling" }
+  { value: "Idea", label: "Idea" },
+  { value: "Prototype/MVP", label: "Prototype/MVP" },
+  { value: "Pre-seed", label: "Pre-seed" },
+  { value: "Seed", label: "Seed" },
+  { value: "Series A+", label: "Series A+" },
+  { value: "Bootstrapped", label: "Bootstrapped" }
 ];
 
 const BUSINESS_MODELS = [
-  { value: "b2b", label: "B2B" },
-  { value: "b2c", label: "B2C" },
-  { value: "b2e", label: "B2E" },
-  { value: "b2g", label: "B2G" },
-  { value: "b2e2c", label: "B2E2C" },
-  { value: "b2b2c", label: "B2B2C" },
-  { value: "b2g2e", label: "B2G2E" }
+  { value: "B2B", label: "B2B" },
+  { value: "B2C", label: "B2C" },
+  { value: "B2B2C", label: "B2B2C" },
+  { value: "B2G", label: "B2G" },
+  { value: "Marketplace", label: "Marketplace" },
+  { value: "SaaS", label: "SaaS" },
+  { value: "Hardware", label: "Hardware" }
+];
+
+const NUMBER_OF_EMPLOYEES = [
+  { value: 1, label: "1" },
+  { value: 2, label: "2-3" },
+  { value: 4, label: "4-10" },
+  { value: 11, label: "11-20" },
+  { value: 21, label: "21-50" },
+  { value: 51, label: "51-100" },
+  { value: 101, label: "100+" }
+];
+
+const MRR_RANGES = [
+  { value: "0", label: "Pre-revenue" },
+  { value: "500", label: "Under £500" },
+  { value: "1000", label: "£500 - £1,000" },
+  { value: "5000", label: "£1,000 - £5,000" },
+  { value: "10000", label: "£5,000 - £10,000" },
+  { value: "25000", label: "£10,000 - £25,000" },
+  { value: "50000", label: "£25,000+" }
 ];
 
 const PROBLEM_CAUSES = [
@@ -205,11 +255,11 @@ const MRR_OPTIONS = [
 ];
 
 const AI_DEVELOPMENT_STAGES = [
-  { value: "exploring", label: "Exploring AI opportunities (idea stage, no build yet)" },
-  { value: "prototype-apis", label: "Early prototype using off-the-shelf APIs (e.g. OpenAI, AWS, Hugging Face)" },
-  { value: "custom-components", label: "Working prototype with custom AI components" },
-  { value: "live-pilot", label: "Pilot in live educational setting" },
-  { value: "advanced-scaling", label: "Scaling product with advanced AI infrastructure" }
+  { value: "Exploring", label: "Exploring AI opportunities (idea stage, no build yet)" },
+  { value: "Prototype", label: "Early prototype using off-the-shelf APIs (e.g. OpenAI, AWS, Hugging Face)" },
+  { value: "MVP", label: "Working MVP with custom AI components" },
+  { value: "In-production", label: "In production with live users" },
+  { value: "Scaling", label: "Scaling product with advanced AI infrastructure" }
 ];
 
 // Multi-step form configuration
@@ -267,16 +317,17 @@ export default function Apply() {
       startupStage: undefined,
       businessModel: undefined,
       coFounders: "",
-      numberOfEmployees: "",
-      monthlyRecurringRevenue: "",
+      numberOfEmployees: "1", // Default to "1" as string for Select component
+      monthlyRecurringRevenue: "0", // Default to 0 (pre-revenue)
       investmentRounds: undefined,
       companyValuation: "",
       plannedRaiseAmount: "",
       plannedRaiseValuation: "",
       problemDescription: "",
-      problemCauses: [],
+      problemCauses: [], // Keep as array for frontend
       edtechDomains: [],
-      keyGroupAffected: [],
+      relevantExperience: "",
+      keyGroupAffected: [], // Keep as array for frontend
       problemImpact: "",
       customerType: [],
       elevatorPitch: "",
@@ -293,8 +344,11 @@ export default function Apply() {
     mode: "onChange",
   });
 
+  // Check if form is valid for submission
+  const isFormValid = form.formState.isValid && currentStep === FORM_STEPS.length;
+
   const submitMutation = useMutation({
-    mutationFn: (data: ApplicationForm) => apiRequest("POST", "/api/applications", data),
+    mutationFn: (data: ApplicationForm) => apiRequest("POST", "/api/applications/submit", data),
     onSuccess: () => {
       setIsSubmitted(true);
       toast({
@@ -303,11 +357,32 @@ export default function Apply() {
       });
     },
     onError: (error: any) => {
-      toast({
-        title: "Submission Failed",
-        description: error.message || "Please try again or contact support.",
-        variant: "destructive",
-      });
+      console.error("Submission error:", error);
+      
+      // Handle validation errors (422)
+      if (error.status === 422 && error.issues) {
+        const firstError = error.issues[0];
+        const fieldName = firstError.path;
+        
+        // Focus the first invalid field
+        const fieldElement = document.querySelector(`[name="${fieldName}"]`) as HTMLElement;
+        if (fieldElement) {
+          fieldElement.focus();
+          fieldElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        toast({
+          title: "Validation Failed",
+          description: `${firstError.message}. Please check your form and try again.`,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: error.message || "Please try again or contact support.",
+          variant: "destructive",
+        });
+      }
     },
   });
 
@@ -322,47 +397,8 @@ export default function Apply() {
       return;
     }
     
-    // Clean up the data before submission to handle empty strings and type conversions
-    const cleanedData: any = {
-      fullName: data.fullName,
-      email: data.email,
-      problemCauses: data.problemCauses || [],
-      edtechDomains: data.edtechDomains || [],
-      keyGroupAffected: data.keyGroupAffected || [],
-      customerType: data.customerType || [],
-    };
-
-    // Add optional fields only if they have values
-    if (data.dateOfBirth && data.dateOfBirth !== "") cleanedData.dateOfBirth = data.dateOfBirth;
-    if (data.telephoneNumber && data.telephoneNumber !== "") cleanedData.telephoneNumber = data.telephoneNumber;
-    if (data.countryOfResidence && data.countryOfResidence !== "") cleanedData.countryOfResidence = data.countryOfResidence;
-    if (data.companyName && data.companyName !== "") cleanedData.companyName = data.companyName;
-    if (data.productName && data.productName !== "") cleanedData.productName = data.productName;
-    if (data.hqLocation && data.hqLocation !== "") cleanedData.hqLocation = data.hqLocation;
-    if (data.startupStage && data.startupStage !== "") cleanedData.startupStage = data.startupStage;
-    if (data.businessModel && data.businessModel !== "") cleanedData.businessModel = data.businessModel;
-    if (data.coFounders && data.coFounders !== "") cleanedData.coFounders = data.coFounders;
-    if (data.numberOfEmployees && data.numberOfEmployees !== "") cleanedData.numberOfEmployees = data.numberOfEmployees;
-    if (data.monthlyRecurringRevenue && data.monthlyRecurringRevenue !== "") cleanedData.monthlyRecurringRevenue = data.monthlyRecurringRevenue;
-    if (data.investmentRounds !== undefined && data.investmentRounds !== null) cleanedData.investmentRounds = data.investmentRounds;
-    if (data.companyValuation && data.companyValuation !== "") cleanedData.companyValuation = data.companyValuation;
-    if (data.plannedRaiseAmount && data.plannedRaiseAmount !== "") cleanedData.plannedRaiseAmount = data.plannedRaiseAmount;
-    if (data.plannedRaiseValuation && data.plannedRaiseValuation !== "") cleanedData.plannedRaiseValuation = data.plannedRaiseValuation;
-    if (data.problemDescription && data.problemDescription !== "") cleanedData.problemDescription = data.problemDescription;
-    if (data.relevantExperience && data.relevantExperience !== "") cleanedData.relevantExperience = data.relevantExperience;
-    if (data.problemImpact && data.problemImpact !== "") cleanedData.problemImpact = data.problemImpact;
-    if (data.elevatorPitch && data.elevatorPitch !== "") cleanedData.elevatorPitch = data.elevatorPitch;
-    if (data.solutionExplanation && data.solutionExplanation !== "") cleanedData.solutionExplanation = data.solutionExplanation;
-    if (data.programGoals && data.programGoals !== "") cleanedData.programGoals = data.programGoals;
-    if (data.companyWebsite && data.companyWebsite !== "") cleanedData.companyWebsite = data.companyWebsite;
-    if (data.pitchDeckLink && data.pitchDeckLink !== "") cleanedData.pitchDeckLink = data.pitchDeckLink;
-    if (data.linkedinProfile && data.linkedinProfile !== "") cleanedData.linkedinProfile = data.linkedinProfile;
-    if (data.researchEvidence && data.researchEvidence !== "") cleanedData.researchEvidence = data.researchEvidence;
-    if (data.aiProblemSolving && data.aiProblemSolving !== "") cleanedData.aiProblemSolving = data.aiProblemSolving;
-    if (data.aiTeamExpertise && data.aiTeamExpertise !== "") cleanedData.aiTeamExpertise = data.aiTeamExpertise;
-    if (data.aiDevelopmentStage && data.aiDevelopmentStage !== "") cleanedData.aiDevelopmentStage = data.aiDevelopmentStage;
-    
-    submitMutation.mutate(cleanedData);
+    // Submit the form data (schema validation will ensure all required fields are present)
+    submitMutation.mutate(data);
   };
 
   const handleFileUpload = async (files: FileList) => {
@@ -1462,13 +1498,21 @@ export default function Apply() {
                         <ArrowRight className="w-4 h-4" />
                       </Button>
                     ) : (
-                      <Button
-                        type="submit"
-                        disabled={submitMutation.isPending}
-                        className="bg-[#e57c00] text-white hover:bg-orange-600"
-                      >
-                        {submitMutation.isPending ? "Submitting..." : "Submit Application"}
-                      </Button>
+                      <>
+                        <Button
+                          type="submit"
+                          disabled={submitMutation.isPending || !isFormValid}
+                          className="bg-[#e57c00] text-white hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                          aria-describedby={!isFormValid ? "submit-help" : undefined}
+                        >
+                          {submitMutation.isPending ? "Submitting..." : "Submit Application"}
+                        </Button>
+                        {!isFormValid && (
+                          <p id="submit-help" className="text-sm text-red-600 mt-2" role="alert">
+                            Please complete all required fields to submit your application.
+                          </p>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
