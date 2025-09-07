@@ -23,6 +23,7 @@ import { validateCity } from "@/lib/cities";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { FieldLabel } from "@/components/ui/field-label";
+import { normalizeForSubmit } from "@/lib/submitAdapter";
 
 // Single Source of Truth Schema - matches backend exactly with proper coercion
 const SubmitSchema = z.object({
@@ -438,8 +439,42 @@ export default function Apply() {
       return;
     }
     
-    // Schema handles coercion - submit data as-is since it's already validated
-    submitMutation.mutate(data);
+    // Normalize payload using submit adapter before API call
+    try {
+      const normalizedPayload = normalizeForSubmit(data);
+      submitMutation.mutate(normalizedPayload);
+    } catch (error: any) {
+      // Handle adapter validation errors with specific field targeting
+      if (error.message === "monthlyRecurringRevenue>=0") {
+        form.setError("monthlyRecurringRevenue", { 
+          type: "manual", 
+          message: "Enter a non-negative number (remove currency symbols)" 
+        });
+      } else if (error.message === "relevantExperience_minlen") {
+        form.setError("relevantExperience", { 
+          type: "manual", 
+          message: "Team experience must be at least 20 characters" 
+        });
+      } else if (error.message === "problemCauses_required") {
+        form.setError("problemCauses", { 
+          type: "manual", 
+          message: "Please select at least one problem cause" 
+        });
+      } else if (error.message === "keyGroupAffected_required") {
+        form.setError("keyGroupAffected", { 
+          type: "manual", 
+          message: "Please specify the affected group" 
+        });
+      } else {
+        // Fallback error handling
+        toast({
+          title: "Submission Error",
+          description: "Please check your form data and try again.",
+          variant: "destructive",
+        });
+      }
+      setAttempted(true);
+    }
   };
   
   // Remove this function - we'll handle it inline
