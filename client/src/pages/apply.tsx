@@ -22,6 +22,7 @@ import { useToast } from "@/hooks/use-toast";
 import { validateCity } from "@/lib/cities";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { FieldLabel } from "@/components/ui/field-label";
 
 // Enhanced application schema with strict validation for required fields
 const applicationSchema = z.object({
@@ -96,7 +97,9 @@ const applicationSchema = z.object({
   // Cross-field validation: B2G business model
   (data) => {
     if (data.businessModel === "B2G") {
-      const affectedGroup = data.keyGroupAffected.toLowerCase();
+      const affectedGroup = Array.isArray(data.keyGroupAffected) 
+        ? data.keyGroupAffected.join(" ").toLowerCase()
+        : data.keyGroupAffected.toLowerCase();
       return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry");
     }
     return true;
@@ -406,8 +409,8 @@ export default function Apply() {
       edtechDomains: Array.isArray(data.edtechDomains) ? data.edtechDomains : data.edtechDomains,
       customerType: Array.isArray(data.customerType) ? data.customerType : data.customerType,
       // Convert string numbers to actual numbers where needed
-      numberOfEmployees: parseInt(data.numberOfEmployees),
-      monthlyRecurringRevenue: parseFloat(data.monthlyRecurringRevenue) || 0,
+      numberOfEmployees: data.numberOfEmployees, // Keep as string for backend
+      monthlyRecurringRevenue: data.monthlyRecurringRevenue, // Keep as string for backend
     };
     
     submitMutation.mutate(submissionData);
@@ -635,6 +638,12 @@ export default function Apply() {
                 }}
                 className="space-y-6"
               >
+                {/* Required fields legend */}
+                <div className="text-sm text-muted-foreground border-l-4 border-red-600 pl-4 py-2 bg-red-50 dark:bg-red-950/20">
+                  <span className="font-medium">Fields marked </span>
+                  <span aria-hidden="true" className="required-star">*</span>
+                  <span className="font-medium"> are required.</span>
+                </div>
                 
                 {/* Step 1: Personal Information */}
                 {currentStep === 1 && (
@@ -729,9 +738,11 @@ export default function Apply() {
                       name="companyName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Company Name</FormLabel>
+                          <FieldLabel htmlFor="companyName" required className="font-medium">
+                            Company Name
+                          </FieldLabel>
                           <FormControl>
-                            <Input placeholder="Your company name" {...field} />
+                            <Input id="companyName" placeholder="Your company name" required aria-required="true" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -757,12 +768,17 @@ export default function Apply() {
                       name="hqLocation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>HQ Location</FormLabel>
+                          <FieldLabel htmlFor="hqLocation" required className="font-medium">
+                            HQ Location
+                          </FieldLabel>
                           <FormControl>
                             <CityAutocomplete
+                              id="hqLocation"
                               value={field.value}
                               onValueChange={field.onChange}
                               placeholder="Select your headquarters location"
+                              required
+                              aria-required="true"
                             />
                           </FormControl>
                           <FormMessage />
@@ -775,10 +791,12 @@ export default function Apply() {
                       name="startupStage"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Startup Stage</FormLabel>
+                          <FieldLabel htmlFor="startupStage" required className="font-medium">
+                            Startup Stage
+                          </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger id="startupStage" required aria-required="true">
                                 <SelectValue placeholder="Select your startup stage" />
                               </SelectTrigger>
                             </FormControl>
@@ -800,10 +818,12 @@ export default function Apply() {
                       name="businessModel"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Business Model</FormLabel>
+                          <FieldLabel htmlFor="businessModel" required className="font-medium">
+                            Business Model
+                          </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger id="businessModel" required aria-required="true">
                                 <SelectValue placeholder="Select your business model" />
                               </SelectTrigger>
                             </FormControl>
@@ -847,10 +867,12 @@ export default function Apply() {
                         name="numberOfEmployees"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Number of employees</FormLabel>
+                            <FieldLabel htmlFor="numberOfEmployees" required className="font-medium">
+                              Number of employees
+                            </FieldLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger>
+                                <SelectTrigger id="numberOfEmployees" required aria-required="true">
                                   <SelectValue placeholder="Select employee count" />
                                 </SelectTrigger>
                               </FormControl>
@@ -872,10 +894,12 @@ export default function Apply() {
                         name="monthlyRecurringRevenue"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Monthly Recurring Revenue (MRR) - GBP</FormLabel>
+                            <FieldLabel htmlFor="monthlyRecurringRevenue" required className="font-medium">
+                              Monthly Recurring Revenue (MRR) - GBP
+                            </FieldLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger>
+                                <SelectTrigger id="monthlyRecurringRevenue" required aria-required="true">
                                   <SelectValue placeholder="Select MRR range" />
                                 </SelectTrigger>
                               </FormControl>
@@ -970,11 +994,16 @@ export default function Apply() {
                       name="problemDescription"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>What is the problem your product/startup is trying to solve?</FormLabel>
+                          <FieldLabel htmlFor="problemDescription" required className="font-medium">
+                            What is the problem your product/startup is trying to solve?
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
+                              id="problemDescription"
                               placeholder="Describe the specific problem you're addressing in education..."
                               className="min-h-[120px]"
+                              required
+                              aria-required="true"
                               {...field} 
                             />
                           </FormControl>
