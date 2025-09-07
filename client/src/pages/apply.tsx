@@ -323,7 +323,7 @@ export default function Apply() {
   const [attempted, setAttempted] = useState(false);
   const { toast } = useToast();
 
-  // Default values that match schema requirements
+  // Default values - empty strings for required fields so users must fill them out
   const defaultValues: Partial<ApplicationForm> = {
     fullName: "",
     dateOfBirth: "",
@@ -333,11 +333,11 @@ export default function Apply() {
     companyName: "",
     productName: "",
     hqLocation: "",
-    startupStage: undefined,
-    businessModel: undefined,
+    startupStage: "" as any, // Empty - user must select
+    businessModel: "" as any, // Empty - user must select  
     coFounders: "",
-    numberOfEmployees: "", // Empty string initially - user must select
-    monthlyRecurringRevenue: "", // Empty string initially - user must select
+    numberOfEmployees: "", // Empty - user must select
+    monthlyRecurringRevenue: "", // Empty - user must select
     investmentRounds: undefined,
     companyValuation: "",
     plannedRaiseAmount: "",
@@ -345,13 +345,13 @@ export default function Apply() {
     problemDescription: "",
     problemCauses: [], // Empty array for multi-select
     edtechDomains: [], // Empty array for multi-select
-    relevantExperience: "",
+    relevantExperience: "", // Empty - user must select
     keyGroupAffected: [], // Empty array for multi-select
     problemImpact: "",
     customerType: [], // Empty array for multi-select checkboxes
     aiProblemSolving: "",
     aiTeamExpertise: "",
-    aiDevelopmentStage: undefined,
+    aiDevelopmentStage: "" as any, // Empty - user must select
     elevatorPitch: "",
     solutionExplanation: "",
     programGoals: "",
@@ -364,19 +364,31 @@ export default function Apply() {
   const form = useForm<ApplicationForm>({
     resolver: zodResolver(applicationSchema),
     mode: "onChange",
-    reValidateMode: "onChange",
+    reValidateMode: "onChange", 
     defaultValues,
     shouldUnregister: false, // Keep hidden step values registered
     criteriaMode: "all",
   });
 
-  // After loading defaults: ensure validity re-computes (run once on mount)
-  React.useEffect(() => {
-    queueMicrotask(() => form.trigger()); // recompute isValid after mount
-  }, []); // Empty dependency array - run once
+  // No automatic validation - let users fill out fields without seeing errors for future steps
 
-  // Remove isDirty from gating - users restoring a draft shouldn't be forced to change a field
-  const canSubmit = form.formState.isValid && !form.formState.isSubmitting && currentStep === FORM_STEPS.length;
+  // Simple logic: enable submit button on final step, let form validation handle the rest
+  const canSubmit = currentStep === FORM_STEPS.length && !form.formState.isSubmitting;
+  
+  // Debug logging - what's preventing submit (only log on final step to reduce noise)
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && currentStep === FORM_STEPS.length) {
+      console.log('Submit button state:', {
+        canSubmit,
+        isValid: form.formState.isValid,
+        isSubmitting: form.formState.isSubmitting,
+        currentStep,
+        totalSteps: FORM_STEPS.length,
+        errors: form.formState.errors,
+        errorCount: Object.keys(form.formState.errors).length
+      });
+    }
+  }, [canSubmit, currentStep]);
   
   // Dev observability logs (only when attempted changes)
   React.useEffect(() => {
@@ -433,7 +445,7 @@ export default function Apply() {
     },
   });
 
-  const onSubmit = (data: ApplicationForm) => {
+  const onSubmit = async (data: ApplicationForm) => {
     // Block premature submissions - only allow on final step
     if (currentStep !== FORM_STEPS.length) {
       toast({
@@ -441,6 +453,18 @@ export default function Apply() {
         description: `You're currently on step ${currentStep} of ${FORM_STEPS.length}. Please complete all steps before submitting.`,
         variant: "destructive",
       });
+      return;
+    }
+    
+    // Validate all required fields before submission
+    const isValid = await form.trigger();
+    if (!isValid) {
+      toast({
+        title: "Please Complete Required Fields",
+        description: "Some required fields are missing or invalid. Please review the form.",
+        variant: "destructive",
+      });
+      setAttempted(true);
       return;
     }
     
@@ -1604,13 +1628,37 @@ export default function Apply() {
                           disabled={!canSubmit}
                           className="bg-[#e57c00] text-white hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed"
                           aria-describedby={!canSubmit ? "submit-help" : undefined}
+                          onClick={() => {
+                            // Force attempt state for better UX
+                            setAttempted(true);
+                            console.log('Submit button clicked, canSubmit:', canSubmit);
+                          }}
                         >
                           {submitMutation.isPending ? "Submitting..." : "Submit Application"}
                         </Button>
-                        {attempted && !form.formState.isValid && (
+                        {attempted && Object.keys(form.formState.errors).length > 0 && (
                           <p id="submit-help" className="text-sm text-red-600 mt-2" role="alert">
                             Please complete all required fields to submit your application.
                           </p>
+                        )}
+                        
+                        {/* Dev debug info */}
+                        {process.env.NODE_ENV === 'development' && (
+                          <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded text-xs">
+                            <strong>Debug Info:</strong><br/>
+                            Can Submit: {canSubmit ? 'YES' : 'NO'}<br/>
+                            Form Valid: {form.formState.isValid ? 'YES' : 'NO'}<br/>
+                            Current Step: {currentStep}/{FORM_STEPS.length}<br/>
+                            Errors: {Object.keys(form.formState.errors).length}<br/>
+                            {Object.keys(form.formState.errors).length > 0 && (
+                              <details className="mt-2">
+                                <summary>Form Errors</summary>
+                                <pre className="mt-1 text-xs overflow-auto">
+                                  {JSON.stringify(form.formState.errors, null, 2)}
+                                </pre>
+                              </details>
+                            )}
+                          </div>
                         )}
                       </>
                     )}
