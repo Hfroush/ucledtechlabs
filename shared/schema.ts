@@ -122,7 +122,7 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
   id: true,
   createdAt: true,
 }).extend({
-  status: z.literal("submitted"),
+  status: z.literal("submitted").default("submitted"),
   
   // Company Details - Required fields with validation
   companyName: z.string().trim().min(2, "Company name must be at least 2 characters").max(140, "Company name must be under 140 characters"),

@@ -239,6 +239,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Add server-side coercion to mirror client schema processing
       const preprocessedData = {
         ...req.body,
+        // Set default status if missing (submit adapter should provide this)
+        status: req.body.status || "submitted",
         // Ensure arrays are properly handled (mirror client z.preprocess)
         edtechDomains: Array.isArray(req.body.edtechDomains) ? req.body.edtechDomains : [],
         customerType: Array.isArray(req.body.customerType) ? req.body.customerType : [],
@@ -246,6 +248,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         numberOfEmployees: typeof req.body.numberOfEmployees === 'string' 
           ? parseInt(req.body.numberOfEmployees, 10) 
           : req.body.numberOfEmployees,
+        // Ensure string fields for joined arrays
+        problemCauses: typeof req.body.problemCauses === 'string' 
+          ? req.body.problemCauses 
+          : Array.isArray(req.body.problemCauses) 
+            ? req.body.problemCauses.join(', ') 
+            : '',
+        keyGroupAffected: typeof req.body.keyGroupAffected === 'string' 
+          ? req.body.keyGroupAffected 
+          : Array.isArray(req.body.keyGroupAffected) 
+            ? req.body.keyGroupAffected.join(', ') 
+            : '',
       };
       
       // Strict validation for submission with preprocessed data
