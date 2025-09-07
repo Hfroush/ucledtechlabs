@@ -72,7 +72,7 @@ export const applications = pgTable("applications", {
         problem_description IS NOT NULL AND LENGTH(TRIM(problem_description)) >= 20 AND
         problem_causes IS NOT NULL AND LENGTH(TRIM(problem_causes)) >= 20 AND
         edtech_domains IS NOT NULL AND array_length(edtech_domains, 1) >= 1 AND
-        relevant_experience IS NOT NULL AND LENGTH(TRIM(relevant_experience)) >= 20 AND
+        relevant_experience IS NOT NULL AND LENGTH(TRIM(relevant_experience)) >= 1 AND
         key_group_affected IS NOT NULL AND LENGTH(TRIM(key_group_affected)) >= 2 AND LENGTH(TRIM(key_group_affected)) <= 80 AND
         problem_impact IS NOT NULL AND LENGTH(TRIM(problem_impact)) >= 20 AND
         ai_problem_solving IS NOT NULL AND LENGTH(TRIM(ai_problem_solving)) >= 20 AND
