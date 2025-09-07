@@ -24,18 +24,17 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { FieldLabel } from "@/components/ui/field-label";
 
-// Enhanced application schema with strict validation for required fields
-const applicationSchema = z.object({
-  // Personal Information
-  fullName: z.string().min(1, "Full name is required"),
-  dateOfBirth: z.string().optional(),
+// Single Source of Truth Schema - matches backend exactly with proper coercion
+const SubmitSchema = z.object({
+  // Personal Information - REQUIRED FIELDS
+  fullName: z.string().trim().min(1, "Full name is required"),
   email: z.string().email("Please enter a valid email address"),
+  dateOfBirth: z.string().optional(),
   telephoneNumber: z.string().optional(),
   countryOfResidence: z.string().optional(),
   
   // Company Details - REQUIRED FIELDS
   companyName: z.string().trim().min(2, "Company name must be at least 2 characters").max(140, "Company name must be under 140 characters"),
-  productName: z.string().optional(),
   hqLocation: z.string().trim().min(2, "HQ location must be at least 2 characters").max(120, "HQ location must be under 120 characters").refine(
     (value) => validateCity(value),
     "Please select a valid city from the dropdown"
@@ -46,9 +45,10 @@ const applicationSchema = z.object({
   businessModel: z.enum(["B2B", "B2C", "B2B2C", "B2G", "Marketplace", "SaaS", "Hardware"], { 
     required_error: "Business model is required" 
   }),
-  coFounders: z.string().optional(),
-  numberOfEmployees: z.string().min(1, "Number of employees is required"), // Keep as string for Select
+  numberOfEmployees: z.string().min(1, "Number of employees is required"),
   monthlyRecurringRevenue: z.string().min(1, "Please select your MRR range"),
+  productName: z.string().optional(),
+  coFounders: z.string().optional(),
   investmentRounds: z.number().optional(),
   companyValuation: z.string().optional(),
   plannedRaiseAmount: z.string().optional(),
@@ -56,19 +56,31 @@ const applicationSchema = z.object({
   
   // Product Information - REQUIRED FIELDS
   problemDescription: z.string().trim().min(20, "Problem statement must be at least 20 characters"),
-  problemCauses: z.array(z.string()).min(1, "Select at least one cause"), // Keep as array for frontend
-  edtechDomains: z.array(z.string().min(2).max(40)).min(1, "Select at least one domain"),
+  problemCauses: z.preprocess(
+    v => Array.isArray(v) ? v : (typeof v === "string" && v ? v.split(",").map(s=>s.trim()).filter(Boolean) : []), 
+    z.array(z.string().min(1)).min(1, "Select at least one cause")
+  ),
+  edtechDomains: z.preprocess(
+    v => Array.isArray(v) ? v : (typeof v === "string" && v ? v.split(",").map(s=>s.trim()).filter(Boolean) : []),
+    z.array(z.string().min(2).max(40)).min(1, "Select at least one domain")
+  ),
   relevantExperience: z.string().min(1, "Please select your experience level"),
-  keyGroupAffected: z.array(z.string()).min(1, "Select at least one affected group"), // Keep as array for frontend
+  keyGroupAffected: z.preprocess(
+    v => Array.isArray(v) ? v : (typeof v === "string" && v ? v.split(",").map(s=>s.trim()).filter(Boolean) : []),
+    z.array(z.string().min(1)).min(1, "Select at least one affected group")
+  ),
   problemImpact: z.string().trim().min(20, "Impact description must be at least 20 characters"),
-  customerType: z.array(z.string()).default([]),
+  customerType: z.preprocess(
+    v => Array.isArray(v) ? v : (typeof v === "string" && v ? v.split(",").map(s=>s.trim()).filter(Boolean) : []),
+    z.array(z.string()).default([])
+  ),
   
   // AI Implementation - REQUIRED FIELDS
   aiProblemSolving: z.string().trim().min(20, "AI-specific problem must be at least 20 characters"),
-  aiTeamExpertise: z.string().optional(),
   aiDevelopmentStage: z.enum(["Exploring", "Prototype", "MVP", "In-production", "Scaling"], { 
     required_error: "AI development stage is required" 
   }),
+  aiTeamExpertise: z.string().optional(),
   
   // Pitch Deck & Links - REQUIRED FIELDS
   elevatorPitch: z.string().trim().min(20, "Elevator pitch must be at least 20 characters").max(280, "Elevator pitch must be under 280 characters"),
@@ -81,7 +93,7 @@ const applicationSchema = z.object({
 }).refine(
   // Cross-field validation: Revenue vs Stage
   (data) => {
-    if (data.monthlyRecurringRevenue && parseFloat(data.monthlyRecurringRevenue) > 0) {
+    if (data.monthlyRecurringRevenue && !["pre-revenue", ""].includes(data.monthlyRecurringRevenue)) {
       return ["Pre-seed", "Seed", "Series A+", "Bootstrapped"].includes(data.startupStage);
     }
     return true;
@@ -106,6 +118,13 @@ const applicationSchema = z.object({
     path: ["keyGroupAffected"]
   }
 );
+
+// Export the schema and type
+export { SubmitSchema };
+export type SubmitForm = z.infer<typeof SubmitSchema>;
+
+// Keep compatibility with existing code
+const applicationSchema = SubmitSchema;
 
 type ApplicationForm = z.infer<typeof applicationSchema>;
 
@@ -301,51 +320,81 @@ export default function Apply() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [isUploading, setIsUploading] = useState(false);
+  const [attempted, setAttempted] = useState(false);
   const { toast } = useToast();
+
+  // Default values that match schema requirements
+  const defaultValues: Partial<ApplicationForm> = {
+    fullName: "",
+    dateOfBirth: "",
+    email: "",
+    telephoneNumber: "",
+    countryOfResidence: "",
+    companyName: "",
+    productName: "",
+    hqLocation: "",
+    startupStage: undefined,
+    businessModel: undefined,
+    coFounders: "",
+    numberOfEmployees: "", // Empty string initially - user must select
+    monthlyRecurringRevenue: "", // Empty string initially - user must select
+    investmentRounds: undefined,
+    companyValuation: "",
+    plannedRaiseAmount: "",
+    plannedRaiseValuation: "",
+    problemDescription: "",
+    problemCauses: [], // Empty array for multi-select
+    edtechDomains: [], // Empty array for multi-select
+    relevantExperience: "",
+    keyGroupAffected: [], // Empty array for multi-select
+    problemImpact: "",
+    customerType: [], // Empty array for multi-select checkboxes
+    aiProblemSolving: "",
+    aiTeamExpertise: "",
+    aiDevelopmentStage: undefined,
+    elevatorPitch: "",
+    solutionExplanation: "",
+    programGoals: "",
+    companyWebsite: "",
+    pitchDeckLink: "",
+    linkedinProfile: "",
+    researchEvidence: "",
+  };
 
   const form = useForm<ApplicationForm>({
     resolver: zodResolver(applicationSchema),
-    defaultValues: {
-      fullName: "",
-      dateOfBirth: "",
-      email: "",
-      telephoneNumber: "",
-      countryOfResidence: "",
-      companyName: "",
-      productName: "",
-      hqLocation: "",
-      startupStage: undefined,
-      businessModel: undefined,
-      coFounders: "",
-      numberOfEmployees: "1", // Default to "1" as string for Select component
-      monthlyRecurringRevenue: "0", // Default to 0 (pre-revenue)
-      investmentRounds: undefined,
-      companyValuation: "",
-      plannedRaiseAmount: "",
-      plannedRaiseValuation: "",
-      problemDescription: "",
-      problemCauses: [], // Keep as array for frontend
-      edtechDomains: [],
-      relevantExperience: "",
-      keyGroupAffected: [], // Keep as array for frontend
-      problemImpact: "",
-      customerType: [],
-      elevatorPitch: "",
-      solutionExplanation: "",
-      programGoals: "",
-      companyWebsite: "",
-      pitchDeckLink: "",
-      linkedinProfile: "",
-      researchEvidence: "",
-      aiProblemSolving: "",
-      aiTeamExpertise: "",
-      aiDevelopmentStage: undefined,
-    },
     mode: "onChange",
+    reValidateMode: "onChange",
+    defaultValues,
+    shouldUnregister: false, // Keep hidden step values registered
+    criteriaMode: "all",
   });
 
-  // Check if form is valid for submission
-  const isFormValid = form.formState.isValid && currentStep === FORM_STEPS.length;
+  // After loading defaults: ensure validity re-computes
+  React.useEffect(() => {
+    if (!defaultValues) return;
+    form.reset(defaultValues, { keepDirty: false, keepErrors: false });
+    queueMicrotask(() => form.trigger()); // recompute isValid after reset
+  }, [defaultValues]);
+
+  // Remove isDirty from gating - users restoring a draft shouldn't be forced to change a field
+  const canSubmit = form.formState.isValid && !form.formState.isSubmitting && currentStep === FORM_STEPS.length;
+  
+  // Dev observability logs
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && attempted && !canSubmit) {
+      const errors = form.formState.errors;
+      const invalidFields = Object.keys(errors);
+      console.log('Submit disabled - Form state:', {
+        isValid: form.formState.isValid,
+        isSubmitting: form.formState.isSubmitting,
+        isDirty: form.formState.isDirty,
+        currentStep,
+        invalidFields,
+        errors
+      });
+    }
+  }, [canSubmit, attempted, form.formState]);
 
   const submitMutation = useMutation({
     mutationFn: (data: ApplicationForm) => apiRequest("POST", "/api/applications/submit", data),
@@ -397,20 +446,12 @@ export default function Apply() {
       return;
     }
     
-    // Transform data for backend submission (convert arrays to strings where needed)
-    const submissionData = {
-      ...data,
-      // Convert arrays to comma-separated strings for backend
-      problemCauses: Array.isArray(data.problemCauses) ? data.problemCauses.join(", ") : data.problemCauses,
-      keyGroupAffected: Array.isArray(data.keyGroupAffected) ? data.keyGroupAffected.join(", ") : data.keyGroupAffected,
-      edtechDomains: Array.isArray(data.edtechDomains) ? data.edtechDomains : data.edtechDomains,
-      customerType: Array.isArray(data.customerType) ? data.customerType : data.customerType,
-      // Convert string numbers to actual numbers where needed
-      numberOfEmployees: data.numberOfEmployees, // Keep as string for backend
-      monthlyRecurringRevenue: data.monthlyRecurringRevenue, // Keep as string for backend
-    };
-    
-    submitMutation.mutate(submissionData);
+    // Schema handles coercion - submit data as-is since it's already validated
+    submitMutation.mutate(data);
+  };
+  
+  const onInvalidSubmit = () => {
+    setAttempted(true);
   };
 
   const handleFileUpload = async (files: FileList) => {
@@ -622,7 +663,7 @@ export default function Apply() {
           <CardContent>
             <Form {...form}>
               <form 
-                onSubmit={form.handleSubmit(onSubmit)} 
+                onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)} 
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && currentStep !== FORM_STEPS.length) {
                     e.preventDefault();
@@ -1562,13 +1603,13 @@ export default function Apply() {
                       <>
                         <Button
                           type="submit"
-                          disabled={submitMutation.isPending || !isFormValid}
+                          disabled={!canSubmit}
                           className="bg-[#e57c00] text-white hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed"
-                          aria-describedby={!isFormValid ? "submit-help" : undefined}
+                          aria-describedby={!canSubmit ? "submit-help" : undefined}
                         >
                           {submitMutation.isPending ? "Submitting..." : "Submit Application"}
                         </Button>
-                        {!isFormValid && (
+                        {attempted && !form.formState.isValid && (
                           <p id="submit-help" className="text-sm text-red-600 mt-2" role="alert">
                             Please complete all required fields to submit your application.
                           </p>
