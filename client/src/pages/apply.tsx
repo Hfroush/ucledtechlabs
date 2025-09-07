@@ -397,8 +397,20 @@ export default function Apply() {
       return;
     }
     
-    // Submit the form data (schema validation will ensure all required fields are present)
-    submitMutation.mutate(data);
+    // Transform data for backend submission (convert arrays to strings where needed)
+    const submissionData = {
+      ...data,
+      // Convert arrays to comma-separated strings for backend
+      problemCauses: Array.isArray(data.problemCauses) ? data.problemCauses.join(", ") : data.problemCauses,
+      keyGroupAffected: Array.isArray(data.keyGroupAffected) ? data.keyGroupAffected.join(", ") : data.keyGroupAffected,
+      edtechDomains: Array.isArray(data.edtechDomains) ? data.edtechDomains : data.edtechDomains,
+      customerType: Array.isArray(data.customerType) ? data.customerType : data.customerType,
+      // Convert string numbers to actual numbers where needed
+      numberOfEmployees: parseInt(data.numberOfEmployees),
+      monthlyRecurringRevenue: parseFloat(data.monthlyRecurringRevenue) || 0,
+    };
+    
+    submitMutation.mutate(submissionData);
   };
 
   const handleFileUpload = async (files: FileList) => {
