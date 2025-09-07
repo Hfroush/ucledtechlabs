@@ -29,9 +29,9 @@ export function normalizeForSubmit(formData: any) {
     relevantExperience: trim(formData.relevantExperience),
   };
 
-  // Client-side validation before submission
-  if (payload.relevantExperience.length < 20) {
-    throw new Error("relevantExperience_minlen");
+  // Client-side validation before submission - relevantExperience is a dropdown selection
+  if (!payload.relevantExperience || payload.relevantExperience.trim().length === 0) {
+    throw new Error("relevantExperience_required");
   }
 
   if (payload.problemCauses.length < 1) {

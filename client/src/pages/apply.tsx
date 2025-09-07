@@ -352,7 +352,7 @@ export default function Apply() {
     businessModel: "" as any, // Empty - user must select  
     coFounders: "",
     numberOfEmployees: "", // Empty - user must select
-    monthlyRecurringRevenue: "", // Empty - user must select
+    monthlyRecurringRevenue: "pre-revenue", // Default to pre-revenue option
     investmentRounds: undefined,
     companyValuation: "",
     plannedRaiseAmount: "",
@@ -467,10 +467,10 @@ export default function Apply() {
           type: "manual", 
           message: "Select a valid MRR option" 
         });
-      } else if (error.message === "relevantExperience_minlen") {
+      } else if (error.message === "relevantExperience_required") {
         form.setError("relevantExperience", { 
           type: "manual", 
-          message: "Team experience must be at least 20 characters" 
+          message: "Please select your experience level" 
         });
       } else if (error.message === "problemCauses_required") {
         form.setError("problemCauses", { 
@@ -974,7 +974,7 @@ export default function Apply() {
                             <FieldLabel htmlFor="monthlyRecurringRevenue" required className="font-medium">
                               Monthly Recurring Revenue (MRR) - GBP
                             </FieldLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <Select onValueChange={(value) => field.onChange(value)} value={field.value}>
                               <FormControl>
                                 <SelectTrigger id="monthlyRecurringRevenue" aria-required="true">
                                   <SelectValue placeholder="Select MRR range" />
