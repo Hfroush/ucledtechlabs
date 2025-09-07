@@ -370,17 +370,15 @@ export default function Apply() {
     criteriaMode: "all",
   });
 
-  // After loading defaults: ensure validity re-computes
+  // After loading defaults: ensure validity re-computes (run once on mount)
   React.useEffect(() => {
-    if (!defaultValues) return;
-    form.reset(defaultValues, { keepDirty: false, keepErrors: false });
-    queueMicrotask(() => form.trigger()); // recompute isValid after reset
-  }, [defaultValues]);
+    queueMicrotask(() => form.trigger()); // recompute isValid after mount
+  }, []); // Empty dependency array - run once
 
   // Remove isDirty from gating - users restoring a draft shouldn't be forced to change a field
   const canSubmit = form.formState.isValid && !form.formState.isSubmitting && currentStep === FORM_STEPS.length;
   
-  // Dev observability logs
+  // Dev observability logs (only when attempted changes)
   React.useEffect(() => {
     if (process.env.NODE_ENV === 'development' && attempted && !canSubmit) {
       const errors = form.formState.errors;
@@ -394,7 +392,7 @@ export default function Apply() {
         errors
       });
     }
-  }, [canSubmit, attempted, form.formState]);
+  }, [attempted]); // Only re-run when attempted changes
 
   const submitMutation = useMutation({
     mutationFn: (data: ApplicationForm) => apiRequest("POST", "/api/applications/submit", data),
