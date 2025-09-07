@@ -312,6 +312,16 @@ export default function Apply() {
   });
 
   const onSubmit = (data: ApplicationForm) => {
+    // Block premature submissions - only allow on final step
+    if (currentStep !== FORM_STEPS.length) {
+      toast({
+        title: "Please Complete All Steps",
+        description: `You're currently on step ${currentStep} of ${FORM_STEPS.length}. Please complete all steps before submitting.`,
+        variant: "destructive",
+      });
+      return;
+    }
+    
     // Clean up the data before submission to handle empty strings and type conversions
     const cleanedData: any = {
       fullName: data.fullName,
@@ -563,7 +573,20 @@ export default function Apply() {
           
           <CardContent>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form 
+                onSubmit={form.handleSubmit(onSubmit)} 
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && currentStep !== FORM_STEPS.length) {
+                    e.preventDefault();
+                    toast({
+                      title: "Use Continue Button",
+                      description: "Press 'Continue' to proceed to the next step.",
+                      variant: "default",
+                    });
+                  }
+                }}
+                className="space-y-6"
+              >
                 
                 {/* Step 1: Personal Information */}
                 {currentStep === 1 && (
