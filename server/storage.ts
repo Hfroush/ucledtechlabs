@@ -5,7 +5,8 @@ import {
   type User,
   type InsertUser,
   type Application,
-  type InsertApplication,
+  type InsertApplicationDraft,
+  type InsertApplicationSubmit,
   type InterestRegistration,
   type InsertInterestRegistration
 } from "@shared/schema";
@@ -17,7 +18,11 @@ export interface IStorage {
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
 
-  createApplication(application: InsertApplication): Promise<Application>;
+  // Legacy method for backwards compatibility
+  createApplication(application: InsertApplicationDraft): Promise<Application>;
+  // New separate methods for draft and submit
+  createApplicationDraft(application: InsertApplicationDraft): Promise<Application>;
+  submitApplication(application: InsertApplicationSubmit): Promise<Application>;
   getApplications(): Promise<Application[]>;
 
   createInterestRegistration(registration: InsertInterestRegistration): Promise<InterestRegistration>;
@@ -58,7 +63,11 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async createApplication(insertApplication: InsertApplication): Promise<Application> {
+  async createApplication(insertApplication: InsertApplicationDraft): Promise<Application> {
+    return this.createApplicationDraft(insertApplication);
+  }
+
+  async createApplicationDraft(insertApplication: InsertApplicationDraft): Promise<Application> {
     const id = this.currentApplicationId++;
     const application: Application = {
       ...insertApplication,
@@ -95,6 +104,32 @@ export class MemStorage implements IStorage {
       aiProblemSolving: insertApplication.aiProblemSolving || null,
       aiTeamExpertise: insertApplication.aiTeamExpertise || null,
       aiDevelopmentStage: insertApplication.aiDevelopmentStage || null,
+      createdAt: new Date(),
+    };
+    this.applications.set(id, application);
+    return application;
+  }
+
+  async submitApplication(insertApplication: InsertApplicationSubmit): Promise<Application> {
+    const id = this.currentApplicationId++;
+    const application: Application = {
+      ...insertApplication,
+      id,
+      status: "submitted",
+      dateOfBirth: insertApplication.dateOfBirth || null,
+      telephoneNumber: insertApplication.telephoneNumber || null,
+      countryOfResidence: insertApplication.countryOfResidence || null,
+      productName: insertApplication.productName || null,
+      investmentRounds: insertApplication.investmentRounds || null,
+      companyValuation: insertApplication.companyValuation || null,
+      plannedRaiseAmount: insertApplication.plannedRaiseAmount || null,
+      plannedRaiseValuation: insertApplication.plannedRaiseValuation || null,
+      customerType: insertApplication.customerType || [],
+      companyWebsite: insertApplication.companyWebsite || null,
+      pitchDeckLink: insertApplication.pitchDeckLink || null,
+      linkedinProfile: insertApplication.linkedinProfile || null,
+      researchEvidence: insertApplication.researchEvidence || null,
+      aiTeamExpertise: insertApplication.aiTeamExpertise || null,
       createdAt: new Date(),
     };
     this.applications.set(id, application);
@@ -144,7 +179,11 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
-  async createApplication(data: InsertApplication): Promise<Application> {
+  async createApplication(data: InsertApplicationDraft): Promise<Application> {
+    return this.createApplicationDraft(data);
+  }
+
+  async createApplicationDraft(data: InsertApplicationDraft): Promise<Application> {
     // Helper function to convert string numbers to decimal or null
     const parseNumericField = (value: any): string | null => {
       console.log('parseNumericField input:', { value, type: typeof value });
@@ -176,12 +215,15 @@ export class DatabaseStorage implements IStorage {
     
     const processedData = {
       ...data,
+      status: "draft", // Ensure drafts have correct status
+      // Handle string fields (formerly arrays)
+      problemCauses: Array.isArray(data.problemCauses) ? data.problemCauses.join(", ") : (data.problemCauses || null),
+      keyGroupAffected: Array.isArray(data.keyGroupAffected) ? data.keyGroupAffected.join(", ") : (data.keyGroupAffected || null),
       // Ensure array fields are properly handled
-      problemCauses: data.problemCauses || [],
       edtechDomains: data.edtechDomains || [],
-      keyGroupAffected: data.keyGroupAffected || [],
       customerType: data.customerType || [],
       // Convert string numbers to proper types
+      numberOfEmployees: data.numberOfEmployees ? Number(data.numberOfEmployees) : null,
       investmentRounds: data.investmentRounds ? Number(data.investmentRounds) : null,
       // Handle decimal fields - convert dropdown strings and empty strings to null
       monthlyRecurringRevenue: parseNumericField(data.monthlyRecurringRevenue),
@@ -206,6 +248,39 @@ export class DatabaseStorage implements IStorage {
       return application;
     } catch (dbError) {
       console.error('Database insertion failed:', dbError);
+      throw dbError;
+    }
+  }
+
+  async submitApplication(data: InsertApplicationSubmit): Promise<Application> {
+    // For submit, we don't need the helper function since all fields are validated
+    const processedData = {
+      ...data,
+      status: "submitted", // Ensure submitted status
+      // Handle string fields
+      problemCauses: Array.isArray(data.problemCauses) ? data.problemCauses.join(", ") : data.problemCauses,
+      keyGroupAffected: Array.isArray(data.keyGroupAffected) ? data.keyGroupAffected.join(", ") : data.keyGroupAffected,
+      // Ensure array fields are properly handled
+      edtechDomains: data.edtechDomains || [],
+      customerType: data.customerType || [],
+      // Handle numeric fields
+      numberOfEmployees: data.numberOfEmployees,
+      investmentRounds: data.investmentRounds || null,
+      // Handle decimal fields
+      monthlyRecurringRevenue: data.monthlyRecurringRevenue,
+      companyValuation: data.companyValuation || null,
+      plannedRaiseAmount: data.plannedRaiseAmount || null,
+      plannedRaiseValuation: data.plannedRaiseValuation || null,
+      // Handle date field
+      dateOfBirth: data.dateOfBirth || null,
+    };
+
+    try {
+      const [application] = await db.insert(applications).values(processedData).returning();
+      console.log('Database submission successful:', application);
+      return application;
+    } catch (dbError) {
+      console.error('Database submission failed:', dbError);
       throw dbError;
     }
   }

@@ -2,7 +2,12 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import express from "express";
 import { storage } from "./storage";
-import { insertApplicationSchema, insertInterestRegistrationSchema } from "@shared/schema";
+import { 
+  insertApplicationSchema, 
+  insertApplicationDraftSchema,
+  insertApplicationSubmitSchema,
+  insertInterestRegistrationSchema 
+} from "@shared/schema";
 import { sendContactEmail, type ContactEmailData } from "./email";
 import { z } from "zod";
 import multer from "multer";
@@ -160,6 +165,117 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Failed to submit application",
           requestId: requestId
         });
+      }
+    }
+  });
+
+  // Application draft endpoint - Permissive validation for saving drafts
+  app.post("/api/applications/draft", async (req, res) => {
+    const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    const startTime = Date.now();
+    
+    console.log(`[${requestId}] POST /api/applications/draft - Starting request`);
+    
+    try {
+      // Permissive validation for drafts
+      const validatedData = insertApplicationDraftSchema.parse(req.body);
+      console.log(`[${requestId}] Draft validation successful`);
+      
+      const application = await Promise.race([
+        storage.createApplicationDraft(validatedData),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Database timeout')), 10000)
+        )
+      ]) as Application;
+      
+      const duration = Date.now() - startTime;
+      console.log(`[${requestId}] Draft saved successfully with ID: ${application.id} (${duration}ms)`);
+      
+      res.json({ success: true, application });
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      console.error(`[${requestId}] Draft save error (${duration}ms):`, error);
+      
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          success: false, 
+          message: "Draft validation failed", 
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to save draft",
+          requestId: requestId
+        });
+      }
+    }
+  });
+
+  // Application submit endpoint - Strict validation for final submission
+  app.post("/api/applications/submit", async (req, res) => {
+    const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    const startTime = Date.now();
+    
+    console.log(`[${requestId}] POST /api/applications/submit - Starting request`);
+    
+    try {
+      // Strict validation for submission
+      const validatedData = insertApplicationSubmitSchema.parse(req.body);
+      console.log(`[${requestId}] Submit validation successful`);
+      
+      const application = await Promise.race([
+        storage.submitApplication(validatedData),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Database timeout')), 10000)
+        )
+      ]) as Application;
+      
+      const duration = Date.now() - startTime;
+      console.log(`[${requestId}] Application submitted successfully with ID: ${application.id} (${duration}ms)`);
+      
+      res.status(201).json({ success: true, application });
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      console.error(`[${requestId}] Application submit error (${duration}ms):`, error);
+      
+      if (error instanceof z.ZodError) {
+        // Return 422 for validation failures with precise field-level issues
+        const fieldErrors = error.errors.map(err => ({
+          path: err.path.join('.'),
+          code: err.code,
+          message: err.message
+        }));
+        
+        console.error(`[${requestId}] Validation errors:`, fieldErrors);
+        res.status(422).json({ 
+          success: false, 
+          message: "Validation failed", 
+          issues: fieldErrors
+        });
+      } else if (error instanceof Error) {
+        // Map specific database errors to appropriate status codes
+        if (error.message.includes('unique constraint') || error.message.includes('duplicate')) {
+          res.status(409).json({
+            success: false,
+            message: "Application already exists",
+            error: "Duplicate submission detected"
+          });
+        } else if (error.message.includes('timeout')) {
+          res.status(503).json({
+            success: false,
+            message: "Service temporarily unavailable",
+            error: "Database connection timeout"
+          });
+        } else {
+          res.status(500).json({ 
+            success: false, 
+            message: "Failed to submit application",
+            requestId: requestId
+          });
+        }
       }
     }
   });
