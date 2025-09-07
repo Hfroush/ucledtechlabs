@@ -134,16 +134,13 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
     required_error: "Business model is required" 
   }),
   numberOfEmployees: z.number().int().min(1, "Must have at least 1 employee").max(5000, "Number of employees cannot exceed 5000"),
-  monthlyRecurringRevenue: z.string().refine((val) => {
-    const num = parseFloat(val);
-    return !isNaN(num) && num >= 0;
-  }, "Monthly recurring revenue must be a number >= 0"),
+  monthlyRecurringRevenue: z.number().min(0, "Monthly recurring revenue must be >= 0"),
   
   // Product Details - Required fields
   problemDescription: z.string().trim().min(20, "Problem statement must be at least 20 characters"),
   problemCauses: z.string().trim().min(20, "Root causes must be at least 20 characters"),
   edtechDomains: z.array(z.string().min(2)).min(1, "Select at least one domain"),
-  relevantExperience: z.string().trim().min(20, "Team experience must be at least 20 characters"),
+  relevantExperience: z.string().trim().min(1, "Please select your experience level"),
   keyGroupAffected: z.string().trim().min(2, "Affected group must be at least 2 characters").max(80, "Affected group must be under 80 characters"),
   problemImpact: z.string().trim().min(20, "Impact description must be at least 20 characters"),
   
@@ -160,7 +157,7 @@ export const insertApplicationSubmitSchema = createInsertSchema(applications).om
 }).refine(
   // Cross-field validation: Revenue vs Stage
   (data) => {
-    if (data.monthlyRecurringRevenue && parseFloat(data.monthlyRecurringRevenue) > 0) {
+    if (data.monthlyRecurringRevenue && data.monthlyRecurringRevenue > 0) {
       return ["Pre-seed", "Seed", "Series A+", "Bootstrapped"].includes(data.startupStage);
     }
     return true;
