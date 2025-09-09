@@ -34,10 +34,10 @@ export default function HeroSection() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Button 
-            onClick={() => scrollToSection("apply")}
+            onClick={() => window.open("https://ucledtechlabs.com/autumn-2025", "_blank")}
             className="px-8 py-4 rounded-lg font-semibold hover:bg-yellow-500 transition-colors text-lg h-auto text-[#ffffff] bg-[#e57c00]"
           >
-            Register Interest
+            London's Open
           </Button>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-8 text-sm">
