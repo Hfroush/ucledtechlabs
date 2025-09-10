@@ -1107,7 +1107,7 @@ export default function Apply() {
                             <FieldLabel htmlFor="monthlyRecurringRevenue" required className="font-medium">
                               Monthly Recurring Revenue (MRR) - GBP
                             </FieldLabel>
-                            <Select onValueChange={(value) => field.onChange(value)} value={field.value || ""}>
+                            <Select onValueChange={(value) => field.onChange(value)} value={String(field.value || "")}>
                               <FormControl>
                                 <SelectTrigger id="monthlyRecurringRevenue" aria-required="true">
                                   <SelectValue placeholder="Select MRR range" />
