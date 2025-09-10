@@ -1699,9 +1699,9 @@ export default function Apply() {
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">Save Progress</h4>
+                <h4 className="font-medium mb-2">Technical Support</h4>
                 <p className="text-gray-600">
-                  Your progress is automatically saved. You can return anytime to complete your application.
+                  Having technical issues with the form? Please contact support for assistance.
                 </p>
               </div>
             </div>
