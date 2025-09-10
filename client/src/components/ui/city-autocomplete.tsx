@@ -11,9 +11,10 @@ interface CityAutocompleteProps {
   onValueChange: (value: string) => void;
   placeholder?: string;
   className?: string;
+  id?: string;
 }
 
-export function CityAutocomplete({ value, onValueChange, placeholder = "Select a city...", className }: CityAutocompleteProps) {
+export function CityAutocomplete({ value, onValueChange, placeholder = "Select a city...", className, id }: CityAutocompleteProps) {
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCities, setFilteredCities] = useState<City[]>([]);
@@ -44,6 +45,7 @@ export function CityAutocomplete({ value, onValueChange, placeholder = "Select a
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          id={id}
           variant="outline"
           role="combobox"
           aria-expanded={open}

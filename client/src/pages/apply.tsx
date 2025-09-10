@@ -931,6 +931,7 @@ export default function Apply() {
                           <FormLabel htmlFor="countryOfResidence">Country of Residence</FormLabel>
                           <FormControl>
                             <CityAutocomplete
+                              id="countryOfResidence"
                               value={field.value}
                               onValueChange={field.onChange}
                               placeholder="Select your country"
@@ -986,6 +987,7 @@ export default function Apply() {
                           </FieldLabel>
                           <FormControl>
                             <CityAutocomplete
+                              id="hqLocation"
                               value={field.value}
                               onValueChange={field.onChange}
                               placeholder="Select your headquarters location"
