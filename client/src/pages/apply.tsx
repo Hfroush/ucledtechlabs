@@ -871,7 +871,7 @@ export default function Apply() {
                             <span className="text-red-500">*</span>
                           </FormLabel>
                           <FormControl>
-                            <Input id="fullName" placeholder="Enter your full name" autocomplete="name" {...field} />
+                            <Input id="fullName" placeholder="Enter your full name" autoComplete="name" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -885,7 +885,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel htmlFor="dateOfBirth">Date of Birth</FormLabel>
                           <FormControl>
-                            <Input id="dateOfBirth" type="date" autocomplete="bday" {...field} />
+                            <Input id="dateOfBirth" type="date" autoComplete="bday" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -902,7 +902,7 @@ export default function Apply() {
                             <span className="text-red-500">*</span>
                           </FormLabel>
                           <FormControl>
-                            <Input id="email" type="email" placeholder="your.email@example.com" autocomplete="email" {...field} />
+                            <Input id="email" type="email" placeholder="your.email@example.com" autoComplete="email" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -916,7 +916,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel htmlFor="telephoneNumber">Telephone Number</FormLabel>
                           <FormControl>
-                            <Input id="telephoneNumber" placeholder="+44 20 1234 5678" autocomplete="tel" {...field} />
+                            <Input id="telephoneNumber" placeholder="+44 20 1234 5678" autoComplete="tel" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -955,7 +955,7 @@ export default function Apply() {
                             Company Name
                           </FieldLabel>
                           <FormControl>
-                            <Input id="companyName" placeholder="Your company name" required aria-required="true" autocomplete="organization" {...field} />
+                            <Input id="companyName" placeholder="Your company name" required aria-required="true" autoComplete="organization" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -969,7 +969,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel htmlFor="productName">Product Name (if different from Company name)</FormLabel>
                           <FormControl>
-                            <Input id="productName" placeholder="Your product name" autocomplete="off" {...field} />
+                            <Input id="productName" placeholder="Your product name" autoComplete="off" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -1058,6 +1058,7 @@ export default function Apply() {
                           <FormLabel htmlFor="coFounders">Please list all co-founders and their expertise</FormLabel>
                           <FormControl>
                             <Textarea 
+                              id="coFounders"
                               placeholder="John Smith - CTO, 10 years software development&#10;Jane Doe - CMO, 5 years EdTech marketing"
                               className="min-h-[100px]"
                               {...field} 
@@ -1187,7 +1188,7 @@ export default function Apply() {
                           <FormItem>
                             <FormLabel>At what company valuation?</FormLabel>
                             <FormControl>
-                              <Input placeholder="10000000" {...field} />
+                              <Input id="plannedRaiseValuation" placeholder="10000000" {...field} />
                             </FormControl>
                             <FormDescription>Valuation in GBP</FormDescription>
                             <FormMessage />
@@ -1483,6 +1484,7 @@ export default function Apply() {
                           <FormLabel>Outline your team's AI expertise (e.g. technical roles, academic/industry background, prior projects)</FormLabel>
                           <FormControl>
                             <Textarea 
+                              id="aiTeamExpertise"
                               placeholder="Describe your team's AI capabilities, relevant education, work experience, and previous AI projects..."
                               className="min-h-[150px]"
                               {...field} 
@@ -1601,7 +1603,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel>Company website</FormLabel>
                           <FormControl>
-                            <Input placeholder="https://yourcompany.com" {...field} />
+                            <Input id="companyWebsite" placeholder="https://yourcompany.com" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -1615,7 +1617,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel>Please link your current pitch deck</FormLabel>
                           <FormControl>
-                            <Input placeholder="https://drive.google.com/..." {...field} />
+                            <Input id="pitchDeckLink" placeholder="https://drive.google.com/..." {...field} />
                           </FormControl>
                           <FormDescription>
                             Share a Google Drive, Dropbox, or similar link to your pitch deck
@@ -1632,7 +1634,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel>LinkedIn profile</FormLabel>
                           <FormControl>
-                            <Input placeholder="https://linkedin.com/in/yourprofile" {...field} />
+                            <Input id="linkedinProfile" placeholder="https://linkedin.com/in/yourprofile" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -1648,6 +1650,7 @@ export default function Apply() {
                           <FormControl>
                             <div className="space-y-4">
                               <Textarea 
+                                id="researchEvidence"
                                 placeholder="Provide links to research papers or attach evidence that supports your product's educational impact, underlying theories, or problem definition."
                                 className="min-h-[100px]"
                                 {...field} 
