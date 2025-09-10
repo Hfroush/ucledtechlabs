@@ -1614,23 +1614,24 @@ export default function Apply() {
                 <Separator />
 
                 {/* Navigation Buttons */}
-                <div className="flex justify-between items-center pt-6">
+                <div className="flex flex-col sm:flex-row justify-between items-center pt-6 gap-4">
                   <Button
                     type="button"
                     variant="outline"
                     onClick={prevStep}
                     disabled={currentStep === 1}
-                    className="flex items-center space-x-2"
+                    className="flex items-center space-x-2 order-2 sm:order-1"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     <span>Previous</span>
                   </Button>
 
-                  <div className="flex items-center space-x-4">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 order-1 sm:order-2">
                     <Button
                       type="button"
                       variant="outline"
                       onClick={() => window.location.href = "/"}
+                      className="w-full sm:w-auto"
                     >
                       Save & Exit
                     </Button>
@@ -1639,22 +1640,22 @@ export default function Apply() {
                       <Button
                         type="button"
                         onClick={nextStep}
-                        className="bg-[#e57c00] text-white hover:bg-orange-600 flex items-center space-x-2"
+                        className="bg-[#e57c00] text-white hover:bg-orange-600 flex items-center space-x-2 w-full sm:w-auto"
                       >
                         <span>Continue</span>
                         <ArrowRight className="w-4 h-4" />
                       </Button>
                     ) : (
-                      <>
+                      <div className="flex flex-col items-center gap-2">
                         <Button
                           type="submit"
                           disabled={!canSubmit}
-                          className="bg-[#e57c00] text-white hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="bg-[#e57c00] text-white hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                         >
                           {submitMutation.isPending ? "Submitting..." : "Submit Application"}
                         </Button>
                         {attempted && !form.formState.isValid && (
-                          <p role="alert" className="text-sm text-red-600 mt-2">
+                          <p role="alert" className="text-sm text-red-600 text-center">
                             Please complete all required fields to submit your application.
                           </p>
                         )}
@@ -1670,7 +1671,7 @@ export default function Apply() {
                             </div>
                           </div>
                         )}
-                      </>
+                      </div>
                     )}
                   </div>
                 </div>
