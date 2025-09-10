@@ -871,7 +871,7 @@ export default function Apply() {
                             <span className="text-red-500">*</span>
                           </FormLabel>
                           <FormControl>
-                            <Input id="fullName" placeholder="Enter your full name" {...field} />
+                            <Input id="fullName" placeholder="Enter your full name" autocomplete="name" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -885,7 +885,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel htmlFor="dateOfBirth">Date of Birth</FormLabel>
                           <FormControl>
-                            <Input id="dateOfBirth" type="date" {...field} />
+                            <Input id="dateOfBirth" type="date" autocomplete="bday" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -902,7 +902,7 @@ export default function Apply() {
                             <span className="text-red-500">*</span>
                           </FormLabel>
                           <FormControl>
-                            <Input id="email" type="email" placeholder="your.email@example.com" {...field} />
+                            <Input id="email" type="email" placeholder="your.email@example.com" autocomplete="email" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -916,7 +916,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel htmlFor="telephoneNumber">Telephone Number</FormLabel>
                           <FormControl>
-                            <Input id="telephoneNumber" placeholder="+44 20 1234 5678" {...field} />
+                            <Input id="telephoneNumber" placeholder="+44 20 1234 5678" autocomplete="tel" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -955,7 +955,7 @@ export default function Apply() {
                             Company Name
                           </FieldLabel>
                           <FormControl>
-                            <Input id="companyName" placeholder="Your company name" required aria-required="true" {...field} />
+                            <Input id="companyName" placeholder="Your company name" required aria-required="true" autocomplete="organization" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -969,7 +969,7 @@ export default function Apply() {
                         <FormItem>
                           <FormLabel htmlFor="productName">Product Name (if different from Company name)</FormLabel>
                           <FormControl>
-                            <Input id="productName" placeholder="Your product name" {...field} />
+                            <Input id="productName" placeholder="Your product name" autocomplete="off" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
