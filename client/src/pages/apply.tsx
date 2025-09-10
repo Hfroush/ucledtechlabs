@@ -25,9 +25,6 @@ import Footer from "@/components/footer";
 import { FieldLabel } from "@/components/ui/field-label";
 import { normalizeForSubmit } from "@/lib/submitAdapter";
 import { parseMrrLabelToNumber } from "@/lib/mrr";
-import { saveDraft, getDraftId, setDraftId, saveLocalSnapshot, fetchDraft, loadLocalSnapshot } from "@/lib/drafts";
-import { useLocation } from "wouter";
-import { draftApiToForm } from "@/lib/inverseAdapter";
 
 // Single Source of Truth Schema - matches backend exactly with proper coercion
 const SubmitSchema = z.object({
@@ -334,7 +331,6 @@ const FORM_STEPS = [
   },
 ];
 
-const SAVE_EXIT_REDIRECT = "/"; // Redirect to homepage after saving
 
 export default function Apply() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -343,12 +339,7 @@ export default function Apply() {
   const [isUploading, setIsUploading] = useState(false);
   const [attempted, setAttempted] = useState(false);
   const { toast } = useToast();
-  const [, setLocation] = useLocation();
   
-  // Draft management state
-  const [saving, setSaving] = useState(false);
-  const [saveErr, setSaveErr] = useState<string | null>(null);
-  const [draftId, setDraftIdState] = useState<string | null>(() => getDraftId());
 
   // Default values - empty strings for required fields so users must fill them out
   const defaultValues: Partial<ApplicationForm> = {
@@ -392,72 +383,11 @@ export default function Apply() {
     resolver: zodResolver(SubmitSchema),
     mode: "onChange",
     reValidateMode: "onChange",
-    defaultValues,             // from draft/server
+    defaultValues,
     shouldUnregister: false,   // keep hidden step values registered
     criteriaMode: "all",
   });
 
-  // Draft restoration effect - loads saved drafts on mount
-  React.useEffect(() => {
-    let cancelled = false;
-    
-    (async () => {
-      try {
-        // 1) Derive draftId from URL params or localStorage
-        const params = new URLSearchParams(window.location.search);
-        const urlDraftId = params.get("draftId");
-        const lsDraftId = getDraftId();
-        const draftId = urlDraftId || lsDraftId || undefined;
-        
-        // Persist draftId to localStorage if found in URL
-        if (urlDraftId) {
-          setDraftId(urlDraftId);
-          setDraftIdState(urlDraftId);
-          
-          // Clean URL without causing navigation issues
-          const url = new URL(window.location.href);
-          url.searchParams.delete("draftId");
-          url.searchParams.delete("saved");
-          window.history.replaceState({}, "", url.toString());
-        }
-
-        // 2) Server-first: try to fetch from API
-        if (draftId && !cancelled) {
-          console.debug("Loading draft from server:", draftId);
-          const apiDraft = await fetchDraft(draftId);
-          
-          if (apiDraft && !cancelled) {
-            const formData = draftApiToForm(apiDraft);
-            console.debug("Restoring draft data:", formData);
-            
-            form.reset(formData, { keepDirty: false, keepErrors: false });
-            queueMicrotask(() => form.trigger());
-            return;
-          }
-        }
-
-        // 3) Local fallback: load from localStorage snapshot
-        if (!cancelled) {
-          const snapshot = loadLocalSnapshot();
-          if (snapshot) {
-            console.debug("Restoring from local snapshot");
-            const formData = draftApiToForm(snapshot);
-            
-            form.reset(formData, { keepDirty: false, keepErrors: false });
-            queueMicrotask(() => form.trigger());
-          }
-        }
-        
-      } catch (error) {
-        // Non-blocking: form stays empty if restoration fails
-        if (process.env.NODE_ENV === "development") {
-          console.debug("Draft restoration skipped:", error);
-        }
-      }
-    })();
-    
-    return () => { cancelled = true; };
-  }, []); // Only run on mount
 
   // Simple logic: enable submit button on final step, let form validation handle the rest
   const canSubmit = currentStep === FORM_STEPS.length && !form.formState.isSubmitting;
@@ -507,64 +437,6 @@ export default function Apply() {
     },
   });
 
-  // Save & Exit handler - saves current form as draft and navigates away
-  const onSaveAndExit = async () => {
-    console.debug("Save & Exit clicked");
-    setSaveErr(null);
-    setSaving(true);
-    
-    // Use getValues to get current form data without validation
-    const values = form.getValues();
-    console.debug("Form values to save:", values);
-    
-    try {
-      console.debug("Calling saveDraft with draftId:", draftId);
-      const response = await saveDraft(values, draftId ?? undefined);
-      console.debug("Draft save response:", response);
-      
-      const id = response.application?.id;
-      
-      if (id) {
-        console.debug("Saving draft ID to localStorage:", id);
-        setDraftId(String(id));
-        setDraftIdState(String(id));
-        
-        toast({
-          title: "Draft Saved",
-          description: "Your application has been saved as a draft.",
-        });
-        
-        // Navigate away after successful save with URL hand-off
-        setLocation(`${SAVE_EXIT_REDIRECT}?saved=1&draftId=${encodeURIComponent(String(id))}`);
-      } else {
-        console.warn("No ID returned from server, saving locally");
-        // Fallback: save local snapshot if server didn't return ID
-        saveLocalSnapshot(values);
-        
-        toast({
-          title: "Draft Saved Locally", 
-          description: "Saved to your browser - will sync when reconnected.",
-        });
-        
-        setLocation(SAVE_EXIT_REDIRECT);
-      }
-      
-    } catch (error: any) {
-      console.error("Draft save error:", error);
-      
-      // Local fallback: save snapshot even if server failed
-      try {
-        saveLocalSnapshot(values);
-        console.debug("Local snapshot saved successfully");
-      } catch (snapError) {
-        console.warn("Failed to save local snapshot:", snapError);
-      }
-      
-      setSaveErr("Couldn't sync draft. Saved locally—please reconnect and try again.");
-    } finally {
-      setSaving(false);
-    }
-  };
 
   const onSubmit = async (data: ApplicationForm) => {
     // Block premature submissions - only allow on final step
@@ -1766,25 +1638,6 @@ export default function Apply() {
                   </Button>
 
                   <div className="flex flex-col sm:flex-row items-center gap-3 order-1 sm:order-2">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        console.log("Save & Exit button clicked");
-                        onSaveAndExit();
-                      }}
-                      disabled={saving}
-                      className="w-full sm:w-auto"
-                    >
-                      {saving ? "Saving…" : "Save & Exit"}
-                    </Button>
-                    {saveErr && (
-                      <p role="alert" className="text-sm text-red-600 text-center">
-                        {saveErr}
-                      </p>
-                    )}
-                    
                     {currentStep < FORM_STEPS.length ? (
                       <Button
                         type="button"
