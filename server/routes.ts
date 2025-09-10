@@ -228,6 +228,66 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Application draft update endpoint - Update existing draft by ID
+  app.patch("/api/applications/draft/:id", async (req, res) => {
+    const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    const startTime = Date.now();
+    const draftId = parseInt(req.params.id, 10);
+    
+    console.log(`[${requestId}] PATCH /api/applications/draft/${draftId} - Starting request`);
+    
+    try {
+      // Add server-side coercion for drafts too
+      const preprocessedData = {
+        ...req.body,
+        id: draftId, // Ensure the ID is set for update
+        // Ensure arrays are properly handled for drafts
+        edtechDomains: Array.isArray(req.body.edtechDomains) ? req.body.edtechDomains : [],
+        customerType: Array.isArray(req.body.customerType) ? req.body.customerType : [],
+        // Ensure numbers are properly parsed if provided
+        numberOfEmployees: req.body.numberOfEmployees 
+          ? (typeof req.body.numberOfEmployees === 'string' 
+              ? parseInt(req.body.numberOfEmployees, 10) 
+              : req.body.numberOfEmployees)
+          : undefined,
+      };
+      
+      // Permissive validation for drafts with preprocessed data
+      const validatedData = insertApplicationDraftSchema.parse(preprocessedData);
+      console.log(`[${requestId}] Draft update validation successful`);
+      
+      const application = await Promise.race([
+        storage.updateApplicationDraft(draftId, validatedData),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Database timeout')), 10000)
+        )
+      ]) as Application;
+      
+      const duration = Date.now() - startTime;
+      console.log(`[${requestId}] Draft updated successfully with ID: ${application.id} (${duration}ms)`);
+      
+      res.json({ success: true, application });
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      console.error(`[${requestId}] Draft update error (${duration}ms):`, error);
+      
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          success: false, 
+          message: "Draft validation failed", 
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to update draft",
+          requestId: requestId
+        });
+      }
+    }
+  });
+
   // Application submit endpoint - Strict validation for final submission
   app.post("/api/applications/submit", async (req, res) => {
     const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);

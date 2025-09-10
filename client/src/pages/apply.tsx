@@ -25,6 +25,8 @@ import Footer from "@/components/footer";
 import { FieldLabel } from "@/components/ui/field-label";
 import { normalizeForSubmit } from "@/lib/submitAdapter";
 import { parseMrrLabelToNumber } from "@/lib/mrr";
+import { saveDraft, getDraftId, setDraftId, saveLocalSnapshot } from "@/lib/drafts";
+import { useLocation } from "wouter";
 
 // Single Source of Truth Schema - matches backend exactly with proper coercion
 const SubmitSchema = z.object({
@@ -331,6 +333,8 @@ const FORM_STEPS = [
   },
 ];
 
+const SAVE_EXIT_REDIRECT = "/"; // Redirect to homepage after saving
+
 export default function Apply() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -338,6 +342,12 @@ export default function Apply() {
   const [isUploading, setIsUploading] = useState(false);
   const [attempted, setAttempted] = useState(false);
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
+  
+  // Draft management state
+  const [saving, setSaving] = useState(false);
+  const [saveErr, setSaveErr] = useState<string | null>(null);
+  const [draftId, setDraftIdState] = useState<string | null>(() => getDraftId());
 
   // Default values - empty strings for required fields so users must fill them out
   const defaultValues: Partial<ApplicationForm> = {
@@ -433,6 +443,50 @@ export default function Apply() {
       }
     },
   });
+
+  // Save & Exit handler - saves current form as draft and navigates away
+  const onSaveAndExit = async () => {
+    setSaveErr(null);
+    setSaving(true);
+    
+    // Use getValues to get current form data without validation
+    const values = form.getValues();
+    
+    try {
+      const response = await saveDraft(values, draftId ?? undefined);
+      const id = response.application?.id;
+      
+      if (id) {
+        setDraftId(String(id));
+        setDraftIdState(String(id));
+      } else {
+        // Fallback: save local snapshot if server didn't return ID
+        saveLocalSnapshot(values);
+      }
+      
+      toast({
+        title: "Draft Saved",
+        description: "Your application has been saved as a draft.",
+      });
+      
+      // Navigate away after successful save
+      setLocation(SAVE_EXIT_REDIRECT);
+      
+    } catch (error: any) {
+      console.error("Draft save error:", error);
+      
+      // Local fallback: save snapshot even if server failed
+      try {
+        saveLocalSnapshot(values);
+      } catch (snapError) {
+        console.warn("Failed to save local snapshot:", snapError);
+      }
+      
+      setSaveErr("Couldn't sync draft. Saved locally—please reconnect and try again.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   const onSubmit = async (data: ApplicationForm) => {
     // Block premature submissions - only allow on final step
@@ -1630,11 +1684,17 @@ export default function Apply() {
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={() => window.location.href = "/"}
+                      onClick={onSaveAndExit}
+                      disabled={saving}
                       className="w-full sm:w-auto"
                     >
-                      Save & Exit
+                      {saving ? "Saving…" : "Save & Exit"}
                     </Button>
+                    {saveErr && (
+                      <p role="alert" className="text-sm text-red-600 text-center">
+                        {saveErr}
+                      </p>
+                    )}
                     
                     {currentStep < FORM_STEPS.length ? (
                       <Button

@@ -22,6 +22,7 @@ export interface IStorage {
   createApplication(application: InsertApplicationDraft): Promise<Application>;
   // New separate methods for draft and submit
   createApplicationDraft(application: InsertApplicationDraft): Promise<Application>;
+  updateApplicationDraft(id: number, application: InsertApplicationDraft): Promise<Application>;
   submitApplication(application: InsertApplicationSubmit): Promise<Application>;
   getApplications(): Promise<Application[]>;
 
@@ -105,6 +106,22 @@ export class MemStorage implements IStorage {
       aiTeamExpertise: insertApplication.aiTeamExpertise || null,
       aiDevelopmentStage: insertApplication.aiDevelopmentStage || null,
       createdAt: new Date(),
+    };
+    this.applications.set(id, application);
+    return application;
+  }
+
+  async updateApplicationDraft(id: number, insertApplication: InsertApplicationDraft): Promise<Application> {
+    const existing = this.applications.get(id);
+    if (!existing) {
+      throw new Error(`Application with ID ${id} not found`);
+    }
+    
+    const application: Application = {
+      ...existing,
+      ...insertApplication,
+      id, // Preserve the original ID
+      createdAt: existing.createdAt, // Preserve creation time
     };
     this.applications.set(id, application);
     return application;
@@ -248,6 +265,78 @@ export class DatabaseStorage implements IStorage {
       return application;
     } catch (dbError) {
       console.error('Database insertion failed:', dbError);
+      throw dbError;
+    }
+  }
+
+  async updateApplicationDraft(id: number, data: InsertApplicationDraft): Promise<Application> {
+    // Helper function to convert string numbers to decimal or null
+    const parseNumericField = (value: any): string | null => {
+      console.log('parseNumericField input:', { value, type: typeof value });
+      
+      // Handle null, undefined, or empty values
+      if (!value || value === '' || value === undefined || value === null) {
+        console.log('parseNumericField returning null for empty/null value');
+        return null;
+      }
+      
+      // Convert to string if not already
+      const stringValue = String(value).trim();
+      console.log('parseNumericField stringValue:', stringValue);
+      
+      // Handle dropdown string values (non-numeric categorical values)
+      const numericValue = Number(stringValue);
+      if (isNaN(numericValue)) {
+        console.log('parseNumericField returning null for non-numeric value:', stringValue);
+        return null; // Store dropdown selections as null since they're categorical
+      }
+      
+      // Return the string representation for valid numbers
+      console.log('parseNumericField returning numeric string:', stringValue);
+      return stringValue;
+    };
+
+    // Clean and process the data before update
+    console.log('Original data before processing:', JSON.stringify(data, null, 2));
+    
+    const processedData = {
+      ...data,
+      status: "draft", // Ensure drafts have correct status
+      // Handle string fields (formerly arrays)
+      problemCauses: Array.isArray(data.problemCauses) ? data.problemCauses.join(", ") : (data.problemCauses || null),
+      keyGroupAffected: Array.isArray(data.keyGroupAffected) ? data.keyGroupAffected.join(", ") : (data.keyGroupAffected || null),
+      // Ensure array fields are properly handled
+      edtechDomains: data.edtechDomains || [],
+      customerType: data.customerType || [],
+      // Convert string numbers to proper types
+      numberOfEmployees: data.numberOfEmployees ? Number(data.numberOfEmployees) : null,
+      investmentRounds: data.investmentRounds ? Number(data.investmentRounds) : null,
+      // Handle decimal fields - convert dropdown strings and empty strings to null
+      monthlyRecurringRevenue: parseNumericField(data.monthlyRecurringRevenue),
+      companyValuation: parseNumericField(data.companyValuation),
+      plannedRaiseAmount: parseNumericField(data.plannedRaiseAmount),
+      plannedRaiseValuation: parseNumericField(data.plannedRaiseValuation),
+      // Handle date field
+      dateOfBirth: data.dateOfBirth || null,
+    };
+    
+    console.log('Processed data for database update:', JSON.stringify(processedData, null, 2));
+    
+    try {
+      const [application] = await db
+        .update(applications)
+        .set(processedData)
+        .where(eq(applications.id, id))
+        .returning();
+      
+      if (!application) {
+        throw new Error(`Application with ID ${id} not found`);
+      }
+      
+      console.log('Database update successful:', application);
+      return application;
+    } catch (dbError) {
+      console.error('Database update failed:', dbError);
       throw dbError;
     }
   }
