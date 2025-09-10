@@ -866,12 +866,12 @@ export default function Apply() {
                       name="fullName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center space-x-1">
+                          <FormLabel htmlFor="fullName" className="flex items-center space-x-1">
                             <span>Full Name</span>
                             <span className="text-red-500">*</span>
                           </FormLabel>
                           <FormControl>
-                            <Input placeholder="Enter your full name" {...field} />
+                            <Input id="fullName" placeholder="Enter your full name" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -883,9 +883,9 @@ export default function Apply() {
                       name="dateOfBirth"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Date of Birth</FormLabel>
+                          <FormLabel htmlFor="dateOfBirth">Date of Birth</FormLabel>
                           <FormControl>
-                            <Input type="date" {...field} />
+                            <Input id="dateOfBirth" type="date" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -897,12 +897,12 @@ export default function Apply() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center space-x-1">
+                          <FormLabel htmlFor="email" className="flex items-center space-x-1">
                             <span>Email</span>
                             <span className="text-red-500">*</span>
                           </FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="your.email@example.com" {...field} />
+                            <Input id="email" type="email" placeholder="your.email@example.com" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -914,9 +914,9 @@ export default function Apply() {
                       name="telephoneNumber"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Telephone Number</FormLabel>
+                          <FormLabel htmlFor="telephoneNumber">Telephone Number</FormLabel>
                           <FormControl>
-                            <Input placeholder="+44 20 1234 5678" {...field} />
+                            <Input id="telephoneNumber" placeholder="+44 20 1234 5678" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -928,7 +928,7 @@ export default function Apply() {
                       name="countryOfResidence"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Country of Residence</FormLabel>
+                          <FormLabel htmlFor="countryOfResidence">Country of Residence</FormLabel>
                           <FormControl>
                             <CityAutocomplete
                               value={field.value}
@@ -967,9 +967,9 @@ export default function Apply() {
                       name="productName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Product Name (if different from Company name)</FormLabel>
+                          <FormLabel htmlFor="productName">Product Name (if different from Company name)</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your product name" {...field} />
+                            <Input id="productName" placeholder="Your product name" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -1055,7 +1055,7 @@ export default function Apply() {
                       name="coFounders"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Please list all co-founders and their expertise</FormLabel>
+                          <FormLabel htmlFor="coFounders">Please list all co-founders and their expertise</FormLabel>
                           <FormControl>
                             <Textarea 
                               placeholder="John Smith - CTO, 10 years software development&#10;Jane Doe - CMO, 5 years EdTech marketing"
@@ -1133,9 +1133,10 @@ export default function Apply() {
                         name="investmentRounds"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Total number of investment rounds closed</FormLabel>
+                            <FormLabel htmlFor="investmentRounds">Total number of investment rounds closed</FormLabel>
                             <FormControl>
                               <Input 
+                                id="investmentRounds"
                                 type="number" 
                                 placeholder="2" 
                                 {...field}
@@ -1153,9 +1154,9 @@ export default function Apply() {
                         name="companyValuation"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Company valuation at last investment round (GBP)</FormLabel>
+                            <FormLabel htmlFor="companyValuation">Company valuation at last investment round (GBP)</FormLabel>
                             <FormControl>
-                              <Input placeholder="5000000" {...field} />
+                              <Input id="companyValuation" placeholder="5000000" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1169,9 +1170,9 @@ export default function Apply() {
                         name="plannedRaiseAmount"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>If currently planning on raising, how much?</FormLabel>
+                            <FormLabel htmlFor="plannedRaiseAmount">If currently planning on raising, how much?</FormLabel>
                             <FormControl>
-                              <Input placeholder="1000000" {...field} />
+                              <Input id="plannedRaiseAmount" placeholder="1000000" {...field} />
                             </FormControl>
                             <FormDescription>Amount in GBP</FormDescription>
                             <FormMessage />
