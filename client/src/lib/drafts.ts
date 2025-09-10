@@ -21,14 +21,13 @@ export async function saveDraft(payload: any, draftId?: string): Promise<DraftRe
   return await response.json() as DraftResponse;
 }
 
-// Note: Currently no GET endpoint for drafts - could be added later if needed
-export async function loadDraft(draftId: string): Promise<any | null> {
+export async function fetchDraft(draftId: string): Promise<any | null> {
   try {
-    // For now, drafts are not loadable from server - only create/update
-    console.warn("Draft loading not implemented - server has no GET endpoint");
-    return null;
+    const response = await apiRequest("GET", `/api/applications/draft/${draftId}`);
+    const data = await response.json();
+    return data.success ? data.application : null;
   } catch (error) {
-    console.warn("Failed to load draft:", error);
+    console.warn("Failed to fetch draft from server:", error);
     return null;
   }
 }

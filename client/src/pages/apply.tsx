@@ -25,8 +25,9 @@ import Footer from "@/components/footer";
 import { FieldLabel } from "@/components/ui/field-label";
 import { normalizeForSubmit } from "@/lib/submitAdapter";
 import { parseMrrLabelToNumber } from "@/lib/mrr";
-import { saveDraft, getDraftId, setDraftId, saveLocalSnapshot } from "@/lib/drafts";
+import { saveDraft, getDraftId, setDraftId, saveLocalSnapshot, fetchDraft, loadLocalSnapshot } from "@/lib/drafts";
 import { useLocation } from "wouter";
+import { draftApiToForm } from "@/lib/inverseAdapter";
 
 // Single Source of Truth Schema - matches backend exactly with proper coercion
 const SubmitSchema = z.object({
@@ -333,7 +334,7 @@ const FORM_STEPS = [
   },
 ];
 
-const SAVE_EXIT_REDIRECT = "/"; // Redirect to homepage after saving
+const SAVE_EXIT_REDIRECT = "/apply"; // Redirect back to apply page to test restoration
 
 export default function Apply() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -395,6 +396,68 @@ export default function Apply() {
     shouldUnregister: false,   // keep hidden step values registered
     criteriaMode: "all",
   });
+
+  // Draft restoration effect - loads saved drafts on mount
+  React.useEffect(() => {
+    let cancelled = false;
+    
+    (async () => {
+      try {
+        // 1) Derive draftId from URL params or localStorage
+        const params = new URLSearchParams(window.location.search);
+        const urlDraftId = params.get("draftId");
+        const lsDraftId = getDraftId();
+        const draftId = urlDraftId || lsDraftId || undefined;
+        
+        // Persist draftId to localStorage if found in URL
+        if (urlDraftId) {
+          setDraftId(urlDraftId);
+          setDraftIdState(urlDraftId);
+          
+          // Clean URL without causing navigation issues
+          const url = new URL(window.location.href);
+          url.searchParams.delete("draftId");
+          url.searchParams.delete("saved");
+          window.history.replaceState({}, "", url.toString());
+        }
+
+        // 2) Server-first: try to fetch from API
+        if (draftId && !cancelled) {
+          console.debug("Loading draft from server:", draftId);
+          const apiDraft = await fetchDraft(draftId);
+          
+          if (apiDraft && !cancelled) {
+            const formData = draftApiToForm(apiDraft);
+            console.debug("Restoring draft data:", formData);
+            
+            form.reset(formData, { keepDirty: false, keepErrors: false });
+            queueMicrotask(() => form.trigger());
+            return;
+          }
+        }
+
+        // 3) Local fallback: load from localStorage snapshot
+        if (!cancelled) {
+          const snapshot = loadLocalSnapshot();
+          if (snapshot) {
+            console.debug("Restoring from local snapshot");
+            const formData = draftApiToForm(snapshot);
+            
+            form.reset(formData, { keepDirty: false, keepErrors: false });
+            queueMicrotask(() => form.trigger());
+          }
+        }
+        
+      } catch (error) {
+        // Non-blocking: form stays empty if restoration fails
+        if (process.env.NODE_ENV === "development") {
+          console.debug("Draft restoration skipped:", error);
+        }
+      }
+    })();
+    
+    return () => { cancelled = true; };
+  }, []); // Only run on mount
 
   // Simple logic: enable submit button on final step, let form validation handle the rest
   const canSubmit = currentStep === FORM_STEPS.length && !form.formState.isSubmitting;
@@ -469,8 +532,8 @@ export default function Apply() {
         description: "Your application has been saved as a draft.",
       });
       
-      // Navigate away after successful save
-      setLocation(SAVE_EXIT_REDIRECT);
+      // Navigate away after successful save with URL hand-off
+      setLocation(`${SAVE_EXIT_REDIRECT}?saved=1&draftId=${encodeURIComponent(String(id))}`);
       
     } catch (error: any) {
       console.error("Draft save error:", error);

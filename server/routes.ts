@@ -288,6 +288,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Application draft get endpoint - Fetch existing draft by ID
+  app.get("/api/applications/draft/:id", async (req, res) => {
+    const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    const startTime = Date.now();
+    const draftId = parseInt(req.params.id, 10);
+    
+    console.log(`[${requestId}] GET /api/applications/draft/${draftId} - Starting request`);
+    
+    try {
+      const application = await Promise.race([
+        storage.getApplicationDraft(draftId),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Database timeout')), 10000)
+        )
+      ]) as Application | null;
+      
+      if (!application) {
+        const duration = Date.now() - startTime;
+        console.log(`[${requestId}] Draft not found with ID: ${draftId} (${duration}ms)`);
+        res.status(404).json({ 
+          success: false, 
+          message: "Draft not found" 
+        });
+        return;
+      }
+      
+      const duration = Date.now() - startTime;
+      console.log(`[${requestId}] Draft fetched successfully with ID: ${application.id} (${duration}ms)`);
+      
+      res.json({ success: true, application });
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      console.error(`[${requestId}] Draft fetch error (${duration}ms):`, error);
+      
+      res.status(500).json({ 
+        success: false, 
+        message: "Failed to fetch draft",
+        requestId: requestId
+      });
+    }
+  });
+
   // Application submit endpoint - Strict validation for final submission
   app.post("/api/applications/submit", async (req, res) => {
     const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);

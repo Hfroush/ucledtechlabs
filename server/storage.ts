@@ -23,6 +23,7 @@ export interface IStorage {
   // New separate methods for draft and submit
   createApplicationDraft(application: InsertApplicationDraft): Promise<Application>;
   updateApplicationDraft(id: number, application: InsertApplicationDraft): Promise<Application>;
+  getApplicationDraft(id: number): Promise<Application | null>;
   submitApplication(application: InsertApplicationSubmit): Promise<Application>;
   getApplications(): Promise<Application[]>;
 
@@ -125,6 +126,10 @@ export class MemStorage implements IStorage {
     };
     this.applications.set(id, application);
     return application;
+  }
+
+  async getApplicationDraft(id: number): Promise<Application | null> {
+    return this.applications.get(id) || null;
   }
 
   async submitApplication(insertApplication: InsertApplicationSubmit): Promise<Application> {
@@ -337,6 +342,21 @@ export class DatabaseStorage implements IStorage {
       return application;
     } catch (dbError) {
       console.error('Database update failed:', dbError);
+      throw dbError;
+    }
+  }
+
+  async getApplicationDraft(id: number): Promise<Application | null> {
+    try {
+      const [application] = await db
+        .select()
+        .from(applications)
+        .where(eq(applications.id, id))
+        .limit(1);
+      
+      return application || null;
+    } catch (dbError) {
+      console.error('Database draft fetch failed:', dbError);
       throw dbError;
     }
   }
