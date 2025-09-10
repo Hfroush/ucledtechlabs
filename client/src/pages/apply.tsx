@@ -334,7 +334,7 @@ const FORM_STEPS = [
   },
 ];
 
-const SAVE_EXIT_REDIRECT = "/apply"; // Redirect back to apply page to test restoration
+const SAVE_EXIT_REDIRECT = "/"; // Redirect to homepage after saving
 
 export default function Apply() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -509,31 +509,45 @@ export default function Apply() {
 
   // Save & Exit handler - saves current form as draft and navigates away
   const onSaveAndExit = async () => {
+    console.debug("Save & Exit clicked");
     setSaveErr(null);
     setSaving(true);
     
     // Use getValues to get current form data without validation
     const values = form.getValues();
+    console.debug("Form values to save:", values);
     
     try {
+      console.debug("Calling saveDraft with draftId:", draftId);
       const response = await saveDraft(values, draftId ?? undefined);
+      console.debug("Draft save response:", response);
+      
       const id = response.application?.id;
       
       if (id) {
+        console.debug("Saving draft ID to localStorage:", id);
         setDraftId(String(id));
         setDraftIdState(String(id));
+        
+        toast({
+          title: "Draft Saved",
+          description: "Your application has been saved as a draft.",
+        });
+        
+        // Navigate away after successful save with URL hand-off
+        setLocation(`${SAVE_EXIT_REDIRECT}?saved=1&draftId=${encodeURIComponent(String(id))}`);
       } else {
+        console.warn("No ID returned from server, saving locally");
         // Fallback: save local snapshot if server didn't return ID
         saveLocalSnapshot(values);
+        
+        toast({
+          title: "Draft Saved Locally", 
+          description: "Saved to your browser - will sync when reconnected.",
+        });
+        
+        setLocation(SAVE_EXIT_REDIRECT);
       }
-      
-      toast({
-        title: "Draft Saved",
-        description: "Your application has been saved as a draft.",
-      });
-      
-      // Navigate away after successful save with URL hand-off
-      setLocation(`${SAVE_EXIT_REDIRECT}?saved=1&draftId=${encodeURIComponent(String(id))}`);
       
     } catch (error: any) {
       console.error("Draft save error:", error);
@@ -541,6 +555,7 @@ export default function Apply() {
       // Local fallback: save snapshot even if server failed
       try {
         saveLocalSnapshot(values);
+        console.debug("Local snapshot saved successfully");
       } catch (snapError) {
         console.warn("Failed to save local snapshot:", snapError);
       }
