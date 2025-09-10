@@ -1107,7 +1107,7 @@ export default function Apply() {
                             <FieldLabel htmlFor="monthlyRecurringRevenue" required className="font-medium">
                               Monthly Recurring Revenue (MRR) - GBP
                             </FieldLabel>
-                            <Select onValueChange={(value) => field.onChange(value)} value={field.value}>
+                            <Select onValueChange={(value) => field.onChange(value)} value={field.value || ""}>
                               <FormControl>
                                 <SelectTrigger id="monthlyRecurringRevenue" aria-required="true">
                                   <SelectValue placeholder="Select MRR range" />
@@ -1763,7 +1763,11 @@ export default function Apply() {
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={onSaveAndExit}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        console.log("Save & Exit button clicked");
+                        onSaveAndExit();
+                      }}
                       disabled={saving}
                       className="w-full sm:w-auto"
                     >
