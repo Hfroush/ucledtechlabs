@@ -22,7 +22,7 @@ import { useToast } from "@/hooks/use-toast";
 import { validateCity } from "@/lib/cities";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-// Removed FormLabel import - using FormLabel instead
+import { FieldLabel } from "@/components/ui/field-label";
 import { normalizeForSubmit } from "@/lib/submitAdapter";
 import { parseMrrLabelToNumber } from "@/lib/mrr";
 import { saveDraft, getDraftId, setDraftId, saveLocalSnapshot, fetchDraft, loadLocalSnapshot } from "@/lib/drafts";
@@ -32,7 +32,7 @@ import { draftApiToForm } from "@/lib/inverseAdapter";
 // Single Source of Truth Schema - matches backend exactly with proper coercion
 const SubmitSchema = z.object({
   // Personal Information - REQUIRED FIELDS
-  fullName: z.string().trim().min(1, "Full name is"),
+  fullName: z.string().trim().min(1, "Full name is required"),
   email: z.string().email("Please enter a valid email address"),
   dateOfBirth: z.string().optional(),
   telephoneNumber: z.string().optional(),
@@ -45,13 +45,13 @@ const SubmitSchema = z.object({
     "Please select a valid city from the dropdown"
   ),
   startupStage: z.enum(["Idea", "Prototype/MVP", "Pre-seed", "Seed", "Series A+", "Bootstrapped"], { 
-   _error: "Startup stage is" 
+    required_error: "Startup stage is required" 
   }),
   businessModel: z.union([
     z.enum(["B2B", "B2C", "B2E", "B2G", "B2E2C", "B2B2C", "B2G2E"]), // New values
     z.enum(["Marketplace", "SaaS", "Hardware"]) // Legacy values for backwards compatibility
   ]).transform(v => v as any),
-  numberOfEmployees: z.string().min(1, "Number of employees is"),
+  numberOfEmployees: z.string().min(1, "Number of employees is required"),
   monthlyRecurringRevenue: z.preprocess(
     (v) => {
       try {
@@ -75,12 +75,12 @@ const SubmitSchema = z.object({
     v => Array.isArray(v) ? v : (typeof v === "string" && v ? v.split(",").map(s=>s.trim()).filter(Boolean) : []), 
     z.array(z.string().min(1)).min(1, "Select at least one cause")
   ),
-  : z.preprocess(
+  edtechDomains: z.preprocess(
     v => Array.isArray(v) ? v : (typeof v === "string" && v ? v.split(",").map(s=>s.trim()).filter(Boolean) : []),
     z.array(z.string().min(2)).min(1, "Select at least one domain")
   ),
-  : z.string().min(1, "Please select your experience level"),
-  : z.preprocess(
+  relevantExperience: z.string().min(1, "Please select your experience level"),
+  keyGroupAffected: z.preprocess(
     v => Array.isArray(v) ? v : (typeof v === "string" && v ? v.split(",").map(s=>s.trim()).filter(Boolean) : []),
     z.array(z.string().min(1)).min(1, "Select at least one affected group")
   ),
@@ -93,7 +93,7 @@ const SubmitSchema = z.object({
   // AI Implementation - REQUIRED FIELDS
   aiProblemSolving: z.string().trim().min(20, "AI-specific problem must be at least 20 characters"),
   aiDevelopmentStage: z.enum(["Exploring", "Prototype", "MVP", "In-production", "Scaling"], { 
-   _error: "AI development stage is" 
+    required_error: "AI development stage is required" 
   }),
   aiTeamExpertise: z.string().optional(),
   
@@ -127,17 +127,17 @@ const SubmitSchema = z.object({
 ).refine(
   // Cross-field validation: B2G business model
   (data) => {
-    if (data.businessModel === "B2G" && data. && data..length > 0) {
-      const affectedGroup = Array.isArray(data.) 
-        ? data..join(" ").toLowerCase()
-        : String(data.).toLowerCase();
+    if (data.businessModel === "B2G" && data.keyGroupAffected && data.keyGroupAffected.length > 0) {
+      const affectedGroup = Array.isArray(data.keyGroupAffected) 
+        ? data.keyGroupAffected.join(" ").toLowerCase()
+        : String(data.keyGroupAffected).toLowerCase();
       return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry") || affectedGroup.includes("government") || affectedGroup.includes("public") || affectedGroup.includes("education") || affectedGroup.includes("university") || affectedGroup.includes("college");
     }
     return true;
   },
   {
     message: "B2G business model should affect educational institutions, schools, districts, or government entities",
-    path: [""]
+    path: ["keyGroupAffected"]
   }
 );
 
@@ -350,7 +350,7 @@ export default function Apply() {
   const [saveErr, setSaveErr] = useState<string | null>(null);
   const [draftId, setDraftIdState] = useState<string | null>(() => getDraftId());
 
-  // Default values - empty strings for fields so users must fill them out
+  // Default values - empty strings for required fields so users must fill them out
   const defaultValues: Partial<ApplicationForm> = {
     fullName: "",
     dateOfBirth: "",
@@ -371,9 +371,9 @@ export default function Apply() {
     plannedRaiseValuation: "",
     problemDescription: "",
     problemCauses: [], // Empty array for multi-select
-    : [], // Empty array for multi-select
-    : "", // Empty - user must select
-    : [], // Empty array for multi-select
+    edtechDomains: [], // Empty array for multi-select
+    relevantExperience: "", // Empty - user must select
+    keyGroupAffected: [], // Empty array for multi-select
     problemImpact: "",
     customerType: [], // Empty array for multi-select checkboxes
     aiProblemSolving: "",
@@ -577,12 +577,12 @@ export default function Apply() {
       return;
     }
     
-    // Validate all fields before submission
+    // Validate all required fields before submission
     const isValid = await form.trigger();
     if (!isValid) {
       toast({
         title: "Please Complete Required Fields",
-        description: "Some fields are missing or invalid. Please review the form.",
+        description: "Some required fields are missing or invalid. Please review the form.",
         variant: "destructive",
       });
       setAttempted(true);
@@ -600,8 +600,8 @@ export default function Apply() {
           type: "manual", 
           message: "Select a valid MRR option" 
         });
-      } else if (error.message === "_required") {
-        form.setError("", { 
+      } else if (error.message === "relevantExperience_required") {
+        form.setError("relevantExperience", { 
           type: "manual", 
           message: "Please select your experience level" 
         });
@@ -610,8 +610,8 @@ export default function Apply() {
           type: "manual", 
           message: "Please select at least one problem cause" 
         });
-      } else if (error.message === "_required") {
-        form.setError("", { 
+      } else if (error.message === "keyGroupAffected_required") {
+        form.setError("keyGroupAffected", { 
           type: "manual", 
           message: "Please specify the affected group" 
         });
@@ -855,7 +855,7 @@ export default function Apply() {
                 <div className="text-sm text-muted-foreground border-l-4 border-red-600 pl-4 py-2 bg-red-50 dark:bg-red-950/20">
                   <span className="font-medium">Fields marked </span>
                   <span aria-hidden="true" className="required-star">*</span>
-                  <span className="font-medium"> are.</span>
+                  <span className="font-medium"> are required.</span>
                 </div>
                 
                 {/* Step 1: Personal Information */}
@@ -951,11 +951,11 @@ export default function Apply() {
                       name="companyName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="font-medium">
-                            Company Name <span className="text-red-500">*</span>
-                          </FormLabel>
+                          <FieldLabel htmlFor="companyName" required className="font-medium">
+                            Company Name
+                          </FieldLabel>
                           <FormControl>
-                            <Input placeholder="Your company name" aria-required="true" {...field} />
+                            <Input id="companyName" placeholder="Your company name" required aria-required="true" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -981,9 +981,9 @@ export default function Apply() {
                       name="hqLocation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="font-medium">
-                            HQ Location <span className="text-red-500">*</span>
-                          </FormLabel>
+                          <FieldLabel htmlFor="hqLocation" required className="font-medium">
+                            HQ Location
+                          </FieldLabel>
                           <FormControl>
                             <CityAutocomplete
                               value={field.value}
@@ -1001,9 +1001,9 @@ export default function Apply() {
                       name="startupStage"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="font-medium">
-                            Startup Stage <span className="text-red-500">*</span>
-                          </FormLabel>
+                          <FieldLabel htmlFor="startupStage" required className="font-medium">
+                            Startup Stage
+                          </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger id="startupStage" aria-required="true">
@@ -1028,9 +1028,9 @@ export default function Apply() {
                       name="businessModel"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="font-medium">
-                            Business Model <span className="text-red-500">*</span>
-                          </FormLabel>
+                          <FieldLabel htmlFor="businessModel" required className="font-medium">
+                            Business Model
+                          </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger id="businessModel" aria-required="true">
@@ -1077,9 +1077,9 @@ export default function Apply() {
                         name="numberOfEmployees"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="font-medium">
-                              Number of employees <span className="text-red-500">*</span>
-                            </FormLabel>
+                            <FieldLabel htmlFor="numberOfEmployees" required className="font-medium">
+                              Number of employees
+                            </FieldLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
                                 <SelectTrigger id="numberOfEmployees" aria-required="true">
@@ -1104,9 +1104,9 @@ export default function Apply() {
                         name="monthlyRecurringRevenue"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel  className="font-medium">
+                            <FieldLabel htmlFor="monthlyRecurringRevenue" required className="font-medium">
                               Monthly Recurring Revenue (MRR) - GBP
-                            </FormLabel>
+                            </FieldLabel>
                             <Select onValueChange={(value) => field.onChange(value)} value={field.value}>
                               <FormControl>
                                 <SelectTrigger id="monthlyRecurringRevenue" aria-required="true">
@@ -1205,15 +1205,15 @@ export default function Apply() {
                       name="problemDescription"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel  className="font-medium">
+                          <FieldLabel htmlFor="problemDescription" required className="font-medium">
                             What is the problem your product/startup is trying to solve?
-                          </FormLabel>
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
                               id="problemDescription"
                               placeholder="Describe the specific problem you're addressing in education..."
                               className="min-h-[120px]"
-                             
+                              required
                               aria-required="true"
                               {...field} 
                             />
@@ -1228,9 +1228,9 @@ export default function Apply() {
                       name="problemCauses"
                       render={() => (
                         <FormItem>
-                          <FormLabel  className="font-medium">
+                          <FieldLabel htmlFor="problemCauses" required className="font-medium">
                             What are the key causes of the problem you identify above?
-                          </FormLabel>
+                          </FieldLabel>
                           <FormDescription className="mb-4">
                             Select all that apply
                           </FormDescription>
@@ -1277,12 +1277,12 @@ export default function Apply() {
 
                     <FormField
                       control={form.control}
-                      name=""
+                      name="edtechDomains"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel  className="font-medium">
+                          <FieldLabel htmlFor="edtechDomains" required className="font-medium">
                             What field(s) or domain(s) is your edtech product in?
-                          </FormLabel>
+                          </FieldLabel>
                           <FormControl>
                             <div>
                               <FormDescription className="mb-4">
@@ -1322,15 +1322,15 @@ export default function Apply() {
 
                     <FormField
                       control={form.control}
-                      name=""
+                      name="relevantExperience"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel "className="font-medium">
+                          <FieldLabel htmlFor="relevantExperience" required className="font-medium">
                             What relevant experience do you and your key colleague(s) have in the field/domain that your edtech product is in?
-                          </FormLabel>
+                          </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger id="" aria-required="true">
+                              <SelectTrigger id="relevantExperience" aria-required="true">
                                 <SelectValue placeholder="Select your experience level" />
                               </SelectTrigger>
                             </FormControl>
@@ -1349,15 +1349,15 @@ export default function Apply() {
 
                     <FormField
                       control={form.control}
-                      name=""
+                      name="keyGroupAffected"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel "className="font-medium">
+                          <FieldLabel htmlFor="keyGroupAffected" required className="font-medium">
                             Who is the key group affected by the problem you identified above?
-                          </FormLabel>
+                          </FieldLabel>
                           <Select onValueChange={(value) => field.onChange([value])} defaultValue={field.value?.[0]}>
                             <FormControl>
-                              <SelectTrigger id="" aria-required="true">
+                              <SelectTrigger id="keyGroupAffected" aria-required="true">
                                 <SelectValue placeholder="Select the primary group affected" />
                               </SelectTrigger>
                             </FormControl>
@@ -1379,15 +1379,15 @@ export default function Apply() {
                       name="problemImpact"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel "problemImpactclassName="font-medium">
+                          <FieldLabel htmlFor="problemImpact" required className="font-medium">
                             How has your identified problem negatively impacted the key group you selected above?
-                          </FormLabel>
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
                               id="problemImpact"
                               placeholder="Describe the specific negative impacts..."
                               className="min-h-[120px]"
-                             
+                              required
                               aria-required="true"
                               {...field} 
                             />
@@ -1456,15 +1456,15 @@ export default function Apply() {
                       name="aiProblemSolving"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel "aiProblemSolvingclassName="font-medium">
+                          <FieldLabel htmlFor="aiProblemSolving" required className="font-medium">
                             What specific problem does AI help you solve that couldn't be solved otherwise?
-                          </FormLabel>
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
                               id="aiProblemSolving"
                               placeholder="Explain the specific educational problem that AI uniquely addresses in your solution..."
                               className="min-h-[150px]"
-                             
+                              required
                               aria-required="true"
                               {...field} 
                             />
@@ -1497,9 +1497,9 @@ export default function Apply() {
                       name="aiDevelopmentStage"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel "aiDevelopmentStageclassName="font-medium">
+                          <FieldLabel htmlFor="aiDevelopmentStage" required className="font-medium">
                             What best describes your AI development stage?
-                          </FormLabel>
+                          </FieldLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger id="aiDevelopmentStage" aria-required="true">
@@ -1529,15 +1529,15 @@ export default function Apply() {
                       name="elevatorPitch"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel "elevatorPitchclassName="font-medium">
+                          <FieldLabel htmlFor="elevatorPitch" required className="font-medium">
                             What is your elevator pitch?
-                          </FormLabel>
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
                               id="elevatorPitch"
                               placeholder="In 2-3 sentences, describe your startup and what makes it unique..."
                               className="min-h-[100px]"
-                             
+                              required
                               aria-required="true"
                               {...field} 
                             />
@@ -1552,15 +1552,15 @@ export default function Apply() {
                       name="solutionExplanation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel "solutionExplanationclassName="font-medium">
+                          <FieldLabel htmlFor="solutionExplanation" required className="font-medium">
                             Explain in detail how your product fixes/solves the problem you identified previously
-                          </FormLabel>
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
                               id="solutionExplanation"
                               placeholder="Provide a detailed explanation of your solution approach..."
                               className="min-h-[150px]"
-                             
+                              required
                               aria-required="true"
                               {...field} 
                             />
@@ -1575,15 +1575,15 @@ export default function Apply() {
                       name="programGoals"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel "programGoalsclassName="font-medium">
+                          <FieldLabel htmlFor="programGoals" required className="font-medium">
                             What would you like to achieve by taking part in this programme?
-                          </FormLabel>
+                          </FieldLabel>
                           <FormControl>
                             <Textarea 
                               id="programGoals"
                               placeholder="Describe your specific goals and what you hope to gain from the program..."
                               className="min-h-[120px]"
-                             
+                              required
                               aria-required="true"
                               {...field} 
                             />
@@ -1681,7 +1681,7 @@ export default function Apply() {
                                   disabled={isUploading}
                                 />
                                 <label 
-                                  "research-evidence-upload"
+                                  htmlFor="research-evidence-upload"
                                   className={`cursor-pointer flex flex-col items-center space-y-2 ${
                                     isUploading ? 'pointer-events-none' : ''
                                   }`}
@@ -1795,7 +1795,7 @@ export default function Apply() {
                         </Button>
                         {attempted && !form.formState.isValid && (
                           <p role="alert" className="text-sm text-red-600 text-center">
-                            Please complete all fields to submit your application.
+                            Please complete all required fields to submit your application.
                           </p>
                         )}
 
