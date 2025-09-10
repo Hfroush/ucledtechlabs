@@ -121,21 +121,6 @@ const SubmitSchema = z.object({
     message: "Startups with revenue should be Pre-seed, Seed, Series A+, or Bootstrapped stage",
     path: ["startupStage"]
   }
-).refine(
-  // Cross-field validation: B2G business model
-  (data) => {
-    if (data.businessModel === "B2G" && data.keyGroupAffected && data.keyGroupAffected.length > 0) {
-      const affectedGroup = Array.isArray(data.keyGroupAffected) 
-        ? data.keyGroupAffected.join(" ").toLowerCase()
-        : String(data.keyGroupAffected).toLowerCase();
-      return affectedGroup.includes("school") || affectedGroup.includes("district") || affectedGroup.includes("ministry") || affectedGroup.includes("government") || affectedGroup.includes("public") || affectedGroup.includes("education") || affectedGroup.includes("university") || affectedGroup.includes("college");
-    }
-    return true;
-  },
-  {
-    message: "B2G business model should affect educational institutions, schools, districts, or government entities",
-    path: ["keyGroupAffected"]
-  }
 );
 
 
