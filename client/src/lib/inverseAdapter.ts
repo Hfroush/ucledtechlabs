@@ -51,7 +51,7 @@ export function draftApiToForm(d: any) {
     countryOfResidence: d?.countryOfResidence || "",
     productName: d?.productName || "",
     coFounders: d?.coFounders || "",
-    investmentRounds: d?.investmentRounds || undefined,
+    investmentRounds: d?.investmentRounds || 0,
     companyValuation: d?.companyValuation || "",
     plannedRaiseAmount: d?.plannedRaiseAmount || "",
     plannedRaiseValuation: d?.plannedRaiseValuation || "",

@@ -364,8 +364,8 @@ export default function Apply() {
     businessModel: "" as any, // Empty - user must select  
     coFounders: "",
     numberOfEmployees: "", // Empty - user must select
-    monthlyRecurringRevenue: "pre-revenue", // Default to pre-revenue option
-    investmentRounds: undefined,
+    monthlyRecurringRevenue: "pre-revenue" as any, // Default to pre-revenue option
+    investmentRounds: 0,
     companyValuation: "",
     plannedRaiseAmount: "",
     plannedRaiseValuation: "",
@@ -1124,6 +1124,7 @@ export default function Apply() {
                                 type="number" 
                                 placeholder="2" 
                                 {...field}
+                                value={field.value || ""}
                                 onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
                               />
                             </FormControl>

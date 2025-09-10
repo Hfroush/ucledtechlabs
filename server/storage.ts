@@ -237,7 +237,7 @@ export class DatabaseStorage implements IStorage {
     
     const processedData = {
       ...data,
-      status: "draft", // Ensure drafts have correct status
+      status: "draft" as const, // Ensure drafts have correct status
       // Handle string fields (formerly arrays)
       problemCauses: Array.isArray(data.problemCauses) ? data.problemCauses.join(", ") : (data.problemCauses || null),
       keyGroupAffected: Array.isArray(data.keyGroupAffected) ? data.keyGroupAffected.join(", ") : (data.keyGroupAffected || null),
@@ -306,7 +306,7 @@ export class DatabaseStorage implements IStorage {
     
     const processedData = {
       ...data,
-      status: "draft", // Ensure drafts have correct status
+      status: "draft" as const, // Ensure drafts have correct status
       // Handle string fields (formerly arrays)
       problemCauses: Array.isArray(data.problemCauses) ? data.problemCauses.join(", ") : (data.problemCauses || null),
       keyGroupAffected: Array.isArray(data.keyGroupAffected) ? data.keyGroupAffected.join(", ") : (data.keyGroupAffected || null),
@@ -365,7 +365,7 @@ export class DatabaseStorage implements IStorage {
     // For submit, we don't need the helper function since all fields are validated
     const processedData = {
       ...data,
-      status: "submitted", // Ensure submitted status
+      status: "submitted" as const, // Ensure submitted status
       // Handle string fields
       problemCauses: Array.isArray(data.problemCauses) ? data.problemCauses.join(", ") : data.problemCauses,
       keyGroupAffected: Array.isArray(data.keyGroupAffected) ? data.keyGroupAffected.join(", ") : data.keyGroupAffected,
