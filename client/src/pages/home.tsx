@@ -108,7 +108,7 @@ export default function Home() {
                   Announcement
                 </p>
                 <h2 className="mt-1 text-2xl md:text-3xl font-bold text-slate-900">AIEd cohort update: Startup applications closed.</h2>
-                <p className="mt-2 text-slate-600">Register interest below to join the waitlist for future cohorts and events.</p>
+                <p className="mt-2 text-slate-600">Register your interest to join the waitlist for future cohorts and events.</p>
 
                 <div className="mt-4 flex flex-col sm:flex-row gap-3">
                   <a href="/apply"
