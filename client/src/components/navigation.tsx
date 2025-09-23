@@ -71,10 +71,10 @@ export default function Navigation() {
                 Supporters and Programs
               </Link>
               <Button 
-                onClick={() => window.open("https://ucledtechlabs.com/autumn-2025", "_blank")}
+                onClick={() => scrollToSection("applications")}
                 className="bg-[#e57c00] text-white hover:bg-orange-600"
               >
-                London
+                Register Interest
               </Button>
             </div>
           </div>
@@ -124,12 +124,12 @@ export default function Navigation() {
                   </Link>
                   <Button 
                     onClick={() => {
-                      window.open("https://ucledtechlabs.com/autumn-2025", "_blank");
+                      scrollToSection("applications");
                       setIsOpen(false);
                     }}
                     className="bg-[#e57c00] text-white hover:bg-orange-600 w-full mt-4"
                   >
-                    London
+                    Register Interest
                   </Button>
                 </div>
               </SheetContent>
