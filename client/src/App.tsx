@@ -14,6 +14,7 @@ import FreedomOfInformation from "@/pages/freedom-of-information";
 import PoliciesGuidance from "@/pages/policies-guidance";
 import PastProgramsPartnersPage from "@/pages/past-programs-partners";
 import Autumn2025 from "@/pages/autumn-2025";
+import Paris from "@/pages/paris";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" component={Home} />
         <Route path="/apply" component={Apply} />
         <Route path="/autumn-2025" component={Autumn2025} />
+        <Route path="/paris" component={Paris} />
         <Route path="/past-programs-partners" component={PastProgramsPartnersPage} />
         <Route path="/admin" component={Admin} />
         <Route path="/accessibility" component={Accessibility} />

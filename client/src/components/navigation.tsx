@@ -59,6 +59,12 @@ export default function Navigation() {
                 Autumn 2025
               </Link>
               <Link
+                href="/paris"
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Paris
+              </Link>
+              <Link
                 href="/past-programs-partners"
                 className="text-gray-700 hover:text-primary transition-colors"
               >
@@ -101,6 +107,13 @@ export default function Navigation() {
                     onClick={() => setIsOpen(false)}
                   >
                     Autumn 2025
+                  </Link>
+                  <Link
+                    href="/paris"
+                    className="block text-left text-gray-700 hover:text-primary transition-colors py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Paris
                   </Link>
                   <Link
                     href="/past-programs-partners"
