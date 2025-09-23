@@ -150,12 +150,6 @@ export default function Autumn2025() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a 
-              href="https://ucledtechlabs.com/apply" 
-              className="bg-[#FF6C0E] hover:bg-[#e55a00] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              Apply Now
-            </a>
-            <a 
               href="#programme" 
               className="border-2 border-white text-white hover:bg-white hover:text-[#1a3e72] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
             >
