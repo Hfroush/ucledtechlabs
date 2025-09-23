@@ -3,6 +3,8 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEOHead from "@/components/seo-head";
 
+import parisHeroImage from "@assets/image_1758614630354.png";
+
 // Paris-specific content based on provided JSON
 const parisContent = {
   meta: {
@@ -75,7 +77,7 @@ const parisContent = {
     ]
   },
   supporters: {
-    title: "They support us",
+    title: "Our Supporters",
     items: [
       "Région Île-de-France",
       "Bpifrance",
@@ -106,7 +108,19 @@ const parisContent = {
 // Paris-specific hero section component
 function ParisHeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-800">
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: `url(${parisHeroImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'scroll'
+      }}
+    >
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/50 z-0"></div>
+      
       {/* Content overlay */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <p className="text-sm md:text-base font-semibold text-blue-200 mb-4 uppercase tracking-wider">
