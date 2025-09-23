@@ -158,7 +158,7 @@ export default function Autumn2025() {
           </div>
 
           <div className="text-sm text-white/90 mb-4">
-            Application deadline: <span className="font-semibold text-[#FF6C0E]">19 September 2025</span>
+            Applications are now closed
           </div>
         </div>
       </section>
