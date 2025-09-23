@@ -21,8 +21,7 @@ const parisContent = {
     ctas: [
       { label: "Download brochure (EN, PDF)", href: "https://cytransfer.cyu.fr/medias/fichier/eng-brochure-cy-edtech-labs-sfp-sfp_1742483578922-pdf?ID_FICHE=110956&INLINE=FALSE", variant: "secondary" },
       { label: "Call for applications (FR, PDF)", href: "https://cytransfer.cyu.fr/medias/fichier/session6-appel-a-candidature-2-1-_1742483956999-pdf?ID_FICHE=110956&INLINE=FALSE", variant: "secondary" },
-      { label: "Email CY Transfer", href: "mailto:cy.transfer@cyu.fr" },
-      { label: "Apply by email (Session 6)", href: "mailto:isabelle.hoefkens@cyu.fr?subject=Application%20%E2%80%93%20CY%20EdTech%20Labs%20Session%206" }
+      { label: "Email CY Transfer", href: "mailto:cy.transfer@cyu.fr" }
     ]
   },
   who: {
