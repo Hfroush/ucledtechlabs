@@ -140,7 +140,11 @@ function ParisHeroSection() {
                   ? 'bg-white/10 border-2 border-white/20 text-white hover:bg-white/20'
                   : 'bg-orange-500 text-white hover:bg-orange-600'
               }`}
-              {...(cta.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              {...(cta.href.startsWith('http') ? { 
+                target: '_blank', 
+                rel: 'noopener noreferrer',
+                'aria-label': `${cta.label} (opens in new tab)`
+              } : {})}
             >
               {cta.label}
             </a>
@@ -261,11 +265,11 @@ function FeesSection() {
       <p className="text-center text-slate-600 mb-8">{parisContent.fees.note}</p>
       <div className="max-w-3xl mx-auto">
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <table className="w-full">
+          <table className="w-full" aria-label="Programme fees by category">
             <thead className="bg-slate-100">
               <tr>
-                <th className="px-6 py-4 text-left font-semibold text-slate-900">Category</th>
-                <th className="px-6 py-4 text-right font-semibold text-slate-900">Fee</th>
+                <th scope="col" className="px-6 py-4 text-left font-semibold text-slate-900">Category</th>
+                <th scope="col" className="px-6 py-4 text-right font-semibold text-slate-900">Fee</th>
               </tr>
             </thead>
             <tbody>
@@ -307,9 +311,9 @@ function DownloadsContactSection() {
     <Section className="bg-slate-50">
       <div className="grid md:grid-cols-2 gap-12">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6">
             {parisContent.downloads.title}
-          </h2>
+          </h3>
           <ul className="space-y-3">
             {parisContent.downloads.items.map((item, index) => (
               <li key={index}>
@@ -318,6 +322,7 @@ function DownloadsContactSection() {
                   className="text-orange-600 hover:text-orange-700 underline"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${item.label} (opens in new tab)`}
                 >
                   {item.label}
                 </a>
@@ -326,14 +331,18 @@ function DownloadsContactSection() {
           </ul>
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6">
             {parisContent.contact.title}
-          </h2>
+          </h3>
           <div className="space-y-2">
             {parisContent.contact.lines.map((line, index) => (
               <div key={index} className="text-slate-600">
                 {line.includes('@') ? (
-                  <a href={`mailto:${line}`} className="text-orange-600 hover:text-orange-700">
+                  <a 
+                    href={`mailto:${line}`} 
+                    className="text-orange-600 hover:text-orange-700"
+                    aria-label={`Send email to ${line}`}
+                  >
                     {line}
                   </a>
                 ) : (
@@ -404,15 +413,24 @@ export default function Paris() {
         description={parisContent.meta.description}
         structuredData={structuredData}
       />
+      {/* Skip to main content link for screen readers */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-orange-600 text-white px-4 py-2 rounded-lg z-50"
+      >
+        Skip to main content
+      </a>
       <Navigation />
-      <ParisHeroSection />
-      <WhoSection />
-      <OverviewSection />
-      <ProgrammeSection />
-      <KeyDatesSection />
-      <FeesSection />
-      <SupportersSection />
-      <DownloadsContactSection />
+      <main id="main-content">
+        <ParisHeroSection />
+        <WhoSection />
+        <OverviewSection />
+        <ProgrammeSection />
+        <KeyDatesSection />
+        <FeesSection />
+        <SupportersSection />
+        <DownloadsContactSection />
+      </main>
       <Footer />
     </div>
   );
