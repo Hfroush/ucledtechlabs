@@ -74,7 +74,7 @@ export default function Navigation() {
                 onClick={() => window.open("https://ucledtechlabs.com/autumn-2025", "_blank")}
                 className="bg-[#e57c00] text-white hover:bg-orange-600"
               >
-                London's Open
+                London
               </Button>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function Navigation() {
                     }}
                     className="bg-[#e57c00] text-white hover:bg-orange-600 w-full mt-4"
                   >
-                    London's Open
+                    London
                   </Button>
                 </div>
               </SheetContent>
