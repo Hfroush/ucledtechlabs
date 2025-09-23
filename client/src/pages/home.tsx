@@ -107,9 +107,7 @@ export default function Home() {
                 <p className="uppercase tracking-wide text-xs font-semibold text-slate-500">
                   Announcement
                 </p>
-                <h2 className="mt-1 text-2xl md:text-3xl font-bold text-slate-900">
-                  London Autumn '25 applications are now open
-                </h2>
+                <h2 className="mt-1 text-2xl md:text-3xl font-bold text-slate-900">AIEd cohort update: Startup applications closed.</h2>
                 <p className="mt-2 text-slate-600">Join our unique, equity-free programme • Application deadline 19 September • London + Hybrid.</p>
 
                 <div className="mt-4 flex flex-col sm:flex-row gap-3">
