@@ -396,7 +396,7 @@ export default function Paris() {
     "offers": parisContent.fees.rows.map(row => ({
       "@type": "Offer",
       "name": row.tier,
-      "price": row.price === "Free" ? "0" : row.price.replace("€", ""),
+      "price": row.price === "Free" ? "0" : row.price.replace(/[€\s,]/g, ""),
       "priceCurrency": "EUR"
     })),
     "startDate": "2025-09-23",
