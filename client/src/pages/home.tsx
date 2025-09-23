@@ -113,7 +113,7 @@ export default function Home() {
                 <div className="mt-4 flex flex-col sm:flex-row gap-3">
                   <a href="/apply"
                      className="inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold text-white bg-[#FF6C0E] hover:bg-[#e55a00] transition-colors">
-                    Apply Now
+                    Register Interest
                   </a>
                   <a href="/autumn-2025"
                      className="inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold text-[#FF6C0E] bg-white border-2 border-[#FF6C0E] hover:bg-[#FF6C0E] hover:text-white transition-colors">
