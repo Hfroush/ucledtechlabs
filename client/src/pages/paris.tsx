@@ -268,37 +268,6 @@ function KeyDatesSection() {
   );
 }
 
-// Fees section
-function FeesSection() {
-  return (
-    <Section className="bg-slate-50">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
-        {parisContent.fees.title}
-      </h2>
-      <p className="text-center text-slate-600 mb-8">{parisContent.fees.note}</p>
-      <div className="max-w-3xl mx-auto">
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <table className="w-full" aria-label="Programme fees by category">
-            <thead className="bg-slate-100">
-              <tr>
-                <th scope="col" className="px-6 py-4 text-left font-semibold text-slate-900">Category</th>
-                <th scope="col" className="px-6 py-4 text-right font-semibold text-slate-900">Fee</th>
-              </tr>
-            </thead>
-            <tbody>
-              {parisContent.fees.rows.map((row, index) => (
-                <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
-                  <td className="px-6 py-4 text-slate-900">{row.tier}</td>
-                  <td className="px-6 py-4 text-right font-bold text-orange-600">{row.price}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </Section>
-  );
-}
 
 // Supporters section
 function SupportersSection() {
@@ -406,12 +375,6 @@ export default function Paris() {
         "url": "https://www.ucl.ac.uk/"
       }
     ],
-    "offers": parisContent.fees.rows.map(row => ({
-      "@type": "Offer",
-      "name": row.tier,
-      "price": row.price === "Free" ? "0" : row.price.replace(/[€\s,]/g, ""),
-      "priceCurrency": "EUR"
-    })),
     "startDate": "2025-09-23",
     "endDate": "2025-12-15",
     "courseMode": "blended",
@@ -440,7 +403,6 @@ export default function Paris() {
         <OverviewSection />
         <ProgrammeSection />
         <KeyDatesSection />
-        <FeesSection />
         <SupportersSection />
         <DownloadsContactSection />
       </main>
