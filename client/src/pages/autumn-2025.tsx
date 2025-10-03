@@ -55,29 +55,10 @@ export default function Autumn2025() {
 
     window.addEventListener('scroll', handleBackToTop);
 
-    // Mobile sticky CTA
-    const mobileCTA = document.getElementById('mobile-cta');
-    let ctaShown = false;
-    const handleMobileCTA = () => {
-      const scrolled = window.pageYOffset;
-      const viewportHeight = window.innerHeight;
-
-      if (scrolled > viewportHeight && !ctaShown && window.innerWidth < 768) {
-        mobileCTA?.classList.remove('translate-y-full');
-        ctaShown = true;
-      } else if (scrolled <= viewportHeight && ctaShown) {
-        mobileCTA?.classList.add('translate-y-full');
-        ctaShown = false;
-      }
-    };
-
-    window.addEventListener('scroll', handleMobileCTA);
-
     return () => {
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('scroll', handleBackToTop);
-      window.removeEventListener('scroll', handleMobileCTA);
     };
   }, []);
 
@@ -679,15 +660,6 @@ export default function Autumn2025() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
       </button>
-      {/* Mobile Sticky CTA */}
-      <div id="mobile-cta" className="fixed bottom-0 left-0 right-0 bg-[#FF6C0E] p-4 z-40 md:hidden transform translate-y-full transition-transform">
-        <a 
-          href="#apply" 
-          className="block w-full bg-white text-[#FF6C0E] text-center py-3 rounded-lg font-semibold"
-        >
-          Apply Now
-        </a>
-      </div>
       <style>{`
         .scroll-reveal {
           opacity: 0;
