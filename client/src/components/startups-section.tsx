@@ -64,7 +64,7 @@ export default function StartupsSection() {
       sector: "Financial literacy for kids and families",
       keyMetric: "Raised $2M pre-seed; secured Mastercard approval and Peoples Trust partnership; launched parent and child apps and launched in Canadian market",
       gradientClass: "from-yellow-500 to-orange-600",
-      websiteUrl: "https://knowledgehook.com"
+      websiteUrl: "https://www.spendsafe.com"
     }
   ];
 
