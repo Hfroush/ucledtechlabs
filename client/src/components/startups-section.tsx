@@ -59,7 +59,7 @@ export default function StartupsSection() {
     },
     {
       id: "knowledgehook",
-      name: "KnowledgeHook",
+      name: "Spendsafe",
       description: "Provides a gamified, curriculum-aligned platform (ClassOS) that helps teachers deliver effective math instruction through real-time student feedback and actionable insights",
       sector: "EdTech – K–12 mathematics learning",
       keyMetric: "Raised $20 million Series A; supports 300,000+ students and over 100 school boards across Canada, the US, Mexico, and the UK",
