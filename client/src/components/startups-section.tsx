@@ -62,7 +62,7 @@ export default function StartupsSection() {
       name: "Spendsafe",
       description: "Spendsafe is Canada's first* Mastercard®-backed financial education platform for youth aged 6 to 18, combining a secure prepaid card, real-time AI coaching, and dynamic parent-child tools to build lifelong money skills through everyday transactions.",
       sector: "Financial literacy for kids and families",
-      keyMetric: "Raised $20 million Series A; supports 300,000+ students and over 100 school boards across Canada, the US, Mexico, and the UK",
+      keyMetric: "Raised $2M pre-seed; secured Mastercard approval and Peoples Trust partnership; launched parent and child apps and launched in Canadian market",
       gradientClass: "from-yellow-500 to-orange-600",
       websiteUrl: "https://knowledgehook.com"
     }
