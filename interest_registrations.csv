@@ -1,0 +1,379 @@
+id,first_name,last_name,email,current_status,areas_of_interest,receive_updates,created_at,startup_name,hq_location,company_website
+1,Houtan,Bolour-Froushan,h.froushan@deepnow.co.uk,,lets see,t,2025-07-04 10:40:28.086027,Acme LTD,"Dubai, United Arab Emirates",http://www.startup-labs.org
+2,Houtan,Bolour-Froushan,h.froushan@deepnow.co.uk,,testing to see if this works?,t,2025-07-04 10:47:54.209299,Acme LTD,"Dubai, United Arab Emirates",http://www.startup-labs.org
+3,Houtan,Bolour-Froushan,h.froushan@deepnow.co.uk,,"still testing this is not real
+",f,2025-07-04 10:50:25.862726,Acme LTD,"Dubai, United Arab Emirates",http://www.startup-labs.org
+4,Claudia,Medlam,cmedl001@gold.ac.uk,,"Dyslexia affects approximately 10% of UK children, impairing their ability to decode printed text. By Key Stage 2, independent reading is an educational expectation in mainstream schools, yet many dyslexic pupils still struggle with reading fluency and interpretation. Existing interventions are costly, time-intensive, or unavailable during independent study or classroom tasks. This results in reduced academic progress, increased teacher burden, and diminished learner confidence. ReadEasy addresses this gap by providing immediate, accessible reading support tailored to dyslexic children.",t,2025-07-04 13:11:53.709964,ReadEasy,"London, United Kingdom",""
+5,Angela ,Borowski,info@reviseright.io,,"Every year, thousands of GCSE and A-Level students fall short - not because they lack potential, but because the tools meant to help them revise are outdated, one-size-fits-all, and disconnected from how young people actually learn. In 2024, over 38% of students failed GCSE English, and more than 40% failed Maths (Department for Education, 2024). Among resit students, only 16.4% passed Maths and 25.9% passed English (FE Week, 2023).
+
+We’re tackling this issue because we believe no student should be left behind by a system that hasn’t evolved. Our mission is to reimagine how revision works - making it smarter, more responsive, and grounded in how students think, grow, and succeed.",t,2025-07-07 15:23:04.118337,Revise Right ,"London, United Kingdom",https://www.reviseright.io
+6,Minh,Bui,bdminh1611@gmail.com,,"",t,2025-07-08 10:40:22.816723,EduCreate,"London, United Kingdom",""
+7,Zaheed,Patel,zaheedp121@gmail.com,,"Combining communication and learning in one platform to mutually benefit teachers and students.
+
+Learning tools are packed with features to assess performance, as-well as AI to help encourage self learning and analysis",t,2025-07-09 06:13:12.160277,SwotLearn ,"London, United Kingdom",https://www.swotlearn.co.uk
+8,Aiden,Mason,aiden.mason.24@ucl.ac.uk,,"bridging the gap between AI and education, tailored towards young children in a safe, educational and ethical way",t,2025-07-09 18:07:57.275093,ThinkiAI,"London, United Kingdom",""
+9,Zhen-Yen,Chan,zhenyen20@gmail.com,,"",t,2025-07-11 06:25:58.482738,Rakan Tutor,"Singapore, Singapore",""
+10,Joshua,Lindsey-Harrison,Joshuatlindsey@gmail.com,,"Most leadership development happens too late. Emerging managers are promoted for their technical skills but left to navigate the people side of leadership—difficult conversations, setting boundaries, managing up—without support. This communication gap leads to hesitation, conflict, and burnout. Traditional training is often generic, inaccessible, or aimed at senior leaders, while most digital learning is either fluffy or forgettable. We’re solving this by building a digital learning platform for emerging leaders—combining psychological insight, practical scripts, and emotionally intelligent tools to help people lead with clarity and confidence from day one.",t,2025-07-16 06:26:12.607102,JLH Learning,"London, United Kingdom",""
+11,Mohammed,Chehab,mc@buzzgage.org,,"BuzzGage helps schools measure what matters beyond academics.
+We benchmark student wellbeing, engagement, and social-emotional development against international standards—then guide school leaders with AI-powered insights and targeted strategies to improve.",t,2025-07-16 09:20:52.891213,BuzzGage,"New York, United States",https://buzzgage.org/
+12,Abdelkhalek,Bakkari,abdelkhalek.bakkari@smartovateai.com,,"Smartovate is solving the lack of localized, AI-powered productivity and learning tools for Arabic-speaking regions. Existing platforms often overlook cultural and linguistic needs, limiting accessibility and impact. Our startup develops in-house AI models that support bilingual (Arabic-English) users in education, tourism, and business productivity. Products like Subul (an AI learning assistant) and Mourched (a smart tourism guide) help individuals and institutions work smarter, learn faster, and access knowledge more intuitively. We’re addressing a rapidly growing demand for intelligent, culturally-relevant software in the MENA and GCC markets — building tools that empower millions across sectors.",t,2025-07-19 08:31:58.59532,SMARTOVATE LTD,"London, United Kingdom",https://www.smartovateai.com
+13,Hasibul ,Asif,hasibulasifbd@gmail.com,,"We're solving the credibility and effectiveness problem of online assessments in the EdTech space.
+
+In Bangladesh and across many emerging markets, online education is growing fast — with thousands of educators and coaching centers going digital.
+But when it comes to assessing students, most educators still rely on tools like Google Forms, which are not built for secure exams.
+
+As a result:
+
+73% of students cheat during online exams.
+
+Educators struggle to evaluate true learning outcomes.
+
+The third pillar of quality education — assessment — is broken in online settings.
+
+Cqrrect Ai solves this by providing a secure, AI-powered exam and assessment platform that automates question generation, ensures exam integrity, and tracks student performance — helping educators deliver credible, data-driven assessments online.",t,2025-07-19 17:09:42.129675,Cqrrect Ai,"Singapore, Singapore",https://edu.cqrrect.com/
+14,Leandra,Green,leandragreen3@gmail.com,,"Kindernest is solving the problem of outdated, inefficient, and impersonal childcare services by modernising the way families find and manage trusted nanny support. In today’s fast-paced world, parents struggle with unreliable care options, lack of transparency, and limited flexibility. Kindernest addresses this by creating a tech-enabled platform that offers personalised nanny matching, real-time updates, and a seamless user experience bringing peace of mind, convenience, and quality childcare into one smart solution.",f,2025-07-24 10:30:00.679843,Kindernest ,"London, United Kingdom",https://www.kindernestuk.com/
+15,Johannes,Haug,johannes@knowableeducation.com,,AI grading platform that works on handwritten and free-form answers,t,2025-07-25 15:15:09.365506,Knowable Eduation,"London, United Kingdom",https://www.knowableeducation.com/
+16,Jessica,White,jessica.white@adaptemy.com,,"Helping learners have a more diverse and adaptive experience through evidence-based scaffolding with key partners in UK, Ireland, Europe and Asia. ",t,2025-08-04 12:01:32.476451,Adaptemy,"London, United Kingdom",https://www.adaptemy.com/
+17,Rich,Taylor,hello@neurameet.co.uk,,"Neurameet solves the problem of time-consuming, inconsistent meeting documentation and disconnected school leadership insights. It records meetings, generates structured minutes and action points automatically, and features an AI-powered RAG chatbot trained on all your organisation’s meetings — allowing headteachers and CEOs to instantly query what’s happening across departments or schools. With built-in report generation for governors and Ofsted, Neurameet turns conversations into clarity, saving leaders hours every week.",t,2025-08-05 07:38:45.439871,Neurameet,"London, United Kingdom",https://neurameet.co.uk
+18,Laura ,Sanchez ,laura.sanchez@laboratoria.la,,"Only 28% of the digital workforce are women and only 38% vs 51% of men are learning new technologies and 84% of employers irequire direct training for their workforce (World Economic Forum)
+
+",t,2025-08-06 14:53:45.043426,Laboratoria ,"Bristol, United Kingdom",https://www.laboratoria.la/en
+19,Mikko,Perälä,mikko@sog.gg,,Making screen-time quality time. Using Minecraft and other games as our tools.,t,2025-08-08 08:46:36.911373,School of Gaming,"London, United Kingdom",https://www.sog.gg
+20,Siobhan,Fogarty,siobhanfogarty@gmail.com,,"I’m a secondary school teacher specialising in Drama, Film, and SEND support, and I’ve been developing a digital “EHCP Bookmark”  a quick-access tool for teachers to instantly see and act on the key points of a student’s Education, Health and Care Plan during lessons. The aim is to make SEND information more accessible, actionable, and personalised in real time, reducing paperwork delays and improving classroom support.
+
+I’ve moved beyond the idea stage I have wireframes and a pitch deck, and I’m now looking for the right partners to help take the concept into prototyping and testing. My challenge is that, as a teacher, I don’t have development funding or a technical team in place, and many accelerators seem geared towards existing companies rather than early-stage educator-led projects.
+
+I’d love to know if UCL EdTech Labs offers pathways for someone in my position, or could point me towards next steps to bring this to life.
+
+Best regards,
+Siobhan Fogarty",t,2025-08-11 10:30:44.607966,EHCP BOOKMARK,"London, United Kingdom",""
+21,Rahmat,Ottun,rahmatottun@gmail.com,,"Right now, London students choosing a sixth form face a huge guidance gap. Information is scattered across hundreds of websites, and unless you’ve got insider networks, it’s hard to know which schools or colleges truly fit your goals.
+
+I’m building the first centralised, searchable directory of every sixth form in London — with clear, comparable data and goal-matching tools — so any student, no matter their background, can make an informed, life-changing choice. Think of it as the Unifrog of sixth forms, but free, local and built for equity. 
+",t,2025-08-13 19:02:29.161434,The Sixth Form Directory,"London, United Kingdom",""
+22,Adi,Talmor,aditalmor2@gmail.com,,"Lung cancer remains one of the leading causes of cancer-related deaths worldwide, largely because it is often detected too late for effective treatment. Current diagnostic pathways are time-consuming, heavily dependent on radiologist availability, and prone to variability in interpretation. This leads to delayed diagnoses, missed cases, and poorer patient outcomes. MedVision AI addresses this problem by providing an AI-powered diagnostic aid that analyzes CT scans with high accuracy and consistency, enabling earlier detection of lung cancer and other respiratory diseases. By improving speed and precision in diagnosis, we aim to help hospitals, clinics, and research institutions reduce diagnostic delays, increase survival rates, and optimize radiologist workloads.",f,2025-08-14 11:17:47.793139,medvision ai,"London, United Kingdom",https://medvisionaicontact.wixsite.com/medvision-ai-4
+23,Linda,Marchlewski,lindamarchlewski@gmail.com,,"The UK’s graduate employment market is broken for Small to Medium Enterprises (SMEs). SMEs employ around 60% of the UK workforce yet struggle to recruit graduates due to high costs, HR complexity, and a lack of structured schemes designed for smaller employers. Meanwhile, graduate job postings have fallen (−12% in 2025), competition is fierce (140 applicants per role), and over half of employers say young people aren’t “job ready.” Most graduate schemes are run by large corporates in London, pulling talent away from other regions.
+
+At the same time, policy and research show a collapse in “earning and learning” opportunities, leaving many graduates without essential workplace skills. This disconnect leaves SMEs short on talent, graduates underemployed, and regions facing persistent brain drain.
+
+I’m building a shared, tech-enabled graduate scheme model that groups SMEs into subsidised cohorts, handles recruitment, training, and mentoring, and embeds roles locally to retain talent. By removing cost and complexity barriers, I aim to make graduate hiring accessible to even the smallest SME while improving career starts for graduates and boosting regional economies.",t,2025-08-14 11:19:23.414169,GradRise Connect,"London, United Kingdom",""
+24,SHUBHAM KUMAR,PANDEY,shubham@gradvue.in,,Gradvue is building a global student‑first platform designed to bridge the gap between students in India (and other underserved regions) and world‑class education opportunities.,f,2025-08-14 13:12:03.313847,Gradvue,"Hyderabad, India",https://www.gradvue.in/
+25,Soo Rim,Choi,csr0130@berkeley.edu,,"The education system that exists within the UK today is largely outdated, initially designed  to instill behaviors and values that would prevent social unrest in a society that had rapidly industrialized. Today, we see the effects of implementing this antiquated system in the classroom - uninspired and frustrated students in the classroom. In the age of globalization and the advent of social media, students are left frustrated by the lack of relevance in their education, especially in science and math. This is not their fault - STEM is currently taught through problems and riddles instead of the stories and context that they exist within. These rigid, traditional spaces especially disfavor students who need more support. Utilizing adaptive AI tools, I want to create virtual scientific classrooms and laboratories where students can interact with real world stories, problems, and concepts that fascinate them at their own pace, while also mastering the basic scientific concepts and practices that they need to succeed in exams. In these classrooms, the AI tool will take the place of a one-on-one tutor while the teacher would help students with building collaborative classroom environments that reflect modern society. This product would combine connectivism with the best educational technology learning practices to create a learning environment that is relevant to students and help them master difficult concepts, while also helping them become more confident communicators, thinkers, and builders in their greater communities.",t,2025-08-18 01:31:41.331412,Osovo,"London, United Kingdom",""
+26,Pierre,Barclay,pierrejbarclay@gmail.com,,"AI-generated content is exploding across the internet. While most of it is harmless, much of it is misleading, manipulative, or emotionally unsafe. The real problem is that people rarely pause to question what they see or read. We’re outsourcing our thinking, trusting outputs without reflection, and becoming vulnerable to deepfakes, biased narratives, and cognitive offloading.
+
+Skeptiq exists to solve this problem by creating a safety layer between AI-generated content and human decision-making. It challenges users to slow down, question assumptions, and spot manipulation before it shapes their beliefs or behaviours.
+
+In short: AI is making information easier to consume but harder to trust. Skeptiq protects your thinking.",f,2025-08-18 13:44:54.715572,SKEPTIQ LTD,"London, United Kingdom",https://skeptiq.ai/
+27,Tally,Bevis,taylor.bevis.uk@ucl.ac.uk,,"I am an almost-grad of UCL School of Management MSc Entrepreneurship under direction of Simon Hulme. I am building a research-backed higher ed social media marketplace that redefined student recruitment and empowers active students to become ambassadors on their campus and have an integral role in digital strategy of colleges and universities to reach Gen Z (and soon Gen A) prospective students where they actually spend time -- social media. I have prototypes and have completed primary research for my dissertation with 265 gen Z american students and 10 colleges and univ in the states. I won Best Idea at UCL SoM Entrepreneurship Pitch Day and was a finalist at UCL SustainTech pitch competition. I've completed a successful case study with UCL SoM on instagram that resulted in a 140% increase in content reach and 41% increase in followers YOY on @UCL-SOM instagram by implementing social media ambassadors. I'm interested in the hatchery, CDI Impact Acc, and the EdTech Labs, but I'd love to speak with someone about the best fit and way forward! ",t,2025-08-20 10:57:31.76767,Acorn Higher Ed,"London, United Kingdom",https://www.acornhighered.com/
+28,Noel,Abrahams,noel.abrahams@thecultural.me,,We are developing an AI driven tool to improve essay marking by academics.,t,2025-08-24 14:07:35.135299,Marginalia by The Cultural Me,"London, United Kingdom",https://thecultural.me
+29,Tej,Lander,connect@tykeoons.co.uk,,"The lack of comprehensive curricula, planning and resources for financial, economic and business education at primary level - the most crucial phase (according to several studies) at which children form attitudes about money. ",t,2025-08-26 18:08:26.959135,Tykeoons,"London, United Kingdom",http://www.tykeoons.co.uk
+30,Pierre,Barclay,pierrejbarclay@gmail.com,,"Skeptiq is designed to address the growing risks that come with the widespread use of AI tools in education and everyday life. As pupils and professionals increasingly turn to AI for answers, they are exposed to hidden dangers such as oversharing personal information, manipulation through emotionally charged or persuasive content, unhealthy reliance on AI, and the uncritical acceptance of outputs that may be inaccurate or misleading. At the same time, schools and organisations lack clear safeguards to protect against these issues. Skeptiq tackles this problem by providing a lightweight browser extension that acts as both a safety net and a critical thinking coach. Flagging risks like sensitive data leaks, manipulative language, or overuse, while also encouraging reflection by highlighting assumptions, distinguishing between analytical and emotional reasoning, and promoting source awareness. By combining real-time protection with tools that nurture independent thinking, Skeptiq helps ensure users, especially pupils, stay safe while building the skills to question and critically assess AI-generated content.",t,2025-08-27 09:27:48.678062,SKEPTIQ LTD,"London, United Kingdom",https://skeptiq.ai/
+31,Cyril,Estier,cyril.estier@arti-edu.com,,"Creating safe environments is a priority for universities, yet consent and harassment education often falls short. Standard tick-box consent training modules have left one third of students in UK universities still experiencing sexual harassment. Our AI facilitator, Arti, trains students on sexual harassment and consent through a personalised conversation.",t,2025-08-27 14:46:49.519544,Arti Education,"London, United Kingdom",https://www.arti-edu.com/
+32,Faiz,Bashir,faizbash@flexisaf.com,,"Lecturers and instructors face challenges managing their time and resources due to increasing demands and limited support for content creation and lesson adaptation. Manual content creation is time-consuming, and educators often use multiple platforms, leading to inefficiencies. The UK government highlights the growing demand for AI-powered tools to address these issues and improve access to quality education. With over 3 million students in UK universities, scalable solutions for teachers are becoming increasingly critical. 
+
+Distinction Courses (https://www.youtube.com/watch?v=F1ICjtV8zPc) is our solution to this problem. It empowers lecturers and instructors to build comprehensive and rich courses in 2 minutes. Since its launch 1 month ago, over 1500 courses have been created by more than 600 creators.",t,2025-08-28 02:03:32.56028,FlexiSAF,"Manchester, United Kingdom",https://flexisaf.com/
+33,Davneet,Singh,davneet@teachoo.com,,"Most worksheets today are generic. They don’t adapt to how each student learns. The fast learners get bored, the struggling ones get left behind, and teachers end up spending hours marking or re-making worksheets to try and fill those gaps. The end result: students aren’t learning as much as they could, and teachers are drowning in prep and checking.
+
+The Solution
+
+Teachoo’s AI Worksheets are designed to teach students while they practice:
+	•	Adaptive levels: The same topic can be generated at easy, medium, or advanced difficulty—so every student gets the right challenge.
+	•	Built-in feedback: Questions come with hints, step-by-step solutions, or quick checks, so students learn immediately without waiting for the teacher to mark everything.
+	•	Variety that engages: Instead of dull repetition, the AI mixes problem types—MCQs, word problems, reasoning questions—so students stay curious and sharp.
+
+Why It Matters
+	•	Students learn more effectively: They get instant feedback and the right difficulty, which boosts confidence and retention.
+	•	Teachers save time: Less repetitive checking and worksheet prep means more time for actual teaching.
+	•	Better outcomes for everyone: Students progress faster, teachers focus on higher-value teaching, and classrooms become more engaging.
+",t,2025-08-30 12:09:40.320694,Teachoo,"Delhi, India",https://www.teachoo.com/
+34,Pierre,Barclay,pierrejbarclay@gmail.com,,"Coming from the Psychological field, the dangers of reliance and therapeutic uses of AI has lead to the loss of lives in younger users. 
+
+Additionally, the growing dependence on AI raises a number of  critical concerns: 
+- Overconfidence in AI-generated outputs, which may include bias, oversimplification, or factual inaccuracies;
+- Declining critical thinking and independent decision-making among users;
+- A widening gap between AI convenience and sound human judgment;
+-  Heightened exposure to manipulation, misinformation, and AI-driven persuasion tactics.",t,2025-09-04 10:31:03.535763,Skeptiq,"London, United Kingdom",https://skeptiq.ai
+35,Parth,Amin,parthamin123@gmail.com,,"AI helping teachers to score the student written assessments and give detailed personalized feedback to the students. This can free teachers from the extensive use of his time for repetitive marking, allowing them to focus on what truly matters: inspiring and supporting their pupils.",t,2025-09-04 10:47:59.220731,Not registered yet ,"London, United Kingdom",http://34.123.97.138/
+36,Victor ,Ogunbiyi ,dawnaistudy@gmail.com,,"	•	 children are currently out of school  the highest number worldwide.
+	•	Many enrolled children struggle silently with ADHD, dyslexia, autism, anxiety, or trauma yet go undiagnosed.
+	•	Parents and teachers lack tools and training to support diverse learners.
+	•	Existing interventions are fragmented, stigmatized, or inaccessible especially for marginalized communities.
+	•	Result: Children drop out, lose confidence, and are denied their right to learn.",t,2025-09-04 12:22:44.702532,DAWN AI STUDY,"London, United Kingdom",https://www.dawnaistudy.com/
+37,Emma,Louden,emma@slooh.com,,Access to telescopes and satellite data for students learning earth and space science,t,2025-09-04 14:48:35.424288,Slooh,"Los Angeles, United States",https://www.slooh.com
+38,Rayen,Inostroza,rayen.inostroza@laprofeonline.com,,Burnout in teacher in Latin America and the U.S.,f,2025-09-04 19:24:19.988212,ChatLPO,"Chicago, United States",https://chatlpo.com/
+39,Faith,Ogundare,admin@ndaraacademy.com,,"Globally, emerging creatives lack access to affordable, industry-relevant education in design, media, and technology. Traditional institutions teach outdated curricula, while online platforms are costly and culturally limited. As AI reshapes creative industries, the gap is widening, leaving many young creatives at risk of being left behind without the tools to learn and apply AI-driven design skills.",t,2025-09-04 19:54:38.31842,Ndara Academy,"London, United Kingdom",https://ndaraacademy.com
+40,success,Ojo,success.ojo@gmindai.co,,"Across Africa, millions of teachers are overworked, under-equipped, and unsupported by digital infrastructure. In Nigeria alone, 1.5 million licensed teachers still rely on outdated tools while managing classrooms of 50–100 learners, often without reliable internet or relevant digital resources.
+
+Globally, teachers spend 30–50% of their time on administrative tasks like lesson planning and grading  time that should be used to inspire learning. Existing EdTech platforms focus on learners, not educators, and are rarely localized or adaptable to African realities.
+
+This lack of teacher-centered, AI-powered infrastructure results in low-quality learning, poor learner outcomes, and a missed opportunity to transform education at scale.
+
+GMind AI is solving this by building Africa’s first curriculum-aligned, offline-ready AI platform that empowers teachers to plan, assess, and teach smarter ,unlocking the potential of 30M+ learners today, and millions more across Sub-Saharan Africa tomorrow.",t,2025-09-05 02:14:58.424158,GmInd AI,"London, United Kingdom",https://gmind.ai/
+41,Deborah,Jatto,djatto266@gmail.com,,"AI has automated many entry-level roles in tech, leaving both institutions and students unprepared for a job market that is increasingly AI-first.",t,2025-09-05 03:46:16.77955,Crayonics,"Istanbul, Turkey",https://crayonics.vercel.app/
+42,Monty,Hall,montyhall_@outlook.com,,Traditional reading is a solitary and passive activity that does not engage students.,f,2025-09-05 10:29:33.103141,Poppy Reader,"London, United Kingdom",""
+43,Ferenc,Boroczky,francis@anet360.com,,"Manufacturing workers often lack instant access to expert knowledge, resulting in production slowdowns, quality failures, and costly equipment downtime. As experienced employees retire, these knowledge gaps deepen, threatening operational continuity and safety. While smart glasses could revolutionise knowledge sharing and upskilling, current options are fragmented, expensive, and tied to proprietary hardware — locking companies into inflexible systems that fail to adapt to real shop-floor needs.
+
+please not that we tried to submit our application multiple times - but we always got an error message (we did a screenvideo that I can share with you) ",f,2025-09-05 11:32:22.958061,Another set of eyes,"London, United Kingdom",https://anothersetofeyes.org/
+44,Dylan,Kawende,dylan.kawende.16@ucl.ac.uk,,"In one sentence:
+
+OmniSpace relieves the confusion, compliance risk, ethical blind spots, and productivity challenges of AI adoption - helping businesses, professionals, policymakers, and students use AI strategically, responsibly, and inclusively.
+
+1. For Business Professionals & Owners
+	•	Confusion about AI regulations: They don’t know what the EU AI Act, ISO 42001, or NIST RMF mean for their company.
+	•	Fear of non-compliance: Risk of fines, reputational damage, or losing investor confidence.
+	•	Overwhelmed by AI hype: Unsure which AI tools are worth adopting, vs. which are distractions.
+	•	Resource constraints: SMEs often lack internal AI governance or compliance officers.
+	•	Content overload: Struggling to create marketing assets consistently, cheaply, and responsibly.
+
+OmniSpace solves this by giving them compliance roadmaps, responsible AI training, and plug-and-play toolkits for marketing and productivity.
+
+2. For Scientists & Engineers
+	•	Ethical uncertainty: Unsure how to embed fairness, transparency, and inclusivity into technical work.
+	•	Lack of policy knowledge: Not trained in regulation, but increasingly accountable for compliance.
+	•	Productivity bottlenecks: Spending time on repetitive tasks instead of research/innovation.
+	•	Skills gap: Missing training in prompt engineering, automation, and AI productivity tools.
+
+OmniSpace solves this by teaching practical ethics frameworks (deontology + ubuntu), tool-based labs (Zapier, Copilot, ChatGPT), and compliance-ready workflows.
+
+3. For Lawyers & Policymakers
+	•	Fast-moving regulation: Hard to keep up with evolving AI laws and global standards.
+	•	Translation gap: Difficulty bridging legal language with technical AI implementation.
+	•	Lack of practical playbooks: They know the “why” but not the “how” of enforcing AI policy.
+	•	Global equity blind spot: Western frameworks dominate, while non-Western ethics are overlooked.
+
+OmniSpace solves this by translating technical standards into legal/policy checklists, and by offering decolonising AI modules (ubuntu, intergenerational ethics).
+
+4. For Students (UG/PG, professionals upskilling)
+	•	Career anxiety: Unsure how to position themselves in an AI-driven job market.
+	•	Lack of applied training: University programs often cover theory but not compliance or tool use.
+	•	Overwhelmed by tools: Don’t know how to use AI responsibly for productivity, research, or job hunting.
+	•	Ethics fatigue: Courses focus narrowly on Western ethics; they want inclusive frameworks.
+
+OmniSpace solves this with career-ready bootcamps, AI literacy training, hands-on tool use, and exposure to plural ethics.
+
+5. For Corporates & Organisations
+	•	No governance structures: Missing ethics boards, auditing processes, and internal accountability.
+	•	Fragmented knowledge: Teams siloed (legal, IT, comms) with no shared AI literacy baseline.
+	•	Reputation risk: Fear of AI misuse damaging brand credibility.
+	•	Pressure to innovate: Want to adopt AI quickly but safely.
+	•	Stakeholder scrutiny: Investors, regulators, and customers demand transparency.
+
+OmniSpace solves this through tailored workshops, executive briefings, and governance frameworks aligned with ISO 42001 and NIST RMF.
+
+6. Universal Pain Points Across All Groups
+	•	Uncertainty about AI’s future: Fear of being left behind.
+	•	Lack of trust: Concern about bias, misinformation, and “black box” systems.
+	•	Time pressure: Need shortcuts and templates, not just theory.
+	•	Exclusion: Current AI education often ignores Global South voices, community ethics, and intergenerational wisdom.
+
+OmniSpace uniquely solves this by combining:
+	1.	Practical tools (bootcamps, playbooks, templates).
+	2.	Compliance clarity (EU AI Act, ISO, NIST).
+	3.	Plural ethics (ubuntu, decolonisation, community-centred governance).",t,2025-09-05 17:29:24.162357,OmniSpace,"London, United Kingdom",""
+45,Rich,Taylor,rich@neurameet.co.uk,,"AI meeting tool. Transcribes meetings, produces minutes and provides an AI assistant to produce reports and answer questions based on school’s meeting ",t,2025-09-07 10:51:24.874413,Neurameet,"London, United Kingdom",https://neurameet.co.uk/
+46,Adi,Talmor,aditalmor2@gmail.com,,"Today, businesses, regulators, and investors face a fundamental challenge: it is extremely difficult to trust and verify ESG and sustainability claims.
+Greenwashing is widespread: companies publish sustainability reports full of claims, but with little standardization or reliable verification.
+Data is fragmented and opaque: climate impact, energy efficiency, and supply-chain emissions are often buried in siloed systems or reported inconsistently.
+Decision-makers lack actionable insight: investors, banks, and regulators struggle to separate genuine progress from marketing spin, leading to poor capital allocation and reputational risk.
+Companies themselves struggle: even those making real sustainability improvements lack transparent, data-driven tools to measure, benchmark, and communicate their efforts credibly.
+In short: there is no clear, trustworthy lens on climate data. This prevents accountability, slows the transition to net-zero, and makes it harder for stakeholders to reward genuine sustainability.
+ClimaLens solves this by providing a transparent, AI-driven platform that aggregates, analyzes, and visualizes ESG and climate performance - giving regulators, investors, and companies themselves the clarity they need to detect risks, expose greenwashing, and drive real change.",t,2025-09-07 11:04:03.795009,climalens,"London, United Kingdom",https://clima-lens-e4cd496d.base44.app/
+47,Jennifer,Moles,jmoles@tracerprogress.com,,"Tracer is revolutionizing the way developmental progress is tracked and supported for children with learning disabilities by addressing the following challenges: 
+
+Inefficiency: Tracer eliminates inefficiencies associated with paper-based documentation by providing a digital platform that streamlines data collection, storage, and analysis.
+
+Ineffectiveness: Current methods of tracking developmental progress lack insightful and actionable information. Tracer synthesizes a child's data into meaningful insights, empowering parents, educators, and therapists to make informed decisions and take targeted actions.
+
+Lack of Personalization: Tracer recognizes the unique needs of each child and offers personalized goal setting and strategies to ensure that support is specific, relevant, and effective.
+
+Time-consuming: Parents, educators, and therapists can easily access and track a child's progress in one centralized platform, reducing administrative burden and allowing more time for meaningful interventions.
+
+Lack of Year-over-Year Comparability: Tracer enables year-over-year comparisons by securely storing historical data. This allows parents and professionals to monitor progress, identify trends, and make data-driven decisions to support developmental progress.
+
+Misplaced Documentation: With Tracer, there is no risk of misplacing important documents, forms, or therapy records. All data is securely stored within the platform, easily accessible whenever needed.
+
+Lack of Data Security: Tracer prioritizes data security, ensuring that sensitive information is protected. The platform employs robust security measures to safeguard personal and confidential data.
+
+Limited Parental Involvement: Tracer actively involves parents in their child's development by providing them with comprehensive tools, resources, and insights. This fosters increased parental engagement, empowering them to actively support and contribute to their child's progress.
+",t,2025-09-07 17:50:57.670421,Tracer Education,"Toronto, Canada",https://www.tracerprogress.com/
+48,Dharmesh,Gohil,dharmesh@11vision.co.uk,,"We’re solving the problem of how hard it is for students and professionals to get real, hands-on industrial training. Physical setups are often too expensive, risky, or just not available to everyone. With our XR-powered immersive learning experience, learners can step into a safe, realistic virtual world where they can operate machinery, follow safety protocols, and tackle real-world challenges. It makes learning more engaging and accessible, while giving trainers and educators a simple way to track progress and make sure learners are truly ready for the jobs ahead.
+",t,2025-09-08 09:57:30.592794,11Vision Limited,"London, United Kingdom",https://11vision.co.uk/
+49,Dharmesh,Gohil,dharmesh@11vision.co.uk,,"We’re solving the problem of how hard it is for students and professionals to get real, hands-on industrial training. Physical setups are often too expensive, risky, or just not available to everyone. With our XR-powered immersive learning experience, learners can step into a safe, realistic virtual world where they can operate machinery, follow safety protocols, and tackle real-world challenges. It makes learning more engaging and accessible, while giving trainers and educators a simple way to track progress and make sure learners are truly ready for the jobs ahead.
+",t,2025-09-08 10:01:06.172743,11Vision Limited,"London, United Kingdom",https://11vision.co.uk/
+50,Raees,Qaisir,raees@halotuition.co.uk,,"Education remains locked in one-size-fits-all delivery. Learners’ differing styles, paces, languages and accessibility needs are poorly served, driving disengagement and uneven attainment. Institutions struggle to personalise at scale. Existing platforms are fragmented and largely static, offering limited adaptivity and weak feedback loops, which depress outcomes and widen gaps.
+
+Four pressures intensify the problem: (1) educator shortages and uneven standards; (2) escalating delivery costs; (3) curricula and skills needs that change faster than materials and methods; and (4) equity challenges for multilingual, neurodiverse and disadvantaged learners. 
+
+The consequence is a persistent engagement and attainment gap, and rising institutional workload and risk.
+
+ScholarMe operates across personalised and adaptive learning, AI content generation, assessment and analytics, gamified education, multilingual accessibility, and LMS (learning management system) interoperability via SaaS.",t,2025-09-19 13:58:25.892041,ScholarMe,"London, United Kingdom",https://www.halotuition.co.uk/
+51,RUFINA,MICHAEL,Pranay@MyScienceLand.com,,"Science education in UK schools faces significant challenges, including stagnating outcomes and persistent equity gaps. In 2024, the average Attainment 8 score for all pupils in England was 46.3 out of 90.0, a decrease from 48.8 in the previous year. These issues are exacerbated by teachers' overwhelming administrative workload and the lack of real-time insights to personalize learning. Traditional EdTech tools often fail to dynamically adapt to individual student needs or provide teachers with actionable data at scale. MSL addresses these challenges by offering AI-powered adaptive feedback that personalizes learning for students and equips teachers with real-time dashboards to enhance engagement, comprehension, and equity outcomes.",t,2025-09-22 22:15:57.680838,MyScienceLand,"London, United Kingdom",https://www.myscienceland.com/
+52,Aishwarya ,Gawate ,aishwaryagawateiitd@gmail.com,,Cognitive design strategies for impact research and business consulting. ,t,2025-09-23 11:08:06.419977,sysdes ,"Mumbai, India",""
+53,Willow,Williams,willow@threadpoint.studio,,"Despite growing efforts to promote STEM education, many young learners, particularly those from underserved or neurodivergent backgrounds, remain disengaged from how the systems around them work. The infrastructure that underpins daily life (e.g. data centres, utilities, transport networks) is largely invisible to children and rarely introduced in formal education. This creates a disconnect between the users of infrastructure and the future workforce needed to sustain, innovate, and ethically manage it.
+
+Moreover, current STEM teaching methods often rely on abstract, technical language and prescriptive instruction, which can alienate learners who benefit from narrative, experiential, or visual-spatial modes of understanding. Research from the Royal Society (2017) and Nesta (2021) highlights the persistent lack of inclusion in STEM fields, particularly for pupils from low-income, minority, and neurodivergent communities. These learners are often underrepresented in STEM pathways, not due to lack of potential, but due to a lack of imaginative, accessible, and context-rich learning opportunities.
+
+This exclusion has long-term consequences: it limits diversity in critical sectors and deprives society of the insights and innovations that come from more cognitively and culturally inclusive participation in systems design.
+
+The Solution. ThreadPoint addresses this gap through a story-led, systems-based pedagogy that makes invisible infrastructure visible, and engaging, for all learners.
+
+Our approach, known as Narrative Infrastructure, draws on constructivist theory and narrative pedagogy to introduce complex STEM and civic concepts through metaphor, storytelling, and sensory engagement. It translates intimidating systems like data centres, the internet, and energy grids into accessible mental models using relatable characters, concrete analogies, and hands-on activities.
+
+For example, our first book Where the Internet Goes to Sleep introduces cloud computing through the character of Fluffbit, a gentle cloud who rests in a data centre at night. The book is written in OpenDyslexic font, with visual-scaffolded layouts and simple metaphors to support diverse cognitive styles. It has been piloted in libraries and schools across London, accompanied by workshop sessions where children build their own “data centres” using LEGO and engage in guided discussion about digital systems.
+
+Educational approach:
+	•	Constructivist design: Children build knowledge through experience and reflection
+	•	Narrative pedagogy: Abstract ideas become emotionally and cognitively resonant through story
+	•	Universal Design for Learning (UDL): Inclusive from the outset, especially for neurodivergent learners
+
+Early outcomes:
+	•	Strong anecdotal feedback from parents and teachers highlighting improved conceptual engagement
+	•	Library partnerships (e.g. Hackney Council) and STEM outreach pilots underway
+	•	Distribution through IngramSpark and Waterstones, enabling broader classroom reach
+
+ThreadPoint’s long-term vision is to become a core part of early-stage infrastructure literacy, working in parallel with formal education to ensure that all children, regardless of postcode or learning profile, can understand and shape the systems that shape them.",t,2025-09-23 13:53:54.106026,The Thread Point Studio,"London, United Kingdom",https://www.threadpointstudio.com
+54,OSIZE FRANCIS,OJO,osize@curriculax.com,,"Globally, the children’s enrichment and extracurricular market is valued at over $100 billion, growing rapidly as parents, schools, and governments recognise that skills like creativity, teamwork, and problem-solving are essential for future success. Yet behind the scenes, the ecosystem that powers these experiences is fragmented, manual, and disconnected.
+
+Parents often struggle to find trusted after-school programmes that truly match their child’s interests. They juggle multiple WhatsApp groups, paper flyers, and inconsistent payment links. The are not quite sure what their child is learning, how they’re progressing, or whether they’re getting real value for their spend.
+
+Schools face their own challenges. Club coordination depends on spreadsheets, email chains, and late sign-up forms. Activity leads lack a unified view of participation, progress, or inclusion  making it difficult to evidence enrichment impact to Ofsted and other regulators or ensure fair access for every child.
+
+Meanwhile, providers — from STEM clubs to arts, music, and sports facilitators often work tirelessly but inefficiently. They manage bookings manually, travel between schools without route optimisation, and struggle to communicate outcomes to parents and schools. Many lack the digital tools to scale or measure their programme’s impact.
+
+This fragmented system means everyone works harder but achieves less visibility, connection, and impact, and the child the very reason for it all, benefits the least.
+
+Curriculax exists to change that.
+
+It unites schools, parents, and providers on one platform — automating coordination, simplifying payments, and translating enrichment participation into measurable growth by integrating an AI-driven enrichment intelligence through the SOIZA Framework™,
+It helps schools demonstrate impact, providers scale efficiently, and parents finally see how each activity contributes to their child’s personal development.
+
+In summary,Curriculax will transform enrichment from a scattered process into a connected, data-driven ecosystem making every child’s journey beyond the classroom visible, measurable, and meaningful through its connected to Future Jobs.",t,2025-10-04 05:08:21.724707,Curriculax Technologies ,"Bristol, United Kingdom",http://www.curriculax.com/
+55,Felipe,Arango,felipe@appianeducation.com,,Access to top quality education for K12 students.,t,2025-10-05 01:49:50.444777,Pharos Education,"Boston, United States",https://www.bepharos.com/
+56,Jamie,Welsh,jwelsh@chatterdillo.com,,"Schools are increasingly expected to fill in the gaps when it comes to support and provision for children with speech and language needs.
+
+However, staff are more stretched for time than ever and their resources often work against them, requiring extensive research, training, and preparation.
+
+That's why we built Chatterdillo - to serve powerful speech and language development digital resources, without the training and prep. ",f,2025-10-15 15:35:45.770291,Chatterdillo,"London, United Kingdom",https://chatterdillo.com/
+57,Sophie,Tan,zx.sophtan@gmail.com,,"1) Timely formative feedback and scaffolding for all the pupils in a classroom 
+2) The marking workload",t,2025-10-23 20:45:56.171943,InstaMark,"Cambridge, United Kingdom",""
+58,Fernando,Centeno,fcenteno@thecircularwave.com,,To offer a safe environment for educational and engaging content to small children ,t,2025-10-29 09:16:22.867865,Ella,"Birmingham, United Kingdom",""
+59,Paola,Masperi,paola.f.masperi@gmail.com,,"reducing screen time and providing imaginative, joyful, educational screen free entertainment, with an ethos rooted in sustainability and circularity",t,2025-11-10 14:27:31.55595,BaBa-Box,"London, United Kingdom",https://www.stealth.com
+60,Daria,Benghea Malaies,hello@kidkit.ro,,"learning autonomy in early education - young children need an adult around to solve worksheets, adults are busier than ever, children are missing out on critical thinking and problem solving worksheets",t,2025-11-20 14:24:17.829279,KidKit EdTech,"London, United Kingdom",https://kidkit.ro/
+61,Emmanuel,Akpan,emmanuelakpan@icedt.org,,"AI Teacha is solving the problem of overwhelming teacher workload and limited access to high-quality learning resources, which directly impact student engagement and learning outcomes. By automating lesson planning, assessments, and classroom tasks and making personalized, curriculum-aligned content easily accessible we help teachers save time, reduce stress, and deliver better learning experiences for every student.",t,2025-11-26 09:37:09.722079,Ai Teacha,"Bristol, United Kingdom",https://aiteacha.com
+62,Naimul,Islam,naimulislam2027@u.northwestern.edu,,The fragmentation one!,f,2025-11-28 09:08:37.119726,Learningly AI ,"Chicago, United States",https://learningly.ai/
+63,Rachel,Danzinger,rachel_danzinger@hotmail.com,,we help communities create microschools,t,2025-12-01 18:40:51.932803,Learning Pods,"Toronto, Canada",https://www.learningpodscanada.com
+64,Lena-May,Khazami,lenamayk@yahoo.de,,"I’m solving the problem that young people move through school without direction, purpose or personalised guidance.
+Most schools don’t have enough counsellors, and even motivated teachers don’t have the time, tools or data to support every student individually. As a result, many teenagers feel lost, under-challenged or unsure about their strengths, especially those without supportive networks at home.
+
+With Oriento, I want to fix the guidance gap in schools and give every student access to personalised direction, meaningful opportunities and a sense of purpose, no matter their background.",t,2025-12-02 16:05:48.474223,Oriento,"London, United Kingdom",https://purposebyoriento.com
+65,Atharva,Arya,aryaatharva18@gmail.com,,"We're an AI-education company focusing on generating interactive simulations for STEM concepts—think PhET simulations, but created on-demand for any topic using AI.
+
+Standard tutoring has always seen a lack of time and resources, since teachers and students being in 1:1 ratio is hard to come by. Furthermore- given physical constraints, educators cannot always go in-depth on any certain problem. We believe, thanks to recent advancements in AI, it will soon be possible to achieve this at scale with accuracy. We believe that students will greatly benefit from a tool that will break down and make interactive, scientifically accurate simulations that bring problems and concepts to life. 
+Educators will also benefit from the tool greatly, since they won’t have to rely on external hardcoded curriculum anymore to teach. Educators will be able to bring their expertise into interactive learning experiences. 
+
+",t,2025-12-18 07:18:42.546895,Soroban Labs,"Bangalore, India",https://sorobanlabs.io
+66,Kayleigh,Oliver,kayleigh.oliver@fobbs.uk,,Making it easy for teachers to embed Black Britons into their lessons in the UK all year round.,f,2025-12-20 10:16:32.544002,FOBBS,"London, United Kingdom",https://fobbs.uk
+67,Jack,Brophy,jack@anytimecreativity.com,,"",f,2025-12-29 17:27:20.671602,Anytime Creativity,"London, United Kingdom",""
+68,Umar,Hussain,umarhussain771@gmail.com,,We are trying to help more students get better grades. We are currently helping 100s of students and want to take it to the next level. We want to build a interactive learning whiteboard and integrate Ai with it. ,f,2026-01-01 18:06:38.975316,TutorToGo,"Birmingham, United Kingdom",https://www.tutortogo.co.uk/
+69,Ismaeel,Hasnain,ihasnain01@gmail.com,,"Both engineers & engineering students are well trained technically, but are rarely taught the collaboration dynamics required to work effectively in global virtual teams. As a result,
+critical issues around communication, coordination, culture, and cohesion remain invisible during education and early project stages, only surfacing later in industry where they become costly and difficult to correct.
+
+4C-Calibrate provides a structured, experiential learning approach that makes the hidden dynamics of global virtual teamwork visible and discussable. Using facilitated simulations built around the 4C model (Communication, Coordination, Cohesion, and Culture), it allows students and professionals to experience, reflect on, and learn how collaboration failures emerge and how they can be addressed early. It solves the problem by teaching collaboration as a skill, not an assumption.",t,2026-01-13 16:45:28.63569,4C-Calibrate,"Manchester, United Kingdom",https://www.4c-calibrate.com
+70,Samuel,Watt,sam@classlabs.co.uk,,"Our core innovation is a Proprietary Differentiation Engine—an intelligent pedagogical logic layer that dynamically adapts curriculum content to the specific neurodiverse profile of each learner. Unlike static resource libraries, our engine ""ingests"" individual student needs (ADHD, Autism, Dyslexia, etc.) and generates high-impact, differentiated lesson plans and activities in seconds.
+
+This innovation transforms a process that currently takes teachers hours of manual labor into an automated, evidence-informed workflow.",f,2026-01-17 12:19:47.982723,ClassLabs,"London, United Kingdom",https://classlabs.co.uk
+71,Eridona,Pupla,eridona-pupla@live.com,,"",t,2026-01-21 19:22:29.977227,Valbona Foundation,"London, United Kingdom",""
+72,Israel Princewill,Esenowo,israel@rs-academy.co.uk,,"Despite significant investment in digital learning platforms, a growing number of learners—particularly those from low-income and marginalised backgrounds—are unable to participate fully in skills training and education due to hidden and fragmented access barriers. These barriers include the cost of connectivity, devices, learning tools, and essential digital services that sit outside formal tuition.
+
+Current support mechanisms are often slow, inflexible, and poorly aligned with learners’ real-time needs. As a result, learners disengage not because of a lack of motivation or ability, but because they cannot afford the practical means to remain digitally connected.
+The problem is not the absence of technology, but the absence of responsive, learner-centred access mechanisms that translate training skills and development into actual participation.
+
+The voucher scheme seeks to address this gap by providing a flexible, data-informed way to remove immediate access barriers, enabling consistent engagement, measurable outcomes, and more equitable participation in digital learning environments.
+
+",t,2026-01-26 14:25:51.165873,Real Support Academy,"London, United Kingdom",https://rs-academy.co.uk/
+73,Jessica,Barnecutt,jessobarnecutt@gmail.com,,"In my work as a timetable consultant, I see how frequently schools struggle to align their curriculum and staffing in a coherent and sustainable way. In some contexts, staffing effectively dictates the curriculum: subjects are offered primarily on the basis of existing staff capacity rather than educational intent or student need. In others, schools commit to an ambitious curriculum without ensuring that it can be staffed effectively, resulting in students being taught by non-specialists. In further cases, staff are not fully or appropriately deployed, leading to inefficiencies that waste financial resources while limiting the quality of students’ learning experiences.
+
+These challenges are exacerbated in periods of change, particularly when schools are responding to fluctuating pupil numbers or to government-led curriculum reform. In such conditions, misalignment between curriculum and staffing can accumulate over time, making it increasingly difficult for schools to plan strategically, use resources efficiently and ensure that students receive the best possible educational experience.",t,2026-01-27 09:57:33.003587,Curriculum Solutions,"London, United Kingdom",https://www.curriculum-solutions.org/
+74,Islam,Mosa,islam.mosa@uconn.edu,,"ilab solves the gap between traditional education and future-ready skills by empowering students with practical AI knowledge, entrepreneurship capabilities, and project-based experience that prepares them for tomorrow’s opportunities.",t,2026-01-28 15:36:10.121335,ilab,"New York, United States",https://ilab.life/
+75,Yilin,Wang,stnzyw8@ucl.ac.uk,,"Mainly two problems I observed in higher education classroom, beginners feeling overwhelmed by readings, and the silence tutors are facing in large groups.",t,2026-02-21 21:41:58.756573,Maze,"London, United Kingdom",""
+76,Rheo,Nanton,rheonanton@outlook.com,,Socialisation for children being homeschooled in the UK.,t,2026-02-23 12:56:48.956799,Classmates,"London, United Kingdom",""
+77,Paul,Ranson,paul.ranson@learncast.io,,Learncast helps educators create engaging content without without them having to have tech skills. It is a tool that creates super interactive slides that are optimised to be viewed perfectly on mobile devices. Using AI the app can assess learners progress while respecting European culture and legislation.,t,2026-02-24 16:13:00.008138,Learncast,"Bristol, United Kingdom",https://www.learncast.io/
+78,Stella ,Sun,zclmysu@ucl.ac.kr,,"1. Career decisions are made with low information.
+Students don’t know which roles actually fit their strengths, background, and constraints—so they pick based on brand names, random advice, or degree defaults.
+2. Even when students know a target role, they don’t know what “proof” looks like.
+Hiring is evidence-first, but students don’t know what projects, skills, and outputs hiring managers expect. They waste time building the wrong portfolio or doing irrelevant activities.",t,2026-03-02 02:45:39.687341,EdU,"London, United Kingdom",https://www.agentiedu.com/
+79,Zach,Weissand,stnzzes@ucl.ac.uk,,Designing aesthetic desk based focus aids to help neurodivergent students with non-disruptive learning ,t,2026-03-02 10:32:33.624814,ADHFREE LTD ,"London, United Kingdom",""
+80,Johanna,Wang,johannayuehan@gmail.com,,"International graduates often struggle to secure professional roles in the UK despite strong academic backgrounds. The job search process is highly opaque and unstructured, particularly for those without local networks or knowledge of informal hiring dynamics.
+
+Most existing career services focus on CV writing and interview preparation, but do not provide a structured system for learning how opportunities are actually created in the labour market.
+
+JD Mastery is developing an AI-assisted career learning platform that transforms job search into a guided learning process. By breaking the process into step-by-step SOPs and interactive learning modules, the platform helps international graduates build positioning, professional networks, and real opportunities more effectively.",t,2026-03-04 16:00:59.300258,JD Mastery ,"London, United Kingdom",https://home.jdmastery.com/
+81,Tania,Fauvel,tania@kurv.io,,"Building a non invasive, hand based neural interface that accelerates mathematics learning from days to hours.",t,2026-03-05 16:56:28.07082,Kurv Labs,"London, United Kingdom",https://www.kurv.io/
+82,ANgus,Griffin,angus.griffin@pedagogue.io,,"UK schools face AI governance requirements (KCSIE 2025/26, DfE AI guidance) but have no practical way to train staff or evidence compliance. 
+
+Most schools can't prove their teachers are AI-literate, can't show governors an evidence base, and can't demonstrate responsible AI adoption to inspectors or parents. 
+
+Pedagogue solves this with a 70-minute structured learning pathway that gets every teacher to a verified standard and generates governance-grade evidence packs, turning policy into proof.
+
+We're distributed through SOCS to 1,200+ UK independent schools and launching our Founding 50 programme this month.",f,2026-03-11 20:14:53.497421,Pedagogue AI,"London, United Kingdom",https://pedagogue.io/
+83,Kristyna,Coufalova,kristyna@learniva.io,,"Millions of students struggle with mathematics because education systems cannot adapt to individual learning paths. Current platforms provide static exercises and limited feedback, making it difficult to identify knowledge gaps and guide students through complex concepts. This leads to inefficient studying, persistent misunderstandings, and poor performance in critical exams.",t,2026-03-16 17:05:52.904379,Learniva,"London, United Kingdom",https://learniva.io/
+84,Sujith,Premachandran,suj@digitalinflux.com,,"We are addressing a growing but under-recognised problem: the cognitive impact of AI on how children think, learn, and process information.
+
+Emerging research, including studies from leading institutions, suggests that passive reliance on AI tools is reducing key cognitive functions such as attention, memory retention, critical thinking, and problem-solving. At the same time, education systems globally are rapidly integrating AI without frameworks to measure or protect cognitive development.
+
+This creates a critical gap:
+AI is accelerating faster than our ability to understand its long-term impact on the brain.
+
+Digital Influx exists to solve this.
+
+We are building a gamified UX and AI education platform that does not just teach AI, but actively develops cognitive resilience through design thinking, problem-solving, and real-world application. Alongside this, we are developing a measurement layer (NeuroGuard) to track how AI interaction affects cognitive growth over time.
+
+Our goal is to ensure that the next generation doesn’t just use AI efficiently, but retains the ability to think independently, creatively, and empathetically in an AI-driven world.",t,2026-03-20 11:48:17.907968,Digital Influx International,"London, United Kingdom",https://www.digitalinflux.com
+85,Andy,Tang,ascend-edu@hotmail.com,,"Students transitioning into the UK education system often face a hidden but critical challenge: a mismatch between what they have learned and how they are assessed.
+For example, many Hong Kong students arrive academically strong, yet struggle with UK exam techniques, application-based questions, and independent learning expectations.
+This leads to avoidable underperformance and a growing reliance on external support.
+The core problem is not content, but translation — bridging differences in curriculum design, pedagogy, and assessment systems for globally mobile students.",t,2026-03-25 10:42:02.6186,Ascend Education,"London, United Kingdom",https://ascend-edu.uk
+86,Tom,Raithby,tmr204@gmail.com,,"The teaching profession is currently defined by a 1:2 Ratio: for every hour spent in front of students (the high-impact activity), teachers spend two hours on ""back-office"" diagnostic work (marking, feedback, and curriculum mapping).
+
+Teachers are the primary bottleneck in the student learning loop. A standard UK secondary teacher manages roughly 150–200 students. Providing high-quality, personalised feedback for a single assessment takes ~5–10 minutes per student.
+
+That is 25 hours for one assessment cycle.
+
+Feedback is often delayed by weeks, rendering it pedagogically useless by the time the student receives it.
+
+Human marking is also inherently inconsistent. Fatigue and cognitive bias lead to grading drift. This creates ""Moderation Anxiety""—where schools spend thousands of additional hours cross-checking/moderating work to ensure external exam board compliance.
+
+We are losing expert educators not because they can't teach, but because they are burnt out by everything else that comes with the job. 
+
+chalkd was built to relieve some of the strain of the above by providing a quick, intuitive and reliable system to mark both coursework and exam papers (along with a couple of other nice little tools to save some more time). It's built by a teacher who hates marking and is designed to fit within current workflow i.e you don't have to register everything you own to our system, you get in, you mark, you get out and export to your usual tools. I am also currently in the process of getting approval for a chrome extension to further reduce the friction between current workflow and chalkd",f,2026-03-25 20:57:44.711398,chalkd.Ai,"Manchester, United Kingdom",https://www.chalkd-ai.com
+87,Deniz,Albayrak,deniz@avo-lingo.com,,"Every student is unique. The curriculum is not. Yet we force entire
+classrooms to learn the same static material at a single speed.",t,2026-04-02 11:01:48.996549,AvoLingo,"Seoul, South Korea",https://www.avo-lingo.com/
+88,Sabathania,Pamilaar,Uceirlp@ucl.ac.uk,,"Jocelyn, my 4-years old daughter suffered from speech delay, causing me to spend a lot of time and money for her therapy and medication educating her by myself at home. From this my experience and other mothers' too, I came to conclusion that we need a unified platform of inclusive and educational products, including mini games , interactive books and learning videos to support children both neurotypical ones and those with special needs, especially those with non-English speaking countries like Indonesia. We leverage AI or ML as a speech recognition as an early detection of developmental delay like speech delay in kids. AI then tailorsthe lesson needs to educate the children how to speak ann overtime teach them how to do basic life skills and preschools knowledge like literature and STEM, based on their age group and developmental stages. Our product will be free of ads and available in subscription based through partnership withn schools",t,2026-04-03 00:33:31.736274,Hai Booca ,"London, United Kingdom",https://www.haibooca.co.id
+89,Reena,Clifton,mail@reenaclifton.net,,Up-grade uses AI to mark essays to assist teachers/tutors with marking and reduce their workload and to give students fast and consistent feedback. ,t,2026-04-03 22:58:42.326348,Libertas Tech Services Ltd,"London, United Kingdom",https://up-grade.ai
+90,Jenny,Lam,jennylam@littlelionsrising.com,,"The Problem: The Heritage Gap & Scalability Bottleneck
+The 1.1 million global Hong Kong diaspora lacks a modern, engaging way to pass on Cantonese and Traditional Chinese to the next generation. Existing solutions are either geographically limited Sunday schools (unengaging and inconvenient) or Mandarin-centric apps that ignore Hong Kong’s unique linguistic identity. For founders, the market is currently trapped in a ""time-for-money"" tutoring model, which is expensive for parents and impossible to scale.
+
+The Solution: Little Lions Rising (The ""Lion Universe"")
+We provide a story-driven, gamified SaaS platform that transforms heritage learning into an immersive digital adventure. Our solution features:
+
+Scalable Micro-learning: A subscription-based curriculum of bite-sized, interactive lessons that decouple revenue from live teaching.
+
+IP-Led Engagement: The ""Lion Universe"" narrative world keeps children (ages 4–12) intrinsically motivated, reducing the ""parental friction"" of home teaching.
+
+Digital-First Heritage Learning: A purpose-built framework for English-dominant children to master Traditional Chinese through modern pedagogy, bridging the gap between Western lifestyles and cultural roots.",t,2026-04-05 09:10:34.655777,Little Lions Rising,"Manchester, United Kingdom",https://littlelionsrising.com/
+91,Peter,Abbosh,abboshp@gmail.com,,"Young people may lose access to social media under new legislation — and when the ban lifts at sixteen, they will encounter the same content with no more skills to evaluate it than they had at eleven. Governments have responded with a ban. Nobody has responded with an education. Catch is that education — a workshop that teaches a four-question critical thinking framework by putting students in the role of the people who make manipulative content, so they understand how it works from the inside, and a daily game that builds the habit over time. Together they solve both sides of the same problem: learning the framework once with real impact, and making sure it sticks. The research base is inoculation theory from Cambridge. The evidence gap — whether those skills transfer to content students have never seen before — is exactly what Catch is designed to close.",t,2026-04-05 16:26:03.524624,Catch,"London, United Kingdom",""
+92,Catalina,Vlad,catalinamariavlad@gmail.com,,"Kids lack the critical thinking skills to navigate AI, and the adults closest to them (parents and teachers) aren't empowered to guide that journey. There's no accessible, relationship-centered way for adults and children to explore AI together in a way that builds genuine understanding and healthy skepticism. Therefore, we are here to help and support this eco-system and empower adults talk about AI to kids in a way that it will challenge, empower and help the education",t,2026-04-11 13:33:41.986855,CreateV,"London, United Kingdom",""
+93,Reena,Clifton,mail@reenaclifton.net,,"up-grade uses generative ai to give students immediate feedback on essays. Teachers control content and can review and revise feedback that the student receives. Also includes a socratic dialogue coach, dashboard and gamification. 
+",t,2026-04-15 09:59:50.593295,Libertas Tech Services Ltd,"London, United Kingdom",https://up-grade.ai
+94,Saheed,Oyefeso,saheed@jobcamp.ai,,Allocating talent better so that the right students go to the right jobs. ,t,2026-04-19 12:02:24.508436,Jobcamp,"London, United Kingdom",https://jobcamp.ai/edu
+95,belinda,hooke,hello@acornstudiopress.com,,"The problem Acorn is solving:
+Most EdTech has a permanence problem. A child completes something, gets a score, and it's gone. Learning becomes a series of numbers rather than something that builds, accumulates, and means something. The only window parents have into their child's learning is a mark on a screen, not connection, but surveillance.
+The tools themselves are either narrow and shallow - one topic, one app - or broad and shallow, like BBC Bitesize. Neither develops the kind of thinking that goes broad and deep. Neither leaves children feeling capable. Most leave them feeling inadequate, because everything comes down to right and wrong.
+And underneath all of it, a seven year old asks Alexa why the sky is blue, gets a beautiful answer, and two minutes later has no idea why. He wants to ask Alexa again.
+The problem in one sentence:
+Technology is answering children's questions before they've learned to ask them, and EdTech is making it worse, not better.
+What Acorn does instead:
+Places children inside real-world decisions and environments, gives them tools to investigate, question, and think, and builds a digital layer that extends that thinking rather than replacing it with an answer.",t,2026-04-20 15:50:07.090526,Acorn Studio Press,"London, United Kingdom",""
+96,Vikki,To,vikkiandainsley@gmail.com,,Tailored materials for students and cost of schooling ,t,2026-04-22 08:21:43.86307,N/A,"London, United Kingdom",""
+97,ian,kenny,ian@mployify.io,,"The Employability challenge, where the skills that are needed for todays world are not being taught in schools.",t,2026-04-24 11:37:13.744767,Mployify,"London, United Kingdom",http://mployify.io/
+98,Abby,McGovern,abby@fae.org.uk,,"Our aim is to ensure every girl grows up informed, confident, and in control of her health. We work with schools across the UK, alongside a growing online platform, to deliver science-backed, age-appropriate education that helps girls understand their bodies and wellbeing. Through interactive, girl-led workshops, we build knowledge, confidence, and self-advocacy by creating space for open discussion, myth-busting, and practical learning about hormones and the menstrual cycle. We believe this education should happen early—as a natural and essential part of growing up, not in response to crisis so that no girl reaches her teens without the language or understanding to make sense of her body.",f,2026-04-26 18:02:29.005053,Fae ,"London, United Kingdom",https://www.fae.org.uk/
