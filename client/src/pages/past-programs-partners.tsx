@@ -5,7 +5,7 @@ import PartnersSection from "@/components/partners-section";
 import ContactForm from "@/components/contact-form";
 import Footer from "@/components/footer";
 
-import cityscape_cartoon from "@assets/cityscape cartoon_1751016300492.png";
+import cityscape_cartoon from "@assets/cityscape-cartoon.webp";
 
 export default function PastProgramsPartnersPage() {
   return (

@@ -3,7 +3,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import SEOHead from "@/components/seo-head";
 
-import parisHeroImage from "@assets/image_1758614630354.png";
+import parisHeroImage from "@assets/paris-hero.webp";
 
 // Paris-specific content based on provided JSON
 const parisContent = {

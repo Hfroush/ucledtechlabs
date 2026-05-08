@@ -1,5 +1,5 @@
-import spotline_on_founder from "@assets/spotline on founder.png";
-import presenting from "@assets/presenting.png";
+import spotline_on_founder from "@assets/spotline-on-founder.webp";
+import presenting from "@assets/presenting.webp";
 export default function MethodologySection() {
   const methodologies = [
     {
