@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ucledtechlabs-api
+    runtime: node
+    buildCommand: npm install && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false  # set to your Vercel URL, e.g. https://ucledtechlabs.vercel.app

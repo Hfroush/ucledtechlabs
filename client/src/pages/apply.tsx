@@ -17,7 +17,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { CheckCircle, Clock, Users, Target, Lightbulb, ArrowLeft, ArrowRight, HelpCircle } from "lucide-react";
 import { CityAutocomplete } from "@/components/ui/city-autocomplete";
-import { apiRequest } from "@/lib/queryClient";
+import { apiRequest, apiUrl } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { validateCity } from "@/lib/cities";
 import Navigation from "@/components/navigation";
@@ -495,7 +495,7 @@ export default function Apply() {
     });
 
     try {
-      const response = await fetch('/api/upload-research', {
+      const response = await fetch(apiUrl('/api/upload-research'), {
         method: 'POST',
         body: formData,
       });
