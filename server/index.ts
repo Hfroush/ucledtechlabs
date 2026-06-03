@@ -5,6 +5,9 @@ import { setupAuth, seedAdminUser } from "./auth";
 
 const app = express();
 
+// Trust Render's reverse proxy so secure cookies work over HTTPS
+app.set("trust proxy", 1);
+
 // CORS — allow Vercel frontend and local dev
 const allowedOrigins = [
   process.env.FRONTEND_URL,        // set this on Render to your Vercel URL
