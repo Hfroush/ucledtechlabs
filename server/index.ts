@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { setupAuth, seedAdminUser } from "./auth";
 
 const app = express();
 
@@ -25,6 +26,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Session + Passport (must be before registerRoutes)
+setupAuth(app);
 
 // Serve attached_assets folder as static files
 app.use('/attached_assets', express.static('attached_assets'));
@@ -60,6 +64,9 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Seed admin user from env vars if they don't exist yet
+  await seedAdminUser();
+
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {

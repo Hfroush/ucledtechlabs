@@ -2,87 +2,97 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import express from "express";
 import { storage } from "./storage";
-import { 
-  insertApplicationSchema, 
+import {
+  insertApplicationSchema,
   insertApplicationDraftSchema,
   insertApplicationSubmitSchema,
   insertInterestRegistrationSchema,
-  type Application 
+  type Application
 } from "@shared/schema";
 import { sendContactEmail, type ContactEmailData } from "./email";
+import { requireAuth } from "./auth";
 import { z } from "zod";
 import multer from "multer";
 import path from "path";
-import fs from "fs";
+import { v2 as cloudinary } from "cloudinary";
+import type { UploadApiResponse } from "cloudinary";
 
-// Configure multer for file uploads
-const uploadsDir = path.join(process.cwd(), 'uploads');
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+// Configure Cloudinary — reads CLOUDINARY_URL env var automatically
+if (process.env.CLOUDINARY_URL) {
+  cloudinary.config(true);
+} else {
+  console.warn("CLOUDINARY_URL not set — file uploads will not work in production");
 }
 
-const storage_multer = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadsDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, `research-${uniqueSuffix}${path.extname(file.originalname)}`);
-  }
-});
-
+// Use memory storage: files are held in buffer, then streamed to Cloudinary
 const upload = multer({
-  storage: storage_multer,
+  storage: multer.memoryStorage(),
   limits: {
     fileSize: 10 * 1024 * 1024, // 10MB limit
   },
-  fileFilter: (req, file, cb) => {
+  fileFilter: (_req, file, cb) => {
     const allowedTypes = /pdf|doc|docx|txt|png|jpg|jpeg/;
     const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
     const mimetype = allowedTypes.test(file.mimetype);
-    
     if (mimetype && extname) {
       return cb(null, true);
-    } else {
-      cb(new Error('Only PDF, DOC, DOCX, TXT, PNG, and JPG files are allowed'));
     }
+    cb(new Error('Only PDF, DOC, DOCX, TXT, PNG, and JPG files are allowed'));
   }
 });
 
+// Upload a buffer to Cloudinary and return the result
+function uploadToCloudinary(buffer: Buffer, originalName: string): Promise<UploadApiResponse> {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder: "ucledtechlabs/research",
+        resource_type: "auto",
+        public_id: `research-${Date.now()}-${Math.round(Math.random() * 1e9)}`,
+      },
+      (error, result) => {
+        if (error || !result) reject(error ?? new Error("Cloudinary upload failed"));
+        else resolve(result);
+      }
+    );
+    stream.end(buffer);
+  });
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
-  // File upload endpoint for research evidence
-  app.post("/api/upload-research", upload.array('files', 5), (req, res) => {
+  // File upload endpoint for research evidence — streams to Cloudinary
+  app.post("/api/upload-research", upload.array('files', 5), async (req, res) => {
     try {
       if (!req.files || req.files.length === 0) {
-        return res.status(400).json({
-          success: false,
-          message: "No files uploaded"
-        });
+        return res.status(400).json({ success: false, message: "No files uploaded" });
       }
-      
+
+      if (!process.env.CLOUDINARY_URL) {
+        return res.status(503).json({ success: false, message: "File upload service not configured" });
+      }
+
       const files = req.files as Express.Multer.File[];
-      const fileInfo = files.map(file => ({
-        originalName: file.originalname,
-        filename: file.filename,
-        size: file.size,
-        path: `/uploads/${file.filename}`
+      const results = await Promise.all(
+        files.map(file => uploadToCloudinary(file.buffer, file.originalname))
+      );
+
+      const fileInfo = results.map((result, i) => ({
+        originalName: files[i].originalname,
+        size: files[i].size,
+        url: result.secure_url,
+        publicId: result.public_id,
       }));
-      
+
       res.json({
         success: true,
         files: fileInfo,
-        message: `${files.length} file(s) uploaded successfully`
+        message: `${files.length} file(s) uploaded successfully`,
       });
     } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: "File upload failed"
-      });
+      console.error("Upload error:", error);
+      res.status(500).json({ success: false, message: "File upload failed" });
     }
   });
-
-  // Serve uploaded files
-  app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
   // Application submission endpoint
   app.post("/api/applications", async (req, res) => {
@@ -449,33 +459,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get applications (admin endpoint)
-  app.get("/api/applications", async (req, res) => {
+  // Get applications (admin endpoint — protected)
+  app.get("/api/applications", requireAuth, async (req, res) => {
     try {
       const applications = await storage.getApplications();
       res.json(applications);
     } catch (error) {
-      res.status(500).json({ 
-        success: false, 
-        message: "Failed to fetch applications" 
-      });
+      res.status(500).json({ success: false, message: "Failed to fetch applications" });
     }
   });
 
-  // Get interest registrations (admin endpoint)
-  app.get("/api/interest-registrations", async (req, res) => {
+  // Get interest registrations (admin endpoint — protected)
+  app.get("/api/interest-registrations", requireAuth, async (req, res) => {
     try {
-      console.log("GET /api/interest-registrations - Fetching registrations...");
       const registrations = await storage.getInterestRegistrations();
-      console.log("Retrieved registrations:", registrations);
-      console.log("Number of registrations:", registrations.length);
       res.json(registrations);
     } catch (error) {
-      console.error("Failed to fetch registrations:", error);
-      res.status(500).json({ 
-        success: false, 
-        message: "Failed to fetch registrations" 
-      });
+      res.status(500).json({ success: false, message: "Failed to fetch registrations" });
     }
   });
 
@@ -513,6 +513,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
     }
+  });
+
+  // Auth routes
+  const passport = (await import("passport")).default;
+
+  app.post("/api/login", (req, res, next) => {
+    passport.authenticate("local", (err: any, user: any, info: any) => {
+      if (err) return next(err);
+      if (!user) {
+        return res.status(401).json({ success: false, message: info?.message ?? "Invalid credentials" });
+      }
+      req.logIn(user, (err) => {
+        if (err) return next(err);
+        return res.json({ success: true, user: { id: user.id, username: user.username } });
+      });
+    })(req, res, next);
+  });
+
+  app.post("/api/logout", (req, res, next) => {
+    req.logout((err) => {
+      if (err) return next(err);
+      res.json({ success: true });
+    });
+  });
+
+  app.get("/api/auth/user", (req, res) => {
+    if (req.isAuthenticated()) {
+      const user = req.user as any;
+      return res.json({ id: user.id, username: user.username });
+    }
+    res.status(401).json({ message: "Not authenticated" });
   });
 
   const httpServer = createServer(app);

@@ -143,15 +143,19 @@ export class MemStorage implements IStorage {
       countryOfResidence: insertApplication.countryOfResidence || null,
       productName: insertApplication.productName || null,
       investmentRounds: insertApplication.investmentRounds || null,
-      companyValuation: insertApplication.companyValuation || null,
-      plannedRaiseAmount: insertApplication.plannedRaiseAmount || null,
-      plannedRaiseValuation: insertApplication.plannedRaiseValuation || null,
+      // Drizzle decimal columns are typed as string — convert from number
+      monthlyRecurringRevenue: insertApplication.monthlyRecurringRevenue != null ? String(insertApplication.monthlyRecurringRevenue) : null,
+      companyValuation: insertApplication.companyValuation != null ? String(insertApplication.companyValuation) : null,
+      plannedRaiseAmount: insertApplication.plannedRaiseAmount != null ? String(insertApplication.plannedRaiseAmount) : null,
+      plannedRaiseValuation: insertApplication.plannedRaiseValuation != null ? String(insertApplication.plannedRaiseValuation) : null,
+      businessModel: insertApplication.businessModel ?? null,
       customerType: insertApplication.customerType || [],
       companyWebsite: insertApplication.companyWebsite || null,
       pitchDeckLink: insertApplication.pitchDeckLink || null,
       linkedinProfile: insertApplication.linkedinProfile || null,
       researchEvidence: insertApplication.researchEvidence || null,
       aiTeamExpertise: insertApplication.aiTeamExpertise || null,
+      coFounders: insertApplication.coFounders || null,
       createdAt: new Date(),
     };
     this.applications.set(id, application);
@@ -375,11 +379,11 @@ export class DatabaseStorage implements IStorage {
       // Handle numeric fields
       numberOfEmployees: data.numberOfEmployees,
       investmentRounds: data.investmentRounds || null,
-      // Handle decimal fields
-      monthlyRecurringRevenue: data.monthlyRecurringRevenue,
-      companyValuation: data.companyValuation || null,
-      plannedRaiseAmount: data.plannedRaiseAmount || null,
-      plannedRaiseValuation: data.plannedRaiseValuation || null,
+      // Handle decimal fields — Drizzle decimal columns expect string representation
+      monthlyRecurringRevenue: data.monthlyRecurringRevenue != null ? String(data.monthlyRecurringRevenue) : null,
+      companyValuation: data.companyValuation != null ? String(data.companyValuation) : null,
+      plannedRaiseAmount: data.plannedRaiseAmount != null ? String(data.plannedRaiseAmount) : null,
+      plannedRaiseValuation: data.plannedRaiseValuation != null ? String(data.plannedRaiseValuation) : null,
       // Handle date field
       dateOfBirth: data.dateOfBirth || null,
     };

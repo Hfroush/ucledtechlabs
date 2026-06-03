@@ -1,0 +1,64 @@
+<!-- Autumn '25 Applications Overlay -->
+<section id="etl-topsheet"
+  class="fixed inset-x-0 top-0 z-[60] translate-y-[-100%] opacity-0 transition
+         duration-500 will-change-transform"
+  aria-hidden="true">
+  <!-- Backdrop -->
+  <div id="etl-backdrop" class="hidden fixed inset-0 bg-black/30"></div>
+
+  <!-- Panel -->
+  <div class="relative mx-auto max-w-screen-xl">
+    <div class="mx-4 mt-3 rounded-2xl shadow-2xl ring-1 ring-black/5
+                bg-white overflow-hidden">
+      <div class="flex flex-col md:flex-row">
+        <!-- Accent -->
+        <div class="md:w-2 rounded-none md:rounded-l-2xl"
+             style="background:#FF6C0E"></div>
+
+        <!-- Content -->
+        <div class="flex-1 p-6 md:p-8">
+          <p class="uppercase tracking-wide text-xs font-semibold text-slate-500">
+            Announcement
+          </p>
+          <h2 class="mt-1 text-2xl md:text-3xl font-bold text-slate-900">
+            London Autumn ’25 applications are now open
+          </h2>
+          <p class="mt-2 text-slate-600">
+            3-week window • Early September deadline • London + Hybrid.  
+            If you’re building for learning, we’ll help you learn faster.
+          </p>
+
+          <div class="mt-4">
+            <a href="#apply"
+               class="inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold
+                      text-white"
+               style="background:#FF6C0E">
+              Apply Now
+            </a>
+          </div>
+
+          <div class="mt-4 flex items-center gap-4">
+            <label class="inline-flex items-center gap-2 text-sm text-slate-600">
+              <input id="etl-dontshow" type="checkbox" class="h-4 w-4 rounded border-slate-300">
+              Don’t show again for 7 days
+            </label>
+            <button id="etl-dismiss"
+                    class="ml-auto text-sm font-medium text-slate-500 hover:text-slate-700">
+              Dismiss
+            </button>
+          </div>
+        </div>
+
+        <!-- Close (X) -->
+        <button id="etl-close" aria-label="Close announcement"
+                class="absolute right-3 top-3 rounded-full p-2 text-slate-500 hover:bg-slate-100">
+          <!-- X icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

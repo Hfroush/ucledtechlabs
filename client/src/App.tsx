@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Home from "@/pages/home";
 import Apply from "@/pages/apply";
 import Admin from "@/pages/admin";
+import Login from "@/pages/login";
 import NotFound from "@/pages/not-found";
 import Accessibility from "@/pages/accessibility";
 import PrivacyCookies from "@/pages/privacy-cookies";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/paris" component={Paris} />
         <Route path="/past-programs-partners" component={PastProgramsPartnersPage} />
         <Route path="/admin" component={Admin} />
+        <Route path="/login" component={Login} />
         <Route path="/accessibility" component={Accessibility} />
         <Route path="/privacy-cookies" component={PrivacyCookies} />
         <Route path="/disclaimer" component={Disclaimer} />

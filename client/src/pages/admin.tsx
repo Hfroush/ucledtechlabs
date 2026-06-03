@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { apiUrl } from "@/lib/queryClient";
 
 interface Application {
   id: number;
@@ -24,6 +26,7 @@ interface InterestRegistration {
 }
 
 export default function Admin() {
+  const [, navigate] = useLocation();
   const [applications, setApplications] = useState<Application[]>([]);
   const [interests, setInterests] = useState<InterestRegistration[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,10 +35,17 @@ export default function Admin() {
   useEffect(() => {
     async function fetchData() {
       try {
-        // Fetch both endpoints simultaneously
+        // Check authentication first
+        const authRes = await fetch(apiUrl("/api/auth/user"), { credentials: "include" });
+        if (authRes.status === 401) {
+          navigate("/login");
+          return;
+        }
+
+        // Fetch both data endpoints simultaneously
         const [interestsResponse, applicationsResponse] = await Promise.all([
-          fetch("/api/interest-registrations"),
-          fetch("/api/applications")
+          fetch(apiUrl("/api/interest-registrations"), { credentials: "include" }),
+          fetch(apiUrl("/api/applications"), { credentials: "include" }),
         ]);
 
         if (!interestsResponse.ok || !applicationsResponse.ok) {
@@ -50,7 +60,7 @@ export default function Admin() {
         setInterests(interestsData || []);
         setApplications(applicationsData || []);
         setLoading(false);
-        
+
       } catch (err) {
         console.error("Fetch error:", err);
         setError(err instanceof Error ? err.message : "Unknown error occurred");
@@ -59,7 +69,7 @@ export default function Admin() {
     }
 
     fetchData();
-  }, []);
+  }, [navigate]);
 
   if (loading) {
     return (
@@ -86,7 +96,18 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+          <button
+            onClick={async () => {
+              await fetch(apiUrl("/api/logout"), { method: "POST", credentials: "include" });
+              navigate("/login");
+            }}
+            className="px-4 py-2 text-sm font-medium text-white bg-gray-700 rounded hover:bg-gray-800"
+          >
+            Log out
+          </button>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Applications */}

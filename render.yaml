@@ -15,3 +15,9 @@ services:
         generateValue: true
       - key: FRONTEND_URL
         sync: false  # set to your Vercel URL, e.g. https://ucledtechlabs.vercel.app
+      - key: CLOUDINARY_URL
+        sync: false  # set to your Cloudinary URL, e.g. cloudinary://api_key:api_secret@cloud_name
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false  # set a strong password in the Render dashboard
