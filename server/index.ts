@@ -77,12 +77,12 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
+  // In development: use Vite dev server middleware
+  // In production split-deploy (Render backend only): skip static serving — frontend is on Vercel
+  // In production monolith (frontend + backend together): serve dist/public
   if (app.get("env") === "development") {
     await setupVite(app, server);
-  } else {
+  } else if (!process.env.BACKEND_ONLY) {
     serveStatic(app);
   }
 

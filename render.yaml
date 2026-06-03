@@ -13,6 +13,8 @@ services:
         sync: false
       - key: SESSION_SECRET
         generateValue: true
+      - key: BACKEND_ONLY
+        value: "true"  # skip static file serving — frontend is on Vercel
       - key: FRONTEND_URL
         sync: false  # set to your Vercel URL, e.g. https://ucledtechlabs.vercel.app
       - key: CLOUDINARY_URL
