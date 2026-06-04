@@ -8,9 +8,12 @@ const app = express();
 // Trust Render's reverse proxy so secure cookies work over HTTPS
 app.set("trust proxy", 1);
 
-// CORS — allow Vercel frontend and local dev
+// CORS — allow custom domain, Vercel preview URL, and local dev
+// FRONTEND_URL can be a comma-separated list of origins
 const allowedOrigins = [
-  process.env.FRONTEND_URL,        // set this on Render to your Vercel URL
+  ...(process.env.FRONTEND_URL
+    ? process.env.FRONTEND_URL.split(",").map(o => o.trim())
+    : []),
   "http://localhost:5173",
   "http://localhost:3000",
 ].filter(Boolean) as string[];
