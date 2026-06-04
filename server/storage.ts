@@ -259,8 +259,6 @@ export class DatabaseStorage implements IStorage {
       // Handle date field
       dateOfBirth: data.dateOfBirth || null,
     };
-
-    console.log('Processed data for database insertion:', JSON.stringify(processedData, null, 2));
     console.log('Decimal field values:', {
       monthlyRecurringRevenue: processedData.monthlyRecurringRevenue,
       companyValuation: processedData.companyValuation,
@@ -379,11 +377,12 @@ export class DatabaseStorage implements IStorage {
       // Handle numeric fields
       numberOfEmployees: data.numberOfEmployees,
       investmentRounds: data.investmentRounds || null,
-      // Handle decimal fields — Drizzle decimal columns expect string representation
+      // Handle decimal fields — Drizzle decimal columns expect string representation.
+      // Empty strings ("") must be converted to null; they are not valid numeric input.
       monthlyRecurringRevenue: data.monthlyRecurringRevenue != null ? String(data.monthlyRecurringRevenue) : null,
-      companyValuation: data.companyValuation != null ? String(data.companyValuation) : null,
-      plannedRaiseAmount: data.plannedRaiseAmount != null ? String(data.plannedRaiseAmount) : null,
-      plannedRaiseValuation: data.plannedRaiseValuation != null ? String(data.plannedRaiseValuation) : null,
+      companyValuation: (data.companyValuation != null && data.companyValuation !== "") ? String(data.companyValuation) : null,
+      plannedRaiseAmount: (data.plannedRaiseAmount != null && data.plannedRaiseAmount !== "") ? String(data.plannedRaiseAmount) : null,
+      plannedRaiseValuation: (data.plannedRaiseValuation != null && data.plannedRaiseValuation !== "") ? String(data.plannedRaiseValuation) : null,
       // Handle date field
       dateOfBirth: data.dateOfBirth || null,
     };
