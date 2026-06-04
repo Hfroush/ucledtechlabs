@@ -317,8 +317,18 @@ const FORM_STEPS = [
 ];
 
 
+// Required fields per step — used for per-step validation and error navigation
+const STEP_FIELDS: Record<number, (keyof ApplicationForm)[]> = {
+  1: ["fullName", "email"],
+  2: ["companyName", "hqLocation", "startupStage", "businessModel", "numberOfEmployees", "monthlyRecurringRevenue"],
+  3: ["problemDescription", "problemCauses", "edtechDomains", "relevantExperience", "keyGroupAffected", "problemImpact"],
+  4: ["aiProblemSolving", "aiDevelopmentStage"],
+  5: ["elevatorPitch", "solutionExplanation", "programGoals"],
+};
+
 export default function Apply() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [visitedSteps, setVisitedSteps] = useState<Set<number>>(new Set([1]));
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [isUploading, setIsUploading] = useState(false);
@@ -424,56 +434,60 @@ export default function Apply() {
 
 
   const onSubmit = async (data: ApplicationForm) => {
-    // Block premature submissions - only allow on final step
     if (currentStep !== FORM_STEPS.length) {
       toast({
         title: "Please Complete All Steps",
-        description: `You're currently on step ${currentStep} of ${FORM_STEPS.length}. Please complete all steps before submitting.`,
+        description: `You're on step ${currentStep} of ${FORM_STEPS.length}. Complete all steps before submitting.`,
         variant: "destructive",
       });
       return;
     }
-    
-    // Validate all required fields before submission
+
+    // Validate all fields
     const isValid = await form.trigger();
     if (!isValid) {
+      setAttempted(true);
+      // Find the first step that has errors and navigate there
+      const errorFieldNames = Object.keys(form.formState.errors);
+      for (let step = 1; step <= FORM_STEPS.length; step++) {
+        const stepFieldNames = (STEP_FIELDS[step] || []).map(String);
+        if (errorFieldNames.some(f => stepFieldNames.includes(f))) {
+          setCurrentStep(step);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          toast({
+            title: `Errors on Step ${step}: ${FORM_STEPS[step - 1].title}`,
+            description: "Please complete the highlighted fields before submitting.",
+            variant: "destructive",
+          });
+          return;
+        }
+      }
+      // Fallback if we can't pin it to a step
       toast({
         title: "Please Complete Required Fields",
         description: "Some required fields are missing or invalid. Please review the form.",
         variant: "destructive",
       });
-      setAttempted(true);
       return;
     }
-    
-    // Normalize payload using submit adapter before API call
+
     try {
       const normalizedPayload = normalizeForSubmit(data);
       submitMutation.mutate(normalizedPayload);
     } catch (error: any) {
-      // Handle adapter validation errors with specific field targeting
       if (error.message === "mrr_parse" || error.message === "mrr_required") {
-        form.setError("monthlyRecurringRevenue", { 
-          type: "manual", 
-          message: "Select a valid MRR option" 
-        });
+        form.setError("monthlyRecurringRevenue", { type: "manual", message: "Select a valid MRR option" });
+        setCurrentStep(2);
       } else if (error.message === "relevantExperience_required") {
-        form.setError("relevantExperience", { 
-          type: "manual", 
-          message: "Please select your experience level" 
-        });
+        form.setError("relevantExperience", { type: "manual", message: "Please select your experience level" });
+        setCurrentStep(3);
       } else if (error.message === "problemCauses_required") {
-        form.setError("problemCauses", { 
-          type: "manual", 
-          message: "Please select at least one problem cause" 
-        });
+        form.setError("problemCauses", { type: "manual", message: "Please select at least one problem cause" });
+        setCurrentStep(3);
       } else if (error.message === "keyGroupAffected_required") {
-        form.setError("keyGroupAffected", { 
-          type: "manual", 
-          message: "Please specify the affected group" 
-        });
+        form.setError("keyGroupAffected", { type: "manual", message: "Please specify the affected group" });
+        setCurrentStep(3);
       } else {
-        // Fallback error handling
         toast({
           title: "Submission Error",
           description: "Please check your form data and try again.",
@@ -481,6 +495,7 @@ export default function Apply() {
         });
       }
       setAttempted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
   
@@ -533,10 +548,20 @@ export default function Apply() {
     }
   };
 
-  const nextStep = () => {
+  const nextStep = async () => {
+    // Validate only the fields on the current step before advancing
+    const stepFields = STEP_FIELDS[currentStep];
+    if (stepFields && stepFields.length > 0) {
+      const isValid = await form.trigger(stepFields);
+      if (!isValid) {
+        setAttempted(true);
+        return; // Stay on current step so user can see errors
+      }
+    }
     if (currentStep < FORM_STEPS.length) {
-      setCurrentStep(currentStep + 1);
-      // Scroll to top of page
+      const next = currentStep + 1;
+      setCurrentStep(next);
+      setVisitedSteps(prev => new Set(Array.from(prev).concat(next)));
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -544,7 +569,14 @@ export default function Apply() {
   const prevStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
-      // Scroll to top of page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const goToStep = (stepId: number) => {
+    // Only allow jumping to already-visited steps
+    if (visitedSteps.has(stepId)) {
+      setCurrentStep(stepId);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -652,28 +684,35 @@ export default function Apply() {
             <Progress value={progressPercentage} className="h-2" />
           </div>
 
-          {/* Step Indicators */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {/* Step Indicators — clickable for visited steps */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
             {FORM_STEPS.map((step) => {
               const Icon = step.icon;
               const isActive = currentStep === step.id;
-              const isCompleted = currentStep > step.id;
-              
+              const isCompleted = visitedSteps.has(step.id) && currentStep !== step.id;
+              const isClickable = visitedSteps.has(step.id);
+
               return (
-                <div
+                <button
                   key={step.id}
-                  className={`text-center p-4 rounded-lg border transition-colors ${
+                  type="button"
+                  onClick={() => goToStep(step.id)}
+                  disabled={!isClickable}
+                  className={`text-center p-3 rounded-lg border transition-colors ${
                     isActive
                       ? "bg-[#e57c00] text-white border-[#e57c00]"
                       : isCompleted
-                      ? "bg-green-50 text-green-700 border-green-200"
-                      : "bg-gray-50 text-gray-500 border-gray-200"
+                      ? "bg-green-50 text-green-700 border-green-200 cursor-pointer hover:bg-green-100"
+                      : "bg-gray-50 text-gray-400 border-gray-200 cursor-not-allowed"
                   }`}
                 >
-                  <Icon className="w-6 h-6 mx-auto mb-2" />
-                  <h3 className="font-medium text-sm">{step.title}</h3>
-                  <p className="text-xs opacity-75">{step.description}</p>
-                </div>
+                  <Icon className="w-5 h-5 mx-auto mb-1" />
+                  <h3 className="font-medium text-xs">{step.title}</h3>
+                  <p className="text-xs opacity-75 hidden sm:block">{step.description}</p>
+                  {isCompleted && (
+                    <span className="text-xs font-medium mt-1 block">✓</span>
+                  )}
+                </button>
               );
             })}
           </div>
