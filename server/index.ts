@@ -70,9 +70,6 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  // Seed admin user from env vars if they don't exist yet
-  await seedAdminUser();
-
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -99,5 +96,8 @@ app.use((req, res, next) => {
     reusePort: true,
   }, () => {
     log(`serving on port ${port}`);
+    // Seed admin user after server is listening — runs non-blocking so DB
+    // connection issues cannot prevent the server from binding to its port
+    seedAdminUser().catch(err => log(`Admin seed error: ${err.message}`));
   });
 })();
