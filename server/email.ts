@@ -20,7 +20,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<boolean>
   try {
     const msg = {
       to: 'info@ucledtechlabs.com',
-      from: 'noreply@ucledtechlabs.com', // This should be a verified sender in SendGrid
+      from: 'h.froushan@ucledtechlabs.com', // Verified Single Sender in SendGrid
       replyTo: data.email,
       subject: `New Contact Form Submission from ${data.name}`,
       text: `
