@@ -9,7 +9,7 @@ import {
   insertInterestRegistrationSchema,
   type Application
 } from "@shared/schema";
-import { sendContactEmail, type ContactEmailData } from "./email";
+import { sendContactEmail, sendInterestRegistrationEmail, type ContactEmailData } from "./email";
 import { requireAuth } from "./auth";
 import { z } from "zod";
 import multer from "multer";
@@ -436,24 +436,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Interest registration endpoint
   app.post("/api/interest-registrations", async (req, res) => {
     try {
-      console.log("POST /api/interest-registrations - Request body:", req.body);
       const validatedData = insertInterestRegistrationSchema.parse(req.body);
-      console.log("Validated data:", validatedData);
       const registration = await storage.createInterestRegistration(validatedData);
-      console.log("Created registration:", registration);
+
+      // Send notification email — non-blocking, failure doesn't affect the response
+      sendInterestRegistrationEmail({
+        firstName: registration.firstName,
+        lastName: registration.lastName,
+        email: registration.email,
+        startupName: registration.startupName,
+        hqLocation: registration.hqLocation,
+        companyWebsite: registration.companyWebsite,
+        currentStatus: registration.currentStatus,
+        areasOfInterest: registration.areasOfInterest,
+      }).catch(err => console.error("Interest registration email failed:", err));
+
       res.json({ success: true, registration });
     } catch (error) {
       console.error("Interest registration error:", error);
       if (error instanceof z.ZodError) {
-        res.status(400).json({ 
-          success: false, 
-          message: "Validation failed", 
-          errors: error.errors 
+        res.status(400).json({
+          success: false,
+          message: "Validation failed",
+          errors: error.errors
         });
       } else {
-        res.status(500).json({ 
-          success: false, 
-          message: "Failed to register interest" 
+        res.status(500).json({
+          success: false,
+          message: "Failed to register interest"
         });
       }
     }
