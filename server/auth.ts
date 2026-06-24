@@ -7,9 +7,9 @@ import { Strategy as LocalStrategy } from "passport-local";
 // keeps the serverless bundle clean. Hashes are wire-compatible with bcrypt,
 // so existing admin password hashes verify unchanged.
 import bcrypt from "bcryptjs";
-import { pool } from "./db";
-import { storage } from "./storage";
-import type { User } from "@shared/schema";
+import { pool } from "./db.js";
+import { storage } from "./storage.js";
+import type { User } from "../shared/schema.js";
 
 const PgSession = connectPgSimple(session);
 

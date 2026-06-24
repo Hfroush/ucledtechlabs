@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Mail, Send } from "lucide-react";
@@ -23,27 +24,22 @@ type ContactForm = z.infer<typeof contactSchema>;
 export default function ContactForm() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
+    defaultValues: { name: "", email: "", message: "" },
   });
 
   const mutation = useMutation({
     mutationFn: (data: ContactForm) => apiRequest("POST", "/api/contact", data),
-    onSuccess: () => {
+    onMutate: () => {
+      // Optimistically show success state immediately
       setIsSubmitted(true);
       form.reset();
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for contacting us. We'll get back to you soon.",
-      });
     },
     onError: (error: Error) => {
+      // Rollback on failure
+      setIsSubmitted(false);
       toast({
         title: "Failed to send message",
         description: error.message || "Please try again later.",
@@ -71,10 +67,7 @@ export default function ContactForm() {
               <p className="text-gray-600 mb-6">
                 Thank you for reaching out. We've received your message and will respond within 24 hours.
               </p>
-              <Button 
-                onClick={() => setIsSubmitted(false)}
-                variant="outline"
-              >
+              <Button onClick={() => setIsSubmitted(false)} variant="outline">
                 Send Another Message
               </Button>
             </CardContent>
@@ -90,7 +83,7 @@ export default function ContactForm() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Get in Touch</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Have questions about our programs or want to learn more about EdTech innovation? 
+            Have questions about our programs or want to learn more about EdTech innovation?
             We'd love to hear from you.
           </p>
         </div>
@@ -148,23 +141,15 @@ export default function ContactForm() {
                 )}
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full"
-                disabled={mutation.isPending}
-              >
-                {mutation.isPending ? (
-                  <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Sending...
-                  </>
-                ) : (
-                  <>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button type="submit" className="w-full" disabled={mutation.isPending}>
                     <Send className="w-4 h-4 mr-2" />
                     Send Message
-                  </>
-                )}
-              </Button>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Submit your message to the UCL EdTech Labs team</TooltipContent>
+              </Tooltip>
             </form>
           </CardContent>
         </Card>

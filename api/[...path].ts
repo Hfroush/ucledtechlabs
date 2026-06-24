@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "http";
-import { createApp } from "../server/app";
+import { createApp } from "../server/app.js";
 
 // Vercel serverless catch-all for every /api/* route. The whole Express app
 // runs inside a single function — Express handles internal routing. The app

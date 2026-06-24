@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Testimonial {
   id: string;
@@ -8,7 +10,11 @@ interface Testimonial {
   company: string;
 }
 
+const INITIAL_VISIBLE = 4;
+
 export default function FounderTestimonials() {
+  const [showAll, setShowAll] = useState(false);
+
   const testimonials: Testimonial[] = [
     {
       id: "1",
@@ -68,6 +74,8 @@ export default function FounderTestimonials() {
     }
   ];
 
+  const visible = showAll ? testimonials : testimonials.slice(0, INITIAL_VISIBLE);
+
   return (
     <section className="bg-slate-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,8 +86,8 @@ export default function FounderTestimonials() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {testimonials.map((testimonial) => (
+        <div className="grid md:grid-cols-2 gap-8">
+          {visible.map((testimonial) => (
             <div key={testimonial.id} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex items-start mb-4">
                 <Quote className="text-primary h-8 w-8 mr-3 flex-shrink-0 mt-1" />
@@ -87,15 +95,14 @@ export default function FounderTestimonials() {
                   "{testimonial.quote}"
                 </p>
               </div>
-              
+
               <div className="flex items-center mt-6 pt-4 border-t border-gray-100">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center mr-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <img
                     src={`/avatars/${testimonial.name.toLowerCase().replace(/\s+/g, '-')}.png`}
                     alt={`${testimonial.name} headshot`}
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      // Fallback to initials if photo fails to load
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
                       const fallback = target.parentElement?.querySelector('.fallback-initials');
@@ -119,6 +126,18 @@ export default function FounderTestimonials() {
             </div>
           ))}
         </div>
+
+        {testimonials.length > INITIAL_VISIBLE && (
+          <div className="text-center mt-10">
+            <Button
+              variant="outline"
+              onClick={() => setShowAll(!showAll)}
+              className="px-8"
+            >
+              {showAll ? "Show fewer" : `See all ${testimonials.length} testimonials`}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -58,7 +58,7 @@ export default function StartupsSection() {
       websiteUrl: "https://linkythinks.com"
     },
     {
-      id: "knowledgehook",
+      id: "spendsafe",
       name: "Spendsafe",
       description: "Spendsafe is Canada's first* Mastercard®-backed financial education platform for youth aged 6 to 18, combining a secure prepaid card, real-time AI coaching, and dynamic parent-child tools to build lifelong money skills through everyday transactions.",
       sector: "Financial literacy for kids and families",

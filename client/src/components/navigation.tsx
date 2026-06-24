@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Menu } from "lucide-react";
 import { Link } from "wouter";
 import uclLogo from "@assets/ucl-logo.webp";
@@ -11,10 +12,9 @@ export default function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      window.scrollTo({ top: section.offsetTop, behavior: "smooth" });
       setIsOpen(false);
     } else {
-      // If section not found, navigate to homepage first
       window.location.href = `/#${sectionId}`;
     }
   };
@@ -24,58 +24,89 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" onClick={() => {
-              if (window.location.pathname === '/') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}>
-              <img 
-                src={uclLogo} 
-                alt="UCL EdTech Labs" 
-                className="h-10 w-auto cursor-pointer hover:opacity-80 transition-opacity"
-              />
-            </Link>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link href="/" onClick={() => {
+                  if (window.location.pathname === '/') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}>
+                  <img
+                    src={uclLogo}
+                    alt="UCL EdTech Labs"
+                    className="h-10 w-auto cursor-pointer hover:opacity-80 transition-opacity"
+                  />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>Go to homepage</TooltipContent>
+            </Tooltip>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <button 
-                onClick={() => scrollToSection("methodology")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Methodology
-              </button>
-              <button 
-                onClick={() => scrollToSection("startups")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Startups
-              </button>
-              <Link
-                href="/autumn-2025"
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                London
-              </Link>
-              <Link
-                href="/paris"
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Paris
-              </Link>
-              <Link
-                href="/past-programs-partners"
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Supporters and Programs
-              </Link>
-              <Button 
-                onClick={() => scrollToSection("applications")}
-                className="bg-[#e57c00] text-white hover:bg-orange-600"
-              >
-                Register Interest
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    onClick={() => scrollToSection("methodology")}
+                    className="text-gray-700 hover:text-primary transition-colors"
+                  >
+                    Methodology
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>Learn about our evidence-led program approach</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    onClick={() => scrollToSection("startups")}
+                    className="text-gray-700 hover:text-primary transition-colors"
+                  >
+                    Startups
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>See the EdTech startups in our portfolio</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link href="/autumn-2025" className="text-gray-700 hover:text-primary transition-colors">
+                    London
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>Autumn 2025 London cohort details</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link href="/paris" className="text-gray-700 hover:text-primary transition-colors">
+                    Paris
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>Paris cohort details</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link href="/past-programs-partners" className="text-gray-700 hover:text-primary transition-colors">
+                    Supporters and Programs
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>View past programs and our partners</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    onClick={() => scrollToSection("applications")}
+                    className="bg-accent text-white hover:bg-[#cc6e00]"
+                  >
+                    Register Interest
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Be first to know when applications open</TooltipContent>
+              </Tooltip>
             </div>
           </div>
 
@@ -83,19 +114,24 @@ export default function Navigation() {
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                </Button>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <Menu className="h-6 w-6" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Open navigation menu</TooltipContent>
+                </Tooltip>
               </SheetTrigger>
               <SheetContent>
                 <div className="flex flex-col space-y-4 mt-8">
-                  <button 
+                  <button
                     onClick={() => scrollToSection("methodology")}
                     className="text-left text-gray-700 hover:text-primary transition-colors py-2"
                   >
                     Methodology
                   </button>
-                  <button 
+                  <button
                     onClick={() => scrollToSection("startups")}
                     className="text-left text-gray-700 hover:text-primary transition-colors py-2"
                   >
@@ -122,12 +158,12 @@ export default function Navigation() {
                   >
                     Supporters and Programs
                   </Link>
-                  <Button 
+                  <Button
                     onClick={() => {
                       scrollToSection("applications");
                       setIsOpen(false);
                     }}
-                    className="bg-[#e57c00] text-white hover:bg-orange-600 w-full mt-4"
+                    className="bg-accent text-white hover:bg-[#cc6e00] w-full mt-4"
                   >
                     Register Interest
                   </Button>

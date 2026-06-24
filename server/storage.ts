@@ -9,8 +9,8 @@ import {
   type InsertApplicationSubmit,
   type InterestRegistration,
   type InsertInterestRegistration
-} from "@shared/schema";
-import { db } from "./db";
+} from "../shared/schema.js";
+import { db } from "./db.js";
 import { eq } from "drizzle-orm";
 
 export interface IStorage {

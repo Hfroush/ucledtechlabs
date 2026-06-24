@@ -1,15 +1,15 @@
 import type { Express } from "express";
 import express from "express";
-import { storage } from "./storage";
+import { storage } from "./storage.js";
 import {
   insertApplicationSchema,
   insertApplicationDraftSchema,
   insertApplicationSubmitSchema,
   insertInterestRegistrationSchema,
   type Application
-} from "@shared/schema";
-import { sendContactEmail, sendInterestRegistrationEmail, type ContactEmailData } from "./email";
-import { requireAuth } from "./auth";
+} from "../shared/schema.js";
+import { sendContactEmail, sendInterestRegistrationEmail, type ContactEmailData } from "./email.js";
+import { requireAuth } from "./auth.js";
 import { z } from "zod";
 import multer from "multer";
 import path from "path";

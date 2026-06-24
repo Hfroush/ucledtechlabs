@@ -1,19 +1,14 @@
 import { Linkedin, Mail } from "lucide-react";
 import { Link } from "wouter";
+import uclLogo from "@assets/ucl-logo.webp";
 
 export default function Footer() {
-  const programs = [
-    { name: "London Program", href: "#programs" },
-    { name: "Paris Program", href: "#programs" },
-    { name: "Toronto Program", href: "#programs" },
-    { name: "Dubai Program", href: "#programs" },
-  ];
-
-  const resources = [
-    { name: "Methodology", href: "#methodology" },
-    { name: "Success Stories", href: "#startups" },
-    { name: "Mentor Network", href: "#" },
-    { name: "Alumni Community", href: "#" },
+  const quickLinks = [
+    { name: "Methodology", href: "/#methodology" },
+    { name: "Success Stories", href: "/#startups" },
+    { name: "London Programme", href: "/autumn-2025" },
+    { name: "Paris Programme", href: "/paris" },
+    { name: "Supporters & Partners", href: "/past-programs-partners" },
   ];
 
   const policies = [
@@ -25,52 +20,62 @@ export default function Footer() {
     { name: "Slavery Statement", href: "/slavery-statement" },
   ];
 
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId.replace("#", ""));
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <div className="mb-6">
-              <span className="text-3xl font-bold text-[#c57e00]">UCL Edtech Labs</span>
-            </div>
-            <p className="text-gray-300 mb-6 max-w-md">
+        <div className="grid lg:grid-cols-3 gap-12">
+
+          {/* Brand */}
+          <div>
+            <img
+              src={uclLogo}
+              alt="UCL Edtech Labs"
+              className="h-10 w-auto mb-6 brightness-0 invert"
+            />
+            <p className="text-gray-300 mb-6 text-sm leading-relaxed">
               Transforming education through innovation. Join our global community of EdTech entrepreneurs making learning accessible, engaging, and effective worldwide.
             </p>
             <div className="flex space-x-4">
               <a href="https://www.linkedin.com/company/ucl-edtech-labs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-5 w-5" />
               </a>
               <a href="mailto:info@ucledtechlabs.com" className="text-gray-400 hover:text-white transition-colors">
-                <Mail className="h-6 w-6" />
+                <Mail className="h-5 w-5" />
               </a>
             </div>
           </div>
-          
-          
+
+          {/* Quick links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Policies</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Explore</h4>
             <ul className="space-y-2 text-gray-300">
-              {policies.map((policy) => (
-                <li key={policy.name}>
-                  <Link href={policy.href}>
-                    <span className="hover:text-white transition-colors cursor-pointer">
-                      {policy.name}
-                    </span>
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="hover:text-white transition-colors text-sm">
+                    {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
+          {/* Policies */}
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Policies</h4>
+            <ul className="space-y-2 text-gray-300">
+              {policies.map((policy) => (
+                <li key={policy.name}>
+                  <Link href={policy.href} className="hover:text-white transition-colors text-sm">
+                    {policy.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>© 2025 UCL Edtech Labs. All rights reserved. Transforming education, one startup at a time.</p>
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+          <p>© 2025 UCL Edtech Labs. All rights reserved.</p>
         </div>
       </div>
     </footer>

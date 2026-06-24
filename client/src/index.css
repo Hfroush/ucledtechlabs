@@ -28,8 +28,8 @@
   --primary-foreground: hsl(213, 100%, 97%);
   --secondary: hsl(258, 69%, 61%);
   --secondary-foreground: hsl(210, 40%, 98%);
-  --accent: hsl(43, 89%, 38%);
-  --accent-foreground: hsl(20, 14.3%, 4.1%);
+  --accent: hsl(33, 100%, 45%);
+  --accent-foreground: hsl(0, 0%, 100%);
   --success: hsl(142, 76%, 36%);
   --success-foreground: hsl(355, 7%, 97%);
   --destructive: hsl(0, 84.2%, 60.2%);
@@ -53,8 +53,8 @@
   --primary-foreground: hsl(213, 100%, 97%);
   --secondary: hsl(258, 69%, 61%);
   --secondary-foreground: hsl(210, 40%, 98%);
-  --accent: hsl(43, 89%, 38%);
-  --accent-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(33, 100%, 45%);
+  --accent-foreground: hsl(0, 0%, 100%);
   --success: hsl(142, 76%, 36%);
   --success-foreground: hsl(355, 7%, 97%);
   --destructive: hsl(0, 62.8%, 30.6%);
@@ -134,7 +134,7 @@
   }
   
   .text-accent {
-    color: hsl(43, 89%, 38%);
+    color: hsl(33, 100%, 45%);
   }
   
   .text-success {
@@ -150,7 +150,7 @@
   }
   
   .bg-accent {
-    background-color: hsl(43, 89%, 38%);
+    background-color: hsl(33, 100%, 45%);
   }
   
   .bg-success {

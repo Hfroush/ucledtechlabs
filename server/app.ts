@@ -1,6 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
-import { setupAuth } from "./auth";
+import { registerRoutes } from "./routes.js";
+import { setupAuth } from "./auth.js";
 
 // Local log helper. Defined here (not imported from ./vite) so this module
 // never pulls vite into the serverless bundle.

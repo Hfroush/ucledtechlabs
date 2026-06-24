@@ -1,5 +1,33 @@
 import spotline_on_founder from "@assets/spotline-on-founder.webp";
-import presenting from "@assets/presenting.webp";
+
+const pillars = [
+  {
+    emoji: "🚀",
+    title: "Beyond Traditional Accelerators",
+    body: "Immersive, cohort-based experiences that go deeper than a typical startup programme."
+  },
+  {
+    emoji: "🤝",
+    title: "A Collaborative Community",
+    body: "Founders learn from seasoned experts and from each other, building lasting peer networks."
+  },
+  {
+    emoji: "🧠",
+    title: "World-Leading Curriculum",
+    body: "Developed with UCL, blending research, entrepreneurship, and real-world application."
+  },
+  {
+    emoji: "📊",
+    title: "Evidence-Driven Decisions",
+    body: "Every startup validates assumptions using empirical insights and structured research methods."
+  },
+  {
+    emoji: "🌍",
+    title: "Global Impact",
+    body: "We prepare founders to scale solutions that make meaningful contributions to education worldwide."
+  }
+];
+
 export default function MethodologySection() {
   const methodologies = [
     {
@@ -10,26 +38,26 @@ export default function MethodologySection() {
     },
     {
       step: 2,
-      title: "Business modelling & customer development",
-      description: "Our business modelling approach provides you with the tools to grow a sustainable education technology business by ensuring you have the best product-market fit",
+      title: "Business Modelling & Customer Development",
+      description: "Our business modelling approach provides you with the tools to grow a sustainable education technology business by ensuring you have the best product-market fit.",
       color: "bg-secondary"
     },
     {
       step: 3,
-      title: "Education technology research methods & ethics",
-      description: "You will be given an overview of research methods in the learning sciences, in order to understand the best way to start proving and improving your product",
+      title: "EdTech Research Methods & Ethics",
+      description: "You will be given an overview of research methods in the learning sciences, in order to understand the best way to start proving and improving your product.",
       color: "bg-accent"
     },
     {
       step: 4,
       title: "Sustainable Funding",
-      description: "You will hear about the funding journey of experienced edtech entrepreneurs to understand the options for you, while learning the ways a successful startup raises money",
+      description: "You will hear about the funding journey of experienced edtech entrepreneurs to understand the options for you, while learning the ways a successful startup raises money.",
       color: "bg-success"
     },
     {
       step: 5,
       title: "Pitching & Storytelling",
-      description: "You'll learn how to successfully communicate with strong positioning and a clear narrative. Whether pitching for investment, selling to potential clients or presenting at an event.",
+      description: "You'll learn how to successfully communicate with strong positioning and a clear narrative — whether pitching for investment, selling to clients, or presenting at an event.",
       color: "bg-red-500"
     }
   ];
@@ -37,95 +65,53 @@ export default function MethodologySection() {
   return (
     <section id="methodology" className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Proven Methodology</h2>
-          <div className="text-lg text-gray-600 max-w-4xl mx-auto space-y-6">
-            <div className="flex items-start gap-4">
-              <span className="text-2xl">🚀</span>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2 text-left">Beyond Traditional Accelerators</h3>
-                <p className="text-left">We offer immersive, cohort-based experiences that go deeper than the typical startup programme.</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <span className="text-2xl">🤝</span>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2 text-left">A Collaborative Community</h3>
-                <p className="text-left">Founders learn from seasoned experts and from each other—building lasting peer networks.</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <span className="text-2xl">🧠</span>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2 text-left">World-Leading Methodology</h3>
-                <p className="text-left">Developed with University College London, our curriculum blends research, entrepreneurship, and real-world application.</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <span className="text-2xl">📊</span>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2 text-left">Evidence-Driven Decisions</h3>
-                <p className="text-left">Every startup is guided to validate assumptions using empirical insights and structured research methods.</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-4">
-              <span className="text-2xl">🌍</span>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2 text-left">Global Impact</h3>
-                <p className="text-left">We prepare founders to scale solutions that make sustainable, meaningful contributions to education—locally and internationally.</p>
-              </div>
-            </div>
-          </div>
+
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Proven Methodology</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            We go beyond the typical accelerator. Every session is grounded in UCL research, designed to help you build a product that actually works — and proves it.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-12">
+        {/* Pillars grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {pillars.map((pillar) => (
+            <div key={pillar.title} className="flex items-start gap-3 p-4 rounded-xl bg-slate-50">
+              <span aria-hidden="true" className="text-xl flex-shrink-0 mt-0.5">{pillar.emoji}</span>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">{pillar.title}</h3>
+                <p className="text-sm text-gray-600">{pillar.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Image + all 5 steps */}
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
-            <img 
-              src={spotline_on_founder} 
-              alt="Modern learning environment with collaborative workspace" 
+            <img
+              src={spotline_on_founder}
+              alt="Founder working in a collaborative learning session"
               className="rounded-xl shadow-lg w-full"
             />
           </div>
-          <div className="space-y-8">
-            {methodologies.slice(0, 3).map((method) => (
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold text-gray-900">What you'll cover</h3>
+            {methodologies.map((method) => (
               <div key={method.step} className="flex items-start">
-                <div className={`flex-shrink-0 w-12 h-12 ${method.color} rounded-lg flex items-center justify-center mr-4`}>
-                  <span className="text-white font-bold">{method.step}</span>
+                <div className={`flex-shrink-0 w-10 h-10 ${method.color} rounded-lg flex items-center justify-center mr-4`}>
+                  <span className="text-white font-bold text-sm">{method.step}</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{method.title}</h3>
-                  <p className="text-gray-600">{method.description}</p>
+                  <h4 className="text-base font-bold text-gray-900 mb-1">{method.title}</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">{method.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="space-y-8 mb-16">
-          {methodologies.slice(3).map((method) => (
-            <div key={method.step} className="flex items-start max-w-4xl">
-              <div className={`flex-shrink-0 w-12 h-12 ${method.color} rounded-lg flex items-center justify-center mr-4`}>
-                <span className="text-white font-bold">{method.step}</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{method.title}</h3>
-                <p className="text-gray-600">{method.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex justify-center">
-          <img 
-            src={presenting} 
-            alt="Education innovation workshop with diverse participants" 
-            className="rounded-xl shadow-lg max-w-2xl w-full"
-          />
-        </div>
       </div>
     </section>
   );
