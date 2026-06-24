@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { apiUrl } from "@/lib/queryClient";
+import { apiUrl, queryClient } from "@/lib/queryClient";
 
 export default function Login() {
   const [, navigate] = useLocation();
@@ -27,6 +27,8 @@ export default function Login() {
       if (!res.ok) {
         setError(data.message ?? "Login failed");
       } else {
+        // Clear cached null so admin page re-fetches auth state
+        queryClient.setQueryData(["/api/auth/user"], data.user);
         navigate("/admin");
       }
     } catch {

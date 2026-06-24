@@ -51,7 +51,7 @@ function CardSkeleton() {
 export default function Admin() {
   const [, navigate] = useLocation();
 
-  const { data: user, isLoading: userLoading } = useQuery<{ id: number } | null>({
+  const { data: user, isLoading: userLoading, isError: userError } = useQuery<{ id: number } | null>({
     queryKey: ["/api/auth/user"],
     queryFn: getQueryFn({ on401: "returnNull" }),
   });
@@ -67,10 +67,10 @@ export default function Admin() {
   });
 
   useEffect(() => {
-    if (!userLoading && user === null) {
+    if (!userLoading && (user === null || user === undefined) && !userError) {
       navigate("/login");
     }
-  }, [user, userLoading, navigate]);
+  }, [user, userLoading, userError, navigate]);
 
   const isLoading = userLoading || appsLoading || interestsLoading;
 
@@ -88,7 +88,36 @@ export default function Admin() {
     );
   }
 
-  if (!user) return null;
+  if (userError) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-700 font-medium mb-2">Unable to reach the server</p>
+          <p className="text-sm text-gray-500 mb-4">Check that the API is running and DATABASE_URL is configured.</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 text-sm font-medium text-white bg-gray-700 rounded hover:bg-gray-800"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-50 p-8">
+        <div className="max-w-7xl mx-auto">
+          <Skeleton className="h-9 w-52 mb-8" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <CardSkeleton />
+            <CardSkeleton />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
