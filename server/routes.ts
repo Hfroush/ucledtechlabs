@@ -1,5 +1,4 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import express from "express";
 import { storage } from "./storage";
 import {
@@ -59,7 +58,7 @@ function uploadToCloudinary(buffer: Buffer, originalName: string): Promise<Uploa
   });
 }
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export async function registerRoutes(app: Express): Promise<void> {
   // File upload endpoint for research evidence — streams to Cloudinary
   app.post("/api/upload-research", upload.array('files', 5), async (req, res) => {
     try {
@@ -556,6 +555,4 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.status(401).json({ message: "Not authenticated" });
   });
 
-  const httpServer = createServer(app);
-  return httpServer;
 }

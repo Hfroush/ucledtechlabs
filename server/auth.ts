@@ -3,7 +3,10 @@ import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import bcrypt from "bcrypt";
+// bcryptjs (pure JS) instead of bcrypt — no native binding to compile, which
+// keeps the serverless bundle clean. Hashes are wire-compatible with bcrypt,
+// so existing admin password hashes verify unchanged.
+import bcrypt from "bcryptjs";
 import { pool } from "./db";
 import { storage } from "./storage";
 import type { User } from "@shared/schema";
@@ -25,8 +28,9 @@ export function setupAuth(app: Express) {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-        // SameSite=none is required for cross-domain cookies (Vercel → Render)
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        // Frontend and API are same-origin on Vercel, so lax is correct and
+        // avoids third-party-cookie blocking that SameSite=none can trigger.
+        sameSite: "lax",
       },
     })
   );

@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { CityAutocomplete } from "@/components/ui/city-autocomplete";
 import { validateCity } from "@/lib/cities";
 
@@ -47,6 +48,7 @@ type InterestForm = z.infer<typeof interestSchema>;
 export default function ApplicationForms() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [interestSubmitted, setInterestSubmitted] = useState(false);
 
   const applicationForm = useForm<ApplicationForm>({
     resolver: zodResolver(applicationSchema),
@@ -97,16 +99,27 @@ export default function ApplicationForms() {
   });
 
   const interestMutation = useMutation({
-    mutationFn: (data: InterestForm) => apiRequest("POST", "/api/interest-registrations", data),
-    onSuccess: () => {
-      toast({
-        title: "Interest Registered!",
-        description: "We'll notify you when applications open for future cohorts.",
-      });
+    mutationFn: (data: Omit<InterestForm, "startupStage"> & { currentStatus?: string }) =>
+      apiRequest("POST", "/api/interest-registrations", data),
+    // Retry transient failures (e.g. a cold serverless start) before giving
+    // up, with a short backoff. Validation errors (4xx) are not retried.
+    retry: (failureCount, error: any) => {
+      const status = Number(String(error?.message ?? "").split(":")[0]);
+      if (status >= 400 && status < 500) return false;
+      return failureCount < 3;
+    },
+    retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 8000),
+    onMutate: () => {
+      // Optimistically show success state immediately
+      setInterestSubmitted(true);
       interestForm.reset();
+    },
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/interest-registrations"] });
     },
     onError: (error: any) => {
+      // Rollback on failure
+      setInterestSubmitted(false);
       toast({
         variant: "destructive",
         title: "Registration Failed",
@@ -120,7 +133,9 @@ export default function ApplicationForms() {
   };
 
   const onInterestSubmit = (data: InterestForm) => {
-    interestMutation.mutate(data);
+    // Map client field `startupStage` to the server/DB field `currentStatus`
+    const { startupStage, ...rest } = data;
+    interestMutation.mutate({ ...rest, currentStatus: startupStage });
   };
 
   return (
@@ -134,190 +149,211 @@ export default function ApplicationForms() {
         </div>
 
         <div className="max-w-2xl mx-auto">
-          {/* Interest Registration Form */}
-          <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8">
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Register Your Interest</h3>
-              <p className="text-gray-600">Get notified about future programs and be first to apply when applications open.</p>
-              <div className="flex items-center mt-4">
-                <span className="w-3 h-3 bg-accent rounded-full mr-2"></span>
-                <Badge className="bg-[#e57c00] text-[#ffffff]">Applications Opening Soon</Badge>
-              </div>
-            </div>
-
-            <Form {...interestForm}>
-              <form onSubmit={interestForm.handleSubmit(onInterestSubmit)} className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <FormField
-                    control={interestForm.control}
-                    name="firstName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>First Name *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter your first name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={interestForm.control}
-                    name="lastName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Last Name *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter your last name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+          {interestSubmitted ? (
+            <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 text-center">
+              <div className="flex justify-center mb-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-2xl">
+                  ✓
                 </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Interest Registered!</h3>
+              <p className="text-gray-600 mb-6">
+                We'll notify you when applications open for future cohorts.
+              </p>
+              <Button variant="outline" onClick={() => setInterestSubmitted(false)}>
+                Register Another
+              </Button>
+            </div>
+          ) : (
+            <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Register Your Interest</h3>
+                <p className="text-gray-600">Get notified about future programs and be first to apply when applications open.</p>
+                <div className="flex items-center mt-4">
+                  <span className="w-3 h-3 bg-accent rounded-full mr-2"></span>
+                  <Badge className="bg-[#e57c00] text-[#ffffff]">Applications Opening Soon</Badge>
+                </div>
+              </div>
 
-                <FormField
-                  control={interestForm.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email Address *</FormLabel>
-                      <FormControl>
-                        <Input type="email" placeholder="your@email.com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+              <Form {...interestForm}>
+                <form onSubmit={interestForm.handleSubmit(onInterestSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-2 gap-4">
+                    <FormField
+                      control={interestForm.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>First Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Enter your first name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                <FormField
-                  control={interestForm.control}
-                  name="startupName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Startup Name *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter your startup name" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    <FormField
+                      control={interestForm.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Last Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Enter your last name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
 
-                <FormField
-                  control={interestForm.control}
-                  name="hqLocation"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>HQ Location *</FormLabel>
-                      <FormControl>
-                        <CityAutocomplete
-                          value={field.value}
-                          onValueChange={field.onChange}
-                          placeholder="Select your headquarters location"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={interestForm.control}
-                  name="startupStage"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Startup Stage</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormField
+                    control={interestForm.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email Address *</FormLabel>
                         <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select your startup stage" />
-                          </SelectTrigger>
+                          <Input type="email" placeholder="your@email.com" {...field} />
                         </FormControl>
-                        <SelectContent>
-                          <SelectItem value="idea">Idea</SelectItem>
-                          <SelectItem value="prototype">Prototype</SelectItem>
-                          <SelectItem value="mvp">MVP</SelectItem>
-                          <SelectItem value="go-to-market">Go-to-market</SelectItem>
-                          <SelectItem value="product-market-fit">Product-market fit</SelectItem>
-                          <SelectItem value="investment">Investment</SelectItem>
-                          <SelectItem value="scaling">Scaling</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={interestForm.control}
-                  name="companyWebsite"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Company Website</FormLabel>
-                      <FormControl>
-                        <Input 
-                          type="url" 
-                          placeholder="https://yourcompany.com" 
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                  <FormField
+                    control={interestForm.control}
+                    name="startupName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Startup Name *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter your startup name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={interestForm.control}
-                  name="areasOfInterest"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>What problem are you trying to solve?</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          rows={3} 
-                          placeholder="Describe the problem your organization is working to solve" 
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                  <FormField
+                    control={interestForm.control}
+                    name="hqLocation"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>HQ Location *</FormLabel>
+                        <FormControl>
+                          <CityAutocomplete
+                            value={field.value}
+                            onValueChange={field.onChange}
+                            placeholder="Select your headquarters location"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={interestForm.control}
-                  name="receiveUpdates"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                        />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm font-normal">I'd like to receive updates about UCL Edtech Labs programs, events, and educational resources.</FormLabel>
-                      </div>
-                    </FormItem>
-                  )}
-                />
+                  <FormField
+                    control={interestForm.control}
+                    name="startupStage"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Startup Stage</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select your startup stage" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="idea">Idea</SelectItem>
+                            <SelectItem value="prototype">Prototype</SelectItem>
+                            <SelectItem value="mvp">MVP</SelectItem>
+                            <SelectItem value="go-to-market">Go-to-market</SelectItem>
+                            <SelectItem value="product-market-fit">Product-market fit</SelectItem>
+                            <SelectItem value="investment">Investment</SelectItem>
+                            <SelectItem value="scaling">Scaling</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <Button 
-                  type="submit" 
-                  className="w-full py-4 font-bold hover:bg-yellow-500 bg-[#e57c00] text-[26px] text-[#ffffff]"
-                  disabled={interestMutation.isPending}
-                >
-                  {interestMutation.isPending ? "Registering..." : "Register Interest"}
-                </Button>
+                  <FormField
+                    control={interestForm.control}
+                    name="companyWebsite"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company Website</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="url"
+                            placeholder="https://yourcompany.com"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <p className="text-sm text-gray-500 text-center">
-                  We'll notify you when applications open for future cohorts.
-                </p>
-              </form>
-            </Form>
-          </div>
+                  <FormField
+                    control={interestForm.control}
+                    name="areasOfInterest"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>What problem are you trying to solve?</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            rows={3}
+                            placeholder="Describe the problem your organization is working to solve"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={interestForm.control}
+                    name="receiveUpdates"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                          <FormLabel className="text-sm font-normal">I'd like to receive updates about UCL Edtech Labs programs, events, and educational resources.</FormLabel>
+                        </div>
+                      </FormItem>
+                    )}
+                  />
+
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        type="submit"
+                        className="w-full py-4 font-bold hover:bg-yellow-500 bg-[#e57c00] text-[26px] text-[#ffffff]"
+                        disabled={interestMutation.isPending}
+                      >
+                        Register Interest
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>Submit your interest — we'll notify you when the next cohort opens</TooltipContent>
+                  </Tooltip>
+
+                  <p className="text-sm text-gray-500 text-center">
+                    We'll notify you when applications open for future cohorts.
+                  </p>
+                </form>
+              </Form>
+            </div>
+          )}
         </div>
       </div>
     </section>
