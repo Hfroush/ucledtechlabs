@@ -52,7 +52,7 @@ export default function Admin() {
   const [, navigate] = useLocation();
 
   const { data: user, isLoading: userLoading, isError: userError } = useQuery<{ id: number } | null>({
-    queryKey: ["/api/auth/user"],
+    queryKey: ["/api/me"],
     queryFn: getQueryFn({ on401: "returnNull" }),
   });
 

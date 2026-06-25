@@ -546,7 +546,7 @@ export async function registerRoutes(app: Express): Promise<void> {
     });
   });
 
-  app.get("/api/auth/user", (req, res) => {
+  app.get("/api/me", (req, res) => {
     if (req.isAuthenticated()) {
       const user = req.user as any;
       return res.json({ id: user.id, username: user.username });

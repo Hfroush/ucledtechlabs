@@ -28,7 +28,7 @@ export default function Login() {
         setError(data.message ?? "Login failed");
       } else {
         // Clear cached null so admin page re-fetches auth state
-        queryClient.setQueryData(["/api/auth/user"], data.user);
+        queryClient.setQueryData(["/api/me"], data.user);
         navigate("/admin");
       }
     } catch {
