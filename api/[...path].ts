@@ -15,13 +15,6 @@ function getApp() {
 }
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
-  try {
-    const app = await getApp();
-    app(req, res);
-  } catch (err: any) {
-    console.error("Serverless function init error:", err);
-    (res as any).statusCode = 500;
-    (res as any).setHeader("Content-Type", "application/json");
-    (res as any).end(JSON.stringify({ error: err?.message ?? "Internal server error", stack: err?.stack }));
-  }
+  const app = await getApp();
+  app(req, res);
 }
