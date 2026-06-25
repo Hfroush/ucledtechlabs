@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import express from "express";
+import passport from "passport";
 import { storage } from "./storage.js";
 import {
   insertApplicationSchema,
@@ -525,8 +526,6 @@ export async function registerRoutes(app: Express): Promise<void> {
   });
 
   // Auth routes
-  const passport = (await import("passport")).default;
-
   app.post("/api/login", (req, res, next) => {
     passport.authenticate("local", (err: any, user: any, info: any) => {
       if (err) return next(err);
