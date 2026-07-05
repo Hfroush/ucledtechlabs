@@ -98,6 +98,24 @@ export default function Navigation() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
+                  <Link href="/resources" className="text-gray-700 hover:text-primary transition-colors">
+                    Resources
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>Guides and FAQs on the programme and methodology</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link href="/about" className="text-gray-700 hover:text-primary transition-colors">
+                    About
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>Who we are and what we do</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
                   <Button
                     onClick={() => scrollToSection("applications")}
                     className="bg-accent text-white hover:bg-[#cc6e00]"
@@ -157,6 +175,27 @@ export default function Navigation() {
                     onClick={() => setIsOpen(false)}
                   >
                     Supporters and Programs
+                  </Link>
+                  <Link
+                    href="/resources"
+                    className="block text-left text-gray-700 hover:text-primary transition-colors py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Resources
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="block text-left text-gray-700 hover:text-primary transition-colors py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    About
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="block text-left text-gray-700 hover:text-primary transition-colors py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Contact
                   </Link>
                   <Button
                     onClick={() => {

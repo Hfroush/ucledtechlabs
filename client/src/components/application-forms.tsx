@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import { apiRequest } from "@/lib/queryClient";
+import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -82,6 +83,7 @@ export default function ApplicationForms() {
   const applicationMutation = useMutation({
     mutationFn: (data: ApplicationForm) => apiRequest("POST", "/api/applications", data),
     onSuccess: () => {
+      trackEvent("application_submit", { form_name: "startup_application" });
       toast({
         title: "Application Submitted!",
         description: "Thank you for your application. We'll be in touch soon.",
@@ -115,6 +117,7 @@ export default function ApplicationForms() {
       interestForm.reset();
     },
     onSuccess: () => {
+      trackEvent("interest_registration_submit", { form_name: "interest_registration" });
       queryClient.invalidateQueries({ queryKey: ["/api/interest-registrations"] });
     },
     onError: (error: any) => {

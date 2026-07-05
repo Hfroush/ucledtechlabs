@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { trackEvent } from "@/lib/analytics";
 import { Mail, Send } from "lucide-react";
 
 const contactSchema = z.object({
@@ -36,6 +37,9 @@ export default function ContactForm() {
       // Optimistically show success state immediately
       setIsSubmitted(true);
       form.reset();
+    },
+    onSuccess: () => {
+      trackEvent("contact_form_submit", { form_name: "contact" });
     },
     onError: (error: Error) => {
       // Rollback on failure

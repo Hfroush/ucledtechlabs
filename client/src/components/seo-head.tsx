@@ -22,7 +22,16 @@ export default function SEOHead({
   useEffect(() => {
     // Update document title
     document.title = title;
-    
+
+    // Update canonical URL to the current page (strip query/hash)
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', `https://ucledtechlabs.com${window.location.pathname}`);
+
     // Update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {

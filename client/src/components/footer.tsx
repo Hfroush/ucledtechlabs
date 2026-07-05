@@ -4,11 +4,14 @@ import uclLogo from "@assets/ucl-logo.webp";
 
 export default function Footer() {
   const quickLinks = [
+    { name: "About Us", href: "/about" },
     { name: "Methodology", href: "/#methodology" },
     { name: "Success Stories", href: "/#startups" },
     { name: "London Programme", href: "/autumn-2025" },
     { name: "Paris Programme", href: "/paris" },
     { name: "Supporters & Partners", href: "/past-programs-partners" },
+    { name: "Resources & Guides", href: "/resources" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const policies = [
