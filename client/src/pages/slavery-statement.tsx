@@ -1,6 +1,12 @@
+import SEOHead from "@/components/seo-head";
+
 export default function SlaveryStatement() {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Modern Slavery Statement — UCL EdTech Labs"
+        description="UCL EdTech Labs' commitment to preventing modern slavery and human trafficking in our operations and supply chains."
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Modern Slavery Statement</h1>
         

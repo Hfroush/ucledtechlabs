@@ -8,6 +8,7 @@ import StartupsSection from "@/components/startups-section";
 import FounderTestimonials from "@/components/founder-testimonials";
 import ApplicationForms from "@/components/application-forms";
 import Footer from "@/components/footer";
+import SEOHead from "@/components/seo-head";
 
 export default function Home() {
   useEffect(() => {
@@ -24,6 +25,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <SEOHead
+        title="UCL EdTech Labs — Evidence-Led EdTech Accelerator"
+        description="UCL EdTech Labs is University College London's evidence-driven accelerator for education technology startups. 300+ startups accelerated across London, Paris, Toronto, and Dubai."
+      />
       <Navigation />
       <HeroSection />
       <StatsSection />

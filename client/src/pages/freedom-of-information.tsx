@@ -1,6 +1,12 @@
+import SEOHead from "@/components/seo-head";
+
 export default function FreedomOfInformation() {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Freedom of Information — UCL EdTech Labs"
+        description="How to access information held by UCL EdTech Labs under the Freedom of Information Act 2000, as part of University College London."
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Freedom of Information</h1>
         

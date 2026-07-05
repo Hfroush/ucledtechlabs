@@ -4,14 +4,19 @@ import PastProgramsSection from "@/components/past-programs-section";
 import PartnersSection from "@/components/partners-section";
 import ContactForm from "@/components/contact-form";
 import Footer from "@/components/footer";
+import SEOHead from "@/components/seo-head";
 
 import cityscape_cartoon from "@assets/cityscape-cartoon.webp";
 
 export default function PastProgramsPartnersPage() {
   return (
     <div className="min-h-screen bg-slate-50">
+      <SEOHead
+        title="Past Programmes & Partners — UCL EdTech Labs"
+        description="Explore past UCL EdTech Labs accelerator cohorts and the partners and supporters behind the programme across London, Paris, and Toronto."
+      />
       <Navigation />
-      
+
       {/* Hero Section for Past Programs & Partners */}
       <section 
         className="relative min-h-screen flex items-center justify-center overflow-hidden text-white"

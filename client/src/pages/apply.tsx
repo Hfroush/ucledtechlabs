@@ -18,6 +18,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { CheckCircle, Clock, Users, Target, Lightbulb, ArrowLeft, ArrowRight, HelpCircle } from "lucide-react";
 import { CityAutocomplete } from "@/components/ui/city-autocomplete";
 import { apiRequest, apiUrl } from "@/lib/queryClient";
+import SEOHead from "@/components/seo-head";
 import { useToast } from "@/hooks/use-toast";
 import { validateCity } from "@/lib/cities";
 import Navigation from "@/components/navigation";
@@ -586,6 +587,10 @@ export default function Apply() {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gray-50">
+        <SEOHead
+          title="Apply to UCL EdTech Labs — Accelerator Application"
+          description="Apply to the UCL EdTech Labs accelerator for AI-first education technology startups. Complete the application to join the next cohort."
+        />
         <Navigation />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <Card className="text-center">
@@ -658,6 +663,10 @@ export default function Apply() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEOHead
+        title="Apply to UCL EdTech Labs — Accelerator Application"
+        description="Apply to the UCL EdTech Labs accelerator for AI-first education technology startups. Complete the application to join the next cohort."
+      />
       <Navigation />
       {/* Header Section */}
       <div className="bg-white border-b">

@@ -1,6 +1,12 @@
+import SEOHead from "@/components/seo-head";
+
 export default function Disclaimer() {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Disclaimer — UCL EdTech Labs"
+        description="Important information regarding the use of the UCL EdTech Labs website, services, and the information it provides."
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Disclaimer</h1>
         

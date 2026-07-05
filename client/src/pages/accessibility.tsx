@@ -1,6 +1,12 @@
+import SEOHead from "@/components/seo-head";
+
 export default function Accessibility() {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Accessibility Statement — UCL EdTech Labs"
+        description="UCL EdTech Labs' accessibility statement and our commitment to WCAG 2.1 AA conformance for people with disabilities."
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Accessibility Statement</h1>
         

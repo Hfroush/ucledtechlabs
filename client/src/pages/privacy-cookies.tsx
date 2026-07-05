@@ -1,6 +1,12 @@
+import SEOHead from "@/components/seo-head";
+
 export default function PrivacyCookies() {
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="Privacy & Cookies — UCL EdTech Labs"
+        description="How UCL EdTech Labs collects, uses, and protects your personal information, including our cookie policy."
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Privacy and Cookies</h1>
         
