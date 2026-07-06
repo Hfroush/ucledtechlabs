@@ -118,7 +118,7 @@ export default function Navigation() {
                 <TooltipTrigger asChild>
                   <Button
                     onClick={() => scrollToSection("applications")}
-                    className="bg-accent text-white hover:bg-[#cc6e00]"
+                    className="bg-accent text-white hover:bg-accent/90"
                   >
                     Register Interest
                   </Button>
@@ -202,7 +202,7 @@ export default function Navigation() {
                       scrollToSection("applications");
                       setIsOpen(false);
                     }}
-                    className="bg-accent text-white hover:bg-[#cc6e00] w-full mt-4"
+                    className="bg-accent text-white hover:bg-accent/90 w-full mt-4"
                   >
                     Register Interest
                   </Button>

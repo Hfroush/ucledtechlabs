@@ -104,7 +104,7 @@ export default function ProgramsSection() {
                 <div className="absolute top-4 left-4">
                   <Badge 
                     variant={program.status === "open" ? "default" : "secondary"}
-                    className={program.status === "open" ? "bg-success text-white" : "bg-accent text-gray-900"}
+                    className={program.status === "open" ? "bg-success text-white" : "bg-accent text-white"}
                   >
                     {program.status === "open" ? "Applications Open" : "Opening Soon"}
                   </Badge>

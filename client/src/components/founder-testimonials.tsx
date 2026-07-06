@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Testimonial {
@@ -88,13 +87,10 @@ export default function FounderTestimonials() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {visible.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-start mb-4">
-                <Quote className="text-primary h-8 w-8 mr-3 flex-shrink-0 mt-1" />
-                <p className="text-gray-700 italic leading-relaxed">
-                  "{testimonial.quote}"
-                </p>
-              </div>
+            <div key={testimonial.id} className="bg-white rounded-xl p-6 border border-gray-200/70 shadow-sm">
+              <p className="text-gray-800 text-base md:text-lg leading-relaxed">
+                “{testimonial.quote}”
+              </p>
 
               <div className="flex items-center mt-6 pt-4 border-t border-gray-100">
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center mr-4 flex-shrink-0">

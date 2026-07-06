@@ -117,11 +117,12 @@ export default function LogoCarousel() {
   };
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Trusted by Leading Organizations</h2>
-          <p className="text-gray-600">Our partners and supporters across the global EdTech ecosystem</p>
+        <div className="text-center mb-10">
+          <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+            Trusted by leading organizations across the global EdTech ecosystem
+          </p>
         </div>
 
         <Carousel
@@ -142,11 +143,11 @@ export default function LogoCarousel() {
             {[...partners, ...partners].map((partner, index) => (
               <CarouselItem key={`${partner.id}-${index}`} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
                 <div className="p-2">
-                  <a 
+                  <a
                     href={partner.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block bg-white rounded-lg p-4 h-20 flex items-center justify-center shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300 cursor-pointer"
+                    className="flex h-16 items-center justify-center px-3 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
                     title={`Visit ${partner.name}`}
                   >
                     <img 

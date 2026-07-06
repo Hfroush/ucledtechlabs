@@ -33,7 +33,7 @@ export default function Footer() {
             <img
               src={uclLogo}
               alt="UCL Edtech Labs"
-              className="h-10 w-auto mb-6 brightness-0 invert"
+              className="h-10 w-auto mb-6 invert"
             />
             <p className="text-gray-300 mb-6 text-sm leading-relaxed">
               Transforming education through innovation. Join our global community of EdTech entrepreneurs making learning accessible, engaging, and effective worldwide.
@@ -78,7 +78,7 @@ export default function Footer() {
 
         </div>
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
-          <p>© 2025 UCL Edtech Labs. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} UCL Edtech Labs. All rights reserved.</p>
         </div>
       </div>
     </footer>

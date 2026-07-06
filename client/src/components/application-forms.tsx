@@ -174,7 +174,7 @@ export default function ApplicationForms() {
                 <p className="text-gray-600">Get notified about future programs and be first to apply when applications open.</p>
                 <div className="flex items-center mt-4">
                   <span className="w-3 h-3 bg-accent rounded-full mr-2"></span>
-                  <Badge className="bg-[#e57c00] text-[#ffffff]">Applications Opening Soon</Badge>
+                  <Badge className="bg-accent text-white">Applications Opening Soon</Badge>
                 </div>
               </div>
 
@@ -341,7 +341,7 @@ export default function ApplicationForms() {
                     <TooltipTrigger asChild>
                       <Button
                         type="submit"
-                        className="w-full py-4 font-bold hover:bg-yellow-500 bg-[#e57c00] text-[26px] text-[#ffffff]"
+                        className="w-full py-4 h-auto rounded-full font-semibold bg-accent hover:bg-accent/90 text-lg text-white"
                         disabled={interestMutation.isPending}
                       >
                         Register Interest

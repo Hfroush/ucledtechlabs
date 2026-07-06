@@ -1,6 +1,9 @@
+import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import postits_on_a_table from "@assets/postits-on-a-table.webp";
+
+const trustPoints = ["100% Equity-Free", "Evidence-Led Method", "Global Network"];
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -11,33 +14,27 @@ export default function HeroSection() {
   };
 
   return (
-    <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: `url(${postits_on_a_table})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'scroll'
-      }}
-    >
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/50 z-0"></div>
-      
-      {/* Content overlay */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+    <section className="relative overflow-hidden bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16 md:pt-24 md:pb-20 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm mb-8">
+          <span className="w-2 h-2 rounded-full bg-accent" aria-hidden="true"></span>
+          UCL's evidence-led EdTech accelerator
+        </span>
+
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 text-balance max-w-5xl mx-auto mb-6">
           Are you building an <span className="text-accent">edtech product</span> that could change the way people learn and teach?
         </h1>
-        <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed">
+
+        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-10">
           Turn your bold EdTech idea into real‑world impact, backed by research. Our mission is to build accelerator programs that collectively help improve the way people learn all over the world, based on true academic methods and iterated through hundreds of entrepreneurs.
         </p>
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
                 onClick={() => scrollToSection("applications")}
-                className="px-8 py-4 rounded-lg font-semibold transition-colors text-lg h-auto text-white bg-accent hover:bg-[#cc6e00]"
+                className="px-8 py-4 rounded-full font-semibold transition-colors text-base md:text-lg h-auto text-white bg-accent hover:bg-accent/90"
               >
                 Register Interest
               </Button>
@@ -45,19 +42,22 @@ export default function HeroSection() {
             <TooltipContent>Be first to know when applications open for our next cohort</TooltipContent>
           </Tooltip>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-8 text-sm">
-          <div className="flex items-center">
-            <span className="w-3 h-3 rounded-full mr-2 bg-accent"></span>
-            100% Equity-Free
-          </div>
-          <div className="flex items-center">
-            <span className="w-3 h-3 rounded-full mr-2 bg-accent"></span>
-            Evidence-Led Method
-          </div>
-          <div className="flex items-center">
-            <span className="w-3 h-3 rounded-full mr-2 bg-accent"></span>
-            Global Network
-          </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-600 mb-14">
+          {trustPoints.map((point) => (
+            <div key={point} className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-accent" aria-hidden="true" />
+              {point}
+            </div>
+          ))}
+        </div>
+
+        <div className="relative max-w-6xl mx-auto">
+          <img
+            src={postits_on_a_table}
+            alt="Founders collaborating at a UCL EdTech Labs workshop"
+            className="w-full rounded-2xl md:rounded-3xl object-cover aspect-[16/10] md:aspect-[21/9] ring-1 ring-black/5 shadow-2xl"
+          />
         </div>
       </div>
     </section>
