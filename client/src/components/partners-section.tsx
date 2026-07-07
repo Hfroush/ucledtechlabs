@@ -65,7 +65,7 @@ export default function PartnersSection() {
       type: "delivery",
       description: "Innovation accelerator and mentorship organization supporting early-stage startups with expert guidance, resources, and network connections.",
       logoUrl: "/logos/startup-labs.png", 
-      website: "https://startuplabs.com/"
+      website: "https://startup-labs.org/"
     },
     {
       id: "ideal-london",
@@ -77,26 +77,7 @@ export default function PartnersSection() {
     }
   ];
 
-  const getTypeColor = (type: Partner["type"]) => {
-    switch (type) {
-      case "institution":
-        return "bg-blue-100 text-blue-800";
-      case "corporate":
-        return "bg-green-100 text-green-800";
-      case "investor":
-        return "bg-purple-100 text-purple-800";
-      case "mentor":
-        return "bg-orange-100 text-orange-800";
-      case "government":
-        return "bg-red-100 text-red-800";
-      case "delivery":
-        return "bg-yellow-100 text-yellow-800";
-      case "coworking":
-        return "bg-indigo-100 text-indigo-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
+  const getTypeColor = (_type: Partner["type"]) => "bg-gray-100 text-gray-700";
 
   const getTypeLabel = (type: Partner["type"]) => {
     switch (type) {
@@ -132,7 +113,7 @@ export default function PartnersSection() {
           {partners.map((partner) => (
             <div
               key={partner.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-gray-100"
+              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-200/70"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">

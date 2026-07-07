@@ -90,11 +90,9 @@ export default function PastProgramsSection() {
   const getLocationColor = (location: string) => {
     switch (location) {
       case "London":
-        return "bg-blue-500 text-white";
+        return "bg-primary text-white";
       case "Paris":
-        return "bg-purple-500 text-white";
-      case "Dubai":
-        return "bg-orange-500 text-white";
+        return "bg-accent text-white";
       default:
         return "bg-gray-500 text-white";
     }
@@ -113,7 +111,7 @@ export default function PastProgramsSection() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {pastPrograms.map((program) => (
-            <div key={program.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div key={program.id} className="bg-white rounded-xl shadow-sm border border-gray-200/70 overflow-hidden hover:shadow-md transition-shadow">
               <div className="p-6 border-b border-gray-100">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
