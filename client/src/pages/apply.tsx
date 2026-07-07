@@ -5,7 +5,6 @@ import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -616,21 +615,21 @@ export default function Apply() {
                 <h3 className="font-semibold text-gray-900">What happens next?</h3>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
-                    <Badge variant="outline" className="bg-[#e57c00] text-white">1</Badge>
+                    <Badge variant="outline" className="bg-accent text-white">1</Badge>
                     <div>
                       <p className="font-medium">Application Review</p>
                       <p className="text-sm text-gray-600">Our academic panel reviews your submission</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Badge variant="outline" className="bg-[#e57c00] text-white">2</Badge>
+                    <Badge variant="outline" className="bg-accent text-white">2</Badge>
                     <div>
                       <p className="font-medium">Initial Assessment</p>
                       <p className="text-sm text-gray-600">We evaluate fit with our evidence-based methodology</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Badge variant="outline" className="bg-[#e57c00] text-white">3</Badge>
+                    <Badge variant="outline" className="bg-accent text-white">3</Badge>
                     <div>
                       <p className="font-medium">Interview Invitation</p>
                       <p className="text-sm text-gray-600">Successful candidates invited for virtual interview</p>
@@ -642,13 +641,13 @@ export default function Apply() {
               <div className="pt-6 border-t">
                 <p className="text-sm text-gray-600 mb-4">
                   Questions about your application? Contact us at{" "}
-                  <a href="mailto:info@ucledtechlabs.com" className="text-[#e57c00] hover:underline">
+                  <a href="mailto:info@ucledtechlabs.com" className="text-accent hover:underline">
                     info@ucledtechlabs.com
                   </a>
                 </p>
                 <Button 
                   onClick={() => window.location.href = "/"} 
-                  className="bg-[#e57c00] text-white hover:bg-orange-600"
+                  className="bg-accent text-white hover:bg-accent/90"
                 >
                   Return to Homepage
                 </Button>
@@ -680,20 +679,15 @@ export default function Apply() {
             </p>
           </div>
 
-          {/* Progress Indicator */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-sm font-medium text-gray-700">
-                Step {currentStep} of {FORM_STEPS.length}
-              </span>
-              <span className="text-sm text-gray-500">
-                {Math.round(progressPercentage)}% Complete
-              </span>
-            </div>
-            <Progress value={progressPercentage} className="h-2" />
+          {/* Step Indicators — single progress + navigation, clickable for visited steps */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-sm font-medium text-gray-700">
+              Step {currentStep} of {FORM_STEPS.length}
+            </span>
+            <span className="text-sm text-gray-500">
+              {Math.round(progressPercentage)}% Complete
+            </span>
           </div>
-
-          {/* Step Indicators — clickable for visited steps */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
             {FORM_STEPS.map((step) => {
               const Icon = step.icon;
@@ -709,15 +703,15 @@ export default function Apply() {
                   disabled={!isClickable}
                   className={`text-center p-3 rounded-lg border transition-colors ${
                     isActive
-                      ? "bg-[#e57c00] text-white border-[#e57c00]"
+                      ? "bg-primary text-white border-primary"
                       : isCompleted
                       ? "bg-green-50 text-green-700 border-green-200 cursor-pointer hover:bg-green-100"
-                      : "bg-gray-50 text-gray-400 border-gray-200 cursor-not-allowed"
+                      : "bg-white text-gray-500 border-gray-200 cursor-not-allowed"
                   }`}
                 >
                   <Icon className="w-5 h-5 mx-auto mb-1" />
                   <h3 className="font-medium text-xs">{step.title}</h3>
-                  <p className="text-xs opacity-75 hidden sm:block">{step.description}</p>
+                  <p className="text-xs opacity-80 hidden sm:block">{step.description}</p>
                   {isCompleted && (
                     <span className="text-xs font-medium mt-1 block">✓</span>
                   )}
@@ -732,7 +726,7 @@ export default function Apply() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
-              {React.createElement(FORM_STEPS[currentStep - 1].icon, { className: "w-5 h-5 text-[#e57c00]" })}
+              {React.createElement(FORM_STEPS[currentStep - 1].icon, { className: "w-5 h-5 text-accent" })}
               <span>{FORM_STEPS[currentStep - 1].title}</span>
             </CardTitle>
             <CardDescription>
@@ -1675,7 +1669,7 @@ export default function Apply() {
                       <Button
                         type="button"
                         onClick={nextStep}
-                        className="bg-[#e57c00] text-white hover:bg-orange-600 flex items-center space-x-2 w-full sm:w-auto"
+                        className="bg-accent text-white hover:bg-accent/90 flex items-center space-x-2 w-full sm:w-auto"
                       >
                         <span>Continue</span>
                         <ArrowRight className="w-4 h-4" />
@@ -1685,7 +1679,7 @@ export default function Apply() {
                         <Button
                           type="submit"
                           disabled={!canSubmit}
-                          className="bg-[#e57c00] text-white hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
+                          className="bg-accent text-white hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                         >
                           {submitMutation.isPending ? "Submitting..." : "Submit Application"}
                         </Button>
@@ -1726,7 +1720,7 @@ export default function Apply() {
                 <h4 className="font-medium mb-2">Application Questions</h4>
                 <p className="text-gray-600">
                   Questions about the program? Contact{" "}
-                  <a href="mailto:info@ucledtechlabs.com" className="text-[#e57c00] hover:underline">
+                  <a href="mailto:info@ucledtechlabs.com" className="text-accent hover:underline">
                     info@ucledtechlabs.com
                   </a>
                 </p>

@@ -14,16 +14,16 @@ const parisContent = {
   hero: {
     eyebrow: "Paris • CY Cergy Paris University",
     title: "CY EdTech Labs — EdTech acceleration, powered by research",
-    subtitle: "12-week programme in partnership with UCL to build evidence-led products and real-world adoption.",
+    subtitle: "A 12-week programme in partnership with UCL to build evidence-led products and real-world adoption. Session 6 has concluded — contact CY Transfer about the next session.",
     badges: [
-      "Next session: 23 Sep 2025 (Cergy)",
-      "Applications closed: 16 May 2025",
-      "Session 6"
+      "Session 6 · concluded",
+      "12-week programme",
+      "Cergy, France"
     ],
-    ctas: [
-      { label: "Download brochure (EN, PDF)", href: "https://cytransfer.cyu.fr/medias/fichier/eng-brochure-cy-edtech-labs-sfp-sfp_1742483578922-pdf?ID_FICHE=110956&INLINE=FALSE", variant: "secondary" },
-      { label: "Call for applications (FR, PDF)", href: "https://cytransfer.cyu.fr/medias/fichier/session6-appel-a-candidature-2-1-_1742483956999-pdf?ID_FICHE=110956&INLINE=FALSE", variant: "secondary" },
-      { label: "Email CY Transfer", href: "mailto:cy.transfer@cyu.fr" }
+    primaryCta: { label: "Contact CY Transfer", href: "mailto:cy.transfer@cyu.fr" },
+    secondaryLinks: [
+      { label: "Brochure (EN, PDF)", href: "https://cytransfer.cyu.fr/medias/fichier/eng-brochure-cy-edtech-labs-sfp-sfp_1742483578922-pdf?ID_FICHE=110956&INLINE=FALSE" },
+      { label: "Call for applications (FR, PDF)", href: "https://cytransfer.cyu.fr/medias/fichier/session6-appel-a-candidature-2-1-_1742483956999-pdf?ID_FICHE=110956&INLINE=FALSE" }
     ]
   },
   who: {
@@ -58,12 +58,12 @@ const parisContent = {
     ]
   },
   key_dates: {
-    title: "Key dates — Session 6",
+    title: "Session 6 timeline (concluded)",
     items: [
-      { label: "Applications close", value: "16 May 2025" },
+      { label: "Applications closed", value: "16 May 2025" },
       { label: "Results", value: "End-May / early June 2025" },
       { label: "Closure day (Session 5)", value: "4 June 2025 — Cergy" },
-      { label: "Programme start", value: "23 September 2025 — Cergy" }
+      { label: "Programme started", value: "23 September 2025 — Cergy" }
     ]
   },
   fees: {
@@ -123,43 +123,47 @@ function ParisHeroSection() {
       
       {/* Content overlay */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-        <p className="text-sm md:text-base font-semibold text-blue-200 mb-4 uppercase tracking-wider">
+        <p className="text-sm md:text-base font-semibold text-white/70 mb-4 uppercase tracking-wider">
           {parisContent.hero.eyebrow}
         </p>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight text-balance max-w-4xl mx-auto">
           {parisContent.hero.title}
         </h1>
-        <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-white/90">
           {parisContent.hero.subtitle}
         </p>
-        
+
         {/* Badges */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {parisContent.hero.badges.map((badge, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium">
+            <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 text-sm font-medium">
               {badge}
             </div>
           ))}
         </div>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 max-w-4xl mx-auto">
-          {parisContent.hero.ctas.map((cta, index) => (
+        {/* Primary CTA */}
+        <div className="flex justify-center mb-6">
+          <a
+            href={parisContent.hero.primaryCta.href}
+            className="bg-accent text-white hover:bg-accent/90 px-8 py-4 rounded-full font-semibold text-lg transition-colors"
+          >
+            {parisContent.hero.primaryCta.label}
+          </a>
+        </div>
+
+        {/* Secondary download links */}
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+          {parisContent.hero.secondaryLinks.map((link, index) => (
             <a
               key={index}
-              href={cta.href}
-              className={`px-6 py-3 rounded-lg font-semibold transition-colors text-center ${
-                cta.variant === 'secondary'
-                  ? 'bg-white/10 border-2 border-white/20 text-white hover:bg-white/20'
-                  : 'bg-orange-500 text-white hover:bg-orange-600'
-              }`}
-              {...(cta.href.startsWith('http') ? { 
-                target: '_blank', 
-                rel: 'noopener noreferrer',
-                'aria-label': `${cta.label} (opens in new tab)`
-              } : {})}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${link.label} (opens in new tab)`}
+              className="text-white/80 underline underline-offset-4 hover:text-white transition-colors"
             >
-              {cta.label}
+              {link.label}
             </a>
           ))}
         </div>
@@ -225,7 +229,7 @@ function ProgrammeSection() {
           <ul className="space-y-4">
             {parisContent.programme.bullets.map((bullet, index) => (
               <li key={index} className="flex items-start">
-                <span className="w-2 h-2 rounded-full bg-orange-500 mt-3 mr-4 flex-shrink-0"></span>
+                <span className="w-2 h-2 rounded-full bg-accent mt-3 mr-4 flex-shrink-0"></span>
                 <span className="text-slate-600">{bullet}</span>
               </li>
             ))}
@@ -238,7 +242,7 @@ function ProgrammeSection() {
           <ul className="space-y-4">
             {parisContent.benefits.bullets.map((bullet, index) => (
               <li key={index} className="flex items-start">
-                <span className="w-2 h-2 rounded-full bg-blue-500 mt-3 mr-4 flex-shrink-0"></span>
+                <span className="w-2 h-2 rounded-full bg-accent mt-3 mr-4 flex-shrink-0"></span>
                 <span className="text-slate-600">{bullet}</span>
               </li>
             ))}
@@ -260,7 +264,7 @@ function KeyDatesSection() {
         {parisContent.key_dates.items.map((item, index) => (
           <div key={index} className="bg-slate-50 p-6 rounded-lg">
             <div className="font-semibold text-slate-900 mb-2">{item.label}</div>
-            <div className="text-orange-600 font-bold">{item.value}</div>
+            <div className="text-accent font-bold">{item.value}</div>
           </div>
         ))}
       </div>
@@ -301,7 +305,7 @@ function DownloadsContactSection() {
               <li key={index}>
                 <a
                   href={item.href}
-                  className="text-orange-600 hover:text-orange-700 underline"
+                  className="text-accent hover:text-accent underline"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${item.label} (opens in new tab)`}
@@ -322,7 +326,7 @@ function DownloadsContactSection() {
                 {line.includes('@') ? (
                   <a 
                     href={`mailto:${line}`} 
-                    className="text-orange-600 hover:text-orange-700"
+                    className="text-accent hover:text-accent"
                     aria-label={`Send email to ${line}`}
                   >
                     {line}
@@ -392,7 +396,7 @@ export default function Paris() {
       {/* Skip to main content link for screen readers */}
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-orange-600 text-white px-4 py-2 rounded-lg z-50"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent text-white px-4 py-2 rounded-lg z-50"
       >
         Skip to main content
       </a>

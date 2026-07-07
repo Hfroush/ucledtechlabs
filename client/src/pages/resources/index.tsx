@@ -71,11 +71,17 @@ export default function ResourcesIndex() {
                   <Link
                     key={r.slug}
                     href={`/resources/${r.slug}`}
-                    className="block bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow"
+                    className="group flex flex-col bg-white rounded-2xl p-6 border border-gray-200/70 shadow-sm hover:shadow-md hover:border-accent/30 transition-all"
                   >
-                    <h3 className="font-bold text-gray-900 mb-2 leading-snug">{r.title}</h3>
+                    <h3 className="font-bold text-gray-900 mb-2 leading-snug group-hover:text-accent transition-colors">{r.title}</h3>
                     <p className="text-sm text-gray-600 mb-4">{r.description}</p>
-                    <span className="text-xs text-gray-500">{r.readingTime}</span>
+                    <div className="mt-auto flex items-center justify-between">
+                      <span className="text-xs text-gray-500">{r.readingTime}</span>
+                      <span className="text-sm font-medium text-accent inline-flex items-center gap-1">
+                        Read guide
+                        <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+                      </span>
+                    </div>
                   </Link>
                 ))}
             </div>

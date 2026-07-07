@@ -99,8 +99,8 @@ export default function Autumn2025() {
   return (
     <div className="min-h-screen bg-slate-50">
       <SEOHead
-        title="UCL EdTech Labs Autumn '25 — Call for AI EdTech Startups"
-        description="Oct–Jan 2026 accelerator in London. Evidence-driven pathway for AI-first education startups. Apply by early September."
+        title="UCL EdTech Labs Autumn '25 — London Cohort"
+        description="Our Autumn 2025 London cohort (Oct 2025–Jan 2026): an evidence-driven accelerator for AI-first education startups. Applications are closed — register interest for the next cohort."
         structuredData={structuredData}
       />
       <Navigation />
@@ -122,24 +122,30 @@ export default function Autumn2025() {
 
         {/* Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white scroll-reveal opacity-0 animate-fade-in pt-4 pb-8">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-            Accelerate your <span className="text-[#FF6C0E]">AI edtech startup</span> at UCL.
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-accent" aria-hidden="true"></span>
+            Autumn 2025 · London — programme concluded
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight text-balance max-w-4xl mx-auto">
+            Accelerating <span className="text-accent">AI edtech startups</span> at UCL.
           </h1>
-          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed">
-            Oct–Jan 2026 • London + Hybrid • Evidence-driven, founder-focused.
+          <p className="text-base sm:text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-white/90">
+            Our Oct 2025–Jan 2026 London cohort — an evidence-driven, founder-focused programme. This page documents that cohort. Applications are now closed.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <a 
-              href="#programme" 
-              className="border-2 border-white text-white hover:bg-white hover:text-[#1a3e72] px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/#applications"
+              className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"
             >
-              Learn More
+              Register interest for the next cohort
             </a>
-          </div>
-
-          <div className="text-sm text-white/90 mb-4">
-            Applications are now closed
+            <a
+              href="#programme"
+              className="border-2 border-white text-white hover:bg-white hover:text-[#1a3e72] px-8 py-4 rounded-full font-semibold text-lg transition-colors"
+            >
+              See the programme
+            </a>
           </div>
         </div>
       </section>
@@ -152,8 +158,8 @@ export default function Autumn2025() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-[#FF6C0E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FF6C0E]/20">
-                <svg className="w-8 h-8 text-[#FF6C0E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20">
+                <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
@@ -162,8 +168,8 @@ export default function Autumn2025() {
             </div>
 
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-[#FF6C0E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FF6C0E]/20">
-                <svg className="w-8 h-8 text-[#FF6C0E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20">
+                <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
@@ -172,8 +178,8 @@ export default function Autumn2025() {
             </div>
 
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-[#FF6C0E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FF6C0E]/20">
-                <svg className="w-8 h-8 text-[#FF6C0E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20">
+                <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
@@ -182,8 +188,8 @@ export default function Autumn2025() {
             </div>
 
             <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-[#FF6C0E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FF6C0E]/20">
-                <svg className="w-8 h-8 text-[#FF6C0E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20">
+                <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                 </svg>
               </div>
@@ -205,10 +211,10 @@ export default function Autumn2025() {
           <div className="grid md:grid-cols-2 gap-8 lg:hidden">
             {/* Stage 1 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 1</div>
+              <div className="text-accent font-bold text-sm mb-2">STAGE 1</div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Setting the Foundations</h3>
               <ul className="text-gray-600 space-y-2">
-                <li>🔑 Clarity from day one. Cut the noise and get crystal clear on who you serve, why it matters, and how you’ll measure success.</li>
+                <li className="font-medium text-gray-900 mb-1">Clarity from day one. Cut the noise and get crystal clear on who you serve, why it matters, and how you’ll measure success.</li>
                 <li>• Map your users and stakeholders with precision</li>
                 <li>• Pressure-test your assumptions before they cost you</li>
                 <li>You leave with: A sharp logic model, a focused mission, and the tools to align your team and story.</li>
@@ -217,10 +223,10 @@ export default function Autumn2025() {
 
             {/* Stage 2 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 2</div>
+              <div className="text-accent font-bold text-sm mb-2">STAGE 2</div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">The Research Method</h3>
               <ul className="text-gray-600 space-y-2">
-                <li>🔍 Decisions powered by evidence, not guesswork. Learn a repeatable system for testing ideas, gathering insights, and avoiding expensive mistakes.</li>
+                <li className="font-medium text-gray-900 mb-1">Decisions powered by evidence, not guesswork. Learn a repeatable system for testing ideas, gathering insights, and avoiding expensive mistakes.</li>
                 <li>• Master practical methods without the jargon</li>
                 <li>• Build lean surveys, interviews, and tests that actually convert into answers</li>
                 <li>You leave with: A research library, a live research plan, and the confidence to validate any big bet.</li>
@@ -229,10 +235,10 @@ export default function Autumn2025() {
 
             {/* Stage 3 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 3</div>
+              <div className="text-accent font-bold text-sm mb-2">STAGE 3</div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">AIEd Stream</h3>
               <ul className="text-gray-600 space-y-2">
-                <li>⚡ Cut through the AI hype — deploy what matters. Understand what’s real, what’s possible, and how to build AI into your product roadmap.</li>
+                <li className="font-medium text-gray-900 mb-1">Cut through the AI hype — deploy what matters. Understand what’s real, what’s possible, and how to build AI into your product roadmap.</li>
                 <li>• Explore how AI plays out in real educational contexts</li>
                 <li>• Map the landscape with AWS architects</li>
                 <li>You leave with: A deployment framework, a bank of real use cases, and a draft AI implementation plan.</li>
@@ -241,11 +247,11 @@ export default function Autumn2025() {
 
             {/* Stage 4 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 4</div>
+              <div className="text-accent font-bold text-sm mb-2">STAGE 4</div>
               <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Applying the Method</h3>
 
               <ul className="text-gray-600 space-y-2">
-                <li>🎤 Turn validation into a story investors can’t ignore. It’s not just about the outcomes — it’s about the story you build around it.</li>
+                <li className="font-medium text-gray-900 mb-1">Turn validation into a story investors can’t ignore. It’s not just about the outcomes — it’s about the story you build around it.</li>
                 <li>• Shape a sales narrative that lands with partners and investors</li>
                 <li>• End with funding insights you can run with tomorrow</li>
                 <li>You leave with: An investor-ready pitch deck, impact metrics that matter, and a clear growth path.</li>
@@ -259,10 +265,10 @@ export default function Autumn2025() {
             <div className="grid grid-cols-3 gap-8 mb-8">
               {/* Stage 1 */}
               <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 1</div>
+                <div className="text-accent font-bold text-sm mb-2">STAGE 1</div>
                 <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Setting the Foundations</h3>
                 <ul className="text-gray-600 space-y-2">
-                  <li>🔑 Clarity from day one. Cut the noise and get crystal clear on who you serve, why it matters, and how you'll measure success.</li>
+                  <li className="font-medium text-gray-900 mb-1">Clarity from day one. Cut the noise and get crystal clear on who you serve, why it matters, and how you'll measure success.</li>
                   <li>• Map your users and stakeholders with precision</li>
                   <li>• Pressure-test your assumptions before they cost you</li>
                   <li>You leave with: A sharp logic model, a focused mission, and the tools to align your team and story.</li>
@@ -271,10 +277,10 @@ export default function Autumn2025() {
 
               {/* Stage 2 */}
               <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 2</div>
+                <div className="text-accent font-bold text-sm mb-2">STAGE 2</div>
                 <h3 className="text-xl font-bold text-[#1a3e72] mb-4">The Research Method</h3>
                 <ul className="text-gray-600 space-y-2">
-                  <li>🔍 Decisions powered by evidence, not guesswork. Learn a repeatable system for testing ideas, gathering insights, and avoiding expensive mistakes.</li>
+                  <li className="font-medium text-gray-900 mb-1">Decisions powered by evidence, not guesswork. Learn a repeatable system for testing ideas, gathering insights, and avoiding expensive mistakes.</li>
                   <li>• Master practical methods without the jargon</li>
                   <li>• Build lean surveys, interviews, and tests that actually convert into answers</li>
                   <li>You leave with: A research library, a live research plan, and the confidence to validate any big bet.</li>
@@ -283,10 +289,10 @@ export default function Autumn2025() {
 
               {/* Stage 3 */}
               <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 3</div>
+                <div className="text-accent font-bold text-sm mb-2">STAGE 3</div>
                 <h3 className="text-xl font-bold text-[#1a3e72] mb-4">AIEd Stream</h3>
                 <ul className="text-gray-600 space-y-2">
-                  <li>⚡ Cut through the AI hype — deploy what matters. Understand what's real, what's possible, and how to build AI into your product roadmap.</li>
+                  <li className="font-medium text-gray-900 mb-1">Cut through the AI hype — deploy what matters. Understand what's real, what's possible, and how to build AI into your product roadmap.</li>
                   <li>• Explore how AI plays out in real educational contexts</li>
                   <li>• Map the landscape with AWS architects</li>
                   <li>You leave with: A deployment framework, a bank of real use cases, and a draft AI implementation plan.</li>
@@ -298,10 +304,10 @@ export default function Autumn2025() {
             <div className="flex justify-center">
               <div className="w-full max-w-md">
                 <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="text-[#FF6C0E] font-bold text-sm mb-2">STAGE 4</div>
+                  <div className="text-accent font-bold text-sm mb-2">STAGE 4</div>
                   <h3 className="text-xl font-bold text-[#1a3e72] mb-4">Applying the Method</h3>
                   <ul className="text-gray-600 space-y-2">
-                    <li>🎤 Turn validation into a story investors can't ignore. It's not just about the outcomes — it's about the story you build around it.</li>
+                    <li className="font-medium text-gray-900 mb-1">Turn validation into a story investors can't ignore. It's not just about the outcomes — it's about the story you build around it.</li>
                     <li>• Shape a sales narrative that lands with partners and investors</li>
                     <li>• End with funding insights you can run with tomorrow</li>
                     <li>You leave with: An investor-ready pitch deck, impact metrics that matter, and a clear growth path.</li>
@@ -328,7 +334,7 @@ export default function Autumn2025() {
               
               <div className="space-y-8">
                 <div className="flex items-start space-x-6">
-                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                  <div className="w-12 h-12 bg-accent rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
                     1
                   </div>
                   <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
@@ -339,7 +345,7 @@ export default function Autumn2025() {
                 </div>
 
                 <div className="flex items-start space-x-6">
-                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                  <div className="w-12 h-12 bg-accent rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
                     2
                   </div>
                   <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
@@ -350,7 +356,7 @@ export default function Autumn2025() {
                 </div>
 
                 <div className="flex items-start space-x-6">
-                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                  <div className="w-12 h-12 bg-accent rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
                     3
                   </div>
                   <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
@@ -361,7 +367,7 @@ export default function Autumn2025() {
                 </div>
 
                 <div className="flex items-start space-x-6">
-                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                  <div className="w-12 h-12 bg-accent rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
                     4
                   </div>
                   <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
@@ -372,7 +378,7 @@ export default function Autumn2025() {
                 </div>
 
                 <div className="flex items-start space-x-6">
-                  <div className="w-12 h-12 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                  <div className="w-12 h-12 bg-accent rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
                     5
                   </div>
                   <div className="bg-white p-4 rounded-xl shadow-lg flex-1">
@@ -390,7 +396,7 @@ export default function Autumn2025() {
             <div className="relative">
               <div className="flex justify-between items-center">
                 <div className="timeline-dot flex flex-col items-center relative">
-                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="w-6 h-6 bg-accent rounded-full border-4 border-white shadow-lg mb-4"></div>
                   <div className="text-center">
                     <div className="font-bold text-[#1a3e72]">September</div>
                     <div className="text-sm text-gray-600">Call Opens</div>
@@ -400,7 +406,7 @@ export default function Autumn2025() {
                 </div>
 
                 <div className="timeline-dot flex flex-col items-center relative">
-                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="w-6 h-6 bg-accent rounded-full border-4 border-white shadow-lg mb-4"></div>
                   <div className="text-center">
                     <div className="font-bold text-[#1a3e72]">October</div>
                     <div className="text-sm text-gray-600">Foundations</div>
@@ -410,7 +416,7 @@ export default function Autumn2025() {
                 </div>
 
                 <div className="timeline-dot flex flex-col items-center relative">
-                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="w-6 h-6 bg-accent rounded-full border-4 border-white shadow-lg mb-4"></div>
                   <div className="text-center">
                     <div className="font-bold text-[#1a3e72]">November</div>
                     <div className="text-sm text-gray-600">Research Method</div>
@@ -420,7 +426,7 @@ export default function Autumn2025() {
                 </div>
 
                 <div className="timeline-dot flex flex-col items-center relative">
-                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="w-6 h-6 bg-accent rounded-full border-4 border-white shadow-lg mb-4"></div>
                   <div className="text-center">
                     <div className="font-bold text-[#1a3e72]">December</div>
                     <div className="text-sm text-gray-600">Applying Method</div>
@@ -430,7 +436,7 @@ export default function Autumn2025() {
                 </div>
 
                 <div className="timeline-dot flex flex-col items-center">
-                  <div className="w-6 h-6 bg-[#FF6C0E] rounded-full border-4 border-white shadow-lg mb-4"></div>
+                  <div className="w-6 h-6 bg-accent rounded-full border-4 border-white shadow-lg mb-4"></div>
                   <div className="text-center">
                     <div className="font-bold text-[#1a3e72]">January</div>
                     <div className="text-sm text-gray-600">Final Day</div>
@@ -452,7 +458,7 @@ export default function Autumn2025() {
 
           <div className="space-y-6">
             <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg">
-              <div className="w-6 h-6 bg-[#FF6C0E] rounded-full flex-shrink-0 flex items-center justify-center mt-1">
+              <div className="w-6 h-6 bg-accent rounded-full flex-shrink-0 flex items-center justify-center mt-1">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -464,7 +470,7 @@ export default function Autumn2025() {
             </div>
 
             <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg">
-              <div className="w-6 h-6 bg-[#FF6C0E] rounded-full flex-shrink-0 flex items-center justify-center mt-1">
+              <div className="w-6 h-6 bg-accent rounded-full flex-shrink-0 flex items-center justify-center mt-1">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -476,7 +482,7 @@ export default function Autumn2025() {
             </div>
 
             <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg">
-              <div className="w-6 h-6 bg-[#FF6C0E] rounded-full flex-shrink-0 flex items-center justify-center mt-1">
+              <div className="w-6 h-6 bg-accent rounded-full flex-shrink-0 flex items-center justify-center mt-1">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -488,7 +494,7 @@ export default function Autumn2025() {
             </div>
 
             <div className="flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg">
-              <div className="w-6 h-6 bg-[#FF6C0E] rounded-full flex-shrink-0 flex items-center justify-center mt-1">
+              <div className="w-6 h-6 bg-accent rounded-full flex-shrink-0 flex items-center justify-center mt-1">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -571,7 +577,7 @@ export default function Autumn2025() {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#FF6C0E] rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -609,7 +615,7 @@ export default function Autumn2025() {
 
             <div className="md:col-span-2 bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#FF6C0E] to-[#1a3e72] rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gradient-to-br from-accent to-[#1a3e72] rounded-xl flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
@@ -629,23 +635,23 @@ export default function Autumn2025() {
       <section className="py-20 bg-gradient-to-br from-[#1a3e72] to-[#2d5aa0] text-white scroll-reveal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to accelerate your AI edtech startup?
+            Want to join the next cohort?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Join UCL's evidence-driven accelerator programme.
+            The Autumn 2025 London programme has concluded. Register your interest and we'll notify you when applications open for the next cohort.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <a 
-              href="https://ucledtechlabs.com/apply" 
-              className="bg-[#FF6C0E] hover:bg-[#e55a00] text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            <a
+              href="/#applications"
+              className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors shadow-lg hover:shadow-xl"
             >
-              Apply Now - Deadline Sep 19
+              Register Interest
             </a>
           </div>
 
           <p className="text-sm opacity-75">
-            Questions? Email <a href="mailto:edtechlabs@ucl.ac.uk" className="underline hover:no-underline">info@ucledtechlabs.com</a>
+            Questions? Email <a href="mailto:info@ucledtechlabs.com" className="underline hover:no-underline">info@ucledtechlabs.com</a>
           </p>
         </div>
       </section>
@@ -653,7 +659,7 @@ export default function Autumn2025() {
       {/* Back to Top Button */}
       <button 
         id="backToTop" 
-        className="fixed bottom-8 right-8 bg-[#FF6C0E] hover:bg-[#e55a00] text-white p-3 rounded-full shadow-lg transition-all duration-300 z-40 transform translate-y-full opacity-0"
+        className="fixed bottom-8 right-8 bg-accent hover:bg-accent/90 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-40 transform translate-y-full opacity-0"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

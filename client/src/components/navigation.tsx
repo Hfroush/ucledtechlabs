@@ -43,8 +43,8 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
+          <div className="hidden lg:block">
+            <div className="ml-10 flex items-center space-x-6">
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button
@@ -90,7 +90,7 @@ export default function Navigation() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link href="/past-programs-partners" className="text-gray-700 hover:text-primary transition-colors">
-                    Supporters and Programs
+                    Supporters
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>View past programs and our partners</TooltipContent>
@@ -129,7 +129,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Tooltip>

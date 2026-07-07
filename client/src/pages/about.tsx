@@ -104,7 +104,7 @@ export default function About() {
                 <strong>Accelerator programmes</strong> — immersive, cohort-based programmes in
                 London and Paris that take startups through vision, business modelling,
                 research methods, funding, and pitching.{" "}
-                <Link href="/resources/how-the-accelerator-works" className="text-[#e57c00] hover:underline">
+                <Link href="/resources/how-the-accelerator-works" className="text-accent hover:underline">
                   See how the programme works
                 </Link>
                 .
@@ -112,7 +112,7 @@ export default function About() {
               <li>
                 <strong>Evidence-based methodology</strong> — a five-step curriculum grounded in
                 UCL research that teaches founders to prove and improve their products.{" "}
-                <Link href="/resources/evidence-based-edtech" className="text-[#e57c00] hover:underline">
+                <Link href="/resources/evidence-based-edtech" className="text-accent hover:underline">
                   Read about our methodology
                 </Link>
                 .
@@ -146,7 +146,7 @@ export default function About() {
             ))}
           </div>
           <p className="text-center mt-8">
-            <Link href="/resources/accelerator-outcomes" className="text-[#e57c00] hover:underline font-medium">
+            <Link href="/resources/accelerator-outcomes" className="text-accent hover:underline font-medium">
               Explore our outcomes and impact in detail →
             </Link>
           </p>
@@ -161,29 +161,29 @@ export default function About() {
             UCL EdTech Labs has delivered programmes in four cities:
           </p>
           <div className="grid sm:grid-cols-2 gap-4 mb-8">
-            <div className="bg-slate-50 rounded-xl p-6">
+            <div className="bg-white rounded-xl p-6 border border-gray-200/70 shadow-sm">
               <h3 className="font-bold text-gray-900 mb-1">London</h3>
               <p className="text-sm text-gray-600">
                 6 cohorts — our flagship programme, run at UCL.{" "}
-                <Link href="/autumn-2025" className="text-[#e57c00] hover:underline">
+                <Link href="/autumn-2025" className="text-accent hover:underline">
                   Latest London programme
                 </Link>
               </p>
             </div>
-            <div className="bg-slate-50 rounded-xl p-6">
+            <div className="bg-white rounded-xl p-6 border border-gray-200/70 shadow-sm">
               <h3 className="font-bold text-gray-900 mb-1">Paris</h3>
               <p className="text-sm text-gray-600">
                 5 cohorts delivered with French partners.{" "}
-                <Link href="/paris" className="text-[#e57c00] hover:underline">
+                <Link href="/paris" className="text-accent hover:underline">
                   Paris programme
                 </Link>
               </p>
             </div>
-            <div className="bg-slate-50 rounded-xl p-6">
+            <div className="bg-white rounded-xl p-6 border border-gray-200/70 shadow-sm">
               <h3 className="font-bold text-gray-900 mb-1">Toronto</h3>
               <p className="text-sm text-gray-600">1 cohort delivered in Canada.</p>
             </div>
-            <div className="bg-slate-50 rounded-xl p-6">
+            <div className="bg-white rounded-xl p-6 border border-gray-200/70 shadow-sm">
               <h3 className="font-bold text-gray-900 mb-1">Dubai</h3>
               <p className="text-sm text-gray-600">Upcoming programme.</p>
             </div>
@@ -201,7 +201,7 @@ export default function About() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/resources"
-              className="bg-[#FF6C0E] hover:bg-[#e55a00] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+              className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-xl font-semibold transition-colors"
             >
               Explore Resources
             </Link>

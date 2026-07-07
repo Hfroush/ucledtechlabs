@@ -94,7 +94,7 @@ export default function PoliciesGuidance() {
             For questions about our policies or guidance, please contact:
           </p>
           <p className="text-gray-700 mb-4">
-            Email: <a href="mailto:info@ucledtechlabs.com" className="text-[#e57c00] hover:underline">info@ucledtechlabs.com</a>
+            Email: <a href="mailto:info@ucledtechlabs.com" className="text-accent hover:underline">info@ucledtechlabs.com</a>
           </p>
 
           <p className="text-sm text-gray-500 mt-8">

@@ -37,7 +37,7 @@ export default function FreedomOfInformation() {
           </p>
           <div className="bg-gray-50 p-4 rounded-md mb-4">
             <p className="text-gray-700">
-              <strong>Email:</strong> <a href="mailto:data-protection@ucl.ac.uk" className="text-[#e57c00] hover:underline">data-protection@ucl.ac.uk</a><br/>
+              <strong>Email:</strong> <a href="mailto:data-protection@ucl.ac.uk" className="text-accent hover:underline">data-protection@ucl.ac.uk</a><br/>
               <strong>Subject:</strong> Freedom of Information Request - UCL EdTech Labs<br/>
               <strong>Post:</strong><br/>
               Data Protection Officer<br/>

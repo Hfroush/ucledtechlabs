@@ -39,7 +39,7 @@ export default function Accessibility() {
             We welcome your feedback on the accessibility of our website. Please let us know if you encounter accessibility barriers:
           </p>
           <ul className="list-disc pl-6 text-gray-700 mb-4">
-            <li>Email: <a href="mailto:info@ucledtechlabs.com" className="text-[#e57c00] hover:underline">info@ucledtechlabs.com</a></li>
+            <li>Email: <a href="mailto:info@ucledtechlabs.com" className="text-accent hover:underline">info@ucledtechlabs.com</a></li>
             <li>Subject line: Website Accessibility</li>
           </ul>
 
