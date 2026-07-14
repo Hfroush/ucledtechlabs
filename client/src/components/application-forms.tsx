@@ -144,14 +144,16 @@ export default function ApplicationForms() {
   return (
     <section id="applications" className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div data-reveal className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Register Your Interest</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Get notified about upcoming cohorts and be first to apply when applications open. We're looking for passionate founders ready to transform education.
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        {/* data-reveal stays on this wrapper: the children remount when the
+            form is submitted and would never be re-observed. */}
+        <div data-reveal className="max-w-2xl mx-auto">
           {interestSubmitted ? (
             <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 text-center">
               <div className="flex justify-center mb-4">

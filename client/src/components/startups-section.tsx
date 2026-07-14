@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Badge } from "@/components/ui/badge";
 
 interface Startup {
@@ -64,7 +65,7 @@ export default function StartupsSection() {
   return (
     <section id="startups" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div data-reveal className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Our alumni are transforming education worldwide, from AI-powered learning platforms 
@@ -73,10 +74,12 @@ export default function StartupsSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {startups.map((startup) => (
+          {startups.map((startup, index) => (
             <div
               key={startup.id}
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200/70"
+              data-reveal
+              style={{ "--rd": `${(index % 3) * 0.08}s` } as CSSProperties}
+              className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200/70 motion-safe:hover:-translate-y-1"
             >
               <div className="relative p-6">
                 <div className="flex items-start justify-between mb-4">

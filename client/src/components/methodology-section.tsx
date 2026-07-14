@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Rocket, Users, GraduationCap, BarChart3, Globe, type LucideIcon } from "lucide-react";
 import spotline_on_founder from "@assets/spotline-on-founder.webp";
 
@@ -63,7 +64,7 @@ export default function MethodologySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-12">
+        <div data-reveal className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Proven Methodology</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             We go beyond the typical accelerator. Every session is grounded in UCL research, designed to help you build a product that actually works — and proves it.
@@ -72,8 +73,13 @@ export default function MethodologySection() {
 
         {/* Pillars grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {pillars.map((pillar) => (
-            <div key={pillar.title} className="flex items-start gap-4 p-5 rounded-xl bg-white border border-gray-200/70 shadow-sm">
+          {pillars.map((pillar, index) => (
+            <div
+              key={pillar.title}
+              data-reveal
+              style={{ "--rd": `${index * 0.06}s` } as CSSProperties}
+              className="flex items-start gap-4 p-5 rounded-xl bg-white border border-gray-200/70 shadow-sm motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-md"
+            >
               <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center" aria-hidden="true">
                 <pillar.icon className="h-5 w-5" />
               </div>
@@ -87,14 +93,14 @@ export default function MethodologySection() {
 
         {/* Image + all 5 steps */}
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div>
+          <div data-reveal>
             <img
               src={spotline_on_founder}
               alt="Founder working in a collaborative learning session"
               className="rounded-xl shadow-lg w-full"
             />
           </div>
-          <div className="space-y-6">
+          <div data-reveal style={{ "--rd": "0.1s" } as CSSProperties} className="space-y-6">
             <h3 className="text-xl font-bold text-gray-900">What you'll cover</h3>
             {methodologies.map((method) => (
               <div key={method.step} className="flex items-start">

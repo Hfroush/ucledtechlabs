@@ -4,6 +4,7 @@ import { queryClient } from "@/lib/queryClient";
 import { usePageTracking } from "@/lib/analytics";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ScrollReveal from "@/components/scroll-reveal";
 import Home from "@/pages/home";
 import Apply from "@/pages/apply";
 import Admin from "@/pages/admin";
@@ -71,6 +72,7 @@ function App() {
         <Route path="/policies-guidance" component={PoliciesGuidance} />
         <Route component={NotFound} />
       </Switch>
+      <ScrollReveal />
       <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

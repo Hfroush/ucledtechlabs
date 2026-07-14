@@ -119,7 +119,7 @@ export default function LogoCarousel() {
   return (
     <section className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
+        <div data-reveal className="text-center mb-10">
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
             Trusted by leading organizations across the global EdTech ecosystem
           </p>
