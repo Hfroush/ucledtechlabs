@@ -1,0 +1,8 @@
+# Cloudflare Pages SPA routing: serve index.html for any path that isn't a
+# static file, so wouter can handle /about, /resources/*, etc. on a hard load.
+# Static assets are matched first, so this only catches app routes.
+#
+# Note: /api/* also falls through to index.html on Pages, because no backend is
+# deployed here yet. The forms and admin login will not work until the API is
+# hosted (see vercel.json / api/[...path].ts for the current Vercel setup).
+/*    /index.html   200
