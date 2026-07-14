@@ -49,7 +49,7 @@ export default function Navigation() {
                 <TooltipTrigger asChild>
                   <button
                     onClick={() => scrollToSection("methodology")}
-                    className="text-gray-700 hover:text-primary transition-colors"
+                    className="nav-underline text-gray-700 hover:text-primary transition-colors"
                   >
                     Methodology
                   </button>
@@ -61,7 +61,7 @@ export default function Navigation() {
                 <TooltipTrigger asChild>
                   <button
                     onClick={() => scrollToSection("startups")}
-                    className="text-gray-700 hover:text-primary transition-colors"
+                    className="nav-underline text-gray-700 hover:text-primary transition-colors"
                   >
                     Startups
                   </button>
@@ -71,7 +71,7 @@ export default function Navigation() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href="/autumn-2025" className="text-gray-700 hover:text-primary transition-colors">
+                  <Link href="/autumn-2025" className="nav-underline text-gray-700 hover:text-primary transition-colors">
                     London
                   </Link>
                 </TooltipTrigger>
@@ -80,7 +80,7 @@ export default function Navigation() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href="/paris" className="text-gray-700 hover:text-primary transition-colors">
+                  <Link href="/paris" className="nav-underline text-gray-700 hover:text-primary transition-colors">
                     Paris
                   </Link>
                 </TooltipTrigger>
@@ -89,7 +89,7 @@ export default function Navigation() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href="/past-programs-partners" className="text-gray-700 hover:text-primary transition-colors">
+                  <Link href="/past-programs-partners" className="nav-underline text-gray-700 hover:text-primary transition-colors">
                     Supporters
                   </Link>
                 </TooltipTrigger>
@@ -98,7 +98,7 @@ export default function Navigation() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href="/resources" className="text-gray-700 hover:text-primary transition-colors">
+                  <Link href="/resources" className="nav-underline text-gray-700 hover:text-primary transition-colors">
                     Resources
                   </Link>
                 </TooltipTrigger>
@@ -107,7 +107,7 @@ export default function Navigation() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href="/about" className="text-gray-700 hover:text-primary transition-colors">
+                  <Link href="/about" className="nav-underline text-gray-700 hover:text-primary transition-colors">
                     About
                   </Link>
                 </TooltipTrigger>
@@ -118,7 +118,7 @@ export default function Navigation() {
                 <TooltipTrigger asChild>
                   <Button
                     onClick={() => scrollToSection("applications")}
-                    className="bg-accent text-white hover:bg-accent/90"
+                    className="bg-accent text-white hover:bg-accent/90 motion-safe:transition-all motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md"
                   >
                     Register Interest
                   </Button>

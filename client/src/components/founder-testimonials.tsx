@@ -78,16 +78,18 @@ export default function FounderTestimonials() {
   return (
     <section className="bg-slate-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div data-reveal className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Founders Say</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Real feedback from founders who've experienced our evidence-led methodology firsthand.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* data-reveal sits on the grid, not the cards: "See all" remounts the
+            cards and newly mounted ones would never be observed. */}
+        <div data-reveal className="grid md:grid-cols-2 gap-8">
           {visible.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white rounded-xl p-6 border border-gray-200/70 shadow-sm">
+            <div key={testimonial.id} className="bg-white rounded-xl p-6 border border-gray-200/70 shadow-sm motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md">
               <p className="text-gray-800 text-base md:text-lg leading-relaxed">
                 “{testimonial.quote}”
               </p>
